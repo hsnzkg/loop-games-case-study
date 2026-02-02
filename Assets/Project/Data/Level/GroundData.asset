@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f632cffc2da4e8aadf6ec0ef8973445, type: 3}
+  m_Name: GroundData
+  m_EditorClassIdentifier: 
+  Tiles:
+  - Weight: 0.75
+    TilePrefab: {fileID: 674606587712084996, guid: 7a8b16ee8f646814c9c25362b974ef69, type: 3}
+  - Weight: 0.125
+    TilePrefab: {fileID: 674606587712084996, guid: 5137caef106470a4e898f47bff4dc105, type: 3}
+  - Weight: 0.125
+    TilePrefab: {fileID: 674606587712084996, guid: 222d2363fd391db4f86a51fa13a0cca5, type: 3}
+  - Weight: 0.125
+    TilePrefab: {fileID: 674606587712084996, guid: dd7708ae466659040b8c4f141c8b7817, type: 3}
