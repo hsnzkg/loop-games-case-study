@@ -5,7 +5,15 @@ using UnityEngine.EventSystems;
 
 public class VariableJoystick : Joystick
 {
-    public float MoveThreshold { get { return moveThreshold; } set { moveThreshold = Mathf.Abs(value); } }
+    public float GetMoveThreshold()
+    {
+        return moveThreshold;
+    }
+
+    public void SetMoveThreshold(float value)
+    {
+        moveThreshold = Mathf.Abs(value);
+    }
 
     [SerializeField] private float moveThreshold = 1;
     [SerializeField] private JoystickType joystickType = JoystickType.Fixed;

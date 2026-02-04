@@ -57,10 +57,10 @@ namespace Project.Scripts.Entity.Player.Combat
 
         private void SetCollisionLayers(SwordEntity obj)
         {
-            Physics2D.IgnoreCollision(m_col, obj.Collider);
+            Physics2D.IgnoreCollision(m_col, obj.GetCollider());
             for (int i = 0; i < m_weaponCount; i++)
             {
-                Physics2D.IgnoreCollision(obj.Collider, m_weapons[i].Collider);
+                Physics2D.IgnoreCollision(obj.GetCollider(), m_weapons[i].GetCollider());
             }
         }
 

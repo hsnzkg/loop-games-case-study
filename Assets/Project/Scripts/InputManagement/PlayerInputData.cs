@@ -14,27 +14,36 @@ namespace Project.Scripts.InputManagement
         private Vector3 m_movementInputAxisVec3;
 
         private bool m_hasMovementInput = false;
-
         
-        public Vector2 MovementInputAxisVec2Raw
+        public Vector2 GetMovementInputAxisVec2Raw()
         {
-            get => m_movementInputAxisVec2Raw;
-            set
-            {
-                m_hasMovementInput = value.sqrMagnitude > Mathf.Epsilon;
-                m_movementInputAxisVec2Raw = value;
-                m_movementInputAxisVec3Raw = value.ToVector3XZ();
-                m_movementInputAxisVec2 = value.ClampByUnit();
-                m_movementInputAxisVec3 = value.ToVector3XZ().ClampByUnit();
-            }
+            return m_movementInputAxisVec2Raw;
         }
 
-        public Vector2 MovementInputAxisVec2 => m_movementInputAxisVec2;
+        public void SetMovementInputAxisVec2Raw(Vector2 value)
+        {
+            m_hasMovementInput = value.sqrMagnitude > Mathf.Epsilon;
+            m_movementInputAxisVec2Raw = value;
+            m_movementInputAxisVec3Raw = value.ToVector3XZ();
+            m_movementInputAxisVec2 = value.ClampByUnit();
+            m_movementInputAxisVec3 = value.ToVector3XZ().ClampByUnit();
+        }
 
-        public Vector3 MovementInputAxisVec3 => m_movementInputAxisVec3;
-        
-        public bool HasMovementInput => m_hasMovementInput;
-        
+        public Vector2 GetMovementInputAxisVec2()
+        {
+            return m_movementInputAxisVec2;
+        }
+
+        public Vector3 GetMovementInputAxisVec3()
+        {
+            return m_movementInputAxisVec3;
+        }
+
+        public bool GetHasMovementInput()
+        {
+            return m_hasMovementInput;
+        }
+
         public bool IsSprintPressing;
         
         public bool IsJumpPressedThisFrame;

@@ -4,14 +4,23 @@ using UnityEngine.EventSystems;
 
 public class DynamicJoystick : Joystick
 {
-    public float MoveThreshold { get { return moveThreshold; } set { moveThreshold = Mathf.Abs(value); } }
+    public float GetMoveThreshold()
+    {
+        return moveThreshold;
+    }
+
+    public void SetMoveThreshold(float value)
+    {
+        moveThreshold = Mathf.Abs(value);
+    }
+
     public event Action OnInput; 
 
     [SerializeField] private float moveThreshold = 1;
 
     protected override void Start()
     {
-        MoveThreshold = moveThreshold;
+        SetMoveThreshold(moveThreshold);
         base.Start();
         background.gameObject.SetActive(false);
     }

@@ -6,20 +6,25 @@ namespace Project.Scripts.Singleton
     {
         private static T s_instance;
         private static bool s_isInitialized;
-        private static string LogTag => $"[{typeof(T).Name}]";
-        public static bool HasInstance => s_instance != null;
 
-        public static T Instance
+        private static string GetLogTag()
         {
-            get
-            {
-                if (s_instance != null) return s_instance;
-                s_instance = FindObjectOfType<T>();
-                if (s_instance != null) return s_instance;
-                GameObject go = new GameObject(typeof(T).Name);
-                s_instance = go.AddComponent<T>();
-                return s_instance;
-            }
+            return $"[{typeof(T).Name}]";
+        }
+
+        public static bool GetHasInstance()
+        {
+            return s_instance != null;
+        }
+
+        public static T GetInstance()
+        {
+            if (s_instance != null) return s_instance;
+            s_instance = FindObjectOfType<T>();
+            if (s_instance != null) return s_instance;
+            GameObject go = new GameObject(typeof(T).Name);
+            s_instance = go.AddComponent<T>();
+            return s_instance;
         }
 
         public static void Initialize()
@@ -30,7 +35,7 @@ namespace Project.Scripts.Singleton
                 return;
             }
 
-            _ = Instance;
+            _ = GetInstance();
             s_isInitialized = true;
         }
 
@@ -79,17 +84,17 @@ namespace Project.Scripts.Singleton
 
         protected static void Log(string message)
         {
-            Debug.Log($"{LogTag} {message}");
+            Debug.Log($"{GetLogTag()} {message}");
         }
 
         protected static void LogWarning(string message)
         {
-            Debug.LogWarning($"{LogTag} {message}");
+            Debug.LogWarning($"{GetLogTag()} {message}");
         }
 
         protected static void LogError(string message)
         {
-            Debug.LogError($"{LogTag} {message}");
+            Debug.LogError($"{GetLogTag()} {message}");
         }
     }
 }

@@ -6,6 +6,7 @@ namespace Project.Scripts.InputManagement
     {
         private readonly PlayerInputData m_data;
         private readonly DynamicJoystick m_dynamicJoystick;
+        
         public MobileInputReceiver(PlayerInputData data)
         {
             m_data = data;
@@ -15,7 +16,7 @@ namespace Project.Scripts.InputManagement
 
         private void OnInput()
         {
-            m_data.MovementInputAxisVec2Raw = m_dynamicJoystick.Direction;
+            m_data.SetMovementInputAxisVec2Raw(m_dynamicJoystick.GetDirection());
         }
     }
 }

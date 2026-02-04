@@ -3,27 +3,37 @@
     public static class InputManager
     {
         private static IInputReceiver s_inputReceiver;
-        public static PlayerInputData Data { get; private set; }
+        private static PlayerInputData s_data;
 
         public static void Initialize()
         {
-            Data = new PlayerInputData();
-            s_inputReceiver = new MobileInputReceiver(Data);
+            SetData(new PlayerInputData());
+            s_inputReceiver = new MobileInputReceiver(GetData());
+        }
+
+        private static void SetData(PlayerInputData value)
+        {
+            s_data = value;
+        }
+
+        public static PlayerInputData GetData()
+        {
+            return s_data;
         }
 
         public static void Enable()
         {
-            Data.Reset();
+            GetData().Reset();
         }
         
         public static void Disable()
         {
-            Data.Reset();
+            GetData().Reset();
         }
 
         public static void Dispose()
         {
-            Data.Dispose();
+            GetData().Dispose();
         }
     }
 }

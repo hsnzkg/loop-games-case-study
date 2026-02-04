@@ -29,47 +29,87 @@ namespace ScratchCardAsset
 		[FormerlySerializedAs("Eraser")] public Material BrushMaterial;
 		[Min(0.001f)] public float BrushSize = 1f;
 		public Quality RenderTextureQuality = Quality.High;
-		
-		public RenderTexture RenderTexture { get; private set; }
-		public RenderTargetIdentifier RenderTarget { get; private set; }
 
-		[SerializeField] private ScratchMode mode = ScratchMode.Erase;
-		public ScratchMode Mode
-		{
-			get => mode;
-			set
-			{
-				mode = value;
-				if (BrushMaterial != null)
-				{
-					var blendOp = mode == ScratchMode.Erase ? (int) BlendOp.Add : (int) BlendOp.ReverseSubtract;
-					BrushMaterial.SetInt(Constants.BrushShader.BlendOpShaderParam, blendOp);
-				}
-			}
-		}
+        public RenderTexture GetRenderTexture()
+        {
+            return m_renderTexture;
+        }
 
-		public bool IsScratched
-		{
-			get
-			{
-				if (cardRenderer != null)
-				{
-					return cardRenderer.IsScratched;
-				}
-				return false;
-			}
-			private set => cardRenderer.IsScratched = value;
-		}
+        private void SetRenderTexture(RenderTexture value)
+        {
+            m_renderTexture = value;
+        }
 
-		public bool IsScratching => Input.IsScratching;
+        public RenderTargetIdentifier GetRenderTarget()
+        {
+            return m_renderTarget;
+        }
+
+        private void SetRenderTarget(RenderTargetIdentifier value)
+        {
+            m_renderTarget = value;
+        }
+
+        [SerializeField] private ScratchMode mode = ScratchMode.Erase;
+
+        public ScratchMode GetMode()
+        {
+            return mode;
+        }
+
+        public void SetMode(ScratchMode value)
+        {
+            mode = value;
+            if (BrushMaterial != null)
+            {
+                var blendOp = mode == ScratchMode.Erase ? (int)BlendOp.Add : (int)BlendOp.ReverseSubtract;
+                BrushMaterial.SetInt(Constants.BrushShader.BlendOpShaderParam, blendOp);
+            }
+        }
+
+        public bool GetIsScratched()
+        {
+            if (cardRenderer != null)
+            {
+                return cardRenderer.IsScratched;
+            }
+
+            return false;
+        }
+
+        private void SetIsScratched(bool value) => cardRenderer.IsScratched = value;
+
+        public bool IsScratching => GetInput().IsScratching;
 		public bool Initialized => initialized;
-		public BaseData ScratchData { get; private set; }
-		public ScratchCardInput Input { get; private set; }
 
-		private ScratchCardRenderer cardRenderer;
+        public BaseData GetScratchData()
+        {
+            return m_scratchData;
+        }
+
+        private void SetScratchData(BaseData value)
+        {
+            m_scratchData = value;
+        }
+
+        public ScratchCardInput GetInput()
+        {
+            return m_ınput;
+        }
+
+        private void SetInput(ScratchCardInput value)
+        {
+            m_ınput = value;
+        }
+
+        private ScratchCardRenderer cardRenderer;
 		private bool initialized;
+        private RenderTexture m_renderTexture;
+        private RenderTargetIdentifier m_renderTarget;
+        private BaseData m_scratchData;
+        private ScratchCardInput m_ınput;
 
-		#region MonoBehaviour Methods
+        #region MonoBehaviour Methods
 
 		private void Start()
 		{
@@ -84,7 +124,7 @@ namespace ScratchCardAsset
 			if (!initialized)
 				return;
 			
-			Input.ResetData();
+			GetInput().ResetData();
 		}
 
 		private void OnDestroy()
@@ -96,7 +136,7 @@ namespace ScratchCardAsset
 
 		private void Update()
 		{
-			if (!Input.TryUpdate())
+			if (!GetInput().TryUpdate())
 			{
 				cardRenderer.IsScratched = false;
 			}
@@ -108,7 +148,7 @@ namespace ScratchCardAsset
 
 		public void Init()
 		{
-			if (ScratchData == null)
+			if (GetScratchData() == null)
 			{
 				Debug.LogError("ScratchData is null!");
 				enabled = false;
@@ -116,7 +156,7 @@ namespace ScratchCardAsset
 			}
 			
 			UnsubscribeFromEvents();
-			Input = new ScratchCardInput(() => IsScratched);
+			SetInput(new ScratchCardInput(() => GetIsScratched()));
 			SubscribeToEvents();
 			cardRenderer?.Release();
 			cardRenderer = new ScratchCardRenderer(this);
@@ -131,34 +171,34 @@ namespace ScratchCardAsset
 		{
 			if (renderType == ScratchCardRenderType.MeshRenderer)
 			{
-				ScratchData = new MeshRendererData(SurfaceTransform, mainCamera);
+				SetScratchData(new MeshRendererData(SurfaceTransform, mainCamera));
 			}
 			else if (renderType == ScratchCardRenderType.SpriteRenderer)
 			{
-				ScratchData = new SpriteRendererData(SurfaceTransform, mainCamera);
+				SetScratchData(new SpriteRendererData(SurfaceTransform, mainCamera));
 			}
 			else
 			{
-				ScratchData = new ImageData(SurfaceTransform, mainCamera);
+				SetScratchData(new ImageData(SurfaceTransform, mainCamera));
 			}
 		}
 
 		private void SubscribeToEvents()
 		{
 			UnsubscribeFromEvents();
-			Input.OnScratch += ScratchData.GetScratchPosition;
-			Input.OnScratchHole += TryScratchHole;
-			Input.OnScratchLine += TryScratchLine;
+			GetInput().OnScratch += GetScratchData().GetScratchPosition;
+			GetInput().OnScratchHole += TryScratchHole;
+			GetInput().OnScratchLine += TryScratchLine;
 		}
 		
 		private void UnsubscribeFromEvents()
 		{
-			if (Input == null) 
+			if (GetInput() == null) 
 				return;
 			
-			Input.OnScratch -= ScratchData.GetScratchPosition;
-			Input.OnScratchHole -= TryScratchHole;
-			Input.OnScratchLine -= TryScratchLine;
+			GetInput().OnScratch -= GetScratchData().GetScratchPosition;
+			GetInput().OnScratchHole -= TryScratchHole;
+			GetInput().OnScratchLine -= TryScratchLine;
 		}
 
 		/// <summary>
@@ -167,22 +207,22 @@ namespace ScratchCardAsset
 		private void CreateRenderTexture()
 		{
 			var qualityRatio = (float)RenderTextureQuality;
-			var renderTextureSize = new Vector2(ScratchData.TextureSize.x / qualityRatio, ScratchData.TextureSize.y / qualityRatio);
+			var renderTextureSize = new Vector2(GetScratchData().TextureSize.x / qualityRatio, GetScratchData().TextureSize.y / qualityRatio);
 			var renderTextureFormat = SystemInfo.SupportsRenderTextureFormat(RenderTextureFormat.R8) ? 
 				RenderTextureFormat.R8 : RenderTextureFormat.ARGB32;
-			RenderTexture = new RenderTexture((int)renderTextureSize.x, (int)renderTextureSize.y, 0, renderTextureFormat);
-			SurfaceMaterial.SetTexture(Constants.MaskShader.MaskTexture, RenderTexture);
-			RenderTarget = new RenderTargetIdentifier(RenderTexture);
-			OnRenderTextureInitialized?.Invoke(RenderTexture);
+			SetRenderTexture(new RenderTexture((int)renderTextureSize.x, (int)renderTextureSize.y, 0, renderTextureFormat));
+			SurfaceMaterial.SetTexture(Constants.MaskShader.MaskTexture, GetRenderTexture());
+			SetRenderTarget(new RenderTargetIdentifier(GetRenderTexture()));
+			OnRenderTextureInitialized?.Invoke(GetRenderTexture());
 		}
 		
 		private void ReleaseRenderTexture()
 		{
-			if (RenderTexture != null && RenderTexture.IsCreated())
+			if (GetRenderTexture() != null && GetRenderTexture().IsCreated())
 			{
-				RenderTexture.Release();
-				Destroy(RenderTexture);
-				RenderTexture = null;
+				GetRenderTexture().Release();
+				Destroy(GetRenderTexture());
+				SetRenderTexture(null);
 			}
 		}
 
@@ -198,9 +238,9 @@ namespace ScratchCardAsset
 		private void TryScratchHole(Vector2 position, float pressure)
 		{
 			cardRenderer.ScratchHole(position, pressure);
-			var localPosition = ScratchData.GetLocalPosition(position);
+			var localPosition = GetScratchData().GetLocalPosition(position);
 			OnScratchHole?.Invoke(localPosition, pressure);
-			if (IsScratched)
+			if (GetIsScratched())
 			{
 				OnScratchHoleSucceed?.Invoke(localPosition, pressure);
 			}
@@ -209,10 +249,10 @@ namespace ScratchCardAsset
 		private void TryScratchLine(Vector2 startPosition, float startPressure, Vector2 endPosition, float endPressure)
 		{
 			cardRenderer.ScratchLine(startPosition, endPosition, startPressure, endPressure);
-			var startLocalPosition = ScratchData.GetLocalPosition(startPosition);
-			var endLocalPosition = ScratchData.GetLocalPosition(endPosition);
+			var startLocalPosition = GetScratchData().GetLocalPosition(startPosition);
+			var endLocalPosition = GetScratchData().GetLocalPosition(endPosition);
 			OnScratchLine?.Invoke(startLocalPosition, startPressure, endLocalPosition, endPressure);
-			if (IsScratched)
+			if (GetIsScratched())
 			{
 				OnScratchLineSucceed?.Invoke(startLocalPosition, startPressure, endLocalPosition, endPressure);
 			}
@@ -230,7 +270,7 @@ namespace ScratchCardAsset
 			cardRenderer.FillRenderTextureWithColor(Color.white);
 			if (setIsScratched)
 			{
-				IsScratched = true;
+				SetIsScratched(true);
 			}
 		}
 
@@ -248,7 +288,7 @@ namespace ScratchCardAsset
 			cardRenderer.FillRenderTextureWithColor(Color.clear);
 			if (setIsScratched)
 			{
-				IsScratched = true;
+				SetIsScratched(true);
 			}
 		}
 
@@ -266,7 +306,7 @@ namespace ScratchCardAsset
 			ReleaseRenderTexture();
 			CreateRenderTexture();
 			cardRenderer.FillRenderTextureWithColor(Color.clear);
-			IsScratched = true;
+			SetIsScratched(true);
 		}
 
 		/// <summary>
@@ -277,9 +317,9 @@ namespace ScratchCardAsset
 		public void ScratchHole(Vector2 position, float pressure = 1f)
 		{
 			cardRenderer.ScratchHole(position, pressure);
-			var localPosition = ScratchData.GetLocalPosition(position);
+			var localPosition = GetScratchData().GetLocalPosition(position);
 			OnScratchHole?.Invoke(localPosition, pressure);
-			if (IsScratched)
+			if (GetIsScratched())
 			{
 				OnScratchHoleSucceed?.Invoke(localPosition, pressure);
 			}
@@ -295,10 +335,10 @@ namespace ScratchCardAsset
 		public void ScratchLine(Vector2 startPosition, Vector2 endPosition, float startPressure = 1f, float endPressure = 1f)
 		{
 			cardRenderer.ScratchLine(startPosition, endPosition, startPressure, endPressure);
-			var startLocalPosition = ScratchData.GetLocalPosition(startPosition);
-			var endLocalPosition = ScratchData.GetLocalPosition(endPosition);
+			var startLocalPosition = GetScratchData().GetLocalPosition(startPosition);
+			var endLocalPosition = GetScratchData().GetLocalPosition(endPosition);
 			OnScratchLine?.Invoke(startLocalPosition, startPressure, endLocalPosition, endPressure);
-			if (IsScratched)
+			if (GetIsScratched())
 			{
 				OnScratchLineSucceed?.Invoke(startLocalPosition, startPressure, endLocalPosition, endPressure);	
 			}
@@ -311,8 +351,8 @@ namespace ScratchCardAsset
 		public Texture2D GetScratchTexture()
 		{
 			var previousRenderTexture = RenderTexture.active;
-			var texture2D = new Texture2D(RenderTexture.width, RenderTexture.height, TextureFormat.ARGB32, false);
-			RenderTexture.active = RenderTexture;
+			var texture2D = new Texture2D(GetRenderTexture().width, GetRenderTexture().height, TextureFormat.ARGB32, false);
+			RenderTexture.active = GetRenderTexture();
 			texture2D.ReadPixels(new Rect(0, 0, texture2D.width, texture2D.height), 0, 0, false);
 			texture2D.Apply();
 			RenderTexture.active = previousRenderTexture;

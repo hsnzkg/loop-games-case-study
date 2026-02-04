@@ -32,7 +32,7 @@ namespace ScratchCardAsset.Animation
         {
             if (ScratchAnimation != null && ScratchAnimation.ScratchSpace == ScratchAnimationSpace.UV)
             {
-                scale = ScratchCard.ScratchData.TextureSize;
+                scale = ScratchCard.GetScratchData().TextureSize;
             }
 
             if (PlayOnStart)

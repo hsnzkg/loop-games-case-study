@@ -16,7 +16,7 @@ namespace ScratchCardAsset.Tools
                 return;
 
             var result = false;
-            if (scratchCardManager.MeshRendererCard == null)
+            if (scratchCardManager.GetMeshRendererCard() == null)
             {
                 var field = scratchCardManager.GetType().GetField("MeshCard");
                 var meshCardValue = field.GetValue(scratchCardManager);
@@ -27,7 +27,7 @@ namespace ScratchCardAsset.Tools
                     {
                         if (meshCardGameObject.TryGetComponent<MeshRenderer>(out var meshRenderer))
                         {
-                            scratchCardManager.MeshRendererCard = meshRenderer;
+                            scratchCardManager.SetMeshRendererCard(meshRenderer);
                             field.SetValue(scratchCardManager, null);
                             result = true;
                         }

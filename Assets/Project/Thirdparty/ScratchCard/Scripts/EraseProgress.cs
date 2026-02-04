@@ -23,49 +23,43 @@ namespace ScratchCardAsset
 
 		#region Variables
 
-		[SerializeField, FormerlySerializedAs("Card")] private ScratchCard card;
-		public ScratchCard Card
-		{
-			get => card;
-			set => card = value;
-		}
+		[SerializeField] private ScratchCard card;
 
-		[SerializeField, FormerlySerializedAs("ProgressMaterial")] private Material progressMaterial;
-		public Material ProgressMaterial
-		{
-			get => progressMaterial;
-			set => progressMaterial = value;
-		}
-		
-		[SerializeField, FormerlySerializedAs("SampleSourceTexture")] private bool sampleSourceTexture;
-		public bool SampleSourceTexture
-		{
-			get => sampleSourceTexture;
-			set => sampleSourceTexture = value;
-		}
+        public ScratchCard GetCard() => card;
 
-		[SerializeField] private ProgressAccuracy progressAccuracy;
-		public ProgressAccuracy ProgressAccuracy
-		{
-			get => progressAccuracy;
-			set
-			{
-				progressAccuracy = value;
-				UpdateAccuracy();
-				if (progressAccuracy == ProgressAccuracy.Default)
-				{
-					updateProgress = false;
-					if (pixelsBuffer.IsCreated)
-					{
-						if (isCalculating)
-						{
-							AsyncGPUReadback.WaitAllRequests();
-						}
-						pixelsBuffer.Dispose();
-					}
-				}
-			}
-		}
+        public void SetCard(ScratchCard value) => card = value;
+
+        [SerializeField] private Material progressMaterial;
+
+        public Material GetProgressMaterial() => progressMaterial;
+
+        public void SetProgressMaterial(Material value) => progressMaterial = value;
+
+        [SerializeField] private bool sampleSourceTexture;
+
+        public bool GetSampleSourceTexture() => sampleSourceTexture;
+
+        public void SetSampleSourceTexture(bool value) => sampleSourceTexture = value;
+
+        [SerializeField] private ProgressAccuracy progressAccuracy;
+
+        public ProgressAccuracy GetProgressAccuracy()
+        {
+            return progressAccuracy;
+        }
+        public void SetProgressAccuracy(ProgressAccuracy  accuracy)
+        {
+            progressAccuracy = accuracy;
+            UpdateAccuracy();
+            if (progressAccuracy == ProgressAccuracy.Default)
+            {
+                updateProgress = false;
+                if (pixelsBuffer.IsCreated)
+                {
+                    pixelsBuffer.Dispose(default);
+                }
+            }
+        }
 
 		private ScratchMode scratchMode;
 		private NativeArray<byte> pixelsBuffer;
@@ -95,14 +89,9 @@ namespace ScratchCardAsset
 
 		private void OnDestroy()
 		{
-			if (progressAccuracy == ProgressAccuracy.High && isCalculating)
-			{
-				AsyncGPUReadback.WaitAllRequests();
-			}
-			
 			if (pixelsBuffer.IsCreated)
 			{
-				pixelsBuffer.Dispose();
+				pixelsBuffer.Dispose(default);
 			}
 
 			if (percentRenderTexture != null && percentRenderTexture.IsCreated())
@@ -138,13 +127,13 @@ namespace ScratchCardAsset
 
 		private void LateUpdate()
 		{
-			if (card.Mode != scratchMode)
+			if (card.GetMode() != scratchMode)
 			{
-				scratchMode = card.Mode;
+				scratchMode = card.GetMode();
 				ResetProgress();
 			}
 			
-			if ((card.IsScratched || updateProgress) && !isCompleted)
+			if ((card.GetIsScratched() || updateProgress) && !isCompleted)
 			{
 				UpdateProgress();
 			}
@@ -165,21 +154,18 @@ namespace ScratchCardAsset
 			
 			if (card.Initialized)
 			{
-				OnCardRenderTextureInitialized(card.RenderTexture);
+				OnCardRenderTextureInitialized(card.GetRenderTexture());
 			}
 			
 			card.OnRenderTextureInitialized += OnCardRenderTextureInitialized;
 			UpdateAccuracy();
-			scratchMode = card.Mode;
+			scratchMode = card.GetMode();
 			commandBuffer = new CommandBuffer {name = "EraseProgress"};
 			mesh = MeshGenerator.GenerateQuad(Vector3.one, Vector3.zero);
-			var renderTextureFormat = SystemInfo.SupportsRenderTextureFormat(RenderTextureFormat.R8) ? 
-				RenderTextureFormat.R8 : RenderTextureFormat.ARGB32;
-			percentRenderTexture = new RenderTexture(1, 1, 0, renderTextureFormat);
+			percentRenderTexture = new RenderTexture(1, 1, 0, RenderTextureFormat.ARGB32);
 			percentTargetIdentifier = new RenderTargetIdentifier(percentRenderTexture);
 			percentTextureRect = new Rect(0, 0, percentRenderTexture.width, percentRenderTexture.height);
-			var textureFormat = SystemInfo.SupportsTextureFormat(TextureFormat.R8) ? TextureFormat.R8 : TextureFormat.ARGB32;
-			progressTexture = new Texture2D(percentRenderTexture.width, percentRenderTexture.height, textureFormat, false, true);
+			progressTexture = new Texture2D(percentRenderTexture.width, percentRenderTexture.height, TextureFormat.ARGB32, false, true);
 		}
 		
 		private void OnCardRenderTextureInitialized(RenderTexture renderTexture)
@@ -189,11 +175,6 @@ namespace ScratchCardAsset
 
 		private void UpdateAccuracy()
 		{
-			if (progressAccuracy == ProgressAccuracy.High && !SystemInfo.supportsAsyncGPUReadback)
-			{
-				Debug.LogWarning("AsyncGPUReadback is not supported! Switching to ProgressAccuracy.Default.");
-				progressAccuracy = ProgressAccuracy.Default;
-			}
 		}
 
 		/// <summary>
@@ -204,57 +185,7 @@ namespace ScratchCardAsset
 			if (!isCompleted && !isCalculating)
 			{
 				isCalculating = true;
-				if (progressAccuracy == ProgressAccuracy.High)
-				{
-					if (!pixelsBuffer.IsCreated)
-					{
-						var length = card.RenderTexture.width * card.RenderTexture.height * bitsPerPixel;
-						pixelsBuffer = new NativeArray<byte>(length, Allocator.Persistent, NativeArrayOptions.UninitializedMemory);
-					}
-
-					asyncGPUReadbackFrame = Time.frameCount;
-					var request = AsyncGPUReadback.RequestIntoNativeArray(ref pixelsBuffer, card.RenderTexture);
-					yield return new WaitUntil(() => request.done);
-					if (request.hasError)
-					{
-						isCalculating = false;
-						updateProgress = false;
-						Debug.LogError("GPU readback error detected.");
-						yield break;
-					}
-					
-					progress = 0f;
-					if (sampleSourceTexture)
-					{
-						var totalAlpha = 0f;
-						for (var i = 0; i < pixelsBuffer.Length; i += bitsPerPixel)
-						{
-							var sourceAlpha = sourceSpritePixels[i / bitsPerPixel].a;
-							totalAlpha += sourceAlpha;
-							progress += pixelsBuffer[i] / 255f * sourceAlpha;
-						}
-						
-						var div = pixelsBuffer.Length / (float)bitsPerPixel;
-						totalAlpha /= div;
-						progress /= div;
-						progress /= totalAlpha;
-					}
-					else
-					{
-						for (var i = 0; i < pixelsBuffer.Length; i += bitsPerPixel)
-						{
-							progress += pixelsBuffer[i] / 255f;
-						}
-						
-						progress /= pixelsBuffer.Length / (float)bitsPerPixel;
-					}
-
-					if (asyncGPUReadbackFrame > updateProgressFrame)
-					{
-						updateProgress = false;
-					}
-				}
-				else if (progressAccuracy == ProgressAccuracy.Default)
+				if (progressAccuracy == ProgressAccuracy.Default)
 				{
 					var prevRenderTexture = RenderTexture.active;
 					RenderTexture.active = percentRenderTexture;
@@ -268,7 +199,7 @@ namespace ScratchCardAsset
 				OnProgress?.Invoke(progress);
 				if (OnCompleted != null)
 				{
-					var completeValue = card.Mode == ScratchMode.Erase ? 1f : 0f;
+					var completeValue = card.GetMode() == ScratchMode.Erase ? 1f : 0f;
 					if (Mathf.Abs(progress - completeValue) < float.Epsilon)
 					{
 						OnCompleted?.Invoke(progress);
@@ -277,12 +208,8 @@ namespace ScratchCardAsset
 				}
 				isCalculating = false;
 			}
-			else if (progressAccuracy == ProgressAccuracy.High && isCalculating && card.IsScratched)
-			{
-				updateProgress = true;
-				updateProgressFrame = Time.frameCount;
-			}
-		}
+            yield return null;
+        }
 		
 		#endregion
 		
@@ -300,7 +227,6 @@ namespace ScratchCardAsset
 				Debug.LogError("Can't update progress cause commandBuffer is null!");
 				return;
 			}
-			
 			GL.LoadOrtho();
 			commandBuffer.Clear();
 			commandBuffer.SetRenderTarget(percentTargetIdentifier);

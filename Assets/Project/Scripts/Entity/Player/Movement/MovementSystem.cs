@@ -21,14 +21,13 @@ namespace Project.Scripts.Entity.Player.Movement
 
         private void HandleMovement()
         {
-            PlayerInputData data = InputManager.Data;
-            Vector2 targetDir = data.MovementInputAxisVec2;
+            PlayerInputData data = InputManager.GetData();
+            Vector2 targetDir = data.GetMovementInputAxisVec2();
             Vector2 currentVel = m_rb.velocity;
             Vector2 desiredVel = targetDir * m_movementSettings.TranslationSpeed;
-            float lerpSpeed = Time.fixedDeltaTime *
-                              (data.HasMovementInput
-                                  ? m_movementSettings.Acceleration
-                                  : m_movementSettings.Deceleration);
+            float lerpSpeed = Time.fixedDeltaTime * (data.GetHasMovementInput()
+                ? m_movementSettings.Acceleration
+                : m_movementSettings.Deceleration);
             m_targetVelocity = Vector2.Lerp(currentVel, desiredVel, lerpSpeed);
             m_rb.velocity = m_targetVelocity;
         }

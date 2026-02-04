@@ -63,10 +63,10 @@ namespace ScratchCardAsset.Core
 		public void ScratchHole(Vector2 position, float pressure = 1f)
 		{
 			var positionRect = new Rect(
-				(position.x - 0.5f * scratchCard.BrushMaterial.mainTexture.width * scratchCard.BrushSize * pressure) / scratchCard.ScratchData.TextureSize.x,
-				(position.y - 0.5f * scratchCard.BrushMaterial.mainTexture.height * scratchCard.BrushSize * pressure) / scratchCard.ScratchData.TextureSize.y,
-				scratchCard.BrushMaterial.mainTexture.width * scratchCard.BrushSize * pressure / scratchCard.ScratchData.TextureSize.x,
-				scratchCard.BrushMaterial.mainTexture.height * scratchCard.BrushSize * pressure / scratchCard.ScratchData.TextureSize.y);
+				(position.x - 0.5f * scratchCard.BrushMaterial.mainTexture.width * scratchCard.BrushSize * pressure) / scratchCard.GetScratchData().TextureSize.x,
+				(position.y - 0.5f * scratchCard.BrushMaterial.mainTexture.height * scratchCard.BrushSize * pressure) / scratchCard.GetScratchData().TextureSize.y,
+				scratchCard.BrushMaterial.mainTexture.width * scratchCard.BrushSize * pressure / scratchCard.GetScratchData().TextureSize.x,
+				scratchCard.BrushMaterial.mainTexture.height * scratchCard.BrushSize * pressure / scratchCard.GetScratchData().TextureSize.y);
 
 			if (IsInBounds(positionRect))
 			{
@@ -80,7 +80,7 @@ namespace ScratchCardAsset.Core
 
 				GL.LoadOrtho();
 				commandBuffer.Clear();
-				commandBuffer.SetRenderTarget(scratchCard.RenderTarget);
+				commandBuffer.SetRenderTarget(scratchCard.GetRenderTarget());
 				commandBuffer.DrawMesh(meshHole, Matrix4x4.identity, scratchCard.BrushMaterial);
 				Graphics.ExecuteCommandBuffer(commandBuffer);
 				IsScratched = true;
@@ -106,10 +106,10 @@ namespace ScratchCardAsset.Core
 				var holePosition = startPosition + (endPosition - startPosition) / holesCount * i;
 				
 				var positionRect = new Rect(
-					(holePosition.x - 0.5f * scratchCard.BrushMaterial.mainTexture.width * scratchCard.BrushSize * pressure) / scratchCard.ScratchData.TextureSize.x,
-					(holePosition.y - 0.5f * scratchCard.BrushMaterial.mainTexture.height * scratchCard.BrushSize * pressure) / scratchCard.ScratchData.TextureSize.y,
-					scratchCard.BrushMaterial.mainTexture.width * scratchCard.BrushSize * pressure / scratchCard.ScratchData.TextureSize.x,
-					scratchCard.BrushMaterial.mainTexture.height * scratchCard.BrushSize * pressure / scratchCard.ScratchData.TextureSize.y);
+					(holePosition.x - 0.5f * scratchCard.BrushMaterial.mainTexture.width * scratchCard.BrushSize * pressure) / scratchCard.GetScratchData().TextureSize.x,
+					(holePosition.y - 0.5f * scratchCard.BrushMaterial.mainTexture.height * scratchCard.BrushSize * pressure) / scratchCard.GetScratchData().TextureSize.y,
+					scratchCard.BrushMaterial.mainTexture.width * scratchCard.BrushSize * pressure / scratchCard.GetScratchData().TextureSize.x,
+					scratchCard.BrushMaterial.mainTexture.height * scratchCard.BrushSize * pressure / scratchCard.GetScratchData().TextureSize.y);
 
 				if (IsInBounds(positionRect))
 				{
@@ -155,7 +155,7 @@ namespace ScratchCardAsset.Core
 				meshLine.colors = colors.ToArray();
 				GL.LoadOrtho();
 				commandBuffer.Clear();
-				commandBuffer.SetRenderTarget(scratchCard.RenderTarget);
+				commandBuffer.SetRenderTarget(scratchCard.GetRenderTarget());
 				commandBuffer.DrawMesh(meshLine, Matrix4x4.identity, scratchCard.BrushMaterial);
 				Graphics.ExecuteCommandBuffer(commandBuffer);
 				IsScratched = true;
@@ -164,7 +164,7 @@ namespace ScratchCardAsset.Core
 
 		public void FillRenderTextureWithColor(Color color)
 		{
-			commandBuffer.SetRenderTarget(scratchCard.RenderTarget);
+			commandBuffer.SetRenderTarget(scratchCard.GetRenderTarget());
 			commandBuffer.ClearRenderTarget(false, true, color);
 			Graphics.ExecuteCommandBuffer(commandBuffer);
 		}

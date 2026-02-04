@@ -28,7 +28,7 @@ namespace ScratchCardAsset.Core
 
     public enum ProgressAccuracy
     {
-        Default,
-        High
+        Default
+        //High
     }
 }

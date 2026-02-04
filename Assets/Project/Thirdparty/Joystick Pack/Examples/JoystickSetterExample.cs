@@ -33,15 +33,15 @@ public class JoystickSetterExample : MonoBehaviour
         switch (index)
         {
             case 0:
-                variableJoystick.AxisOptions = AxisOptions.Both;
+                variableJoystick.SetAxisOptions(AxisOptions.Both);
                 background.sprite = axisSprites[index];
                 break;
             case 1:
-                variableJoystick.AxisOptions = AxisOptions.Horizontal;
+                variableJoystick.SetAxisOptions(AxisOptions.Horizontal);
                 background.sprite = axisSprites[index];
                 break;
             case 2:
-                variableJoystick.AxisOptions = AxisOptions.Vertical;
+                variableJoystick.SetAxisOptions(AxisOptions.Vertical);
                 background.sprite = axisSprites[index];
                 break;
             default:
@@ -51,16 +51,16 @@ public class JoystickSetterExample : MonoBehaviour
 
     public void SnapX(bool value)
     {
-        variableJoystick.SnapX = value;
+        variableJoystick.SetSnapX(value);
     }
 
     public void SnapY(bool value)
     {
-        variableJoystick.SnapY = value;
+        variableJoystick.SetSnapY(value);
     }
 
     private void Update()
     {
-        valueText.text = "Current Value: " + variableJoystick.Direction;
+        valueText.text = "Current Value: " + variableJoystick.GetDirection();
     }
 }

@@ -3,25 +3,70 @@ using UnityEngine.EventSystems;
 
 public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
-    public float Horizontal { get { return (snapX) ? SnapFloat(input.x, AxisOptions.Horizontal) : input.x; } }
-    public float Vertical { get { return (snapY) ? SnapFloat(input.y, AxisOptions.Vertical) : input.y; } }
-    public Vector2 Direction { get { return new Vector2(Horizontal, Vertical); } }
-
-    public float HandleRange
+    public float GetHorizontal()
     {
-        get { return handleRange; }
-        set { handleRange = Mathf.Abs(value); }
+        return (snapX) ? SnapFloat(input.x, AxisOptions.Horizontal) : input.x;
     }
 
-    public float DeadZone
+    public float GetVertical()
     {
-        get { return deadZone; }
-        set { deadZone = Mathf.Abs(value); }
+        return (snapY) ? SnapFloat(input.y, AxisOptions.Vertical) : input.y;
     }
 
-    public AxisOptions AxisOptions { get { return AxisOptions; } set { axisOptions = value; } }
-    public bool SnapX { get { return snapX; } set { snapX = value; } }
-    public bool SnapY { get { return snapY; } set { snapY = value; } }
+    public Vector2 GetDirection()
+    {
+        return new Vector2(GetHorizontal(), GetVertical());
+    }
+
+    public float GetHandleRange()
+    {
+        return handleRange;
+    }
+
+    public void SetHandleRange(float value)
+    {
+        handleRange = Mathf.Abs(value);
+    }
+
+    public float GetDeadZone()
+    {
+        return deadZone;
+    }
+
+    public void SetDeadZone(float value)
+    {
+        deadZone = Mathf.Abs(value);
+    }
+
+    public AxisOptions GetAxisOptions()
+    {
+        return GetAxisOptions();
+    }
+
+    public void SetAxisOptions(AxisOptions value)
+    {
+        axisOptions = value;
+    }
+
+    public bool GetSnapX()
+    {
+        return snapX;
+    }
+
+    public void SetSnapX(bool value)
+    {
+        snapX = value;
+    }
+
+    public bool GetSnapY()
+    {
+        return snapY;
+    }
+
+    public void SetSnapY(bool value)
+    {
+        snapY = value;
+    }
 
     [SerializeField] private float handleRange = 1;
     [SerializeField] private float deadZone = 0;
@@ -40,8 +85,8 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     protected virtual void Start()
     {
-        HandleRange = handleRange;
-        DeadZone = deadZone;
+        SetHandleRange(handleRange);
+        SetDeadZone(deadZone);
         baseRect = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
         if (canvas == null)

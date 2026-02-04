@@ -8,7 +8,6 @@ namespace Project.Scripts.Entity.Sword
     {
         private CollisionBroadcaster2D m_collisionBroadcaster2D;
         private Collider2D m_collider;
-        public Collider2D Collider => m_collider;
         public event Action<SwordEntity> OnCollision;
 
         private void Awake()
@@ -26,6 +25,11 @@ namespace Project.Scripts.Entity.Sword
         private void Initialize()
         {
             m_collisionBroadcaster2D.OnCollisionEnter2DEvent += OnCollisionEntered;
+        }
+
+        public Collider2D GetCollider()
+        {
+            return m_collider;
         }
 
         private void OnCollisionEntered(Collision2D collision2D)

@@ -16,14 +16,14 @@ namespace ScratchCardAsset.Animation
         
         private void Start()
         {
-            ScratchCard.Input.OnScratchHoleExtended += OnScratchHole;
-            ScratchCard.Input.OnScratchLineExtended += OnScratchLine;
+            ScratchCard.GetInput().OnScratchHoleExtended += OnScratchHole;
+            ScratchCard.GetInput().OnScratchLineExtended += OnScratchLine;
         }
 
         private void OnDestroy()
         {
-            ScratchCard.Input.OnScratchHoleExtended -= OnScratchHole;
-            ScratchCard.Input.OnScratchLineExtended -= OnScratchLine;
+            ScratchCard.GetInput().OnScratchHoleExtended -= OnScratchHole;
+            ScratchCard.GetInput().OnScratchLineExtended -= OnScratchLine;
             if (FlushOnDestroy)
             {
                 Flush();
@@ -86,7 +86,7 @@ namespace ScratchCardAsset.Animation
                 var imageSize = Vector2.one;
                 if (AnimationSpace == ScratchAnimationSpace.UV)
                 {
-                    imageSize = ScratchCard.ScratchData.TextureSize;
+                    imageSize = ScratchCard.GetScratchData().TextureSize;
                 }
                 
                 var scratch = new BaseScratch
@@ -106,7 +106,7 @@ namespace ScratchCardAsset.Animation
                 var imageSize = Vector2.one;
                 if (AnimationSpace == ScratchAnimationSpace.UV)
                 {
-                    imageSize = ScratchCard.ScratchData.TextureSize;
+                    imageSize = ScratchCard.GetScratchData().TextureSize;
                 }
                 
                 var scratch = new LineScratch

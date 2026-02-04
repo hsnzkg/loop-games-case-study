@@ -123,7 +123,7 @@ namespace ScratchCardAsset.Demo
 		{
 			if (isOn)
 			{
-				cardManager.Card.Mode = ScratchMode.Erase;
+				cardManager.Card.SetMode(ScratchMode.Erase);
 			}
 		}
 		
@@ -131,7 +131,7 @@ namespace ScratchCardAsset.Demo
 		{
 			if (isOn)
 			{
-				cardManager.Card.Mode = ScratchMode.Restore;
+				cardManager.Card.SetMode(ScratchMode.Restore);
 			}
 		}
 

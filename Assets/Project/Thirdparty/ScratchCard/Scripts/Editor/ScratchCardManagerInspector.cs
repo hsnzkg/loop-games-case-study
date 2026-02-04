@@ -80,7 +80,7 @@ namespace ScratchCardAsset.Editor
 
 		public override bool RequiresConstantRepaint()
 		{
-			return cardManager != null && cardManager.Card != null && cardManager.Card.RenderTexture != null && cardManager.Card.IsScratched;
+			return cardManager != null && cardManager.Card != null && cardManager.Card.GetRenderTexture() != null && cardManager.Card.GetIsScratched();
 		}
 
 		public override void OnInspectorGUI()
@@ -292,7 +292,7 @@ namespace ScratchCardAsset.Editor
 				{
 					if (cardManager.Card != null)
 					{
-						brushSize.floatValue = cardManager.BrushSize;
+						brushSize.floatValue = cardManager.GetBrushSize();
 					}
 					EditorGUI.BeginChangeCheck();
 					EditorGUILayout.Slider(brushSize, 0.01f, 4f, new GUIContent("Brush Size"));
@@ -301,7 +301,7 @@ namespace ScratchCardAsset.Editor
 			
 				if (cardManager.Card != null)
 				{
-					mode.enumValueIndex = (int) cardManager.Card.Mode;
+					mode.enumValueIndex = (int) cardManager.Card.GetMode();
 				}
 
 				EditorGUI.BeginChangeCheck();
@@ -361,7 +361,7 @@ namespace ScratchCardAsset.Editor
 				if (importer != null)
 				{
 					hasAlpha.boolValue = importer.DoesSourceTextureHaveAlpha();
-					cardManager.ScratchSurfaceSpriteHasAlpha = hasAlpha.boolValue;
+					cardManager.SetScratchSurfaceSpriteHasAlpha(hasAlpha.boolValue);
 				}
 			}
 			
@@ -383,14 +383,14 @@ namespace ScratchCardAsset.Editor
 					if (brushOpacityChanged)
 					{
 						Undo.RecordObject(cardManager, "Set Brush Opacity");
-						cardManager.BrushOpacity = brushOpacity.floatValue;
+						cardManager.SetBrushOpacity(brushOpacity.floatValue);
 						scratchCardChanged = true;
 					}
 					
 					if (brushSizeChanged)
 					{
 						Undo.RecordObject(cardManager.Card, "Set Brush Size");
-						cardManager.BrushSize = brushSize.floatValue;
+						cardManager.SetBrushSize(brushSize.floatValue);
 						scratchCardChanged = true;
 					}
 
@@ -419,15 +419,15 @@ namespace ScratchCardAsset.Editor
 
 					if (scratchModeChanged)
 					{
-						cardManager.Mode = (ScratchMode)mode.enumValueIndex;
+						cardManager.SetMode((ScratchMode)mode.enumValueIndex);
 						scratchCardChanged = true;
 					}
 
-					if (cardManager.Card.RenderTexture != null)
+					if (cardManager.Card.GetRenderTexture() != null)
 					{
 						DrawHorizontalLine();
 						var rect = GUILayoutUtility.GetRect(160, 120, GUILayout.ExpandWidth(true));
-						GUI.DrawTexture(rect, cardManager.Card.RenderTexture, ScaleMode.ScaleToFit);
+						GUI.DrawTexture(rect, cardManager.Card.GetRenderTexture(), ScaleMode.ScaleToFit);
 						DrawHorizontalLine();
 
 						if (Application.isPlaying)

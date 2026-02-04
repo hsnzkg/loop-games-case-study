@@ -8,13 +8,7 @@ namespace ScratchCardAsset.Core.ScratchData
         private readonly MeshFilter filter;
 
         public override Vector2 TextureSize { get; }
-        protected override Vector2 Bounds => filter != null ? filter.sharedMesh.bounds.size : 
-#if UNITY_2021_2_OR_NEWER
-            renderer.localBounds.size;
-#else
-            renderer.bounds.size;
-#endif
-
+        protected override Vector2 Bounds => filter != null ? filter.sharedMesh.bounds.size : renderer.bounds.size;
         public MeshRendererData(Transform surface, Camera camera) : base(surface, camera)
         {
             if (surface.TryGetComponent(out renderer) && surface.TryGetComponent(out filter))
