@@ -1,5 +1,19 @@
 {
   "dependencies": {
+    "com.hsnzkg.eventbus": {
+      "version": "https://github.com/hsnzkg/EventBus.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "fc7a884ecd62d70f6d9256c7c406c06a6511f352"
+    },
+    "com.hsnzkg.finitestatemachine": {
+      "version": "https://github.com/hsnzkg/FiniteStateMachine.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "8e4bb5efe3640c5cce9ff4dd7e3c0e6749a8be4b"
+    },
     "com.unity.2d.common": {
       "version": "8.1.1",
       "depth": 1,
@@ -40,6 +54,15 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unity.cinemachine": {
+      "version": "2.10.5",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.test-framework": "1.1.31"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.ext.nunit": {
       "version": "1.0.6",
       "depth": 1,
@@ -61,6 +84,17 @@
       "depth": 1,
       "source": "registry",
       "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.test-framework": {
+      "version": "1.1.33",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.ext.nunit": "1.0.6",
+        "com.unity.modules.imgui": "1.0.0",
+        "com.unity.modules.jsonserialize": "1.0.0"
+      },
       "url": "https://packages.unity.com"
     },
     "com.unity.textmeshpro": {
@@ -92,6 +126,12 @@
         "com.unity.modules.ui": "1.0.0",
         "com.unity.modules.imgui": "1.0.0"
       }
+    },
+    "uk.lunalabs.luna": {
+      "version": "file:C:/Users/hzeki/Downloads/6.4.0/scripts",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",

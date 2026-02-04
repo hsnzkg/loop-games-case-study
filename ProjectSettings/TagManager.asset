@@ -41,3 +41,27 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ground
+    uniqueID: 2846958033
+    locked: 0
+  - name: Character_Entity
+    uniqueID: 53516823
+    locked: 0
+  - name: EntityBottom
+    uniqueID: 2998810235
+    locked: 0
+  - name: EntityShadow
+    uniqueID: 1602367393
+    locked: 0
+  - name: Fence_Vertical_Connection
+    uniqueID: 1677739889
+    locked: 0
+  - name: Fence_Horizontal_Connection
+    uniqueID: 1988872553
+    locked: 0
+  - name: Fence_Post
+    uniqueID: 3491889041
+    locked: 0
+  - name: Weapon_Entity
+    uniqueID: 1799314327
+    locked: 0

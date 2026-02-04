@@ -1,0 +1,87 @@
+{
+  "ignores": [
+    "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Scripts/Utility/LayerMaskUtility.cs",
+    "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Scripts/Utility/VectorUtility.cs"
+  ],
+  "groups": [
+    [
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Scripts/CameraManagement/CameraManager.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Scripts/GameManager.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Scripts/Singleton/MonobehaviourSingleton.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Scripts/LevelManagement/LevelManager.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Scripts/LevelManagement/Settings/LevelSettings.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Scripts/LevelManagement/Settings/GroundSettings.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Scripts/LevelManagement/GroundTile.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Scripts/LevelManagement/Settings/FenceSettings.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Scripts/Entity/Player/PlayerEntity.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Scripts/Entity/Player/Movement/MovementSystem.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Scripts/Entity/Player/Movement/MovementSettings.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Scripts/InputManagement/PlayerInputData.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Scripts/InputManagement/InputManager.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Scripts/InputManagement/IInputReceiver.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Scripts/InputManagement/MobileInputReceiver.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Thirdparty/Joystick Pack/Scripts/Joysticks/DynamicJoystick.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Thirdparty/Joystick Pack/Scripts/Base/Joystick.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Thirdparty/Joystick Pack/Examples/JoystickSetterExample.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Thirdparty/Joystick Pack/Scripts/Joysticks/VariableJoystick.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Thirdparty/Joystick Pack/Examples/JoystickPlayerExample.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Thirdparty/Joystick Pack/Scripts/Joysticks/FixedJoystick.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Thirdparty/Joystick Pack/Scripts/Joysticks/FloatingJoystick.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Scripts/Entity/Player/Combat/CombatSystem.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Scripts/Entity/Player/Combat/CombatSettings.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Scripts/Entity/Sword/SwordEntity.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Scripts/CollisionManagement/CollisionBroadcaster2D.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Scripts/CameraManagement/CameraSettings.cs"
+    ],
+    [
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Scripts/LevelManagement/FenceTile.cs"
+    ],
+    [
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Scripts/Utility/LayerMaskUtility.cs"
+    ],
+    [
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Scripts/Utility/VectorUtility.cs"
+    ],
+    [
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Thirdparty/ScratchCard/Demo/Scripts/CursorSprite.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Thirdparty/ScratchCard/Demo/Scripts/ScratchDemoUI.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Thirdparty/ScratchCard/Scripts/ScratchCardManager.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Thirdparty/ScratchCard/Scripts/Animation/ScratchAnimationRecorder.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Thirdparty/ScratchCard/Scripts/ScratchCard.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Thirdparty/ScratchCard/Scripts/Animation/ScratchAnimator.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Thirdparty/ScratchCard/Scripts/Animation/ScratchAnimation.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Thirdparty/ScratchCard/Scripts/Animation/BaseScratch.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Thirdparty/ScratchCard/Scripts/Animation/LineScratch.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Thirdparty/ScratchCard/Scripts/Core/Enums.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Thirdparty/ScratchCard/Scripts/Core/ScratchCardRenderer.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Thirdparty/ScratchCard/Scripts/Tools/MeshGenerator.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Thirdparty/ScratchCard/Scripts/EraseProgress.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Thirdparty/ScratchCard/Scripts/Core/ScratchData/BaseData.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Thirdparty/ScratchCard/Scripts/Core/ScratchData/ImageData.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Thirdparty/ScratchCard/Scripts/Core/ScratchData/Triangle.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Thirdparty/ScratchCard/Scripts/Core/ScratchData/MeshRendererData.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Thirdparty/ScratchCard/Scripts/Core/Constants.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Thirdparty/ScratchCard/Scripts/Core/ScratchData/SpriteRendererData.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Thirdparty/ScratchCard/Scripts/Core/InputData/ScratchCardInput.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Thirdparty/ScratchCard/Scripts/Core/InputData/ScratchCardInputData.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Thirdparty/ScratchCard/Scripts/Core/InputData/RaycastController.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Thirdparty/ScratchCard/Scripts/Core/InputData/CanvasGraphicRaycaster.cs",
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Thirdparty/ScratchCard/Scripts/Tools/MigrationHelper.cs"
+    ],
+    [
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Thirdparty/ScratchCard/Demo/Scripts/SpriteToggle.cs"
+    ],
+    [
+      "D:/LoopGamesCaseStudy/LunaTemp/stage3/processed-scripts/Assets/Project/Thirdparty/ScratchCard/Scripts/Tools/EventSystemHelper.cs"
+    ],
+    [
+      "C:/Users/hzeki/Downloads/6.4.0/pipeline/templates/LunaCompiler/Scripts/Properties/AssemblyInfo.cs"
+    ],
+    [
+      "C:/Users/hzeki/Downloads/6.4.0/pipeline/templates/LunaCompiler/Scripts/Sources/OtherDummyScript.cs"
+    ],
+    [
+      "C:/Users/hzeki/Downloads/6.4.0/pipeline/templates/LunaCompiler/Scripts/obj/Debug/.NETFramework,Version=v4.7.AssemblyAttributes.cs"
+    ]
+  ]
+}

@@ -1,0 +1,1 @@
+namespace ScratchCardAsset.Core.InputData {}

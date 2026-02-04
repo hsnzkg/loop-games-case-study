@@ -12,15 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7153556ba00441939da07b8517b9ed19, type: 3}
   m_Name: LevelSettings
   m_EditorClassIdentifier: 
-  Height: 5
-  Width: 5
+  Height: 25
+  Width: 25
+  BlankSpace: 20
   TileSize: 1
   Offset: {x: 0, y: 0}
   Seed: 0
   RandomSeed: 1
   GroundSettings: {fileID: 11400000, guid: d70593a033c8a41468d560c7b2b2ccfd, type: 2}
   FenceSettings: {fileID: 11400000, guid: 6e04efdeb8f91de4e99c85d2207fb353, type: 2}
-  GroundTileSortOrder: 0
-  PostTileSortOrder: 1
-  VerticalConnectionTileSortOrder: 0
-  HorizontalConnectionTileSortOrder: 0

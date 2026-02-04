@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16630f1b53e646f1ba2341008412375a, type: 3}
+  m_Name: CombatSettings
+  m_EditorClassIdentifier: 
+  WeaponPrefab: {fileID: 2738837315715780190, guid: 5f828bab3dde1954090cfe31f95c74ea, type: 3}
+  StartWeaponCount: 0
+  MaxWeaponCount: 15
+  CycleSpeed: 270
+  ArrangeTranslationSpeed: 10
+  ArrangeRotationSpeed: 20
+  CenterDistance: 2.5

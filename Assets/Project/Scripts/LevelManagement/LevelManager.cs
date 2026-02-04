@@ -1,22 +1,20 @@
-﻿using UnityEngine;
+﻿using Project.Scripts.LevelManagement.Settings;
+using UnityEngine;
 
 namespace Project.Scripts.LevelManagement
 {
     public class LevelManager : MonoBehaviour
     {
-        [SerializeField] private LevelSettings _levelSettings;
-        [SerializeField] private Transform _groundTileParent;
-        [SerializeField] private Transform _fencePostParent;
-        [SerializeField] private Transform _fenceHorizontalConnectionParent;
-        [SerializeField] private Transform _fenceVerticalConnectionParent;
+        [SerializeField] private LevelSettings m_levelSettings;
+        [SerializeField] private Transform m_levelParent;
 
-        private System.Random _rng;
-        private int _seed;
+        private System.Random m_rng;
+        private int m_seed;
 
         public void Generate()
         {
-            _seed = _levelSettings.RandomSeed ? Random.Range(int.MinValue, int.MaxValue) : _levelSettings.Seed;
-            _rng = new System.Random(_seed);
+            m_seed = m_levelSettings.RandomSeed ? Random.Range(int.MinValue, int.MaxValue) : m_levelSettings.Seed;
+            m_rng = new System.Random(m_seed);
 
             ClearLevel();
             GenerateGround();
@@ -25,11 +23,31 @@ namespace Project.Scripts.LevelManagement
 
         private void GenerateGround()
         {
-            for (int x = 0; x < _levelSettings.Width; x++)
+            int bw = m_levelSettings.BlankSpace;
+            int w = m_levelSettings.Width;
+            int h = m_levelSettings.Height;
+
+            int totalW = w + bw * 2;
+            int totalH = h + bw * 2;
+
+            for (int x = 0; x < totalW; x++)
             {
-                for (int y = 0; y < _levelSettings.Height; y++)
+                for (int y = 0; y < totalH; y++)
                 {
-                    SpawnTile(PickWeightedGroundTile(), GridToWorld(x, y), _groundTileParent);
+                    bool insideLevel = x >= bw && x < bw + w && y >= bw && y < bw + h;
+
+                    if (!insideLevel)
+                    {
+                        SpawnTile(m_levelSettings.GroundSettings.Tiles[0].TilePrefab, GridToWorld(x, y, totalW, totalH)); continue;
+                    }
+
+                    bool isLevelBorder =
+                        x == bw ||
+                        x == bw + w - 1 ||
+                        y == bw ||
+                        y == bw + h - 1;
+
+                    SpawnTile(isLevelBorder ? m_levelSettings.GroundSettings.Tiles[0].TilePrefab : PickWeightedGroundTile(), GridToWorld(x, y, totalW, totalH));
                 }
             }
         }
@@ -42,8 +60,8 @@ namespace Project.Scripts.LevelManagement
 
         private void GeneratePosts()
         {
-            int w = _levelSettings.Width;
-            int h = _levelSettings.Height;
+            int w = m_levelSettings.Width;
+            int h = m_levelSettings.Height;
 
             for (int x = 0; x < w; x++)
             {
@@ -59,9 +77,8 @@ namespace Project.Scripts.LevelManagement
                         continue;
 
                     SpawnTile(
-                        _levelSettings.FenceSettings.FencePostPrefab,
-                        GridToWorld(x, y),
-                        _fencePostParent
+                        m_levelSettings.FenceSettings.FencePostPrefab,
+                        GridToWorld(x, y)
                     );
                 }
             }
@@ -75,43 +92,104 @@ namespace Project.Scripts.LevelManagement
 
         private void GenerateHorizontalConnections()
         {
+            int w = m_levelSettings.Width;
+            int h = m_levelSettings.Height;
+
+            for (int x = 0; x < w - 1; x++)
+            {
+                Vector3 a = GridToWorld(x, 0);
+                Vector3 b = GridToWorld(x + 1, 0);
+                SpawnTile(
+                    m_levelSettings.FenceSettings.HorizontalConnectionPrefab,
+                    (a + b) * 0.5f
+                );
+            }
+
+            for (int x = 0; x < w - 1; x++)
+            {
+                Vector3 a = GridToWorld(x, h - 1);
+                Vector3 b = GridToWorld(x + 1, h - 1);
+                SpawnTile(
+                    m_levelSettings.FenceSettings.HorizontalConnectionPrefab,
+                    (a + b) * 0.5f
+                );
+            }
         }
 
         private void GenerateVerticalConnections()
         {
+            int w = m_levelSettings.Width;
+            int h = m_levelSettings.Height;
+
+            for (int y = 0; y < h - 1; y++)
+            {
+                Vector3 a = GridToWorld(0, y);
+                Vector3 b = GridToWorld(0, y + 1);
+                SpawnTile(
+                    m_levelSettings.FenceSettings.VerticalConnectionPrefab,
+                    (a + b) * 0.5f
+                );
+            }
+
+            for (int y = 0; y < h - 1; y++)
+            {
+                Vector3 a = GridToWorld(w - 1, y);
+                Vector3 b = GridToWorld(w - 1, y + 1);
+                SpawnTile(
+                    m_levelSettings.FenceSettings.VerticalConnectionPrefab,
+                    (a + b) * 0.5f
+                );
+            }
         }
 
         private Vector3 GridToWorld(int x, int y)
         {
-            float tileSize = _levelSettings.TileSize;
+            float tileSize = m_levelSettings.TileSize;
 
             Vector2 gridCenter = new Vector2(
-                (_levelSettings.Width - 1) * tileSize * 0.5f,
-                (_levelSettings.Height - 1) * tileSize * 0.5f);
+                (m_levelSettings.Width - 1) * tileSize * 0.5f,
+                (m_levelSettings.Height - 1) * tileSize * 0.5f);
             Vector2 worldPos = new Vector2(
                 x * tileSize,
                 y * tileSize);
 
-            return worldPos - gridCenter + _levelSettings.Offset;
+            return worldPos - gridCenter + m_levelSettings.Offset;
         }
 
-        private void SpawnTile(GameObject prefab, Vector3 worldPos, Transform parent = null)
+        private Vector3 GridToWorld(int x, int y, int gridW, int gridH)
         {
-            GameObject go = Instantiate(prefab,worldPos,Quaternion.identity,parent);
+            float tileSize = m_levelSettings.TileSize;
+
+            Vector2 gridCenter = new Vector2(
+                (gridW - 1) * tileSize * 0.5f,
+                (gridH - 1) * tileSize * 0.5f
+            );
+
+            Vector2 worldPos = new Vector2(
+                x * tileSize,
+                y * tileSize
+            );
+
+            return worldPos - gridCenter + m_levelSettings.Offset;
+        }
+
+        private void SpawnTile(GameObject prefab, Vector3 worldPos)
+        {
+            GameObject go = Instantiate(prefab, worldPos, Quaternion.identity, m_levelParent);
             go.transform.position = worldPos;
         }
 
         private GameObject PickWeightedGroundTile()
         {
             float total = 0f;
-            foreach (var t in _levelSettings.GroundSettings.Tiles)
+            foreach (GroundTile t in m_levelSettings.GroundSettings.Tiles)
             {
                 total += t.Weight;
             }
 
-            float value = (float)(_rng.NextDouble() * total);
+            float value = (float)(m_rng.NextDouble() * total);
 
-            foreach (GroundTile groundTile in _levelSettings.GroundSettings.Tiles)
+            foreach (GroundTile groundTile in m_levelSettings.GroundSettings.Tiles)
             {
                 value -= groundTile.Weight;
                 if (value <= 0f)
@@ -120,7 +198,7 @@ namespace Project.Scripts.LevelManagement
                 }
             }
 
-            return _levelSettings.GroundSettings.Tiles[0].TilePrefab;
+            return m_levelSettings.GroundSettings.Tiles[0].TilePrefab;
         }
 
         public void ClearLevel()
