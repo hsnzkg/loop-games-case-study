@@ -1,7 +1,7 @@
 ﻿using System;
 using Project.Scripts.Entity.Sword;
+using Project.Scripts.Pool;
 using UnityEngine;
-using UnityEngine.Pool;
 
 namespace Project.Scripts.Entity.Player.Combat
 {
@@ -53,7 +53,7 @@ namespace Project.Scripts.Entity.Player.Combat
             m_playerCol = GetComponent<Collider2D>();
             m_weapons = new WeaponEntity[m_combatSettings.MaxWeaponCount];
 
-            m_weaponPool = new ObjectPool<WeaponEntity>(
+            m_weaponPool = new Pool.ObjectPool<WeaponEntity>(
                 CreateWeapon,
                 OnGetWeapon,
                 OnReleaseWeapon,
@@ -183,7 +183,7 @@ namespace Project.Scripts.Entity.Player.Combat
 
         public bool CanSpawn()
         {
-            return m_weaponPool.CountActive < m_combatSettings.MaxWeaponCount;
+            return m_weaponPool.GetCountActive() < m_combatSettings.MaxWeaponCount;
         }
     }
 }

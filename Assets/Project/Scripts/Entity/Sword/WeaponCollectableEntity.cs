@@ -5,9 +5,9 @@ namespace Project.Scripts.Entity.Sword
 {
     public class WeaponCollectableEntity : MonoBehaviour, ICollectable
     {
-        private IObjectPool<WeaponCollectableEntity> m_provider;
+        private Pool.IObjectPool<WeaponCollectableEntity> m_provider;
         
-        public void Initialize(IObjectPool<WeaponCollectableEntity> provider)
+        public void Initialize(Pool.IObjectPool<WeaponCollectableEntity> provider)
         {
             m_provider = provider;
         }

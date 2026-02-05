@@ -1,5 +1,0 @@
-﻿<linker>
-    <assembly fullname="FiniteStateMachine.Runtime">
-        <type fullname="*" preserve="all"/>
-    </assembly>
-</linker>

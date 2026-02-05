@@ -5,7 +5,7 @@ namespace Project.Scripts.Entity.Sword
 {
     public class WeaponEntity : MonoBehaviour
     {
-        private IObjectPool<WeaponEntity> m_provider;
+        private Pool.IObjectPool<WeaponEntity> m_provider;
         private Collider2D m_collider;
         
         private void FetchComponents()
@@ -13,7 +13,7 @@ namespace Project.Scripts.Entity.Sword
             m_collider = GetComponent<Collider2D>();
         }
 
-        public void Initialize(IObjectPool<WeaponEntity> provider)
+        public void Initialize(Pool.IObjectPool<WeaponEntity> provider)
         {
             m_provider = provider;
             FetchComponents();
