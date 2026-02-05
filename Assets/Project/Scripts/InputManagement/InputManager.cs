@@ -7,15 +7,10 @@
 
         public static void Initialize()
         {
-            SetData(new PlayerInputData());
+            s_data = new PlayerInputData();
             s_inputReceiver = new MobileInputReceiver(GetData());
         }
-
-        private static void SetData(PlayerInputData value)
-        {
-            s_data = value;
-        }
-
+        
         public static PlayerInputData GetData()
         {
             return s_data;

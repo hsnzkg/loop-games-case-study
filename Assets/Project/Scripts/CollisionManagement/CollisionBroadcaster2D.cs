@@ -19,7 +19,6 @@ namespace Project.Scripts.CollisionManagement
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            Console.WriteLine("AAAAAAAAAAAAAA");
             if (m_layerMask.Contains(other.gameObject.layer))
             {
                 OnCollisionEnter2DEvent?.Invoke(other);

@@ -9,7 +9,7 @@ namespace Project.Scripts.Entity.Player.Movement
         private Vector2 m_targetVelocity;
         private Rigidbody2D m_rb;
 
-        private void Awake()
+        public void Initialize()
         {
             m_rb = GetComponent<Rigidbody2D>();
         }

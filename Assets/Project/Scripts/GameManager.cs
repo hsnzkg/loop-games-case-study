@@ -1,46 +1,34 @@
 ﻿using Project.Scripts.CameraManagement;
+using Project.Scripts.CameraManagement.Events;
 using Project.Scripts.Entity.Player;
-using Project.Scripts.InputManagement;
+using Project.Scripts.EventBus.Runtime;
 using Project.Scripts.LevelManagement;
-using Project.Scripts.Singleton;
 using UnityEngine;
 
 namespace Project.Scripts
 {
-    public class GameManager : MonoBehaviourSingleton<GameManager>
+    public class GameManager
     {
         private LevelManager m_levelManager;
         private CameraManager m_cameraManager;
         private PlayerEntity m_playerEntity;
-        
-        protected override void OnAwake()
+
+        public void Initialize()
         {
-            Application.targetFrameRate = 60;
             FetchComponents();
-            InputManager.Initialize();
             
             m_levelManager.Generate();
-            
+            m_playerEntity.Initialize();
             m_cameraManager.Initialize();
-            m_cameraManager.SetTarget(m_playerEntity.transform);
+            
+            EventBus<EChangeCameraTarget>.Raise(new EChangeCameraTarget(m_playerEntity.transform));
         }
 
-        protected override void OnEnable()
-        {
-            InputManager.Enable();
-        }
-
-        protected override void OnDisable()
-        {
-            InputManager.Disable();
-            m_levelManager.ClearLevel();
-        }
-        
         private void FetchComponents()
         {
-            m_cameraManager = FindObjectOfType<CameraManager>();
-            m_levelManager = FindObjectOfType<LevelManager>();
-            m_playerEntity = FindObjectOfType<PlayerEntity>();
+            m_cameraManager = Object.FindObjectOfType<CameraManager>();
+            m_levelManager = Object.FindObjectOfType<LevelManager>();
+            m_playerEntity = Object.FindObjectOfType<PlayerEntity>();
         }
     }
 }

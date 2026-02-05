@@ -1,0 +1,13 @@
+{
+  "name": "com.hsnzkg.finitestatemachine",
+  "version": "1.0.0",
+  "displayName": "Finite State Machine",
+  "description": "A lightweight and extensible Finite State Machine (FSM) framework for Unity. Designed for clean state transitions, separation of concerns, and scalable gameplay architecture.",
+  "unity": "2022.3",
+  "dependencies": {},
+  "author": {
+    "name": "Hasan Zeki Gogebakan",
+    "email": "hzekigogebakan@gmail.com",
+    "url": "https://github.com/hsnzkg"
+  }
+}

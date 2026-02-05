@@ -14,7 +14,7 @@ namespace Project.Scripts.InputManagement
         private Vector3 m_movementInputAxisVec3;
 
         private bool m_hasMovementInput = false;
-        
+
         public Vector2 GetMovementInputAxisVec2Raw()
         {
             return m_movementInputAxisVec2Raw;
@@ -45,9 +45,9 @@ namespace Project.Scripts.InputManagement
         }
 
         public bool IsSprintPressing;
-        
+
         public bool IsJumpPressedThisFrame;
-        
+
         public void Reset()
         {
             m_movementInputAxisVec2Raw = Vector2.zero;

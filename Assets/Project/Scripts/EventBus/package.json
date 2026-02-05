@@ -1,0 +1,13 @@
+{
+  "name": "com.hsnzkg.eventbus",
+  "version": "1.0.0",
+  "displayName": "Event Bus",
+  "description": "A lightweight Event Bus system for Unity that enables communication between publishers and listeners.",
+  "unity": "2022.3",
+  "dependencies": {},
+  "author": {
+    "name": "Hasan Zeki Gogebakan",
+    "email": "hzekigogebakan@gmail.com",
+    "url": "https://github.com/hsnzkg"
+  }
+}

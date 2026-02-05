@@ -9,9 +9,11 @@ namespace Project.Scripts.Entity.Player
         private MovementSystem m_movementSystem;
         private CombatSystem m_combatSystem;
 
-        private void Awake()
+        public void Initialize()
         {
             FetchComponents();
+            m_movementSystem.Initialize();
+            m_combatSystem.Initialize();
         }
 
         private void FetchComponents()

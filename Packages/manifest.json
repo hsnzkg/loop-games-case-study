@@ -1,7 +1,5 @@
 {
   "dependencies": {
-    "com.hsnzkg.eventbus": "https://github.com/hsnzkg/EventBus.git",
-    "com.hsnzkg.finitestatemachine": "https://github.com/hsnzkg/FiniteStateMachine.git",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.spriteshape": "9.1.1",
     "com.unity.cinemachine": "2.10.5",

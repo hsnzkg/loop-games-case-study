@@ -1,5 +1,7 @@
 using UnityEngine;
 using Cinemachine;
+using Project.Scripts.CameraManagement.Events;
+using Project.Scripts.EventBus.Runtime;
 
 namespace Project.Scripts.CameraManagement
 {
@@ -8,9 +10,12 @@ namespace Project.Scripts.CameraManagement
         [SerializeField] private CameraSettings m_cameraSettings;
         private CinemachineVirtualCamera m_virtualCamera;
         private Transform m_target;
+        private EventBind<EChangeCameraTarget> m_changeCameraEb;
         
         public void Initialize()
         {
+            m_changeCameraEb = new EventBind<EChangeCameraTarget>(SetTarget);
+            EventBus<EChangeCameraTarget>.Register(m_changeCameraEb);
             FetchComponents();
         }
         
@@ -19,9 +24,9 @@ namespace Project.Scripts.CameraManagement
             m_virtualCamera = GetComponentInChildren<CinemachineVirtualCamera>();
         }
         
-        public void SetTarget(Transform target)
+        private void SetTarget(EChangeCameraTarget @event)
         {
-            m_target = target;
+            m_target = @event.Target;
             m_virtualCamera.Follow = m_target;
             m_virtualCamera.LookAt = m_target;
         }

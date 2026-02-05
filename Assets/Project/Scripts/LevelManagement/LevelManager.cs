@@ -38,7 +38,9 @@ namespace Project.Scripts.LevelManagement
 
                     if (!insideLevel)
                     {
-                        SpawnTile(m_levelSettings.GroundSettings.Tiles[0].TilePrefab, GridToWorld(x, y, totalW, totalH)); continue;
+                        SpawnTile(m_levelSettings.GroundSettings.Tiles[0].TilePrefab,
+                            GridToWorld(x, y, totalW, totalH));
+                        continue;
                     }
 
                     bool isLevelBorder =
@@ -47,7 +49,9 @@ namespace Project.Scripts.LevelManagement
                         y == bw ||
                         y == bw + h - 1;
 
-                    SpawnTile(isLevelBorder ? m_levelSettings.GroundSettings.Tiles[0].TilePrefab : PickWeightedGroundTile(), GridToWorld(x, y, totalW, totalH));
+                    SpawnTile(
+                        isLevelBorder ? m_levelSettings.GroundSettings.Tiles[0].TilePrefab : PickWeightedGroundTile(),
+                        GridToWorld(x, y, totalW, totalH));
                 }
             }
         }

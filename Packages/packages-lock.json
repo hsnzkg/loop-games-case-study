@@ -1,19 +1,5 @@
 {
   "dependencies": {
-    "com.hsnzkg.eventbus": {
-      "version": "https://github.com/hsnzkg/EventBus.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "fc7a884ecd62d70f6d9256c7c406c06a6511f352"
-    },
-    "com.hsnzkg.finitestatemachine": {
-      "version": "https://github.com/hsnzkg/FiniteStateMachine.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "8e4bb5efe3640c5cce9ff4dd7e3c0e6749a8be4b"
-    },
     "com.unity.2d.common": {
       "version": "8.1.1",
       "depth": 1,

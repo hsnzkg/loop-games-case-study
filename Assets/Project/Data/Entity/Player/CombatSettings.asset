@@ -18,4 +18,4 @@ MonoBehaviour:
   CycleSpeed: 270
   ArrangeTranslationSpeed: 20
   ArrangeRotationSpeed: 20
-  CenterDistance: 2.5
+  CenterDistance: 1.5
