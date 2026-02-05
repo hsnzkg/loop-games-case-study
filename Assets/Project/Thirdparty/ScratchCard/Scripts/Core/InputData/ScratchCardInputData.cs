@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace ScratchCardAsset.Core.InputData
+namespace Project.Thirdparty.ScratchCard.Scripts.Core.InputData
 {
     [Serializable]
     public struct ScratchCardInputData

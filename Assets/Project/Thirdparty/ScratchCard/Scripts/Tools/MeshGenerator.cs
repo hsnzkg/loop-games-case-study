@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace ScratchCardAsset.Tools
+namespace Project.Thirdparty.ScratchCard.Scripts.Tools
 {
 	public static class MeshGenerator
 	{

@@ -1,16 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Project.Thirdparty.Joystick_Pack.Scripts.Joysticks;
 using UnityEngine;
 
-public class JoystickPlayerExample : MonoBehaviour
+namespace Project.Thirdparty.Joystick_Pack.Examples
 {
-    public float speed;
-    public VariableJoystick variableJoystick;
-    public Rigidbody rb;
-
-    public void FixedUpdate()
+    public class JoystickPlayerExample : MonoBehaviour
     {
-        Vector3 direction = Vector3.forward * variableJoystick.GetVertical() + Vector3.right * variableJoystick.GetHorizontal();
-        rb.AddForce(direction * speed * Time.fixedDeltaTime, ForceMode.VelocityChange);
+        public float speed;
+        public VariableJoystick variableJoystick;
+        public Rigidbody rb;
+
+        public void FixedUpdate()
+        {
+            Vector3 direction = Vector3.forward * variableJoystick.GetVertical() + Vector3.right * variableJoystick.GetHorizontal();
+            rb.AddForce(direction * speed * Time.fixedDeltaTime, ForceMode.VelocityChange);
+        }
     }
 }

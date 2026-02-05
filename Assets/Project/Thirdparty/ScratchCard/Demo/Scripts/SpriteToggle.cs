@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ScratchCardAsset.Demo
+namespace Project.Thirdparty.ScratchCard.Demo.Scripts
 {
     public class SpriteToggle : MonoBehaviour
     {

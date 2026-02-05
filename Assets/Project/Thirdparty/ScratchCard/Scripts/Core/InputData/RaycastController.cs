@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ScratchCardAsset.Core.InputData
+namespace Project.Thirdparty.ScratchCard.Scripts.Core.InputData
 {
     public class RaycastController
     {

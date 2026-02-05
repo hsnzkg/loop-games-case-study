@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Globalization;
-using ScratchCardAsset.Animation;
-using ScratchCardAsset.Core;
+using Project.Thirdparty.ScratchCard.Scripts;
+using Project.Thirdparty.ScratchCard.Scripts.Animation;
+using Project.Thirdparty.ScratchCard.Scripts.Core;
 using UnityEngine;
 using UnityEngine.UI;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
 
-namespace ScratchCardAsset.Demo
+namespace Project.Thirdparty.ScratchCard.Demo.Scripts
 {
 	public class ScratchDemoUI : MonoBehaviour
 	{

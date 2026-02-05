@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.UI;
 #endif
 
-namespace ScratchCardAsset.Tools
+namespace Project.Thirdparty.ScratchCard.Scripts.Tools
 {
     public class EventSystemHelper : MonoBehaviour
     {

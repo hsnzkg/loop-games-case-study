@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using ScratchCardAsset.Core;
-using ScratchCardAsset.Core.InputData;
+using Project.Thirdparty.ScratchCard.Scripts.Core;
+using Project.Thirdparty.ScratchCard.Scripts.Core.InputData;
 using UnityEngine;
 
-namespace ScratchCardAsset.Animation
+namespace Project.Thirdparty.ScratchCard.Scripts.Animation
 {
     public class ScratchAnimationRecorder : MonoBehaviour
     {

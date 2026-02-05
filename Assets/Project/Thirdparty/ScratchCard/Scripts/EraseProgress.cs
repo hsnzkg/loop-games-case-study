@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections;
-using ScratchCardAsset.Core;
-using ScratchCardAsset.Tools;
+using Project.Thirdparty.ScratchCard.Scripts.Core;
+using Project.Thirdparty.ScratchCard.Scripts.Tools;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.Serialization;
 
-namespace ScratchCardAsset
+namespace Project.Thirdparty.ScratchCard.Scripts
 {
 	/// <summary>
 	/// Calculates scratching progress in range from 0 to 1, where 0 - card scratched completely, 1 - scratch surface is whole

@@ -1,9 +1,9 @@
-﻿using ScratchCardAsset.Core;
+﻿using Project.Thirdparty.ScratchCard.Scripts.Core;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
-namespace ScratchCardAsset.Editor
+namespace Project.Thirdparty.ScratchCard.Scripts.Editor
 {
     public class ScratchCardMenu : UnityEditor.Editor
     {

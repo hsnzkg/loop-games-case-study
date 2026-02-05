@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ScratchCardAsset.Core.ScratchData
+namespace Project.Thirdparty.ScratchCard.Scripts.Core.ScratchData
 {
     public class ImageData : BaseData
     {

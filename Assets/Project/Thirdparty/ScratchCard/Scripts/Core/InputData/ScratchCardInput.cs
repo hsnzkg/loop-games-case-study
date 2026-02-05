@@ -7,7 +7,7 @@ using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 #endif
 
-namespace ScratchCardAsset.Core.InputData
+namespace Project.Thirdparty.ScratchCard.Scripts.Core.InputData
 {
 	/// <summary>
 	/// Process Input for ScratchCard

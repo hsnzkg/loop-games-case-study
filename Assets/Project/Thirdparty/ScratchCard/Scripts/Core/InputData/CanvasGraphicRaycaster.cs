@@ -1,9 +1,9 @@
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-namespace ScratchCardAsset.Core.InputData
+namespace Project.Thirdparty.ScratchCard.Scripts.Core.InputData
 {
     [RequireComponent(typeof(GraphicRaycaster))]
     public class CanvasGraphicRaycaster : MonoBehaviour

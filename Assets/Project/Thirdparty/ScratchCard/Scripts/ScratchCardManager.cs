@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using ScratchCardAsset.Core;
-using ScratchCardAsset.Tools;
+using Project.Thirdparty.ScratchCard.Scripts.Core;
+using Project.Thirdparty.ScratchCard.Scripts.Tools;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-namespace ScratchCardAsset
+namespace Project.Thirdparty.ScratchCard.Scripts
 {
 	/// <summary>
 	/// ScratchCardManager component manages ScratchCard and EraseProgress components

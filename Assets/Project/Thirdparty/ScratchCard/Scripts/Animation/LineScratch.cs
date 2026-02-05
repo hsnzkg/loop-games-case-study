@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace ScratchCardAsset.Animation
+namespace Project.Thirdparty.ScratchCard.Scripts.Animation
 {
     [Serializable]
     public class LineScratch : BaseScratch

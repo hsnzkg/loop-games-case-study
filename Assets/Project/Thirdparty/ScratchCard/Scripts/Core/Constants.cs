@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ScratchCardAsset.Core
+namespace Project.Thirdparty.ScratchCard.Scripts.Core
 {
     public static class Constants
     {

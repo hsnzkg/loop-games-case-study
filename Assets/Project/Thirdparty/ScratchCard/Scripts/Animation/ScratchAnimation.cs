@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using ScratchCardAsset.Core;
+using Project.Thirdparty.ScratchCard.Scripts.Core;
 using UnityEngine;
 
-namespace ScratchCardAsset.Animation
+namespace Project.Thirdparty.ScratchCard.Scripts.Animation
 {
     [CreateAssetMenu(menuName = "Scratch Card/Scratch Animation", fileName = nameof(ScratchAnimation))]
     public class ScratchAnimation : ScriptableObject

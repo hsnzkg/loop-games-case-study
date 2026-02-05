@@ -1,8 +1,8 @@
-using ScratchCardAsset.Animation;
+using Project.Thirdparty.ScratchCard.Scripts.Animation;
 using UnityEditor;
 using UnityEngine;
 
-namespace ScratchCardAsset.Editor
+namespace Project.Thirdparty.ScratchCard.Scripts.Editor
 {
     [CustomEditor(typeof(ScratchAnimation))]
     public class ScratchAnimationInspector : UnityEditor.Editor

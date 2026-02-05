@@ -1,66 +1,69 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Project.Thirdparty.Joystick_Pack.Scripts.Base;
+using Project.Thirdparty.Joystick_Pack.Scripts.Joysticks;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class JoystickSetterExample : MonoBehaviour
+namespace Project.Thirdparty.Joystick_Pack.Examples
 {
-    public VariableJoystick variableJoystick;
-    public Text valueText;
-    public Image background;
-    public Sprite[] axisSprites;
-
-    public void ModeChanged(int index)
+    public class JoystickSetterExample : MonoBehaviour
     {
-        switch(index)
-        {
-            case 0:
-                variableJoystick.SetMode(JoystickType.Fixed);
-                break;
-            case 1:
-                variableJoystick.SetMode(JoystickType.Floating);
-                break;
-            case 2:
-                variableJoystick.SetMode(JoystickType.Dynamic);
-                break;
-            default:
-                break;
-        }     
-    }
+        public VariableJoystick variableJoystick;
+        public Text valueText;
+        public Image background;
+        public Sprite[] axisSprites;
 
-    public void AxisChanged(int index)
-    {
-        switch (index)
+        public void ModeChanged(int index)
         {
-            case 0:
-                variableJoystick.SetAxisOptions(AxisOptions.Both);
-                background.sprite = axisSprites[index];
-                break;
-            case 1:
-                variableJoystick.SetAxisOptions(AxisOptions.Horizontal);
-                background.sprite = axisSprites[index];
-                break;
-            case 2:
-                variableJoystick.SetAxisOptions(AxisOptions.Vertical);
-                background.sprite = axisSprites[index];
-                break;
-            default:
-                break;
+            switch(index)
+            {
+                case 0:
+                    variableJoystick.SetMode(JoystickType.Fixed);
+                    break;
+                case 1:
+                    variableJoystick.SetMode(JoystickType.Floating);
+                    break;
+                case 2:
+                    variableJoystick.SetMode(JoystickType.Dynamic);
+                    break;
+                default:
+                    break;
+            }     
         }
-    }
 
-    public void SnapX(bool value)
-    {
-        variableJoystick.SetSnapX(value);
-    }
+        public void AxisChanged(int index)
+        {
+            switch (index)
+            {
+                case 0:
+                    variableJoystick.SetAxisOptions(AxisOptions.Both);
+                    background.sprite = axisSprites[index];
+                    break;
+                case 1:
+                    variableJoystick.SetAxisOptions(AxisOptions.Horizontal);
+                    background.sprite = axisSprites[index];
+                    break;
+                case 2:
+                    variableJoystick.SetAxisOptions(AxisOptions.Vertical);
+                    background.sprite = axisSprites[index];
+                    break;
+                default:
+                    break;
+            }
+        }
 
-    public void SnapY(bool value)
-    {
-        variableJoystick.SetSnapY(value);
-    }
+        public void SnapX(bool value)
+        {
+            variableJoystick.SetSnapX(value);
+        }
 
-    private void Update()
-    {
-        valueText.text = "Current Value: " + variableJoystick.GetDirection();
+        public void SnapY(bool value)
+        {
+            variableJoystick.SetSnapY(value);
+        }
+
+        private void Update()
+        {
+            valueText.text = "Current Value: " + variableJoystick.GetDirection();
+        }
     }
 }

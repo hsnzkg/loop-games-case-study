@@ -1,10 +1,10 @@
-﻿using ScratchCardAsset.Core;
-using UnityEngine;
+﻿using Project.Thirdparty.ScratchCard.Scripts.Core;
 using UnityEditor;
 using UnityEditor.SceneManagement;
+using UnityEngine;
 using UnityEngine.UI;
 
-namespace ScratchCardAsset.Editor
+namespace Project.Thirdparty.ScratchCard.Scripts.Editor
 {
 	[CanEditMultipleObjects]
 	[CustomEditor(typeof(ScratchCardManager))]

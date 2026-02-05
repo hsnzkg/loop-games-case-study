@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace ScratchCardAsset.Demo
+namespace Project.Thirdparty.ScratchCard.Demo.Scripts
 {
 	public class CursorSprite : MonoBehaviour
 	{

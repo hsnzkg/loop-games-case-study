@@ -1,8 +1,8 @@
 using System;
-using ScratchCardAsset.Core;
+using Project.Thirdparty.ScratchCard.Scripts.Core;
 using UnityEngine;
 
-namespace ScratchCardAsset.Animation
+namespace Project.Thirdparty.ScratchCard.Scripts.Animation
 {
     public class ScratchAnimator : MonoBehaviour
     {

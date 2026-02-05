@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using ScratchCardAsset.Tools;
+using Project.Thirdparty.ScratchCard.Scripts.Tools;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-namespace ScratchCardAsset.Core
+namespace Project.Thirdparty.ScratchCard.Scripts.Core
 {
 	/// <summary>
 	/// Draws holes and lines into RenderTexture

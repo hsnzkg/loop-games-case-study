@@ -1,4 +1,4 @@
-namespace ScratchCardAsset.Core
+namespace Project.Thirdparty.ScratchCard.Scripts.Core
 {
     public enum Quality
     {

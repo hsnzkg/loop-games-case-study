@@ -1,12 +1,12 @@
 ﻿using System;
-using ScratchCardAsset.Core;
-using ScratchCardAsset.Core.InputData;
-using ScratchCardAsset.Core.ScratchData;
+using Project.Thirdparty.ScratchCard.Scripts.Core;
+using Project.Thirdparty.ScratchCard.Scripts.Core.InputData;
+using Project.Thirdparty.ScratchCard.Scripts.Core.ScratchData;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Serialization;
 
-namespace ScratchCardAsset
+namespace Project.Thirdparty.ScratchCard.Scripts
 {
 	/// <summary>
 	/// Creates and configures RenderTexture, gets data from the InputController, then renders the quads into RenderTexture

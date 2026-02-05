@@ -1,4 +1,4 @@
-﻿using Project.Scripts.InputManagement;
+﻿using Project.Scripts.Input;
 using UnityEngine;
 
 namespace Project.Scripts.Entity.Player.Movement

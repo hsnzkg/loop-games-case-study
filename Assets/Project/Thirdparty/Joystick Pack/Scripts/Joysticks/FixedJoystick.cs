@@ -1,8 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using Project.Thirdparty.Joystick_Pack.Scripts.Base;
 
-public class FixedJoystick : Joystick
+namespace Project.Thirdparty.Joystick_Pack.Scripts.Joysticks
 {
+    public class FixedJoystick : Joystick
+    {
 
+    }
 }

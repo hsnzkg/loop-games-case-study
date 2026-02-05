@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16630f1b53e646f1ba2341008412375a, type: 3}
   m_Name: CombatSettings
   m_EditorClassIdentifier: 
+  CombatLayer:
+    serializedVersion: 2
+    m_Bits: 640
   WeaponPrefab: {fileID: 2738837315715780190, guid: 5f828bab3dde1954090cfe31f95c74ea, type: 3}
   StartWeaponCount: 0
-  MaxWeaponCount: 15
+  MaxWeaponCount: 55
   CycleSpeed: 270
   ArrangeTranslationSpeed: 20
   ArrangeRotationSpeed: 20

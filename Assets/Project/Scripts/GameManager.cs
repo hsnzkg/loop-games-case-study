@@ -1,34 +1,33 @@
-﻿using Project.Scripts.CameraManagement;
-using Project.Scripts.CameraManagement.Events;
-using Project.Scripts.Entity.Player;
-using Project.Scripts.EventBus.Runtime;
-using Project.Scripts.LevelManagement;
+﻿using Project.Scripts.Camera;
+using Project.Scripts.Level;
+using Project.Scripts.Spawning.Spawners;
 using UnityEngine;
 
 namespace Project.Scripts
 {
     public class GameManager
     {
+        private PlayerSpawner m_playerSpawner;
+        private WeaponCollectableSpawner m_weaponCollectableSpawner;
         private LevelManager m_levelManager;
         private CameraManager m_cameraManager;
-        private PlayerEntity m_playerEntity;
 
         public void Initialize()
         {
             FetchComponents();
             
-            m_levelManager.Generate();
-            m_playerEntity.Initialize();
             m_cameraManager.Initialize();
-            
-            EventBus<EChangeCameraTarget>.Raise(new EChangeCameraTarget(m_playerEntity.transform));
+            m_playerSpawner.Initialize();
+            m_weaponCollectableSpawner.Initialize();
+            m_levelManager.Generate();
         }
 
         private void FetchComponents()
         {
+            m_weaponCollectableSpawner = Object.FindObjectOfType<WeaponCollectableSpawner>();
+            m_playerSpawner = Object.FindObjectOfType<PlayerSpawner>();
             m_cameraManager = Object.FindObjectOfType<CameraManager>();
             m_levelManager = Object.FindObjectOfType<LevelManager>();
-            m_playerEntity = Object.FindObjectOfType<PlayerEntity>();
         }
     }
 }

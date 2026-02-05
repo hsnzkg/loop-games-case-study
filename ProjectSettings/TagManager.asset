@@ -11,10 +11,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - AI
+  - WeaponCollectable
+  - Weapon
   - 
   - 
   - 
@@ -64,4 +64,7 @@ TagManager:
     locked: 0
   - name: Weapon_Entity
     uniqueID: 1799314327
+    locked: 0
+  - name: Weapon_Collectable_Entity
+    uniqueID: 180965977
     locked: 0

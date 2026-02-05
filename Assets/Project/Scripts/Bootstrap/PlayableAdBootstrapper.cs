@@ -1,6 +1,6 @@
 ﻿using Luna.Unity;
 using Project.Scripts.Constants;
-using Project.Scripts.GameStateManagement;
+using Project.Scripts.GameState;
 using Project.Scripts.Utility;
 using UnityEngine;
 

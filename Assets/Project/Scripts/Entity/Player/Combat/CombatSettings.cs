@@ -7,7 +7,7 @@ namespace Project.Scripts.Entity.Player.Combat
     public class CombatSettings : ScriptableObject
     {
         public LayerMask CombatLayer;
-        public SwordEntity WeaponPrefab;
+        public WeaponEntity WeaponPrefab;
         public int StartWeaponCount;
         public int MaxWeaponCount;
         public float CycleSpeed;

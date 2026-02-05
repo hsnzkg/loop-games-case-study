@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ScratchCardAsset.Core.ScratchData
+namespace Project.Thirdparty.ScratchCard.Scripts.Core.ScratchData
 {
     public class MeshRendererData : BaseData
     {

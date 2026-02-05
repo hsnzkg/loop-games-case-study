@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ScratchCardAsset.Tools
+namespace Project.Thirdparty.ScratchCard.Scripts.Tools
 {
     /// <summary>
     /// A class for migration from version 1.x to 2.x
