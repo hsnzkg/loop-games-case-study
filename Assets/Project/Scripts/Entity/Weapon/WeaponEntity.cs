@@ -1,21 +1,20 @@
-﻿using System;
-using Project.Scripts.Collisions;
+﻿using Project.Scripts.Collisions;
 using Project.Scripts.Entity.Player.Combat;
 using Project.Scripts.Pool;
 using UnityEngine;
 
-namespace Project.Scripts.Entity.Sword
+namespace Project.Scripts.Entity.Weapon
 {
     public class WeaponEntity : MonoBehaviour, IDamageable
     {
         private CollisionBroadcaster2D m_broadcaster2D;
         private IObjectPool<WeaponEntity> m_provider;
-        private Collider2D m_collider;
+        private BoxCollider2D m_collider;
         
         private void FetchComponents()
         {
             m_broadcaster2D = GetComponent<CollisionBroadcaster2D>();
-            m_collider = GetComponent<Collider2D>();
+            m_collider = GetComponent<BoxCollider2D>();
         }
 
         public void Initialize(IObjectPool<WeaponEntity> provider)
@@ -24,7 +23,7 @@ namespace Project.Scripts.Entity.Sword
             FetchComponents();
         }
 
-        public Collider2D GetCollider()
+        public BoxCollider2D GetCollider()
         {
             return m_collider;
         }
@@ -56,9 +55,9 @@ namespace Project.Scripts.Entity.Sword
 
         private void Control(Collider2D obj)
         {
-            if (obj.TryGetComponent(out IDamageable damageable))
+            if (obj.TryGetComponent(out WeaponEntity weaponEntity))
             {
-                damageable.OnDamage();
+                OnDamage();
             }
         }
 

@@ -13,7 +13,6 @@ namespace Project.Scripts.Spawning.Spawners
         public void Initialize()
         {
             PlayerEntity instance = Instantiate(m_playerPrefab,Vector3.zero,Quaternion.identity);
-            instance.Initialize();
             EventBus<EChangeCameraTarget>.Raise(new EChangeCameraTarget(instance.transform));
         }
     }

@@ -1,5 +1,4 @@
-﻿using System;
-using Project.Scripts.Entity.Sword;
+﻿using Project.Scripts.Entity.Weapon;
 using Project.Scripts.Pool;
 using UnityEngine;
 
@@ -17,15 +16,18 @@ namespace Project.Scripts.Entity.Player.Combat
         private int m_weaponCount;
 
         private ObjectPool<WeaponEntity> m_weaponPool;
+        private bool m_isInitialized;
 
         private void Update()
         {
+            if (!m_isInitialized)
+            {
+                return;
+            }
+            
             SnapWeaponParent();
-
             if (m_weaponCount <= 0) return;
-
             Cycle();
-
             for (int i = 0; i < m_weaponCount; i++)
             {
                 ArrangeSmooth(m_weapons[i].transform, i);
@@ -77,6 +79,8 @@ namespace Project.Scripts.Entity.Player.Combat
             {
                 AddWeapon();
             }
+
+            m_isInitialized = true;
         }
 
         #region Pool
@@ -97,6 +101,15 @@ namespace Project.Scripts.Entity.Player.Combat
 
         private void OnReleaseWeapon(WeaponEntity weapon)
         {
+            int index = System.Array.IndexOf(m_weapons, weapon);
+            if (index >= 0)
+            {
+                int last = m_weaponCount - 1;
+                m_weapons[index] = m_weapons[last];
+                m_weapons[last] = null;
+                m_weaponCount--;
+            }
+            
             weapon.OnDespawned();
             weapon.gameObject.SetActive(false);
         }
@@ -115,32 +128,12 @@ namespace Project.Scripts.Entity.Player.Combat
             {
                 return;
             }
-
             WeaponEntity weapon = m_weaponPool.Get();
-
             int index = m_weaponCount;
             m_weapons[index] = weapon;
             m_weaponCount++;
 
             ArrangeInstant(weapon.transform, index);
-        }
-
-        private void HandleWeaponCollision(WeaponEntity weaponEntity, IDamageable damageable)
-        {
-            if (damageable is WeaponEntity damageableWeapon)
-            {
-                int index = Array.FindIndex(
-                    m_weapons,
-                    0,
-                    m_weaponCount,
-                    a => a == weaponEntity
-                );
-
-                m_weaponCount--;
-                m_weapons[index] = m_weapons[m_weaponCount];
-                m_weapons[m_weaponCount] = null;
-                m_weaponPool.Release(damageableWeapon);
-            }
         }
 
         private void SetCollisionLayers(WeaponEntity weapon)

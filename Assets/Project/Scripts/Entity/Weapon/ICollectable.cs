@@ -1,4 +1,4 @@
-﻿namespace Project.Scripts.Entity.Sword
+﻿namespace Project.Scripts.Entity.Weapon
 {
     interface ICollectable
     {

@@ -380,14 +380,14 @@ GameObject:
   - component: {fileID: 5082146366834759306}
   - component: {fileID: 6541441458258005389}
   - component: {fileID: 840683358301206229}
-  - component: {fileID: 4675065555169879133}
+  - component: {fileID: 1305275436992131240}
   - component: {fileID: 884444713857156597}
   - component: {fileID: 5967773886623021092}
   - component: {fileID: 4941834527427030021}
-  - component: {fileID: -3316537914835759857}
+  - component: {fileID: 665278861622825626}
   m_Layer: 6
-  m_Name: Player_Entity
-  m_TagString: Untagged
+  m_Name: Player_AI_Entity
+  m_TagString: PlayerAI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -480,7 +480,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.9019682, y: 1.7599919}
   m_EdgeRadius: 0
---- !u!114 &4675065555169879133
+--- !u!114 &1305275436992131240
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -489,7 +489,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7445741094739855867}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c774d64e4e14712bb6137af491d041b, type: 3}
+  m_Script: {fileID: 11500000, guid: 48fe89e5e5f240d4984d3e6058db9f0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &884444713857156597
@@ -534,7 +534,7 @@ MonoBehaviour:
   m_layerMask:
     serializedVersion: 2
     m_Bits: 896
---- !u!114 &-3316537914835759857
+--- !u!114 &665278861622825626
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -543,7 +543,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7445741094739855867}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78cf0735541e42b089dde3bf43da0a38, type: 3}
+  m_Script: {fileID: 11500000, guid: 88a52cfea3fb4e98a9fc334c317d4c01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8691291834787693977

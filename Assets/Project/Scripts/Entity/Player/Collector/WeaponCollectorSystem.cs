@@ -1,39 +1,42 @@
-﻿using Project.Scripts.Collisions;
-using Project.Scripts.Entity.Player.Combat;
-using Project.Scripts.Entity.Sword;
-using Project.Scripts.Utility;
+﻿using System;
+using Project.Scripts.Collisions;
+using Project.Scripts.Entity.Weapon;
 using UnityEngine;
 
 namespace Project.Scripts.Entity.Player.Collector
 {
-    public class WeaponCollectorSystem : MonoBehaviour
+    public class WeaponCollectorSystem
     {
-        [SerializeField] private LayerMask m_layerMask;
-        private CombatSystem m_combatSystem;
-        private CollisionBroadcaster2D m_collisionBroadcaster2D;
-
-        private void Awake()
+        private readonly CollisionBroadcaster2D m_collisionBroadcaster2D;
+        public event Action OnWeaponCollected;
+        
+        public WeaponCollectorSystem(CollisionBroadcaster2D collisionBroadcaster2D)
         {
-            Initialize();
+            m_collisionBroadcaster2D = collisionBroadcaster2D;
+        }
+        
+        public void Enable()
+        {
+            m_collisionBroadcaster2D.OnTriggerEnter2DEvent += OnTriggerEntered;
         }
 
-        private void Initialize()
+        public void Disable()
         {
-            m_combatSystem = GetComponent<CombatSystem>();
-            m_collisionBroadcaster2D = GetComponent<CollisionBroadcaster2D>();
-            m_collisionBroadcaster2D.OnTriggerEnter2DEvent += OnTriggerEntered;
+            m_collisionBroadcaster2D.OnTriggerEnter2DEvent -= OnTriggerEntered;
         }
 
         private void OnTriggerEntered(Collider2D obj)
         {
-            if (!m_layerMask.Contains(obj.gameObject.layer)) return;
-            OnCollected(obj.GetComponent<ICollectable>());
+            if (obj.TryGetComponent(out ICollectable collectable) && obj.gameObject.activeSelf)
+            {
+                Collect(collectable);
+            }
         }
 
-        private void OnCollected(ICollectable collectable)
+        private void Collect(ICollectable collectable)
         {
             collectable.Collect();
-            m_combatSystem.AddWeapon();
+            OnWeaponCollected?.Invoke();
         }
     }
 }

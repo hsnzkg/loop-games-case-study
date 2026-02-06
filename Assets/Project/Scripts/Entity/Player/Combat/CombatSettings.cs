@@ -1,4 +1,4 @@
-﻿using Project.Scripts.Entity.Sword;
+﻿using Project.Scripts.Entity.Weapon;
 using UnityEngine;
 
 namespace Project.Scripts.Entity.Player.Combat

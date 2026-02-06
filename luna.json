@@ -8471,10 +8471,6 @@
                 "excluded": true
             },
             {
-                "name": "Project.Scripts.Entity.Sword.ICollectable",
-                "excluded": false
-            },
-            {
                 "name": "Project.Scripts.Input.IInputReceiver",
                 "excluded": false
             },
@@ -8496,6 +8492,26 @@
             },
             {
                 "name": "Project.Thirdparty.Joystick_Pack.Scripts.Base.AxisOptions",
+                "excluded": false
+            },
+            {
+                "name": "Project.Scripts.Entity.Player.Combat.CombatSettings",
+                "excluded": false
+            },
+            {
+                "name": "Project.Scripts.Entity.Player.Combat.IDamageable",
+                "excluded": false
+            },
+            {
+                "name": "Project.Scripts.Entity.Player.Movement.IInputProvider",
+                "excluded": false
+            },
+            {
+                "name": "Project.Scripts.Entity.Weapon.ICollectable",
+                "excluded": false
+            },
+            {
+                "name": "Project.Scripts.Entity.PlayerAI.PlayerAIEntity",
                 "excluded": false
             }
         ],
@@ -18810,7 +18826,7 @@
                     },
                     {
                         "name": "SetParent",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "DetachChildren",
@@ -25941,10 +25957,6 @@
                         "excluded": false
                     },
                     {
-                        "name": "init",
-                        "excluded": false
-                    },
-                    {
                         "name": "OnDrawGizmos",
                         "excluded": true
                     },
@@ -25967,14 +25979,6 @@
                     {
                         "name": "OnDestroyWeapon",
                         "excluded": false
-                    },
-                    {
-                        "name": "CheckCollisionForWeapon",
-                        "excluded": false
-                    },
-                    {
-                        "name": "IsOur",
-                        "excluded": true
                     },
                     {
                         "name": "SnapWeaponParent",
@@ -26005,6 +26009,10 @@
                     {
                         "name": "Initialize",
                         "excluded": false
+                    },
+                    {
+                        "name": "FetchComponents",
+                        "excluded": false
                     }
                 ]
             },
@@ -26019,6 +26027,22 @@
                     {
                         "name": "FetchComponents",
                         "excluded": false
+                    },
+                    {
+                        "name": "Awake",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnEnable",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnDisable",
+                        "excluded": true
+                    },
+                    {
+                        "name": "OnDamage",
+                        "excluded": true
                     }
                 ]
             },
@@ -26604,7 +26628,7 @@
                     },
                     {
                         "name": "OnTriggerStay2D",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "OnTriggerExit2D",
@@ -26617,60 +26641,24 @@
                 "staticMethods": [],
                 "instanceMethods": [
                     {
-                        "name": "init",
-                        "excluded": false
-                    },
-                    {
-                        "name": "Awake",
-                        "excluded": false
-                    },
-                    {
-                        "name": "Initialize",
-                        "excluded": false
-                    },
-                    {
                         "name": "OnTriggerEntered",
                         "excluded": false
                     },
                     {
-                        "name": "OnCollected",
-                        "excluded": false
-                    }
-                ]
-            },
-            {
-                "className": "Project.Scripts.Entity.Player.Combat.CombatSettings",
-                "staticMethods": [],
-                "instanceMethods": [
-                    {
-                        "name": "init",
-                        "excluded": false
-                    }
-                ]
-            },
-            {
-                "className": "Project.Scripts.Entity.Sword.WeaponEntity",
-                "staticMethods": [],
-                "instanceMethods": [
-                    {
-                        "name": "FetchComponents",
+                        "name": "ctor",
                         "excluded": false
                     },
                     {
-                        "name": "Initialize",
+                        "name": "Enable",
                         "excluded": false
                     },
                     {
-                        "name": "GetCollider",
-                        "excluded": false
-                    },
-                    {
-                        "name": "OnSpawned",
-                        "excluded": false
-                    },
-                    {
-                        "name": "Free",
+                        "name": "Disable",
                         "excluded": true
+                    },
+                    {
+                        "name": "Collect",
+                        "excluded": false
                     }
                 ]
             },
@@ -27091,24 +27079,6 @@
                 ]
             },
             {
-                "className": "Project.Scripts.Entity.Sword.WeaponCollectableEntity",
-                "staticMethods": [],
-                "instanceMethods": [
-                    {
-                        "name": "Initialize",
-                        "excluded": false
-                    },
-                    {
-                        "name": "OnSpawned",
-                        "excluded": false
-                    },
-                    {
-                        "name": "Collect",
-                        "excluded": false
-                    }
-                ]
-            },
-            {
                 "className": "Project.Scripts.GameState.States.InGame",
                 "staticMethods": [],
                 "instanceMethods": [
@@ -27287,6 +27257,98 @@
                     {
                         "name": "$clone",
                         "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.Player.Movement.PlayerInputProvider",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "GetInput",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetHasInput",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.PlayerAI.Movement.AIInputProvider",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "GetInput",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetHasInput",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.Weapon.WeaponCollectableEntity",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Initialize",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnSpawned",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Collect",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.Weapon.WeaponEntity",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "FetchComponents",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Initialize",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetCollider",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnSpawned",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnDespawned",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnDestroyed",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Free",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnTriggerEvent",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Control",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnDamage",
+                        "excluded": false
                     }
                 ]
             }

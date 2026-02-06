@@ -5,8 +5,8 @@ namespace Project.Scripts.Pool
 {
     public class ObjectPool<T> : IDisposable, IPool, IObjectPool<T> where T : class
     {
-        internal readonly List<T> List;
-        internal readonly bool CollectionCheck;
+        private readonly List<T> List;
+        private readonly bool CollectionCheck;
         private readonly Func<T> m_CreateFunc;
         private readonly Action<T> m_ActionOnGet;
         private readonly Action<T> m_ActionOnRelease;

@@ -1,4 +1,4 @@
-﻿using Project.Scripts.Entity.Sword;
+﻿using Project.Scripts.Entity.Weapon;
 using Project.Scripts.Level.Settings;
 using Project.Scripts.Pool;
 using UnityEngine;
@@ -33,7 +33,7 @@ namespace Project.Scripts.Spawning.Spawners
         {
             CalculateSpawnArea();
 
-            m_pool = new Pool.ObjectPool<WeaponCollectableEntity>(
+            m_pool = new ObjectPool<WeaponCollectableEntity>(
                 CreateInstance,
                 OnGetFromPool,
                 OnReleaseToPool,

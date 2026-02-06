@@ -1,7 +1,7 @@
 ﻿using Project.Scripts.Pool;
 using UnityEngine;
 
-namespace Project.Scripts.Entity.Sword
+namespace Project.Scripts.Entity.Weapon
 {
     public class WeaponCollectableEntity : MonoBehaviour, ICollectable
     {
