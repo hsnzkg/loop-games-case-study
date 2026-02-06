@@ -4,21 +4,21 @@ namespace Project.Scripts.Pool
 {
     internal static class PoolManager
     {
-        private static readonly List<IPool> s_Pools = new List<IPool>();
+        private static readonly List<IPool> s_pools = new List<IPool>();
 
         public static void Reset()
         {
-            for (int i = 0; i < s_Pools.Count; i++)
+            for (int i = 0; i < s_pools.Count; i++)
             {
-                s_Pools[i].Clear();
+                s_pools[i].Clear();
             }
         }
 
         public static void Register(IPool pool)
         {
-            if (!s_Pools.Contains(pool))
+            if (!s_pools.Contains(pool))
             {
-                s_Pools.Add(pool);
+                s_pools.Add(pool);
             }
         }
     }

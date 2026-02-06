@@ -6,21 +6,21 @@ namespace Project.Scripts.EventBus.Examples
 {
     public class ExampleReceiver : MonoBehaviour
     {
-        private EventBind<EExampleEvent> _ebExample;
+        private EventBind<EExampleEvent> m_ebExample;
 
         private void Awake()
         {
-            _ebExample = new EventBind<EExampleEvent>(OnUpdate);
+            m_ebExample = new EventBind<EExampleEvent>(OnUpdate);
         }
 
         private void OnEnable()
         {
-            EventBus<EExampleEvent>.Register(_ebExample);
+            EventBus<EExampleEvent>.Register(m_ebExample);
         }
         
         private void OnDisable()
         {
-            EventBus<EExampleEvent>.Unregister(_ebExample);
+            EventBus<EExampleEvent>.Unregister(m_ebExample);
         }
 
         private void OnUpdate(EExampleEvent e)

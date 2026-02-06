@@ -43,12 +43,12 @@ namespace Project.Scripts.Pool
             int defaultCapacity = 10,
             int maxSize = 10000)
         {
-            if (createFunc == null)
-                throw new ArgumentNullException(nameof (createFunc));
             if (maxSize <= 0)
+            {
                 throw new ArgumentException("Max Size must be greater than 0", nameof (maxSize));
+            }
             List = new List<T>(defaultCapacity);
-            m_CreateFunc = createFunc;
+            m_CreateFunc = createFunc ?? throw new ArgumentNullException(nameof (createFunc));
             m_MaxSize = maxSize;
             m_ActionOnGet = actionOnGet;
             m_ActionOnRelease = actionOnRelease;

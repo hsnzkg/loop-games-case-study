@@ -190,7 +190,7 @@ PolygonCollider2D:
       - {x: -0.285, y: -0.445}
       - {x: 0.145, y: -0.45499998}
       - {x: 0.355, y: -0.435}
-  m_UseDelaunayMesh: 0
+  m_UseDelaunayMesh: 1
 --- !u!114 &2738837315715780190
 MonoBehaviour:
   m_ObjectHideFlags: 0

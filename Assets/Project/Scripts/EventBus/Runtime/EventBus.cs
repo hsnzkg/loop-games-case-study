@@ -6,23 +6,23 @@ namespace Project.Scripts.EventBus.Runtime
 {
     public static class EventBus<T> where T : IEvent
     {
-        private static readonly List<EventBind<T>> _bindings = new List<EventBind<T>>();
-        private static readonly HashSet<EventBind<T>> _pendingAdds = new HashSet<EventBind<T>>();
-        private static readonly HashSet<EventBind<T>> _pendingRemovals = new HashSet<EventBind<T>>();
+        private static readonly List<EventBind<T>> s_bindings = new List<EventBind<T>>();
+        private static readonly HashSet<EventBind<T>> s_pendingAdds = new HashSet<EventBind<T>>();
+        private static readonly HashSet<EventBind<T>> s_pendingRemovals = new HashSet<EventBind<T>>();
 
-        private static PendingFlags _pendingFlags;
-        private static int _raiseDepth;
-        private static int _count;
+        private static PendingFlags s_pendingFlags;
+        private static int s_raiseDepth;
+        private static int s_count;
 
         public static void Register(EventBind<T> bind)
         {
             if (bind == null) return;
 
-            if (_raiseDepth > 0)
+            if (s_raiseDepth > 0)
             {
-                _pendingAdds.Add(bind);
-                _pendingRemovals.Remove(bind);
-                _pendingFlags |= PendingFlags.HAS_ADDS;
+                s_pendingAdds.Add(bind);
+                s_pendingRemovals.Remove(bind);
+                s_pendingFlags |= PendingFlags.HAS_ADDS;
                 return;
             }
 
@@ -33,11 +33,11 @@ namespace Project.Scripts.EventBus.Runtime
         {
             if (bind == null) return;
 
-            if (_raiseDepth > 0)
+            if (s_raiseDepth > 0)
             {
-                _pendingRemovals.Add(bind);
-                _pendingAdds.Remove(bind);
-                _pendingFlags |= PendingFlags.HAS_REMOVALS;
+                s_pendingRemovals.Add(bind);
+                s_pendingAdds.Remove(bind);
+                s_pendingFlags |= PendingFlags.HAS_REMOVALS;
                 return;
             }
 
@@ -46,30 +46,30 @@ namespace Project.Scripts.EventBus.Runtime
 
         private static void RegisterImmediate(EventBind<T> bind)
         {
-            if (_bindings.Contains(bind))
+            if (s_bindings.Contains(bind))
             {
                 Debug.LogWarning("[EventBus] Same bind registered twice.");
                 return;
             }
 
-            int index = _bindings.FindIndex(b => b.GetPriority().CompareTo(bind.GetPriority()) > 0);
+            int index = s_bindings.FindIndex(b => b.GetPriority().CompareTo(bind.GetPriority()) > 0);
 
             if (index >= 0)
             {
-                _bindings.Insert(index, bind);
+                s_bindings.Insert(index, bind);
             }
             else
             {
-                _bindings.Add(bind);
+                s_bindings.Add(bind);
             }
 
-            _count++;
+            s_count++;
         }
 
         private static void UnregisterImmediate(EventBind<T> bind)
         {
-            _bindings.Remove(bind);
-            _count--;
+            s_bindings.Remove(bind);
+            s_count--;
         }
 
         public static void Raise(T @event)
@@ -80,22 +80,22 @@ namespace Project.Scripts.EventBus.Runtime
                 return;
             }
 
-            _raiseDepth++;
-            for (int i = 0; i < _count; i++)
+            s_raiseDepth++;
+            for (int i = 0; i < s_count; i++)
             {
                 try
                 {
-                    _bindings[i].Invoke(@event);
+                    s_bindings[i].Invoke(@event);
                 }
                 catch (Exception e)
                 {
-                    Debug.LogError($"Error invoking event handler -> Bind : {_bindings[i].GetType().Name}\n{e}");
+                    Debug.LogError($"Error invoking event handler -> Bind : {s_bindings[i].GetType().Name}\n{e}");
                 }
             }
 
-            _raiseDepth--;
+            s_raiseDepth--;
 
-            if (_raiseDepth == 0)
+            if (s_raiseDepth == 0)
             {
                 FlushPending();
             }
@@ -103,36 +103,36 @@ namespace Project.Scripts.EventBus.Runtime
 
         private static void FlushPending()
         {
-            if ((_pendingFlags & PendingFlags.HAS_REMOVALS) != 0)
+            if ((s_pendingFlags & PendingFlags.HAS_REMOVALS) != 0)
             {
-                foreach (EventBind<T> bind in _pendingRemovals)
+                foreach (EventBind<T> bind in s_pendingRemovals)
                 {
                     UnregisterImmediate(bind);
                 }
 
-                _pendingRemovals.Clear();
-                _pendingFlags &= ~PendingFlags.HAS_REMOVALS;
+                s_pendingRemovals.Clear();
+                s_pendingFlags &= ~PendingFlags.HAS_REMOVALS;
             }
 
-            if ((_pendingFlags & PendingFlags.HAS_ADDS) == 0) return;
+            if ((s_pendingFlags & PendingFlags.HAS_ADDS) == 0) return;
             {
-                foreach (EventBind<T> bind in _pendingAdds)
+                foreach (EventBind<T> bind in s_pendingAdds)
                 {
                     RegisterImmediate(bind);
                 }
 
-                _pendingAdds.Clear();
-                _pendingFlags &= ~PendingFlags.HAS_ADDS;
+                s_pendingAdds.Clear();
+                s_pendingFlags &= ~PendingFlags.HAS_ADDS;
             }
         }
 
         public static void Dispose()
         {
-            _bindings.Clear();
-            _pendingAdds.Clear();
-            _pendingRemovals.Clear();
-            _raiseDepth = 0;
-            _pendingFlags = PendingFlags.NONE;
+            s_bindings.Clear();
+            s_pendingAdds.Clear();
+            s_pendingRemovals.Clear();
+            s_raiseDepth = 0;
+            s_pendingFlags = PendingFlags.NONE;
 
             Debug.Log($"[EventBus] Cleared bindings for {typeof(T).Name}");
         }

@@ -1,7 +1,7 @@
 ﻿namespace Project.Scripts.Entity.Sword
 {
-    public interface ICollectable
+    interface ICollectable
     {
-        public void Collect();
+        void Collect();
     }
 }

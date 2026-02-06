@@ -9,7 +9,6 @@ namespace Project.Scripts.Entity.Player.Combat
     {
         [SerializeField] private CombatSettings m_combatSettings;
         [SerializeField] private Transform m_root;
-        [SerializeField] private int m_maxCollisionCount = 64;
 
         private Transform m_weaponParent;
         private Collider2D m_playerCol;
@@ -17,43 +16,54 @@ namespace Project.Scripts.Entity.Player.Combat
         private WeaponEntity[] m_weapons;
         private int m_weaponCount;
 
-        private Collider2D[] m_collisionBuffer;
-        private ContactFilter2D m_filter;
-
         private ObjectPool<WeaponEntity> m_weaponPool;
 
         private void Update()
         {
             SnapWeaponParent();
 
-            if (m_weaponCount <= 0)
-                return;
+            if (m_weaponCount <= 0) return;
 
             Cycle();
 
             for (int i = 0; i < m_weaponCount; i++)
             {
                 ArrangeSmooth(m_weapons[i].transform, i);
-                CheckCollisionForWeapon(i);
             }
+        }
+
+        private void OnDrawGizmos()
+        {
+            if (!Application.isPlaying)
+                return;
+
+            Gizmos.color = Color.red;
+
+            for (int i = 0; i < m_weaponCount; i++)
+            {
+                DrawWeaponOverlapGizmo(m_weapons[i]);
+            }
+        }
+
+        private void DrawWeaponOverlapGizmo(WeaponEntity weapon)
+        {
+            Collider2D col = weapon.GetCollider();
+            Transform t = weapon.transform;
+            Vector2 center = t.TransformPoint(col.offset);
+            Vector2 size = col.bounds.size;
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(center, 0.25f);
+            Gizmos.DrawWireCube(center, size);
         }
 
         public void Initialize()
         {
-            m_collisionBuffer = new Collider2D[m_maxCollisionCount];
-
-            m_filter = new ContactFilter2D
-            {
-                useTriggers = true,
-            };
-            m_filter.SetLayerMask(m_combatSettings.CombatLayer);
-
             m_weaponParent = new GameObject($"Weapon_Parent_{GetInstanceID()}").transform;
-
+            m_weaponParent.SetParent(m_root);
             m_playerCol = GetComponent<Collider2D>();
             m_weapons = new WeaponEntity[m_combatSettings.MaxWeaponCount];
 
-            m_weaponPool = new Pool.ObjectPool<WeaponEntity>(
+            m_weaponPool = new ObjectPool<WeaponEntity>(
                 CreateWeapon,
                 OnGetWeapon,
                 OnReleaseWeapon,
@@ -87,11 +97,13 @@ namespace Project.Scripts.Entity.Player.Combat
 
         private void OnReleaseWeapon(WeaponEntity weapon)
         {
+            weapon.OnDespawned();
             weapon.gameObject.SetActive(false);
         }
 
         private void OnDestroyWeapon(WeaponEntity weapon)
         {
+            weapon.OnDestroyed();
             Destroy(weapon.gameObject);
         }
 
@@ -100,7 +112,9 @@ namespace Project.Scripts.Entity.Player.Combat
         public void AddWeapon()
         {
             if (m_weaponCount >= m_combatSettings.MaxWeaponCount)
+            {
                 return;
+            }
 
             WeaponEntity weapon = m_weaponPool.Get();
 
@@ -111,32 +125,22 @@ namespace Project.Scripts.Entity.Player.Combat
             ArrangeInstant(weapon.transform, index);
         }
 
-        private void CheckCollisionForWeapon(int index)
+        private void HandleWeaponCollision(WeaponEntity weaponEntity, IDamageable damageable)
         {
-            Array.Clear(m_collisionBuffer, 0, m_collisionBuffer.Length);
-            WeaponEntity weapon = m_weapons[index];
-            Collider2D col = weapon.GetCollider();
-
-            int count = Physics2D.OverlapCollider(col, m_filter, m_collisionBuffer);
-            if (count == 0) return;
-            for (int i = 0; i < m_maxCollisionCount; i++)
+            if (damageable is WeaponEntity damageableWeapon)
             {
-                Collider2D resultCol = m_collisionBuffer[i];
-                
-                if(resultCol == null)continue;
-                if (IsOur(resultCol.transform)) continue;
-                
+                int index = Array.FindIndex(
+                    m_weapons,
+                    0,
+                    m_weaponCount,
+                    a => a == weaponEntity
+                );
+
                 m_weaponCount--;
                 m_weapons[index] = m_weapons[m_weaponCount];
                 m_weapons[m_weaponCount] = null;
-                m_weaponPool.Release(weapon);
-                break;
+                m_weaponPool.Release(damageableWeapon);
             }
-        }
-
-        private bool IsOur(Transform t)
-        {
-            return t.IsChildOf(m_weaponParent);
         }
 
         private void SetCollisionLayers(WeaponEntity weapon)

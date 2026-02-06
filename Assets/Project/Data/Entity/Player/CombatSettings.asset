@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CombatLayer:
     serializedVersion: 2
-    m_Bits: 640
+    m_Bits: 641
   WeaponPrefab: {fileID: 2738837315715780190, guid: 5f828bab3dde1954090cfe31f95c74ea, type: 3}
   StartWeaponCount: 0
   MaxWeaponCount: 55
   CycleSpeed: 270
-  ArrangeTranslationSpeed: 20
-  ArrangeRotationSpeed: 20
+  ArrangeTranslationSpeed: 40
+  ArrangeRotationSpeed: 40
   CenterDistance: 1.5

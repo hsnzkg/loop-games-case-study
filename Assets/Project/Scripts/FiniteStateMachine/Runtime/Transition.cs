@@ -1,16 +1,16 @@
 namespace Project.Scripts.FiniteStateMachine.Runtime
 {
-    public struct Transition : ITransition
+    public readonly struct Transition : ITransition
     {
         private readonly StateBase m_to;
         private readonly IPredicate m_condition;
 
-        public readonly StateBase GetTo()
+        public StateBase GetTo()
         {
             return m_to;
         }
 
-        public readonly IPredicate GetCondition()
+        public IPredicate GetCondition()
         {
             return m_condition;
         }

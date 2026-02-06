@@ -104,6 +104,8 @@ namespace Project.Thirdparty.Joystick_Pack.Scripts.Base
 
         public virtual void OnPointerDown(PointerEventData eventData)
         {
+            input = Vector2.zero;
+            joystickHandle.anchoredPosition = Vector2.zero;
             OnDrag(eventData);
         }
 

@@ -2,7 +2,7 @@
     "version": "6.4.0",
     "projectId": "1f1a6f207d324da40a08ca88dc77c027",
     "applicationID": 36531,
-    "creativeName": "Test",
+    "creativeName": "Test2",
     "pgServer": "EU",
     "window": {
         "‐′": true
@@ -1579,14 +1579,6 @@
                 "excluded": true
             },
             {
-                "name": "UnityEngine.ContactFilter2D",
-                "excluded": true
-            },
-            {
-                "name": "UnityEngine.ContactPoint2D",
-                "excluded": true
-            },
-            {
                 "name": "UnityEngine.ContextMenu",
                 "excluded": true
             },
@@ -2420,10 +2412,6 @@
             },
             {
                 "name": "UnityEngine.CharacterJoint",
-                "excluded": true
-            },
-            {
-                "name": "UnityEngine.CircleCollider2D",
                 "excluded": true
             },
             {
@@ -8379,23 +8367,7 @@
                 "excluded": false
             },
             {
-                "name": "JoystickPlayerExample",
-                "excluded": true
-            },
-            {
-                "name": "JoystickSetterExample",
-                "excluded": true
-            },
-            {
-                "name": "FloatingJoystick",
-                "excluded": true
-            },
-            {
                 "name": "Project.Scripts.Bootstrap.GameBootstrapper",
-                "excluded": true
-            },
-            {
-                "name": "VariableJoystick",
                 "excluded": true
             },
             {
@@ -8403,39 +8375,11 @@
                 "excluded": true
             },
             {
-                "name": "JoystickType",
-                "excluded": true
-            },
-            {
-                "name": "FixedJoystick",
-                "excluded": true
-            },
-            {
-                "name": "AxisOptions",
-                "excluded": false
-            },
-            {
                 "name": "Project.Scripts.Bootstrap.IBootstrapper",
                 "excluded": false
             },
             {
-                "name": "Project.Scripts.Entity.Player.Combat.CombatSettings",
-                "excluded": false
-            },
-            {
                 "name": "Project.Scripts.Entity.Player.Movement.MovementSettings",
-                "excluded": false
-            },
-            {
-                "name": "Project.Scripts.InputManagement.IInputReceiver",
-                "excluded": false
-            },
-            {
-                "name": "Project.Scripts.LevelManagement.Settings.FenceSettings",
-                "excluded": false
-            },
-            {
-                "name": "Project.Scripts.LevelManagement.Settings.GroundSettings",
                 "excluded": false
             },
             {
@@ -8500,6 +8444,58 @@
             },
             {
                 "name": "Project.Scripts.EventBus.Runtime.EventBus$1.PendingFlags",
+                "excluded": false
+            },
+            {
+                "name": "Project.Thirdparty.Joystick_Pack.Examples.JoystickPlayerExample",
+                "excluded": true
+            },
+            {
+                "name": "Project.Thirdparty.Joystick_Pack.Examples.JoystickSetterExample",
+                "excluded": true
+            },
+            {
+                "name": "Project.Thirdparty.Joystick_Pack.Scripts.Joysticks.FloatingJoystick",
+                "excluded": true
+            },
+            {
+                "name": "Project.Thirdparty.Joystick_Pack.Scripts.Joysticks.VariableJoystick",
+                "excluded": true
+            },
+            {
+                "name": "Project.Thirdparty.Joystick_Pack.Scripts.Joysticks.JoystickType",
+                "excluded": true
+            },
+            {
+                "name": "Project.Thirdparty.Joystick_Pack.Scripts.Joysticks.FixedJoystick",
+                "excluded": true
+            },
+            {
+                "name": "Project.Scripts.Entity.Sword.ICollectable",
+                "excluded": false
+            },
+            {
+                "name": "Project.Scripts.Input.IInputReceiver",
+                "excluded": false
+            },
+            {
+                "name": "Project.Scripts.Level.Settings.FenceSettings",
+                "excluded": false
+            },
+            {
+                "name": "Project.Scripts.Level.Settings.GroundSettings",
+                "excluded": false
+            },
+            {
+                "name": "Project.Scripts.Pool.IObjectPool$1",
+                "excluded": false
+            },
+            {
+                "name": "Project.Scripts.Pool.IPool",
+                "excluded": false
+            },
+            {
+                "name": "Project.Thirdparty.Joystick_Pack.Scripts.Base.AxisOptions",
                 "excluded": false
             }
         ],
@@ -18578,7 +18574,7 @@
                     },
                     {
                         "name": "handle#set",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "parent#get",
@@ -18870,7 +18866,7 @@
                     },
                     {
                         "name": "SetPositionAndRotation",
-                        "excluded": true
+                        "excluded": false
                     }
                 ]
             },
@@ -24884,7 +24880,7 @@
                     },
                     {
                         "name": "Range$1",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "Range",
@@ -25028,7 +25024,7 @@
                     },
                     {
                         "name": "OverlapCollider",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "GetContacts$2",
@@ -25040,7 +25036,7 @@
                     },
                     {
                         "name": "GetContacts$3",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "GetContacts$1",
@@ -25802,7 +25798,7 @@
                 "instanceMethods": [
                     {
                         "name": "Write",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "WriteLine",
@@ -25873,100 +25869,6 @@
                 ]
             },
             {
-                "className": "Joystick",
-                "staticMethods": [],
-                "instanceMethods": [
-                    {
-                        "name": "init",
-                        "excluded": false
-                    },
-                    {
-                        "name": "GetHorizontal",
-                        "excluded": false
-                    },
-                    {
-                        "name": "GetVertical",
-                        "excluded": false
-                    },
-                    {
-                        "name": "GetDirection",
-                        "excluded": false
-                    },
-                    {
-                        "name": "GetHandleRange",
-                        "excluded": true
-                    },
-                    {
-                        "name": "SetHandleRange",
-                        "excluded": false
-                    },
-                    {
-                        "name": "GetDeadZone",
-                        "excluded": true
-                    },
-                    {
-                        "name": "SetDeadZone",
-                        "excluded": false
-                    },
-                    {
-                        "name": "GetAxisOptions",
-                        "excluded": true
-                    },
-                    {
-                        "name": "SetAxisOptions",
-                        "excluded": true
-                    },
-                    {
-                        "name": "GetSnapX",
-                        "excluded": true
-                    },
-                    {
-                        "name": "SetSnapX",
-                        "excluded": true
-                    },
-                    {
-                        "name": "GetSnapY",
-                        "excluded": true
-                    },
-                    {
-                        "name": "SetSnapY",
-                        "excluded": true
-                    },
-                    {
-                        "name": "Start",
-                        "excluded": false
-                    },
-                    {
-                        "name": "OnPointerDown",
-                        "excluded": false
-                    },
-                    {
-                        "name": "OnDrag",
-                        "excluded": false
-                    },
-                    {
-                        "name": "HandleInput",
-                        "excluded": false
-                    },
-                    {
-                        "name": "FormatInput",
-                        "excluded": false
-                    },
-                    {
-                        "name": "SnapFloat",
-                        "excluded": true
-                    },
-                    {
-                        "name": "OnPointerUp",
-                        "excluded": false
-                    },
-                    {
-                        "name": "ScreenPointToAnchoredPosition",
-                        "excluded": false
-                    }
-                ]
-            },
-            {
                 "className": "Project.Scripts.Bootstrap.Bootstrapper",
                 "staticMethods": [],
                 "instanceMethods": [
@@ -25993,68 +25895,6 @@
                 ]
             },
             {
-                "className": "Project.Scripts.CameraManagement.CameraManager",
-                "staticMethods": [],
-                "instanceMethods": [
-                    {
-                        "name": "Initialize",
-                        "excluded": false
-                    },
-                    {
-                        "name": "FetchComponents",
-                        "excluded": false
-                    },
-                    {
-                        "name": "SetTarget",
-                        "excluded": false
-                    }
-                ]
-            },
-            {
-                "className": "Project.Scripts.CameraManagement.CameraSettings",
-                "staticMethods": [],
-                "instanceMethods": [
-                    {
-                        "name": "init",
-                        "excluded": false
-                    }
-                ]
-            },
-            {
-                "className": "Project.Scripts.CollisionManagement.CollisionBroadcaster2D",
-                "staticMethods": [],
-                "instanceMethods": [
-                    {
-                        "name": "init",
-                        "excluded": false
-                    },
-                    {
-                        "name": "OnCollisionEnter2D",
-                        "excluded": false
-                    },
-                    {
-                        "name": "OnCollisionStay2D",
-                        "excluded": false
-                    },
-                    {
-                        "name": "OnCollisionExit2D",
-                        "excluded": false
-                    },
-                    {
-                        "name": "OnTriggerEnter2D",
-                        "excluded": true
-                    },
-                    {
-                        "name": "OnTriggerStay2D",
-                        "excluded": true
-                    },
-                    {
-                        "name": "OnTriggerExit2D",
-                        "excluded": true
-                    }
-                ]
-            },
-            {
                 "className": "Project.Scripts.Constants.StoreConstants",
                 "staticMethods": [],
                 "instanceMethods": [
@@ -26068,10 +25908,6 @@
                 "className": "Project.Scripts.Entity.Player.Combat.CombatSystem",
                 "staticMethods": [],
                 "instanceMethods": [
-                    {
-                        "name": "Awake",
-                        "excluded": false
-                    },
                     {
                         "name": "Update",
                         "excluded": false
@@ -26089,10 +25925,6 @@
                         "excluded": false
                     },
                     {
-                        "name": "OnWeaponCollision",
-                        "excluded": false
-                    },
-                    {
                         "name": "GetDesiredTransform",
                         "excluded": false
                     },
@@ -26107,6 +25939,50 @@
                     {
                         "name": "Cycle",
                         "excluded": false
+                    },
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnDrawGizmos",
+                        "excluded": true
+                    },
+                    {
+                        "name": "DrawWeaponOverlapGizmo",
+                        "excluded": true
+                    },
+                    {
+                        "name": "CreateWeapon",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnGetWeapon",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnReleaseWeapon",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnDestroyWeapon",
+                        "excluded": false
+                    },
+                    {
+                        "name": "CheckCollisionForWeapon",
+                        "excluded": false
+                    },
+                    {
+                        "name": "IsOur",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SnapWeaponParent",
+                        "excluded": false
+                    },
+                    {
+                        "name": "CanSpawn",
+                        "excluded": true
                     }
                 ]
             },
@@ -26119,15 +25995,15 @@
                         "excluded": false
                     },
                     {
-                        "name": "Awake",
-                        "excluded": false
-                    },
-                    {
                         "name": "FixedUpdate",
                         "excluded": false
                     },
                     {
                         "name": "HandleMovement",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Initialize",
                         "excluded": false
                     }
                 ]
@@ -26138,36 +26014,10 @@
                 "instanceMethods": [
                     {
                         "name": "Initialize",
-                        "excluded": true
-                    },
-                    {
-                        "name": "FetchComponents",
-                        "excluded": true
-                    }
-                ]
-            },
-            {
-                "className": "Project.Scripts.Entity.Sword.SwordEntity",
-                "staticMethods": [],
-                "instanceMethods": [
-                    {
-                        "name": "Awake",
                         "excluded": false
                     },
                     {
                         "name": "FetchComponents",
-                        "excluded": false
-                    },
-                    {
-                        "name": "Initialize",
-                        "excluded": false
-                    },
-                    {
-                        "name": "GetCollider",
-                        "excluded": false
-                    },
-                    {
-                        "name": "OnCollisionEntered",
                         "excluded": false
                     }
                 ]
@@ -26181,183 +26031,7 @@
                         "excluded": false
                     },
                     {
-                        "name": "Enable",
-                        "excluded": true
-                    },
-                    {
-                        "name": "Disable",
-                        "excluded": true
-                    },
-                    {
                         "name": "FetchComponents",
-                        "excluded": false
-                    }
-                ]
-            },
-            {
-                "className": "Project.Scripts.GameStateManagement.GameStateManager",
-                "staticMethods": [],
-                "instanceMethods": [
-                    {
-                        "name": "Initialize",
-                        "excluded": false
-                    },
-                    {
-                        "name": "RequestStateChange",
-                        "excluded": false
-                    }
-                ]
-            },
-            {
-                "className": "Project.Scripts.InputManagement.InputManager",
-                "staticMethods": [],
-                "instanceMethods": [
-                    {
-                        "name": "Initialize",
-                        "excluded": false
-                    },
-                    {
-                        "name": "GetData",
-                        "excluded": false
-                    },
-                    {
-                        "name": "Enable",
-                        "excluded": false
-                    },
-                    {
-                        "name": "Disable",
-                        "excluded": true
-                    },
-                    {
-                        "name": "Dispose",
-                        "excluded": true
-                    }
-                ]
-            },
-            {
-                "className": "Project.Scripts.InputManagement.PlayerInputData",
-                "staticMethods": [],
-                "instanceMethods": [
-                    {
-                        "name": "init",
-                        "excluded": false
-                    },
-                    {
-                        "name": "GetMovementInputAxisVec2Raw",
-                        "excluded": true
-                    },
-                    {
-                        "name": "SetMovementInputAxisVec2Raw",
-                        "excluded": false
-                    },
-                    {
-                        "name": "GetMovementInputAxisVec2",
-                        "excluded": false
-                    },
-                    {
-                        "name": "GetMovementInputAxisVec3",
-                        "excluded": true
-                    },
-                    {
-                        "name": "GetHasMovementInput",
-                        "excluded": false
-                    },
-                    {
-                        "name": "Reset",
-                        "excluded": false
-                    },
-                    {
-                        "name": "Dispose",
-                        "excluded": true
-                    }
-                ]
-            },
-            {
-                "className": "Project.Scripts.LevelManagement.GroundTile",
-                "staticMethods": [],
-                "instanceMethods": [
-                    {
-                        "name": "getDefaultValue",
-                        "excluded": true
-                    },
-                    {
-                        "name": "ctor",
-                        "excluded": false
-                    },
-                    {
-                        "name": "getHashCode",
-                        "excluded": true
-                    },
-                    {
-                        "name": "equals",
-                        "excluded": true
-                    },
-                    {
-                        "name": "$clone",
-                        "excluded": false
-                    }
-                ]
-            },
-            {
-                "className": "Project.Scripts.LevelManagement.LevelManager",
-                "staticMethods": [],
-                "instanceMethods": [
-                    {
-                        "name": "Generate",
-                        "excluded": false
-                    },
-                    {
-                        "name": "GenerateGround",
-                        "excluded": false
-                    },
-                    {
-                        "name": "GenerateFence",
-                        "excluded": false
-                    },
-                    {
-                        "name": "GeneratePosts",
-                        "excluded": false
-                    },
-                    {
-                        "name": "GenerateConnections",
-                        "excluded": false
-                    },
-                    {
-                        "name": "GenerateHorizontalConnections",
-                        "excluded": false
-                    },
-                    {
-                        "name": "GenerateVerticalConnections",
-                        "excluded": false
-                    },
-                    {
-                        "name": "GridToWorld",
-                        "excluded": false
-                    },
-                    {
-                        "name": "GridToWorld$1",
-                        "excluded": false
-                    },
-                    {
-                        "name": "SpawnTile",
-                        "excluded": false
-                    },
-                    {
-                        "name": "PickWeightedGroundTile",
-                        "excluded": false
-                    },
-                    {
-                        "name": "ClearLevel",
-                        "excluded": false
-                    }
-                ]
-            },
-            {
-                "className": "Project.Scripts.LevelManagement.Settings.LevelSettings",
-                "staticMethods": [],
-                "instanceMethods": [
-                    {
-                        "name": "init",
                         "excluded": false
                     }
                 ]
@@ -26429,91 +26103,11 @@
                 ]
             },
             {
-                "className": "DynamicJoystick",
-                "staticMethods": [],
-                "instanceMethods": [
-                    {
-                        "name": "init",
-                        "excluded": false
-                    },
-                    {
-                        "name": "GetMoveThreshold",
-                        "excluded": true
-                    },
-                    {
-                        "name": "SetMoveThreshold",
-                        "excluded": false
-                    },
-                    {
-                        "name": "Start",
-                        "excluded": false
-                    },
-                    {
-                        "name": "OnPointerDown",
-                        "excluded": false
-                    },
-                    {
-                        "name": "OnPointerUp",
-                        "excluded": false
-                    },
-                    {
-                        "name": "HandleInput",
-                        "excluded": false
-                    }
-                ]
-            },
-            {
                 "className": "Project.Scripts.Bootstrap.PlayableAdBootstrapper",
                 "staticMethods": [],
                 "instanceMethods": [
                     {
                         "name": "Bootstrap",
-                        "excluded": false
-                    }
-                ]
-            },
-            {
-                "className": "Project.Scripts.GameStateManagement.States.Gameplay",
-                "staticMethods": [],
-                "instanceMethods": [
-                    {
-                        "name": "init",
-                        "excluded": false
-                    },
-                    {
-                        "name": "OnEnter",
-                        "excluded": false
-                    },
-                    {
-                        "name": "OnExit",
-                        "excluded": true
-                    }
-                ]
-            },
-            {
-                "className": "Project.Scripts.GameStateManagement.States.Preload",
-                "staticMethods": [],
-                "instanceMethods": [
-                    {
-                        "name": "OnEnter",
-                        "excluded": false
-                    },
-                    {
-                        "name": "OnExit",
-                        "excluded": false
-                    }
-                ]
-            },
-            {
-                "className": "Project.Scripts.InputManagement.MobileInputReceiver",
-                "staticMethods": [],
-                "instanceMethods": [
-                    {
-                        "name": "ctor",
-                        "excluded": false
-                    },
-                    {
-                        "name": "OnInput",
                         "excluded": false
                     }
                 ]
@@ -26871,7 +26465,603 @@
                 ]
             },
             {
-                "className": "Project.Scripts.CameraManagement.Events.EChangeCameraTarget",
+                "className": "UnityEngine.ContactFilter2D",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "getDefaultValue",
+                        "excluded": true
+                    },
+                    {
+                        "name": "isFiltering#get",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "NoFilter",
+                        "excluded": true
+                    },
+                    {
+                        "name": "CheckConsistency",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ClearLayerMask",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetLayerMask",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ClearDepth",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetDepth",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ClearNormalAngle",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetNormalAngle",
+                        "excluded": true
+                    },
+                    {
+                        "name": "IsFilteringTrigger",
+                        "excluded": true
+                    },
+                    {
+                        "name": "IsFilteringLayerMask",
+                        "excluded": true
+                    },
+                    {
+                        "name": "IsFilteringDepth",
+                        "excluded": true
+                    },
+                    {
+                        "name": "IsFilteringNormalAngle$1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "IsFilteringNormalAngle",
+                        "excluded": true
+                    },
+                    {
+                        "name": "getHashCode",
+                        "excluded": true
+                    },
+                    {
+                        "name": "equals",
+                        "excluded": true
+                    },
+                    {
+                        "name": "$clone",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Camera.CameraManager",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Initialize",
+                        "excluded": false
+                    },
+                    {
+                        "name": "FetchComponents",
+                        "excluded": false
+                    },
+                    {
+                        "name": "SetTarget",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Camera.CameraSettings",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Collisions.CollisionBroadcaster2D",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnCollisionEnter2D",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnCollisionStay2D",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnCollisionExit2D",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnTriggerEnter2D",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnTriggerStay2D",
+                        "excluded": true
+                    },
+                    {
+                        "name": "OnTriggerExit2D",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.Player.Collector.WeaponCollectorSystem",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Awake",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Initialize",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnTriggerEntered",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnCollected",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.Player.Combat.CombatSettings",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.Sword.WeaponEntity",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "FetchComponents",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Initialize",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetCollider",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnSpawned",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Free",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.GameState.GameStateManager",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Initialize",
+                        "excluded": false
+                    },
+                    {
+                        "name": "RequestStateChange",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Input.InputManager",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Initialize",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetData",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Enable",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Disable",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Dispose",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Input.PlayerInputData",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetMovementInputAxisVec2Raw",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetMovementInputAxisVec2Raw",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetMovementInputAxisVec2",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetMovementInputAxisVec3",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetHasMovementInput",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Reset",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Dispose",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Level.GroundTile",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "getDefaultValue",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "getHashCode",
+                        "excluded": true
+                    },
+                    {
+                        "name": "equals",
+                        "excluded": true
+                    },
+                    {
+                        "name": "$clone",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Level.LevelManager",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Generate",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GenerateGround",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GenerateFence",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GeneratePosts",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GenerateConnections",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GenerateHorizontalConnections",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GenerateVerticalConnections",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GridToWorld",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GridToWorld$1",
+                        "excluded": false
+                    },
+                    {
+                        "name": "SpawnTile",
+                        "excluded": false
+                    },
+                    {
+                        "name": "PickWeightedGroundTile",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ClearLevel",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Level.Settings.LevelSettings",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Pool.PooledObject$1",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "getDefaultValue",
+                        "excluded": true
+                    },
+                    {
+                        "name": "init",
+                        "excluded": true
+                    },
+                    {
+                        "name": "$ctor1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Dispose",
+                        "excluded": true
+                    },
+                    {
+                        "name": "getHashCode",
+                        "excluded": true
+                    },
+                    {
+                        "name": "equals",
+                        "excluded": true
+                    },
+                    {
+                        "name": "$clone",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Pool.PoolManager",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Reset",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Register",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Spawning.Spawners.PlayerSpawner",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Initialize",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Spawning.Spawners.WeaponCollectableSpawner",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Awake",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Initialize",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Update",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Tick",
+                        "excluded": false
+                    },
+                    {
+                        "name": "CanSpawn",
+                        "excluded": false
+                    },
+                    {
+                        "name": "SpawnRandom",
+                        "excluded": false
+                    },
+                    {
+                        "name": "CreateInstance",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnGetFromPool",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnReleaseToPool",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnDestroyInstance",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetRandomPointInArea",
+                        "excluded": false
+                    },
+                    {
+                        "name": "CalculateSpawnArea",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Thirdparty.Joystick_Pack.Scripts.Base.Joystick",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetHorizontal",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetVertical",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetDirection",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetHandleRange",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetHandleRange",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetDeadZone",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetDeadZone",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetAxisOptions",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetAxisOptions",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetSnapX",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetSnapX",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetSnapY",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetSnapY",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Start",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnPointerDown",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnDrag",
+                        "excluded": false
+                    },
+                    {
+                        "name": "HandleInput",
+                        "excluded": false
+                    },
+                    {
+                        "name": "FormatInput",
+                        "excluded": false
+                    },
+                    {
+                        "name": "SnapFloat",
+                        "excluded": true
+                    },
+                    {
+                        "name": "OnPointerUp",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ScreenPointToAnchoredPosition",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Camera.Events.EChangeCameraTarget",
                 "staticMethods": [],
                 "instanceMethods": [
                     {
@@ -26897,6 +27087,206 @@
                     {
                         "name": "$clone",
                         "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.Sword.WeaponCollectableEntity",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Initialize",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnSpawned",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Collect",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.GameState.States.InGame",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnEnter",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnExit",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.GameState.States.Preload",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "OnEnter",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnExit",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Input.MobileInputReceiver",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnInput",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Pool.ObjectPool$1",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetCountAll",
+                        "excluded": false
+                    },
+                    {
+                        "name": "SetCountAll",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetCountActive",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetCountInactive",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Get$1",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Get",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Release",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Clear",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Dispose",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Project.Thirdparty.Joystick_Pack.Scripts.Joysticks.DynamicJoystick",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetMoveThreshold",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetMoveThreshold",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Start",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnPointerDown",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnPointerUp",
+                        "excluded": false
+                    },
+                    {
+                        "name": "HandleInput",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "UnityEngine.CircleCollider2D",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "radius#get",
+                        "excluded": true
+                    },
+                    {
+                        "name": "radius#set",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "UnityEngine.ContactPoint2D",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "ConfigureFor",
+                        "excluded": true
+                    },
+                    {
+                        "name": "getDefaultValue",
+                        "excluded": true
+                    },
+                    {
+                        "name": "enabled#get",
+                        "excluded": true
+                    },
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "getHashCode",
+                        "excluded": true
+                    },
+                    {
+                        "name": "equals",
+                        "excluded": true
+                    },
+                    {
+                        "name": "$clone",
+                        "excluded": true
                     }
                 ]
             }

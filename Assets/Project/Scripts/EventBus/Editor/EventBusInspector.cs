@@ -10,20 +10,20 @@ namespace Project.Scripts.EventBus.Editor
 {
     public class EventBusInspector : EditorWindow
     {
-        private Vector2 _scrollPosition;
-        private static IReadOnlyList<Type> _lastKnownEventTypes;
-        private readonly Dictionary<Type, EventBusData> _lastKnownData = new();
-        private readonly Dictionary<Type, bool> _expandedStates = new();
+        private Vector2 m_scrollPosition;
+        private static IReadOnlyList<Type> s_lastKnownEventTypes;
+        private readonly Dictionary<Type, EventBusData> m_lastKnownData = new Dictionary<Type, EventBusData>();
+        private readonly Dictionary<Type, bool> m_expandedStates = new Dictionary<Type, bool>();
         
-        private GUIStyle _outerBoxStyle;
-        private GUIStyle _handlerBoxStyle;
-        private GUIStyle _richMiniBoldStyle;
-        private GUIStyle _foldoutStyle;
+        private GUIStyle m_outerBoxStyle;
+        private GUIStyle m_handlerBoxStyle;
+        private GUIStyle m_richMiniBoldStyle;
+        private GUIStyle m_foldoutStyle;
 
         [MenuItem("Project/Event Bus Inspector")]
         public static void ShowWindow()
         {
-            _lastKnownEventTypes = EventBusUtility.GetRegisteredBusTypes();
+            s_lastKnownEventTypes = EventBusUtility.GetRegisteredBusTypes();
             GetWindow<EventBusInspector>("Event Bus Inspector");
         }
 
@@ -34,15 +34,15 @@ namespace Project.Scripts.EventBus.Editor
             GUILayout.Label("📡 Event Buses", EditorStyles.boldLabel);
             EditorGUILayout.Space();
 
-            if (_lastKnownEventTypes == null || _lastKnownEventTypes.Count == 0)
+            if (s_lastKnownEventTypes == null || s_lastKnownEventTypes.Count == 0)
             {
                 GUILayout.Label("📡 Event types not found !");
                 return;
             }
 
-            _scrollPosition = EditorGUILayout.BeginScrollView(_scrollPosition);
+            m_scrollPosition = EditorGUILayout.BeginScrollView(m_scrollPosition);
 
-            foreach (Type eventType in _lastKnownEventTypes)
+            foreach (Type eventType in s_lastKnownEventTypes)
             {
                 DrawEventTypeBox(eventType);
                 EditorGUILayout.Space(10);
@@ -53,24 +53,24 @@ namespace Project.Scripts.EventBus.Editor
 
         private void InitializeGUIStyle()
         {
-            _outerBoxStyle = new GUIStyle("box")
+            m_outerBoxStyle = new GUIStyle("box")
             {
                 padding = new RectOffset(8, 8, 6, 6),
                 margin = new RectOffset(0, 0, 0, 0)
             };
 
-            _handlerBoxStyle = new GUIStyle("box")
+            m_handlerBoxStyle = new GUIStyle("box")
             {
                 padding = new RectOffset(4, 4, 2, 2),
                 margin = new RectOffset(4, 4, 2, 2)
             };
 
-            _richMiniBoldStyle = new GUIStyle(EditorStyles.miniBoldLabel)
+            m_richMiniBoldStyle = new GUIStyle(EditorStyles.miniBoldLabel)
             {
                 richText = true
             };
             
-            _foldoutStyle = new GUIStyle(EditorStyles.foldout)
+            m_foldoutStyle = new GUIStyle(EditorStyles.foldout)
             {
                 fontStyle = FontStyle.Bold
             };
@@ -78,12 +78,12 @@ namespace Project.Scripts.EventBus.Editor
 
         private void DrawEventTypeBox(Type eventType)
         {
-            if (!_expandedStates.TryGetValue(eventType, out bool expanded)) expanded = false;
+            if (!m_expandedStates.TryGetValue(eventType, out bool expanded)) expanded = false;
 
-            BeginBorderedBox(_outerBoxStyle);
+            BeginBorderedBox(m_outerBoxStyle);
 
             expanded = DrawEventFoldout(eventType, expanded);
-            _expandedStates[eventType] = expanded;
+            m_expandedStates[eventType] = expanded;
 
             if (!expanded)
             {
@@ -116,7 +116,7 @@ namespace Project.Scripts.EventBus.Editor
                 expanded,
                 $"🚨 {eventType.GetFriendlyTypeName()}",
                 true,
-                _foldoutStyle
+                m_foldoutStyle
             );
 
             return expanded;
@@ -126,7 +126,7 @@ namespace Project.Scripts.EventBus.Editor
         {
             bindings = null;
 
-            FieldInfo field = eventType.GetField("_bindings",
+            FieldInfo field = eventType.GetField("s_bindings",
                 BindingFlags.Static | BindingFlags.NonPublic);
 
             if (field == null)
@@ -153,8 +153,8 @@ namespace Project.Scripts.EventBus.Editor
             Type type = binding.GetType();
 
             Delegate handler =
-                GetDelegate(type, binding, "_handlerWithArgs") ??
-                GetDelegate(type, binding, "_handlerNoArgs");
+                GetDelegate(type, binding, "m_handlerWithArgs") ??
+                GetDelegate(type, binding, "m_handlerNoArgs");
 
             if (handler == null || handler.GetInvocationList().Length == 0)
                 return false;
@@ -194,7 +194,7 @@ namespace Project.Scripts.EventBus.Editor
 
         private void DrawHandlerBox(HandlerInfo info)
         {
-            BeginBorderedBox(_handlerBoxStyle);
+            BeginBorderedBox(m_handlerBoxStyle);
             DrawClickableRow("👤", "Target", info.TargetName, () => PingScript(info.Handler?.Target?.GetType() ?? info.Handler?.Method?.DeclaringType));
             DrawClickableRow("🔧", "Method", info.MethodName, () => OpenMethod(info.Handler?.Method));
             DrawInfoRow("⚡", "Priority", info.Priority.ToString(), "#FFD700");
@@ -209,7 +209,7 @@ namespace Project.Scripts.EventBus.Editor
 
             if (GUILayout.Button(
                     $"<color=#4AA5F0>{label} :</color> <color=#6CC24A>{value}</color>",
-                    _richMiniBoldStyle))
+                    m_richMiniBoldStyle))
             {
                 onClick?.Invoke();
             }
@@ -221,7 +221,7 @@ namespace Project.Scripts.EventBus.Editor
         {
             GUILayout.BeginHorizontal();
             GUILayout.Label(icon, GUILayout.Width(20));
-            GUILayout.Label($"<color=#4AA5F0>{label} :</color> <color={color}>{value}</color>", _richMiniBoldStyle);
+            GUILayout.Label($"<color=#4AA5F0>{label} :</color> <color={color}>{value}</color>", m_richMiniBoldStyle);
             GUILayout.EndHorizontal();
         }
 
@@ -278,34 +278,33 @@ namespace Project.Scripts.EventBus.Editor
 
             IReadOnlyList<Type> currentTypes = EventBusUtility.GetRegisteredBusTypes();
 
-            if (!ReferenceEquals(currentTypes, _lastKnownEventTypes))
+            if (!ReferenceEquals(currentTypes, s_lastKnownEventTypes))
             {
-                _lastKnownEventTypes = currentTypes;
+                s_lastKnownEventTypes = currentTypes;
                 shouldRepaint = true;
             }
 
-            if (_lastKnownEventTypes == null)
+            if (s_lastKnownEventTypes == null)
                 return;
 
-            foreach (Type eventType in _lastKnownEventTypes)
+            foreach (Type eventType in s_lastKnownEventTypes)
             {
-                FieldInfo field = eventType.GetField("_bindings", BindingFlags.Static | BindingFlags.NonPublic);
+                FieldInfo field = eventType.GetField("m_bindings", BindingFlags.Static | BindingFlags.NonPublic);
                 if (field == null) continue;
 
-                IList currentBindings = field.GetValue(null) as IList;
-                if (currentBindings == null) continue;
+                if (field.GetValue(null) is not IList currentBindings) continue;
 
-                if (!_lastKnownData.TryGetValue(eventType, out EventBusData cached))
+                if (!m_lastKnownData.TryGetValue(eventType, out EventBusData cached))
                 {
-                    _lastKnownData[eventType] = new EventBusData(currentBindings);
+                    m_lastKnownData[eventType] = new EventBusData(currentBindings);
                     shouldRepaint = true;
                     continue;
                 }
 
                 if (cached.HasChanged(currentBindings))
                 {
-                    _lastKnownData[eventType] = new EventBusData(currentBindings);
-                    _expandedStates[eventType] = true;
+                    m_lastKnownData[eventType] = new EventBusData(currentBindings);
+                    m_expandedStates[eventType] = true;
                     shouldRepaint = true;
                 }
             }

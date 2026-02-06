@@ -1,13 +1,13 @@
-﻿using UnityEngine;
-using UnityEngine.Pool;
+﻿using Project.Scripts.Pool;
+using UnityEngine;
 
 namespace Project.Scripts.Entity.Sword
 {
     public class WeaponCollectableEntity : MonoBehaviour, ICollectable
     {
-        private Pool.IObjectPool<WeaponCollectableEntity> m_provider;
+        private IObjectPool<WeaponCollectableEntity> m_provider;
         
-        public void Initialize(Pool.IObjectPool<WeaponCollectableEntity> provider)
+        public void Initialize(IObjectPool<WeaponCollectableEntity> provider)
         {
             m_provider = provider;
         }

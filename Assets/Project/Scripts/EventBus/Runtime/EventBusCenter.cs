@@ -7,14 +7,14 @@ namespace Project.Scripts.EventBus.Runtime
 {
     public static class EventBusCenter
     {
-        private static List<Type> _eventTypes;
-        private static List<Type> _registeredEventTypes;
+        private static List<Type> s_eventTypes;
+        private static List<Type> s_registeredEventTypes;
         
         public static void Initialize()
         {
             Debug.Log("[Event Bus Center] : Initialize");
-            _eventTypes = typeof(IEvent).GetAssemblies();
-            _registeredEventTypes = InitializeAllBuses();
+            s_eventTypes = typeof(IEvent).GetAssemblies();
+            s_registeredEventTypes = InitializeAllBuses();
         }
         
         private static List<Type> InitializeAllBuses()
@@ -22,7 +22,7 @@ namespace Project.Scripts.EventBus.Runtime
             List<Type> eventBindTypes = new List<Type>();
 
             Type typeDef = typeof(EventBus<>);
-            foreach (Type eventType in _eventTypes)
+            foreach (Type eventType in s_eventTypes)
             {
                 Type busType = typeDef.MakeGenericType(eventType);
                 eventBindTypes.Add(busType);
@@ -35,10 +35,10 @@ namespace Project.Scripts.EventBus.Runtime
         public static void DisposeAllBuses()
         {
             Debug.Log("[Event Bus] : " + "Clearing all buses...");
-            if (_registeredEventTypes == null) return;
-            for (int i = 0; i < _registeredEventTypes.Count; i++)
+            if (s_registeredEventTypes == null) return;
+            for (int i = 0; i < s_registeredEventTypes.Count; i++)
             {
-                Type busType = _registeredEventTypes[i];
+                Type busType = s_registeredEventTypes[i];
                 MethodInfo disposeMethod = busType.GetMethod("Dispose", BindingFlags.Static | BindingFlags.NonPublic);
                 if (disposeMethod != null)
                 {
@@ -49,8 +49,8 @@ namespace Project.Scripts.EventBus.Runtime
                     Debug.LogError("[Event Bus] : " + busType + " has no <Dispose> method !");
                 }
             }
-            _eventTypes = null;
-            _registeredEventTypes = null;
+            s_eventTypes = null;
+            s_registeredEventTypes = null;
         }
         
         public static void DisposeWithCenter(this Type eventType)
@@ -65,7 +65,7 @@ namespace Project.Scripts.EventBus.Runtime
             {
                 Debug.LogError("[Event Bus] : " + busType + " has no <Dispose> method !");
             }
-            _registeredEventTypes.Remove(busType);
+            s_registeredEventTypes.Remove(busType);
         }
     }
 }
