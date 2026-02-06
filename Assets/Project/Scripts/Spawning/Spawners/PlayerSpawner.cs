@@ -1,6 +1,6 @@
-﻿using Project.Scripts.Camera.Events;
-using Project.Scripts.Entity.Player;
+﻿using Project.Scripts.Entity.Player;
 using Project.Scripts.EventBus.Runtime;
+using Project.Scripts.Events.Camera;
 using UnityEngine;
 
 namespace Project.Scripts.Spawning.Spawners

@@ -45,11 +45,11 @@ TagManager:
   - name: Ground
     uniqueID: 2846958033
     locked: 0
+  - name: Character_Entity_Bottom
+    uniqueID: 2998810235
+    locked: 0
   - name: Character_Entity
     uniqueID: 53516823
-    locked: 0
-  - name: EntityBottom
-    uniqueID: 2998810235
     locked: 0
   - name: EntityShadow
     uniqueID: 1602367393

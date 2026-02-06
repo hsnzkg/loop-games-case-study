@@ -1,7 +1,7 @@
 ﻿using Project.Scripts.EventBus.Runtime;
 using UnityEngine;
 
-namespace Project.Scripts.Camera.Events
+namespace Project.Scripts.Events.Camera
 {
     public struct EChangeCameraTarget : IEvent
     {

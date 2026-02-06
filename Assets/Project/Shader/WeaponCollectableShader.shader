@@ -1,4 +1,4 @@
-Shader "Custom/Instanced/RotatingSpriteZ_Pivot"
+Shader "Custom/Sprite/WeaponCollectableShader"
 {
     Properties
     {
@@ -20,6 +20,8 @@ Shader "Custom/Instanced/RotatingSpriteZ_Pivot"
         Cull Off
         Lighting Off
         ZWrite Off
+
+        // Premultiplied alpha blend
         Blend One OneMinusSrcAlpha
 
         Pass
@@ -47,7 +49,7 @@ Shader "Custom/Instanced/RotatingSpriteZ_Pivot"
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
-            float4 _Color;
+            fixed4 _Color;
 
             float _RotationSpeed;
             float4 _Pivot;
@@ -58,32 +60,43 @@ Shader "Custom/Instanced/RotatingSpriteZ_Pivot"
                 UNITY_SETUP_INSTANCE_ID(v);
                 UNITY_TRANSFER_INSTANCE_ID(v, o);
 
+                // Rotation
                 float angle = radians(_Time.y * _RotationSpeed);
                 float s = sin(angle);
                 float c = cos(angle);
 
                 float3 pos = v.vertex.xyz;
 
+                // Pivot offset
                 pos.xy -= _Pivot.xy;
 
                 float2 rotated;
                 rotated.x = pos.x * c - pos.y * s;
                 rotated.y = pos.x * s + pos.y * c;
 
-                pos.x = rotated.x;
-                pos.y = rotated.y;
+                pos.xy = rotated;
 
                 pos.xy += _Pivot.xy;
 
                 o.vertex = UnityObjectToClipPos(float4(pos, 1));
-                o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+
+                // UV clamp to avoid atlas bleeding
+                float2 uv = TRANSFORM_TEX(v.uv, _MainTex);
+                o.uv = clamp(uv, float2(0.001, 0.001), float2(0.999, 0.999));
+
                 return o;
             }
 
             fixed4 frag (v2f i) : SV_Target
             {
                 UNITY_SETUP_INSTANCE_ID(i);
-                return tex2D(_MainTex, i.uv) * _Color;
+
+                fixed4 col = tex2D(_MainTex, i.uv) * _Color;
+
+                // Premultiply alpha to kill halo artifacts
+                col.rgb *= col.a;
+
+                return col;
             }
             ENDCG
         }

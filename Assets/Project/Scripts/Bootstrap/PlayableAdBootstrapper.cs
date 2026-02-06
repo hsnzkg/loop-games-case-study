@@ -10,9 +10,8 @@ namespace Project.Scripts.Bootstrap
     {
         public void Bootstrap()
         {
+            Application.targetFrameRate = -1;
             Playable.InstallFullGame(StoreConstants.appStoreLink,StoreConstants.playStoreLink);
-            
-            Application.targetFrameRate = 60;
             MonoBehaviourBridge.Initialize();
             GameStateManager.Initialize();
         }

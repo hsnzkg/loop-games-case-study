@@ -16,6 +16,7 @@ MonoBehaviour:
   StartWeaponCount: 0
   MaxWeaponCount: 55
   CycleSpeed: 270
-  ArrangeTranslationSpeed: 20
-  ArrangeRotationSpeed: 20
-  CenterDistance: 1.5
+  ArrangeTranslationSpeed: 10
+  ArrangeRotationSpeed: 10
+  CenterDistance: 1.125
+  CenterOffset: {x: -0.025, y: -0.125, z: 0}

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4c52033bf84f22bb82dfb2a4f7f741, type: 3}
   m_Name: MovementSettings
   m_EditorClassIdentifier: 
-  TranslationSpeed: 5
+  TranslationSpeed: 3
   Acceleration: 50
   Deceleration: 25

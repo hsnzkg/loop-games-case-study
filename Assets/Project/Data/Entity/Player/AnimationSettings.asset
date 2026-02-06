@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5195089d7c634606b28d814cdd51e1d1, type: 3}
+  m_Name: AnimationSettings
+  m_EditorClassIdentifier: 
+  BodyTexture: {fileID: 2800000, guid: 4e920e228bcda8e489b938a51d891c88, type: 3}
+  BodyWobbleDir: {x: 0, y: -1, z: 0}
+  BodyWobbleAmount: 0.175
+  BodyWobbleIdleSpeed: 1
+  BodyWobbleWalkSpeed: 4
+  SquashAmount: 0.1
+  FootLTexture: {fileID: 2800000, guid: d783bcaefec6d2a45bc555ccd6a1fc6d, type: 3}
+  FootRTexture: {fileID: 2800000, guid: e25405abfd8576f4f87f8834a697a5ea, type: 3}
+  FootWobbleDir: {x: 1, y: 0, z: 0}
+  FootWobbleAmount: 0.5
+  FootWobbleIdleSpeed: 0
+  FootWobbleWalkSpeed: 2

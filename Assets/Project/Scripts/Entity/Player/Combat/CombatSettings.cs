@@ -13,5 +13,6 @@ namespace Project.Scripts.Entity.Player.Combat
         public float ArrangeTranslationSpeed;
         public float ArrangeRotationSpeed;
         public float CenterDistance;
+        public Vector3 CenterOffset;
     }
 }

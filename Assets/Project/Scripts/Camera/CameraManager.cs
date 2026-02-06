@@ -1,6 +1,6 @@
 using Cinemachine;
-using Project.Scripts.Camera.Events;
 using Project.Scripts.EventBus.Runtime;
+using Project.Scripts.Events.Camera;
 using UnityEngine;
 
 namespace Project.Scripts.Camera

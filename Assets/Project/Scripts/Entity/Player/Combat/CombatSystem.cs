@@ -152,7 +152,7 @@ namespace Project.Scripts.Entity.Player.Combat
 
         private void SnapWeaponParent()
         {
-            m_weaponParent.position = m_root.position;
+            m_weaponParent.position = m_root.position + m_combatSettings.CenterOffset;
         }
 
         private void ArrangeInstant(Transform t, int index)
