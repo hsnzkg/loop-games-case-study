@@ -1,5 +1,6 @@
 ﻿using Project.Scripts.EventBus.Runtime;
 using Project.Scripts.Events.MonoBehaviour;
+using Project.Scripts.Events.Scratch;
 using UnityEngine;
 
 namespace Project.Scripts.Entity.Player.Movement
@@ -46,6 +47,7 @@ namespace Project.Scripts.Entity.Player.Movement
 
         private void FixedUpdate()
         {
+            EventBus<EScratch>.Raise(new EScratch(m_rb.position));
             HandleMovement();
         }
 

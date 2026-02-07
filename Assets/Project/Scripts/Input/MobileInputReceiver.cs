@@ -1,4 +1,4 @@
-﻿using Project.Thirdparty.Joystick_Pack.Scripts.Joysticks;
+﻿using Project.ThirdParty.Joystick_Pack.Scripts.Joysticks;
 using UnityEngine;
 
 namespace Project.Scripts.Input
