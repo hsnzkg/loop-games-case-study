@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BodyTexture: {fileID: 2800000, guid: 4e920e228bcda8e489b938a51d891c88, type: 3}
   BodyWobbleDir: {x: 0, y: -1, z: 0}
-  BodyWobbleAmount: 0.175
-  BodyWobbleIdleSpeed: 1
+  BodyWobbleAmount: 0.25
+  BodyWobbleIdleSpeed: 0.75
   BodyWobbleWalkSpeed: 4
-  SquashAmount: 0.1
+  SquashAmount: 0.125
   FootLTexture: {fileID: 2800000, guid: d783bcaefec6d2a45bc555ccd6a1fc6d, type: 3}
   FootRTexture: {fileID: 2800000, guid: e25405abfd8576f4f87f8834a697a5ea, type: 3}
   FootWobbleDir: {x: 1, y: 0, z: 0}

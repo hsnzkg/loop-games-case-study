@@ -131,6 +131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa62e5c33b084c9ea31c777612999217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_animationSettings: {fileID: 11400000, guid: 91f6ffdb8fa76e7429204d5fdf2c0129, type: 2}
+  m_animationTransformTarget: {fileID: 5366048395946661780}
 --- !u!114 &192718077231609506
 MonoBehaviour:
   m_ObjectHideFlags: 0

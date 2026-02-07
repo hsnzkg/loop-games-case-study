@@ -33161,6 +33161,20 @@
                         "excluded": true
                     }
                 ]
+            },
+            {
+                "className": "Project.Scripts.Spawning.Spawners.WeaponCollectableSpawnerSettings",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetObjectDefaultSize",
+                        "excluded": false
+                    }
+                ]
             }
         ],
         "stubberDataList": [],

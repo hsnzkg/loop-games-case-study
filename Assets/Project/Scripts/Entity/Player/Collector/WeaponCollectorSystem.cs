@@ -67,6 +67,7 @@ namespace Project.Scripts.Entity.Player.Collector
 
         private void OnSnap(ICollectable collectable)
         {
+            DOTween.Complete(collectable);
             collectable.Collect();
             OnWeaponCollected?.Invoke();
         }
