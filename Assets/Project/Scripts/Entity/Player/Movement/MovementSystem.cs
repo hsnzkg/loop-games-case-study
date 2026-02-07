@@ -1,33 +1,51 @@
-﻿using UnityEngine;
+﻿using Project.Scripts.EventBus.Runtime;
+using Project.Scripts.Events.MonoBehaviour;
+using UnityEngine;
 
 namespace Project.Scripts.Entity.Player.Movement
 {
-    public class MovementSystem : MonoBehaviour
+    public class MovementSystem
     {
-        [SerializeField] private MovementSettings m_movementSettings;
-        private IInputProvider m_inputProvider;
+        private readonly MovementSettings m_movementSettings;
+        private readonly IInputProvider m_inputProvider;
+        private readonly Rigidbody2D m_rb;
         private Vector2 m_targetVelocity;
-        private Rigidbody2D m_rb;
-        private bool m_isInitialized;
+        private EventBind<EFixedUpdate>  m_fixedUpdateBind;
+
+        public MovementSystem(MovementSettings movementSettings,Rigidbody2D rb,IInputProvider inputProvider)
+        {
+            m_movementSettings = movementSettings;
+            m_rb = rb;
+            m_inputProvider = inputProvider;
+        }
 
         public void Initialize()
         {
-            FetchComponents();
-            m_isInitialized = true;
+            m_fixedUpdateBind = new EventBind<EFixedUpdate>(FixedUpdate);
         }
 
-        private void FetchComponents()
+        public void Enable()
         {
-            m_rb = GetComponent<Rigidbody2D>();
-            m_inputProvider = GetComponent<IInputProvider>();
+            RegisterEvents();
+        }
+
+        public void Disable()
+        {
+            UnregisterEvents();
+        }
+
+        private void RegisterEvents()
+        {
+            EventBus<EFixedUpdate>.Register(m_fixedUpdateBind);
+        }
+
+        private void UnregisterEvents()
+        {
+            EventBus<EFixedUpdate>.Unregister(m_fixedUpdateBind);
         }
 
         private void FixedUpdate()
         {
-            if (!m_isInitialized)
-            {
-                return;
-            }
             HandleMovement();
         }
 

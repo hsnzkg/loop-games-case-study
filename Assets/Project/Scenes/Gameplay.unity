@@ -176,7 +176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6856408925353255061, guid: fa0334c2d7462d34da2f3f50d47aabdb, type: 3}
       propertyPath: m_poolSize
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6856408925353255061, guid: fa0334c2d7462d34da2f3f50d47aabdb, type: 3}
       propertyPath: m_weaponPrefab
@@ -188,8 +188,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6856408925353255061, guid: fa0334c2d7462d34da2f3f50d47aabdb, type: 3}
       propertyPath: m_maxWeaponsInWorld
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6856408925353255061, guid: fa0334c2d7462d34da2f3f50d47aabdb, type: 3}
+      propertyPath: m_weaponCollectorSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: eabea168985237e4f866744878156706, type: 2}
     - target: {fileID: 7937167080194900428, guid: fa0334c2d7462d34da2f3f50d47aabdb, type: 3}
       propertyPath: m_playerPrefab
       value: 
@@ -438,11 +442,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_AI_Entity
       objectReference: {fileID: 0}
-    - target: {fileID: 7445741094739855867, guid: 940051d04528c8046b3568aee8c70ee0, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5967773886623021092, guid: 940051d04528c8046b3568aee8c70ee0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

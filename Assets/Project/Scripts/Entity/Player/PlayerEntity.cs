@@ -8,6 +8,11 @@ namespace Project.Scripts.Entity.Player
 {
     public class PlayerEntity : MonoBehaviour, IDamageable
     {
+        [SerializeField] private MovementSettings m_movementSettings;
+        [SerializeField] private WeaponCollectorSettings m_weaponCollectorSettings;
+        [SerializeField] private CombatSettings m_combatSettings;
+        [SerializeField] private Collider2D m_playerCollider;
+        
         private CollisionBroadcaster2D  m_collisionBroadcaster2D;
         private MovementSystem m_movementSystem;
         private CombatSystem m_combatSystem;
@@ -19,16 +24,6 @@ namespace Project.Scripts.Entity.Player
             Initialize();
         }
 
-        private void OnEnable()
-        {
-            m_collectorSystem.Enable();
-        }
-
-        private void OnDisable()
-        {
-            m_collectorSystem.Disable();
-        }
-
         protected void Initialize()
         {
             m_movementSystem.Initialize();
@@ -38,10 +33,27 @@ namespace Project.Scripts.Entity.Player
 
         protected void FetchComponents()
         {
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            IInputProvider inputProvider = GetComponent<IInputProvider>();
+            
             m_collisionBroadcaster2D = GetComponentInChildren<CollisionBroadcaster2D>();
-            m_movementSystem = GetComponentInChildren<MovementSystem>();
-            m_combatSystem = GetComponentInChildren<CombatSystem>();
-            m_collectorSystem = new WeaponCollectorSystem(m_collisionBroadcaster2D);
+            m_movementSystem = new MovementSystem(m_movementSettings,rb,inputProvider);
+            m_combatSystem = new CombatSystem(m_combatSettings,transform,m_playerCollider);
+            m_collectorSystem = new WeaponCollectorSystem(m_weaponCollectorSettings,m_collisionBroadcaster2D,transform);
+        }
+
+        private void OnEnable()
+        {
+            m_collectorSystem.Enable();
+            m_combatSystem.Enable();
+            m_movementSystem.Enable();
+        }
+
+        private void OnDisable()
+        {
+            m_collectorSystem.Disable();
+            m_combatSystem.Disable();
+            m_movementSystem.Disable();
         }
 
         public void OnDamage()

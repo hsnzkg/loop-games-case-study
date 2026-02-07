@@ -104,7 +104,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 53516823
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4e920e228bcda8e489b938a51d891c88, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -272,7 +272,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1296157061
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d783bcaefec6d2a45bc555ccd6a1fc6d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -356,7 +356,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1296157061
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e25405abfd8576f4f87f8834a697a5ea, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -381,8 +381,6 @@ GameObject:
   - component: {fileID: 6541441458258005389}
   - component: {fileID: 840683358301206229}
   - component: {fileID: 1305275436992131240}
-  - component: {fileID: 884444713857156597}
-  - component: {fileID: 5967773886623021092}
   - component: {fileID: 4941834527427030021}
   - component: {fileID: 665278861622825626}
   m_Layer: 6
@@ -391,7 +389,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5082146366834759306
 Transform:
   m_ObjectHideFlags: 0
@@ -492,33 +490,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48fe89e5e5f240d4984d3e6058db9f0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &884444713857156597
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7445741094739855867}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df4215587bbd4e31a742b180cc4c3314, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_movementSettings: {fileID: 11400000, guid: fe014d11c5df10b4bacfc6ee1d01faf2, type: 2}
---- !u!114 &5967773886623021092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7445741094739855867}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4305e39329e4010b412630a73c0ec89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_combatSettings: {fileID: 11400000, guid: f755463b5f6800944a7b4d264650194b, type: 2}
-  m_root: {fileID: 5082146366834759306}
+  m_movementSettings: {fileID: 0}
+  m_weaponCollectorSettings: {fileID: 0}
+  m_combatSettings: {fileID: 0}
+  m_playerCollider: {fileID: 0}
 --- !u!114 &4941834527427030021
 MonoBehaviour:
   m_ObjectHideFlags: 0

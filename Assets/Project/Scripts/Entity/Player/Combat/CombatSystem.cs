@@ -1,30 +1,52 @@
 ﻿using Project.Scripts.Entity.Weapon;
+using Project.Scripts.EventBus.Runtime;
+using Project.Scripts.Events.MonoBehaviour;
 using Project.Scripts.Pool;
 using UnityEngine;
 
 namespace Project.Scripts.Entity.Player.Combat
 {
-    public class CombatSystem : MonoBehaviour
+    public class CombatSystem
     {
-        [SerializeField] private CombatSettings m_combatSettings;
-        [SerializeField] private Transform m_root;
-
+        private readonly CombatSettings m_combatSettings;
+        private readonly Transform m_root;
         private Transform m_weaponParent;
-        private Collider2D m_playerCol;
-
+        private readonly Collider2D m_playerCol;
         private WeaponEntity[] m_weapons;
-        private int m_weaponCount;
-
         private ObjectPool<WeaponEntity> m_weaponPool;
-        private bool m_isInitialized;
+        private int m_weaponCount;
+        
+        private readonly EventBind<EUpdate> m_updateBind;
 
+        public CombatSystem(CombatSettings combatSettings, Transform root,Collider2D playerCol)
+        {
+            m_combatSettings = combatSettings;
+            m_root = root;
+            m_playerCol = playerCol;
+            m_updateBind = new EventBind<EUpdate>(Update);
+        }
+
+        public void Enable()
+        {
+            RegisterEvents();
+        }
+
+        public void Disable()
+        {
+            UnregisterEvents();
+        }
+
+        private void RegisterEvents()
+        {
+            EventBus<EUpdate>.Register(m_updateBind);
+        }
+
+        private void UnregisterEvents()
+        {
+            EventBus<EUpdate>.Unregister(m_updateBind);            
+        }
         private void Update()
         {
-            if (!m_isInitialized)
-            {
-                return;
-            }
-            
             SnapWeaponParent();
             if (m_weaponCount <= 0) return;
             Cycle();
@@ -34,35 +56,11 @@ namespace Project.Scripts.Entity.Player.Combat
             }
         }
 
-        private void OnDrawGizmos()
-        {
-            if (!Application.isPlaying)
-                return;
-
-            Gizmos.color = Color.red;
-
-            for (int i = 0; i < m_weaponCount; i++)
-            {
-                DrawWeaponOverlapGizmo(m_weapons[i]);
-            }
-        }
-
-        private void DrawWeaponOverlapGizmo(WeaponEntity weapon)
-        {
-            Collider2D col = weapon.GetCollider();
-            Transform t = weapon.transform;
-            Vector2 center = t.TransformPoint(col.offset);
-            Vector2 size = col.bounds.size;
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(center, 0.25f);
-            Gizmos.DrawWireCube(center, size);
-        }
-
         public void Initialize()
         {
-            m_weaponParent = new GameObject($"Weapon_Parent_{GetInstanceID()}").transform;
+            m_weaponParent = new GameObject($"Weapon_Parent_{m_root.GetInstanceID()}").transform;
             m_weaponParent.SetParent(m_root);
-            m_playerCol = GetComponent<Collider2D>();
+            //m_playerCol = GetComponent<Collider2D>();
             m_weapons = new WeaponEntity[m_combatSettings.MaxWeaponCount];
 
             m_weaponPool = new ObjectPool<WeaponEntity>(
@@ -79,15 +77,13 @@ namespace Project.Scripts.Entity.Player.Combat
             {
                 AddWeapon();
             }
-
-            m_isInitialized = true;
         }
 
         #region Pool
 
         private WeaponEntity CreateWeapon()
         {
-            WeaponEntity weapon = Instantiate(m_combatSettings.WeaponPrefab, m_weaponParent);
+            WeaponEntity weapon = Object.Instantiate(m_combatSettings.WeaponPrefab, m_weaponParent);
             weapon.Initialize(m_weaponPool);
             return weapon;
         }
@@ -117,7 +113,7 @@ namespace Project.Scripts.Entity.Player.Combat
         private void OnDestroyWeapon(WeaponEntity weapon)
         {
             weapon.OnDestroyed();
-            Destroy(weapon.gameObject);
+            Object.Destroy(weapon.gameObject);
         }
 
         #endregion
@@ -176,11 +172,6 @@ namespace Project.Scripts.Entity.Player.Combat
         private void Cycle()
         {
             m_weaponParent.Rotate(Vector3.forward * (-m_combatSettings.CycleSpeed * Time.deltaTime));
-        }
-
-        public bool CanSpawn()
-        {
-            return m_weaponPool.GetCountActive() < m_combatSettings.MaxWeaponCount;
         }
     }
 }

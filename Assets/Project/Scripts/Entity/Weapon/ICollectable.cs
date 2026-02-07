@@ -3,5 +3,7 @@
     interface ICollectable
     {
         void Collect();
+        bool GetIsCollecting();
+        void SetIsCollecting(bool value);
     }
 }
