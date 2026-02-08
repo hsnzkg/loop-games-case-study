@@ -1,5 +1,5 @@
 ﻿using Project.Scripts.Level.Settings;
-//using Project.ThirdParty.ScratchCard.Scripts;
+using Project.ThirdParty.ScratchCard.Scripts;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -10,19 +10,19 @@ namespace Project.Scripts.Level
         [SerializeField] private LevelSettings m_levelSettings;
         [SerializeField] private Transform m_levelParent;
         [SerializeField] private SpriteRenderer m_levelOverlay;
-        //[SerializeField] private ScratchCardManager m_scratchCardManager;
+        [SerializeField] private ScratchCardManager m_scratchCardManager;
         
         private System.Random m_rng;
         private int m_seed;
 
         private void OnEnable()
         {
-           //m_scratchCardManager.Card.OnInitialized += ResizeLevelScratchOverlay;
+           m_scratchCardManager.Card.OnInitialized += ResizeLevelScratchOverlay;
         }
 
         private void OnDisable()
         {
-            //m_scratchCardManager.Card.OnInitialized -= ResizeLevelScratchOverlay;
+            m_scratchCardManager.Card.OnInitialized -= ResizeLevelScratchOverlay;
         }
 
         public void Generate()
@@ -76,7 +76,7 @@ namespace Project.Scripts.Level
             GenerateConnections();
         }
 
-        /*
+        
         private void ResizeLevelScratchOverlay(ScratchCard scratchCard)
         {
             float tileSize = m_levelSettings.TileSize;
@@ -95,7 +95,6 @@ namespace Project.Scripts.Level
                 worldH / spriteSize.y,
                 1);
         }
-        */
 
         private void GeneratePosts()
         {

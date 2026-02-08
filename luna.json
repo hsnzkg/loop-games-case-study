@@ -9409,10 +9409,6 @@
                 "excluded": false
             },
             {
-                "name": "Project.Scripts.FindTheBug",
-                "excluded": false
-            },
-            {
                 "name": "Project.Scripts.FiniteStateMachine.Runtime.IDispatcher",
                 "excluded": false
             },
@@ -33348,7 +33344,7 @@
                     },
                     {
                         "name": "GetScratchData",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "SetScratchData",
@@ -33364,11 +33360,11 @@
                     },
                     {
                         "name": "Start",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "OnDisable",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "OnDestroy",
@@ -33380,7 +33376,7 @@
                     },
                     {
                         "name": "Init",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "SetRenderType",
