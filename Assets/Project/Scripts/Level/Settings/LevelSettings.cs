@@ -14,5 +14,6 @@ namespace Project.Scripts.Level.Settings
         public bool RandomSeed = true;
         public GroundSettings GroundSettings;
         public FenceSettings FenceSettings;
+        public Sprite ScratchOverlaySprite;
     }
 }

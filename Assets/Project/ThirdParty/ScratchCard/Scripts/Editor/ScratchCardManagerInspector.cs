@@ -185,7 +185,7 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Editor
 			var spriteChanged = EditorGUI.EndChangeCheck();
 			if (spriteChanged)
 			{
-				cardManager.ScratchSurfaceSprite = (Sprite)scratchSprite.objectReferenceValue;
+				cardManager.SetScratchSurfaceSprite((Sprite)scratchSprite.objectReferenceValue);
 			}
 			if (scratchSprite.objectReferenceValue == null)
 			{
@@ -197,7 +197,7 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Editor
 			if (EditorGUI.EndChangeCheck())
 			{
 				cardManagerChanged = true;
-				cardManager.ProgressAccuracy = (ProgressAccuracy)progressAccuracy.enumValueIndex;
+				cardManager.SetProgressAccuracy((ProgressAccuracy)progressAccuracy.enumValueIndex);
 			}
 
 			#endregion
@@ -397,24 +397,24 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Editor
 					if (inputEnableChanged)
 					{
 						scratchCardChanged = true;
-						cardManager.InputEnabled = inputEnabled.boolValue;
+						cardManager.SetInputEnabled(inputEnabled.boolValue);
 					}
 
 					if (usePressureChanged)
 					{
-						cardManager.UsePressure = usePressure.boolValue;
+						cardManager.SetUsePressure(usePressure.boolValue);
 					}
 
 					if (checkCanvasRaycastsChanged)
 					{
-						cardManager.CheckCanvasRaycasts = checkCanvasRaycasts.boolValue;
+						cardManager.SetCheckCanvasRaycasts(checkCanvasRaycasts.boolValue);
 					}
 
 					if (canvasesForRaycastsBlockingChanged)
 					{
 						serializedObject.ApplyModifiedProperties();
-						var data = cardManager.CanvasesForRaycastsBlocking;
-						cardManager.CanvasesForRaycastsBlocking = data;
+						var data = cardManager.GetCanvasesForRaycastsBlocking();
+						cardManager.SetCanvasesForRaycastsBlocking(data);
 					}
 
 					if (scratchModeChanged)

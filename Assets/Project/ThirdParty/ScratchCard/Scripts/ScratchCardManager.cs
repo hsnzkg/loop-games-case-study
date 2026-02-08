@@ -36,20 +36,30 @@ namespace Project.ThirdParty.ScratchCard.Scripts
         }
 		
 		[SerializeField] private SpriteRenderer spriteRendererCard;
-		public SpriteRenderer SpriteRendererCard
-		{
-			get => spriteRendererCard;
-			set => spriteRendererCard = value;
-		}
-		
-		[SerializeField] private Image canvasRendererCard;
-		public Image CanvasRendererCard
-		{
-			get => canvasRendererCard;
-			set => canvasRendererCard = value;
-		}
 
-		[FormerlySerializedAs("ScratchSurfaceSpriteHasAlpha")] [SerializeField] private bool scratchSurfaceSpriteHasAlpha = true;
+        public SpriteRenderer GetSpriteRendererCard()
+        {
+            return spriteRendererCard;
+        }
+
+        public void SetSpriteRendererCard(SpriteRenderer value)
+        {
+            spriteRendererCard = value;
+        }
+
+        [SerializeField] private Image canvasRendererCard;
+
+        public Image GetCanvasRendererCard()
+        {
+            return canvasRendererCard;
+        }
+
+        public void SetCanvasRendererCard(Image value)
+        {
+            canvasRendererCard = value;
+        }
+
+        [FormerlySerializedAs("ScratchSurfaceSpriteHasAlpha")] [SerializeField] private bool scratchSurfaceSpriteHasAlpha = true;
         public bool GetScratchSurfaceSpriteHasAlpha()
         {
             return scratchSurfaceSpriteHasAlpha;
@@ -84,65 +94,71 @@ namespace Project.ThirdParty.ScratchCard.Scripts
         }
 
 		[FormerlySerializedAs("MainCamera")] [SerializeField] private Camera mainCamera;
-		public Camera MainCamera
-		{
-			get => mainCamera;
-			set
-			{
-				mainCamera = value;
-				if (Card != null && Card.GetScratchData() != null)
-				{
-					Card.GetScratchData().Camera = mainCamera;
-				}
-			}
-		}
 
-		[FormerlySerializedAs("ScratchSurfaceSprite")] [SerializeField] private Sprite scratchSurfaceSprite;
-		public Sprite ScratchSurfaceSprite
-		{
-			get => scratchSurfaceSprite;
-			set
-			{
-				scratchSurfaceSprite = value;
-				if (Card != null)
-				{
-					if (Application.isPlaying)
-					{
-						if (initialized)
-						{
-							UpdateCardSprite(scratchSurfaceSprite);
-							Card.SetRenderType(RenderType, mainCamera);
-							Card.Init();
-							if (Progress != null)
-							{
-								Progress.ResetProgress();
-								Progress.UpdateProgress();
-							}
-						}
-					}
-					else
-					{
-						InitSurfaceMaterial();
-					}
-				}
-			}
-		}
-		
-		[SerializeField] private ProgressAccuracy progressAccuracy;
-		public ProgressAccuracy ProgressAccuracy
-		{
-			get => progressAccuracy;
-			set
-			{
-				progressAccuracy = value;
-				if (Progress != null && Progress.GetProgressMaterial() != null)
-				{
-					Progress.SetProgressAccuracy(progressAccuracy);
-				}
-			}
-		}
+        public Camera GetMainCamera()
+        {
+            return mainCamera;
+        }
 
-		[SerializeField] private Texture brushTexture;
+        public void SetMainCamera(Camera value)
+        {
+            mainCamera = value;
+            if (Card != null && Card.GetScratchData() != null)
+            {
+                Card.GetScratchData().SetCamera(mainCamera);
+            }
+        }
+
+        [FormerlySerializedAs("ScratchSurfaceSprite")] [SerializeField] private Sprite scratchSurfaceSprite;
+
+        public Sprite GetScratchSurfaceSprite()
+        {
+            return scratchSurfaceSprite;
+        }
+
+        public void SetScratchSurfaceSprite(Sprite value)
+        {
+            scratchSurfaceSprite = value;
+            if (Card != null)
+            {
+                if (Application.isPlaying)
+                {
+                    if (initialized)
+                    {
+                        UpdateCardSprite(scratchSurfaceSprite);
+                        Card.SetRenderType(RenderType, mainCamera);
+                        Card.Init();
+                        if (Progress != null)
+                        {
+                            Progress.ResetProgress();
+                            Progress.UpdateProgress();
+                        }
+                    }
+                }
+                else
+                {
+                    InitSurfaceMaterial();
+                }
+            }
+        }
+
+        [SerializeField] private ProgressAccuracy progressAccuracy;
+
+        public ProgressAccuracy GetProgressAccuracy()
+        {
+            return progressAccuracy;
+        }
+
+        public void SetProgressAccuracy(ProgressAccuracy value)
+        {
+            progressAccuracy = value;
+            if (Progress != null && Progress.GetProgressMaterial() != null)
+            {
+                Progress.SetProgressAccuracy(progressAccuracy);
+            }
+        }
+
+        [SerializeField] private Texture brushTexture;
 
         public Texture GetBrushTexture()
         {
@@ -195,63 +211,71 @@ namespace Project.ThirdParty.ScratchCard.Scripts
 		#region Input
 		
 		[FormerlySerializedAs("InputEnabled")] [SerializeField] private bool inputEnabled = true;
-		public bool InputEnabled
-		{
-			get => inputEnabled;
-			set
-			{
-				inputEnabled = value;
-				Card.enabled = inputEnabled;
-			}
-		}
 
-		[SerializeField] private bool usePressure;
-		public bool UsePressure
-		{
-			get => usePressure;
-			set
-			{
-				usePressure = value;
-				if (Card != null && Card.Initialized)
-				{
-					Card.GetInput().UsePressure = usePressure;
-				}
-			}
-		}
-		
-		[SerializeField] private bool checkCanvasRaycasts = true;
-		public bool CheckCanvasRaycasts
-		{
-			get => checkCanvasRaycasts;
-			set
-			{
-				checkCanvasRaycasts = value;
-				if (Card != null && Card.Initialized)
-				{
-					Card.GetInput().CheckCanvasRaycasts = checkCanvasRaycasts;
-					if (checkCanvasRaycasts)
-					{
-						Card.GetInput().InitRaycastsController(Card.SurfaceTransform.gameObject, canvasesForRaycastsBlocking);
-					}
-				}
-			}
-		}
+        public bool GetInputEnabled()
+        {
+            return inputEnabled;
+        }
 
-		[SerializeField] private Canvas[] canvasesForRaycastsBlocking;
-		public Canvas[] CanvasesForRaycastsBlocking
-		{
-			get => canvasesForRaycastsBlocking;
-			set
-			{
-				canvasesForRaycastsBlocking = value;
-				if (Card != null && Card.Initialized)
-				{
-					Card.GetInput().InitRaycastsController(Card.SurfaceTransform.gameObject, canvasesForRaycastsBlocking);
-				}
-			}
-		}
-		
-		#endregion
+        public void SetInputEnabled(bool value)
+        {
+            inputEnabled = value;
+            Card.enabled = inputEnabled;
+        }
+
+        [SerializeField] private bool usePressure;
+
+        public bool GetUsePressure()
+        {
+            return usePressure;
+        }
+
+        public void SetUsePressure(bool value)
+        {
+            usePressure = value;
+            if (Card != null && Card.Initialized)
+            {
+                Card.GetInput().UsePressure = usePressure;
+            }
+        }
+
+        [SerializeField] private bool checkCanvasRaycasts = true;
+
+        public bool GetCheckCanvasRaycasts()
+        {
+            return checkCanvasRaycasts;
+        }
+
+        public void SetCheckCanvasRaycasts(bool value)
+        {
+            checkCanvasRaycasts = value;
+            if (Card != null && Card.Initialized)
+            {
+                Card.GetInput().CheckCanvasRaycasts = checkCanvasRaycasts;
+                if (checkCanvasRaycasts)
+                {
+                    Card.GetInput().InitRaycastsController(Card.SurfaceTransform.gameObject, canvasesForRaycastsBlocking);
+                }
+            }
+        }
+
+        [SerializeField] private Canvas[] canvasesForRaycastsBlocking;
+
+        public Canvas[] GetCanvasesForRaycastsBlocking()
+        {
+            return canvasesForRaycastsBlocking;
+        }
+
+        public void SetCanvasesForRaycastsBlocking(Canvas[] value)
+        {
+            canvasesForRaycastsBlocking = value;
+            if (Card != null && Card.Initialized)
+            {
+                Card.GetInput().InitRaycastsController(Card.SurfaceTransform.gameObject, canvasesForRaycastsBlocking);
+            }
+        }
+
+        #endregion
 
 		#region Shaders
 		
@@ -473,27 +497,27 @@ namespace Project.ThirdParty.ScratchCard.Scripts
 				}
 			}
 			
-			if (RenderType == ScratchCardRenderType.SpriteRenderer && SpriteRendererCard != null)
+			if (RenderType == ScratchCardRenderType.SpriteRenderer && GetSpriteRendererCard() != null)
 			{
 				if (Card.SurfaceMaterial != null)
 				{
-					SpriteRendererCard.sharedMaterial = Card.SurfaceMaterial;
+					GetSpriteRendererCard().sharedMaterial = Card.SurfaceMaterial;
 				}
 				if (sprite != null)
 				{
-					SpriteRendererCard.sprite = sprite;
+					GetSpriteRendererCard().sprite = sprite;
 				}
 			}
 			
-			if (RenderType == ScratchCardRenderType.CanvasRenderer && CanvasRendererCard != null)
+			if (RenderType == ScratchCardRenderType.CanvasRenderer && GetCanvasRendererCard() != null)
 			{
 				if (Card.SurfaceMaterial != null)
 				{
-					CanvasRendererCard.material = Card.SurfaceMaterial;
+					GetCanvasRendererCard().material = Card.SurfaceMaterial;
 				}
 				if (sprite != null)
 				{
-					CanvasRendererCard.sprite = sprite;
+					GetCanvasRendererCard().sprite = sprite;
 				}
 			}
 		}
@@ -657,16 +681,16 @@ namespace Project.ThirdParty.ScratchCard.Scripts
 			}
 			else if (cardRenderType == ScratchCardRenderType.SpriteRenderer)
 			{
-				if (SpriteRendererCard != null)
+				if (GetSpriteRendererCard() != null)
 				{
-					SpriteRendererCard.transform.localScale = Vector3.one;
+					GetSpriteRendererCard().transform.localScale = Vector3.one;
 				}
 			}
 			else if (cardRenderType == ScratchCardRenderType.CanvasRenderer)
 			{
-				if (CanvasRendererCard != null)
+				if (GetCanvasRendererCard() != null)
 				{
-					CanvasRendererCard.SetNativeSize();
+					GetCanvasRendererCard().SetNativeSize();
 				}
 			}
 		}

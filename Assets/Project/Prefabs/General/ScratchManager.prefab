@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2963647629080572402
+--- !u!1 &4959205402078651749
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5423608483003025349}
-  - component: {fileID: 7937167080194900428}
-  - component: {fileID: 6856408925353255061}
+  - component: {fileID: 334534730243654656}
+  - component: {fileID: 4625047027139395881}
   m_Layer: 0
-  m_Name: Spawn_Manager
+  m_Name: ScratchManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5423608483003025349
+--- !u!4 &334534730243654656
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2963647629080572402}
+  m_GameObject: {fileID: 4959205402078651749}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -33,29 +32,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7937167080194900428
+--- !u!114 &4625047027139395881
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2963647629080572402}
+  m_GameObject: {fileID: 4959205402078651749}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5224d807f92c425a82f3217bdc993156, type: 3}
+  m_Script: {fileID: 11500000, guid: bb15afadd6fa45acb6e43e70a6016823, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_playerPrefab: {fileID: 4675065555169879133, guid: 4a7115ab723da124a8b990b7b9586136, type: 3}
---- !u!114 &6856408925353255061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2963647629080572402}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 618396b9400544b494dd4ef17b05e541, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_weaponCollectorSettings: {fileID: 0}
+  m_scratchSettings: {fileID: 11400000, guid: 367e67bfae40d67499720e549fe98fa1, type: 2}
+  m_scratchCardManager: {fileID: 0}
+  m_scratchCardShadowManager: {fileID: 0}

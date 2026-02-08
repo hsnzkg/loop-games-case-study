@@ -63,10 +63,10 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Core
 		public void ScratchHole(Vector2 position, float pressure = 1f)
 		{
 			var positionRect = new Rect(
-				(position.x - 0.5f * scratchCard.BrushMaterial.mainTexture.width * scratchCard.BrushSize * pressure) / scratchCard.GetScratchData().TextureSize.x,
-				(position.y - 0.5f * scratchCard.BrushMaterial.mainTexture.height * scratchCard.BrushSize * pressure) / scratchCard.GetScratchData().TextureSize.y,
-				scratchCard.BrushMaterial.mainTexture.width * scratchCard.BrushSize * pressure / scratchCard.GetScratchData().TextureSize.x,
-				scratchCard.BrushMaterial.mainTexture.height * scratchCard.BrushSize * pressure / scratchCard.GetScratchData().TextureSize.y);
+				(position.x - 0.5f * scratchCard.BrushMaterial.mainTexture.width * scratchCard.BrushSize * pressure) / scratchCard.GetScratchData().GetTextureSize().x,
+				(position.y - 0.5f * scratchCard.BrushMaterial.mainTexture.height * scratchCard.BrushSize * pressure) / scratchCard.GetScratchData().GetTextureSize().y,
+				scratchCard.BrushMaterial.mainTexture.width * scratchCard.BrushSize * pressure / scratchCard.GetScratchData().GetTextureSize().x,
+				scratchCard.BrushMaterial.mainTexture.height * scratchCard.BrushSize * pressure / scratchCard.GetScratchData().GetTextureSize().y);
 
 			if (IsInBounds(positionRect))
 			{
@@ -106,10 +106,10 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Core
 				var holePosition = startPosition + (endPosition - startPosition) / holesCount * i;
 				
 				var positionRect = new Rect(
-					(holePosition.x - 0.5f * scratchCard.BrushMaterial.mainTexture.width * scratchCard.BrushSize * pressure) / scratchCard.GetScratchData().TextureSize.x,
-					(holePosition.y - 0.5f * scratchCard.BrushMaterial.mainTexture.height * scratchCard.BrushSize * pressure) / scratchCard.GetScratchData().TextureSize.y,
-					scratchCard.BrushMaterial.mainTexture.width * scratchCard.BrushSize * pressure / scratchCard.GetScratchData().TextureSize.x,
-					scratchCard.BrushMaterial.mainTexture.height * scratchCard.BrushSize * pressure / scratchCard.GetScratchData().TextureSize.y);
+					(holePosition.x - 0.5f * scratchCard.BrushMaterial.mainTexture.width * scratchCard.BrushSize * pressure) / scratchCard.GetScratchData().GetTextureSize().x,
+					(holePosition.y - 0.5f * scratchCard.BrushMaterial.mainTexture.height * scratchCard.BrushSize * pressure) / scratchCard.GetScratchData().GetTextureSize().y,
+					scratchCard.BrushMaterial.mainTexture.width * scratchCard.BrushSize * pressure / scratchCard.GetScratchData().GetTextureSize().x,
+					scratchCard.BrushMaterial.mainTexture.height * scratchCard.BrushSize * pressure / scratchCard.GetScratchData().GetTextureSize().y);
 
 				if (IsInBounds(positionRect))
 				{

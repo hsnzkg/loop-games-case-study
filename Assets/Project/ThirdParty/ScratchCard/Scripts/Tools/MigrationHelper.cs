@@ -35,7 +35,7 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Tools
                 }
             }
             
-            if (scratchCardManager.SpriteRendererCard == null)
+            if (scratchCardManager.GetSpriteRendererCard() == null)
             {
                 var field = scratchCardManager.GetType().GetField("SpriteCard");
                 var spriteCardValue = field.GetValue(scratchCardManager);
@@ -46,7 +46,7 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Tools
                     {
                         if (spriteCardGameObject.TryGetComponent<SpriteRenderer>(out var spriteRenderer))
                         {
-                            scratchCardManager.SpriteRendererCard = spriteRenderer;
+                            scratchCardManager.SetSpriteRendererCard(spriteRenderer);
                             field.SetValue(scratchCardManager, null);
                             result = true;
                         }
@@ -54,7 +54,7 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Tools
                 }
             }
             
-            if (scratchCardManager.CanvasRendererCard == null)
+            if (scratchCardManager.GetCanvasRendererCard() == null)
             {
                 var field = scratchCardManager.GetType().GetField("ImageCard");
                 var imageCardValue = field.GetValue(scratchCardManager);
@@ -65,7 +65,7 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Tools
                     {
                         if (imageCardGameObject.TryGetComponent<Image>(out var image))
                         {
-                            scratchCardManager.CanvasRendererCard = image;
+                            scratchCardManager.SetCanvasRendererCard(image);
                             field.SetValue(scratchCardManager, null);
                             result = true;
                         }

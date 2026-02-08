@@ -86,7 +86,7 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Animation
                 var imageSize = Vector2.one;
                 if (AnimationSpace == ScratchAnimationSpace.UV)
                 {
-                    imageSize = ScratchCard.GetScratchData().TextureSize;
+                    imageSize = ScratchCard.GetScratchData().GetTextureSize();
                 }
                 
                 var scratch = new BaseScratch
@@ -106,7 +106,7 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Animation
                 var imageSize = Vector2.one;
                 if (AnimationSpace == ScratchAnimationSpace.UV)
                 {
-                    imageSize = ScratchCard.GetScratchData().TextureSize;
+                    imageSize = ScratchCard.GetScratchData().GetTextureSize();
                 }
                 
                 var scratch = new LineScratch

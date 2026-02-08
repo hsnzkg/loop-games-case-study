@@ -1,5 +1,8 @@
-﻿using Project.Scripts.Collisions;
+﻿using System;
+using Project.Scripts.Collisions;
 using Project.Scripts.Entity.Player.Combat;
+using Project.Scripts.EventBus.Runtime;
+using Project.Scripts.Events.Scratch;
 using Project.Scripts.Pool;
 using UnityEngine;
 
@@ -13,6 +16,12 @@ namespace Project.Scripts.Entity.Weapon
         private IObjectPool<WeaponEntity> m_provider;
         private BoxCollider2D m_collider;
         private AnimationSystem m_animationSystem;
+
+
+        private void Update()
+        {
+            EventBus<EScratch>.Raise(new EScratch(transform.position));
+        }
 
         public void Initialize(IObjectPool<WeaponEntity> provider)
         {

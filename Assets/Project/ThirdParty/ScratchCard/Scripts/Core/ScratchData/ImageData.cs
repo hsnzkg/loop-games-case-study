@@ -8,9 +8,16 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Core.ScratchData
         private readonly Image image;
         private readonly bool isCanvasOverlay;
 
-        public override Vector2 TextureSize => image.sprite.rect.size;
-        protected override Vector2 Bounds => image.rectTransform.rect.size;
-        
+        public override Vector2 GetTextureSize()
+        {
+            return image.sprite.rect.size;
+        }
+
+        protected override Vector2 GetBounds()
+        {
+            return image.rectTransform.rect.size;
+        }
+
         public ImageData(Transform surface, Camera camera) : base(surface, camera)
         {
             if (surface.TryGetComponent(out image))
@@ -25,11 +32,11 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Core.ScratchData
             if (isCanvasOverlay)
             {
                 var scratchPosition = Vector2.zero;
-                if (RectTransformUtility.ScreenPointToWorldPointInRectangle((RectTransform)Surface, position, null, out var worldPosition))
+                if (RectTransformUtility.ScreenPointToWorldPointInRectangle((RectTransform)GetSurface(), position, null, out var worldPosition))
                 {
-                    var pointLocal = Surface.InverseTransformPoint(worldPosition);
-                    var uv = Triangle.GetUV(pointLocal);
-                    scratchPosition = Vector2.Scale(TextureSize, uv);
+                    var pointLocal = GetSurface().InverseTransformPoint(worldPosition);
+                    var uv = GetTriangle().GetUV(pointLocal);
+                    scratchPosition = Vector2.Scale(GetTextureSize(), uv);
                 }
                 return scratchPosition;
             }

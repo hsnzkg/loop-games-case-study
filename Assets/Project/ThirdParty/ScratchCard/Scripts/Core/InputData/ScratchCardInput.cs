@@ -31,23 +31,21 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Core.InputData
 		public bool CheckCanvasRaycasts;
 		public bool UsePressure;
 
-		public bool IsScratching
-		{
-			get
-			{
-				if (isScratching != null)
-				{
-					foreach (var scratching in isScratching)
-					{
-						if (scratching)
-							return true;
-					}
-				}
-				return false;
-			}
-		}
+        public bool GetIsScratching()
+        {
+            if (isScratching != null)
+            {
+                foreach (var scratching in isScratching)
+                {
+                    if (scratching)
+                        return true;
+                }
+            }
 
-		private readonly Func<bool> isScratched;
+            return false;
+        }
+
+        private readonly Func<bool> isScratched;
 		private RaycastController raycastController;
 		private ScratchCardInputData[] startInputData;
 		private ScratchCardInputData[] endInputData;
@@ -220,7 +218,7 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Core.InputData
 				Scratch();
 			}
 #endif
-			return IsScratching;
+			return GetIsScratching();
 		}
 
 		private void SetInputData(int fingerId, Vector2 position, float pressure = 1f)
@@ -256,7 +254,7 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Core.InputData
 			}
 		}
 
-		private void Scratch()
+		public void Scratch()
 		{
 			for (var i = 0; i < isScratching.Length; i++)
 			{

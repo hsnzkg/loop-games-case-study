@@ -6,9 +6,18 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Core.ScratchData
     {
         private readonly MeshRenderer renderer;
         private readonly MeshFilter filter;
+        private readonly Vector2 m_textureSize;
 
-        public override Vector2 TextureSize { get; }
-        protected override Vector2 Bounds => filter != null ? filter.sharedMesh.bounds.size : renderer.bounds.size;
+        public override Vector2 GetTextureSize()
+        {
+            return m_textureSize;
+        }
+
+        protected override Vector2 GetBounds()
+        {
+            return filter != null ? filter.sharedMesh.bounds.size : renderer.bounds.size;
+        }
+
         public MeshRendererData(Transform surface, Camera camera) : base(surface, camera)
         {
             if (surface.TryGetComponent(out renderer) && surface.TryGetComponent(out filter))
@@ -16,7 +25,7 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Core.ScratchData
                 InitTriangle();
                 var sharedMaterial = renderer.sharedMaterial;
                 var offset = sharedMaterial.GetVector(Constants.MaskShader.Offset);
-                TextureSize = new Vector2(sharedMaterial.mainTexture.width * offset.z, sharedMaterial.mainTexture.height * offset.w);
+                m_textureSize = new Vector2(sharedMaterial.mainTexture.width * offset.z, sharedMaterial.mainTexture.height * offset.w);
             }
         }
     }

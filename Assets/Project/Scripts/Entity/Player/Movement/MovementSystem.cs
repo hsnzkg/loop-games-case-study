@@ -11,6 +11,7 @@ namespace Project.Scripts.Entity.Player.Movement
         private readonly IInputProvider m_inputProvider;
         private readonly Rigidbody2D m_rb;
         private Vector2 m_targetVelocity;
+        private EventBind<EUpdate>  m_updateBind;
         private EventBind<EFixedUpdate>  m_fixedUpdateBind;
 
         public MovementSystem(MovementSettings movementSettings,Rigidbody2D rb,IInputProvider inputProvider)
@@ -22,6 +23,7 @@ namespace Project.Scripts.Entity.Player.Movement
 
         public void Initialize()
         {
+            m_updateBind = new EventBind<EUpdate>(Update);
             m_fixedUpdateBind = new EventBind<EFixedUpdate>(FixedUpdate);
         }
 
@@ -38,16 +40,22 @@ namespace Project.Scripts.Entity.Player.Movement
         private void RegisterEvents()
         {
             EventBus<EFixedUpdate>.Register(m_fixedUpdateBind);
+            EventBus<EUpdate>.Register(m_updateBind);
         }
 
         private void UnregisterEvents()
         {
             EventBus<EFixedUpdate>.Unregister(m_fixedUpdateBind);
+            EventBus<EUpdate>.Unregister(m_updateBind);
+        }
+
+        private void Update(EUpdate obj)
+        {
+            EventBus<EScratch>.Raise(new EScratch(m_rb.transform.position));
         }
 
         private void FixedUpdate()
         {
-            EventBus<EScratch>.Raise(new EScratch(m_rb.position));
             HandleMovement();
         }
 
