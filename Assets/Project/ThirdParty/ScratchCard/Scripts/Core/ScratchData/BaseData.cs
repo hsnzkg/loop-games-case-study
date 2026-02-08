@@ -54,29 +54,29 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Core.ScratchData
         
         protected void InitTriangle()
         {
-	        var bounds = GetBounds();
+	        Vector2 bounds = GetBounds();
 	        //bottom left
-	        var position0 = new Vector3(-bounds.x / 2f, -bounds.y / 2f, 0);
-	        var uv0 = Vector2.zero;
+	        Vector3 position0 = new Vector3(-bounds.x / 2f, -bounds.y / 2f, 0);
+	        Vector2 uv0 = Vector2.zero;
 	        //upper left
-	        var position1 = new Vector3(-bounds.x / 2f, bounds.y / 2f, 0);
-	        var uv1 = Vector2.up;
+	        Vector3 position1 = new Vector3(-bounds.x / 2f, bounds.y / 2f, 0);
+	        Vector2 uv1 = Vector2.up;
 	        //upper right
-	        var position2 = new Vector3(bounds.x / 2f, bounds.y / 2f, 0);
-	        var uv2 = Vector2.one;
+	        Vector3 position2 = new Vector3(bounds.x / 2f, bounds.y / 2f, 0);
+	        Vector2 uv2 = Vector2.one;
 	        SetTriangle(new Triangle(position0, position1, position2, uv0, uv1, uv2));
         }
 
         public virtual Vector2 GetScratchPosition(Vector2 position)
         {
-	        var scratchPosition = Vector2.zero;
-	        var plane = new Plane(GetSurface().forward, GetSurface().position);
-	        var ray = GetCamera().ScreenPointToRay(position);
-	        if (plane.Raycast(ray, out var enter))
+	        Vector2 scratchPosition = Vector2.zero;
+	        Plane plane = new Plane(GetSurface().forward, GetSurface().position);
+	        Ray ray = GetCamera().ScreenPointToRay(position);
+	        if (plane.Raycast(ray, out float enter))
 	        {
-		        var point = ray.GetPoint(enter);
-		        var pointLocal = GetSurface().InverseTransformPoint(point);
-		        var uv = GetTriangle().GetUV(pointLocal);
+		        Vector3 point = ray.GetPoint(enter);
+		        Vector3 pointLocal = GetSurface().InverseTransformPoint(point);
+		        Vector2 uv = GetTriangle().GetUV(pointLocal);
 		        scratchPosition = Vector2.Scale(GetTextureSize(), uv);
 	        }
 	        return scratchPosition;
@@ -84,8 +84,8 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Core.ScratchData
 
         public Vector2 GetLocalPosition(Vector2 texturePosition)
         {
-	        var textureSize = GetTextureSize();
-	        var bounds = GetBounds();
+	        Vector2 textureSize = GetTextureSize();
+	        Vector2 bounds = GetBounds();
 	        if (GetIsOrthographic())
 	        {
 		        return (texturePosition - textureSize / 2f) / textureSize * bounds / GetSurface().lossyScale;

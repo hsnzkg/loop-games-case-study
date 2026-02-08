@@ -34,8 +34,10 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Animation
         {
             if (ScratchCard == null)
             {
-                if (TryGetComponent(out ScratchCard)) 
+                if (TryGetComponent(out ScratchCard))
+                {
                     return;
+                }
                 
                 if (TryGetComponent<ScratchCardManager>(out var scratchCardManager))
                 {
@@ -52,8 +54,8 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Animation
         {
             if (scratches.Count > 0)
             {
-                var firstTime = scratches[0].Time;
-                for (var i = 1; i < scratches.Count; i++)
+                float firstTime = scratches[0].Time;
+                for (int i = 1; i < scratches.Count; i++)
                 {
                     scratches[i].Time -= firstTime;
                     if (scratches[i] is LineScratch line)
@@ -73,7 +75,7 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Animation
 #if UNITY_EDITOR
                 UnityEditor.EditorUtility.SetDirty(ScratchAnimation);
 #endif
-                var scratchAnimationJson = JsonUtility.ToJson(ScratchAnimation);
+                string scratchAnimationJson = JsonUtility.ToJson(ScratchAnimation);
                 Debug.Log(scratchAnimationJson);
                 scratches.Clear();
             }
@@ -83,18 +85,17 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Animation
         {
             if (enabled)
             {
-                var imageSize = Vector2.one;
+                Vector2 imageSize = Vector2.one;
                 if (AnimationSpace == ScratchAnimationSpace.UV)
                 {
                     imageSize = ScratchCard.GetScratchData().GetTextureSize();
                 }
                 
-                var scratch = new BaseScratch
-                {
-                    Position = hole.Position / imageSize,
-                    BrushScale = hole.Pressure * ScratchCard.BrushSize,
-                    Time = hole.Time
-                };
+                BaseScratch scratch = new BaseScratch();
+                scratch.Position = hole.Position / imageSize;
+                scratch.BrushScale = hole.Pressure * ScratchCard.BrushSize;
+                scratch.Time = hole.Time;
+                
                 scratches.Add(scratch);
             }
         }
@@ -103,22 +104,19 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Animation
         {
             if (enabled)
             {
-                var imageSize = Vector2.one;
+                Vector2 imageSize = Vector2.one;
                 if (AnimationSpace == ScratchAnimationSpace.UV)
                 {
                     imageSize = ScratchCard.GetScratchData().GetTextureSize();
                 }
-                
-                var scratch = new LineScratch
-                {
-                    Position = lineStart.Position / imageSize,
-                    BrushScale = lineStart.Pressure * ScratchCard.BrushSize,
-                    Time = lineStart.Time,
-                    
-                    PositionEnd = lineEnd.Position / imageSize,
-                    BrushScaleEnd = lineEnd.Pressure * ScratchCard.BrushSize,
-                    TimeEnd = lineEnd.Time
-                };
+
+                LineScratch scratch = new LineScratch();
+                scratch.Position = lineStart.Position / imageSize;
+                scratch.BrushScale = lineStart.Pressure * ScratchCard.BrushSize;
+                scratch.Time = lineStart.Time;
+                scratch.PositionEnd = lineEnd.Position / imageSize;
+                scratch.BrushScaleEnd = lineEnd.Pressure * ScratchCard.BrushSize;
+                scratch.TimeEnd = lineEnd.Time;
                 scratches.Add(scratch);
             }
         }

@@ -72,13 +72,13 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Animation
             if (ScratchAnimation == null || ScratchAnimation.Scratches.Count == 0)
                 return;
                 
-            var scratch = ScratchAnimation.Scratches[currentScratchIndex];
+            BaseScratch scratch = ScratchAnimation.Scratches[currentScratchIndex];
             if (totalTime < scratch.Time)
                 return;
             
             if (scratch is LineScratch line)
             {
-                var duration = line.TimeEnd - line.Time;
+                float duration = line.TimeEnd - line.Time;
                 if (duration == 0f)
                 {
                     progress = 1f;
@@ -88,8 +88,8 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Animation
                     progress = totalTime / duration;
                 }
 
-                var position = Vector3.Lerp(line.Position, line.PositionEnd, progress) * scale;
-                var pressure = Mathf.Lerp(line.BrushScale, line.BrushScaleEnd, progress);
+                Vector2 position = Vector3.Lerp(line.Position, line.PositionEnd, progress) * scale;
+                float pressure = Mathf.Lerp(line.BrushScale, line.BrushScaleEnd, progress);
                 if (previousPosition == null)
                 {
                     previousPosition = line.Position * scale;
@@ -110,8 +110,8 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Animation
 
                 if (progress >= 1f)
                 {
-                    var position = scratch.Position * scale;
-                    var pressure = scratch.BrushScale;
+                    Vector2 position = scratch.Position * scale;
+                    float pressure = scratch.BrushScale;
                     ScratchCard.ScratchHole(position, pressure);
                     previousPosition = null;
                 }

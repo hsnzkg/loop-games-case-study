@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Project.ThirdParty.ScratchCard.Scripts.Core.InputData
@@ -14,9 +15,9 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Core.InputData
             scratchSurface = surfaceObject;
             raycasters = new List<CanvasGraphicRaycaster>();
             
-            if (surfaceObject.TryGetComponent<Image>(out var image) && image.canvas != null)
+            if (surfaceObject.TryGetComponent(out Image image) && image.canvas != null)
             {
-                if (!image.canvas.TryGetComponent<CanvasGraphicRaycaster>(out var raycaster))
+                if (!image.canvas.TryGetComponent(out CanvasGraphicRaycaster raycaster))
                 {
                     raycaster = image.canvas.gameObject.AddComponent<CanvasGraphicRaycaster>();
                 }
@@ -32,7 +33,7 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Core.InputData
                 {
                     if (canvas != null)
                     {
-                        if (!canvas.TryGetComponent<CanvasGraphicRaycaster>(out var raycaster))
+                        if (!canvas.TryGetComponent(out CanvasGraphicRaycaster raycaster))
                         {
                             raycaster = canvas.gameObject.AddComponent<CanvasGraphicRaycaster>();
                         }
@@ -48,15 +49,19 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Core.InputData
 
         public bool IsBlock(Vector3 position)
         {
-            var isBlock = false;
-            foreach (var raycaster in raycasters)
+            bool isBlock = false;
+            foreach (CanvasGraphicRaycaster raycaster in raycasters)
             {
                 if (raycaster == null)
+                {
                     continue;
+                }
                 
-                var result = raycaster.GetRaycasts(position);
+                List<RaycastResult> result = raycaster.GetRaycasts(position);
                 if (result.Count == 0 || result.Count > 0 && result[0].gameObject == scratchSurface)
+                {
                     continue;
+                }
                 
                 isBlock = true;
                 break;

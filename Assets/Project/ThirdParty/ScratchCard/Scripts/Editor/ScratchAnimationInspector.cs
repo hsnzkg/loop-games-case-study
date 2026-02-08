@@ -35,13 +35,13 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Editor
             EditorGUILayout.BeginHorizontal();
             if (GUILayout.Button("Add Hole Scratch"))
             {
-                var scratch = new BaseScratch();
+                BaseScratch scratch = new BaseScratch();
                 scratchAnimation.Scratches.Add(scratch);
                 EditorUtility.SetDirty(target);
             }
             if (GUILayout.Button("Add Line Scratch"))
             {
-                var scratch = new LineScratch();
+                LineScratch scratch = new LineScratch();
                 (target as ScratchAnimation)?.Scratches.Add(scratch);
                 EditorUtility.SetDirty(target);
             }

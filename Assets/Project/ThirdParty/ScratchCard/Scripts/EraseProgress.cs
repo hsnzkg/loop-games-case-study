@@ -8,9 +8,6 @@ using UnityEngine.Rendering;
 
 namespace Project.ThirdParty.ScratchCard.Scripts
 {
-	/// <summary>
-	/// Calculates scratching progress in range from 0 to 1, where 0 - card scratched completely, 1 - scratch surface is whole
-	/// </summary>
 	public class EraseProgress : MonoBehaviour
 	{
 		#region Events
@@ -24,21 +21,39 @@ namespace Project.ThirdParty.ScratchCard.Scripts
 
 		[SerializeField] private ScratchCard card;
 
-        public ScratchCard GetCard() => card;
+        public ScratchCard GetCard()
+        {
+            return card;
+        }
 
-        public void SetCard(ScratchCard value) => card = value;
+        public void SetCard(ScratchCard value)
+        {
+            card = value;
+        }
 
         [SerializeField] private Material progressMaterial;
 
-        public Material GetProgressMaterial() => progressMaterial;
+        public Material GetProgressMaterial()
+        {
+            return progressMaterial;
+        }
 
-        public void SetProgressMaterial(Material value) => progressMaterial = value;
+        public void SetProgressMaterial(Material value)
+        {
+            progressMaterial = value;
+        }
 
         [SerializeField] private bool sampleSourceTexture;
 
-        public bool GetSampleSourceTexture() => sampleSourceTexture;
+        public bool GetSampleSourceTexture()
+        {
+            return sampleSourceTexture;
+        }
 
-        public void SetSampleSourceTexture(bool value) => sampleSourceTexture = value;
+        public void SetSampleSourceTexture(bool value)
+        {
+            sampleSourceTexture = value;
+        }
 
         [SerializeField] private ProgressAccuracy progressAccuracy;
 
@@ -46,6 +61,7 @@ namespace Project.ThirdParty.ScratchCard.Scripts
         {
             return progressAccuracy;
         }
+        
         public void SetProgressAccuracy(ProgressAccuracy  accuracy)
         {
             progressAccuracy = accuracy;
@@ -90,7 +106,7 @@ namespace Project.ThirdParty.ScratchCard.Scripts
 		{
 			if (pixelsBuffer.IsCreated)
 			{
-				pixelsBuffer.Dispose(default);
+				//pixelsBuffer.Dispose(default);
 			}
 
 			if (percentRenderTexture != null && percentRenderTexture.IsCreated())
@@ -151,7 +167,7 @@ namespace Project.ThirdParty.ScratchCard.Scripts
 				return;
 			}
 			
-			if (card.Initialized)
+			if (card.GetInitialized())
 			{
 				OnCardRenderTextureInitialized(card.GetRenderTexture());
 			}
@@ -159,7 +175,8 @@ namespace Project.ThirdParty.ScratchCard.Scripts
 			card.OnRenderTextureInitialized += OnCardRenderTextureInitialized;
 			UpdateAccuracy();
 			scratchMode = card.GetMode();
-			commandBuffer = new CommandBuffer {name = "EraseProgress"};
+            commandBuffer = new CommandBuffer();
+            commandBuffer.name = "EraseProgress";
 			mesh = MeshGenerator.GenerateQuad(Vector3.one, Vector3.zero);
 			percentRenderTexture = new RenderTexture(1, 1, 0, RenderTextureFormat.ARGB32);
 			percentTargetIdentifier = new RenderTargetIdentifier(percentRenderTexture);
@@ -169,16 +186,13 @@ namespace Project.ThirdParty.ScratchCard.Scripts
 		
 		private void OnCardRenderTextureInitialized(RenderTexture renderTexture)
 		{
-			bitsPerPixel = renderTexture.format == RenderTextureFormat.R8 ? 1 : 4;
+			bitsPerPixel = 4;
 		}
 
 		private void UpdateAccuracy()
 		{
 		}
-
-		/// <summary>
-		/// Calculates scratch progress
-		/// </summary>
+        
 		private IEnumerator CalcProgress()
 		{
 			if (!isCompleted && !isCalculating)
@@ -186,19 +200,19 @@ namespace Project.ThirdParty.ScratchCard.Scripts
 				isCalculating = true;
 				if (progressAccuracy == ProgressAccuracy.Default)
 				{
-					var prevRenderTexture = RenderTexture.active;
+					RenderTexture prevRenderTexture = RenderTexture.active;
 					RenderTexture.active = percentRenderTexture;
 					progressTexture.ReadPixels(percentTextureRect, 0, 0);
 					progressTexture.Apply();
 					RenderTexture.active = prevRenderTexture;
-					var pixel = progressTexture.GetPixel(0, 0);
+					Color pixel = progressTexture.GetPixel(0, 0);
 					progress = pixel.r;
 				}
 				
 				OnProgress?.Invoke(progress);
 				if (OnCompleted != null)
 				{
-					var completeValue = card.GetMode() == ScratchMode.Erase ? 1f : 0f;
+					float completeValue = card.GetMode() == ScratchMode.Erase ? 1f : 0f;
 					if (Mathf.Abs(progress - completeValue) < float.Epsilon)
 					{
 						OnCompleted?.Invoke(progress);
@@ -230,7 +244,7 @@ namespace Project.ThirdParty.ScratchCard.Scripts
 			commandBuffer.Clear();
 			commandBuffer.SetRenderTarget(percentTargetIdentifier);
 			commandBuffer.ClearRenderTarget(false, true, Color.clear);
-			var pass = sampleSourceTexture ? 1 : 0;
+			int pass = sampleSourceTexture ? 1 : 0;
 			commandBuffer.DrawMesh(mesh, Matrix4x4.identity, progressMaterial, 0, pass);
 			Graphics.ExecuteCommandBuffer(commandBuffer);
 			if (gameObject.activeInHierarchy)

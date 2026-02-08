@@ -1,11 +1,9 @@
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Project.ThirdParty.ScratchCard.Scripts.Tools
 {
-    /// <summary>
-    /// A class for migration from version 1.x to 2.x
-    /// </summary>
     public class MigrationHelper
     {
         private Object migratedObject;
@@ -13,19 +11,21 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Tools
         public void StartMigrate(ScratchCardManager scratchCardManager)
         {
             if (scratchCardManager == null)
+            {
                 return;
+            }
 
-            var result = false;
+            bool result = false;
             if (scratchCardManager.GetMeshRendererCard() == null)
             {
-                var field = scratchCardManager.GetType().GetField("MeshCard");
-                var meshCardValue = field.GetValue(scratchCardManager);
+                FieldInfo field = scratchCardManager.GetType().GetField("MeshCard");
+                object meshCardValue = field.GetValue(scratchCardManager);
                 if (meshCardValue != null)
                 {
-                    var meshCardGameObject = (GameObject)meshCardValue;
+                    GameObject meshCardGameObject = (GameObject)meshCardValue;
                     if (meshCardGameObject != null)
                     {
-                        if (meshCardGameObject.TryGetComponent<MeshRenderer>(out var meshRenderer))
+                        if (meshCardGameObject.TryGetComponent(out MeshRenderer meshRenderer))
                         {
                             scratchCardManager.SetMeshRendererCard(meshRenderer);
                             field.SetValue(scratchCardManager, null);
@@ -37,11 +37,11 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Tools
             
             if (scratchCardManager.GetSpriteRendererCard() == null)
             {
-                var field = scratchCardManager.GetType().GetField("SpriteCard");
-                var spriteCardValue = field.GetValue(scratchCardManager);
+                FieldInfo field = scratchCardManager.GetType().GetField("SpriteCard");
+                object spriteCardValue = field.GetValue(scratchCardManager);
                 if (spriteCardValue != null)
                 {
-                    var spriteCardGameObject = (GameObject)spriteCardValue;
+                    GameObject spriteCardGameObject = (GameObject)spriteCardValue;
                     if (spriteCardGameObject != null)
                     {
                         if (spriteCardGameObject.TryGetComponent<SpriteRenderer>(out var spriteRenderer))
@@ -56,14 +56,14 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Tools
             
             if (scratchCardManager.GetCanvasRendererCard() == null)
             {
-                var field = scratchCardManager.GetType().GetField("ImageCard");
-                var imageCardValue = field.GetValue(scratchCardManager);
+                FieldInfo field = scratchCardManager.GetType().GetField("ImageCard");
+                object imageCardValue = field.GetValue(scratchCardManager);
                 if (imageCardValue != null)
                 {
-                    var imageCardGameObject = (GameObject)imageCardValue;
+                    GameObject imageCardGameObject = (GameObject)imageCardValue;
                     if (imageCardGameObject != null)
                     {
-                        if (imageCardGameObject.TryGetComponent<Image>(out var image))
+                        if (imageCardGameObject.TryGetComponent(out Image image))
                         {
                             scratchCardManager.SetCanvasRendererCard(image);
                             field.SetValue(scratchCardManager, null);

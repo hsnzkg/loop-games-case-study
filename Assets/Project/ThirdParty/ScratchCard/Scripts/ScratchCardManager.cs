@@ -178,7 +178,7 @@ namespace Project.ThirdParty.ScratchCard.Scripts
         public void SetBrushSize(float size)
         {
             brushSize = size;
-            if (Card != null && Card.Initialized)
+            if (Card != null && Card.GetInitialized())
             {
                 Card.BrushSize = brushSize;
             }
@@ -201,7 +201,7 @@ namespace Project.ThirdParty.ScratchCard.Scripts
             brushOpacity = value;
             if (Card != null && Card.BrushMaterial != null)
             {
-                var c = Card.BrushMaterial.color;
+                Color c = Card.BrushMaterial.color;
                 Card.BrushMaterial.color = new Color(c.r, c.g, c.b, brushOpacity);
             }
         }
@@ -233,7 +233,7 @@ namespace Project.ThirdParty.ScratchCard.Scripts
         public void SetUsePressure(bool value)
         {
             usePressure = value;
-            if (Card != null && Card.Initialized)
+            if (Card != null && Card.GetInitialized())
             {
                 Card.GetInput().UsePressure = usePressure;
             }
@@ -249,7 +249,7 @@ namespace Project.ThirdParty.ScratchCard.Scripts
         public void SetCheckCanvasRaycasts(bool value)
         {
             checkCanvasRaycasts = value;
-            if (Card != null && Card.Initialized)
+            if (Card != null && Card.GetInitialized())
             {
                 Card.GetInput().CheckCanvasRaycasts = checkCanvasRaycasts;
                 if (checkCanvasRaycasts)
@@ -269,7 +269,7 @@ namespace Project.ThirdParty.ScratchCard.Scripts
         public void SetCanvasesForRaycastsBlocking(Canvas[] value)
         {
             canvasesForRaycastsBlocking = value;
-            if (Card != null && Card.Initialized)
+            if (Card != null && Card.GetInitialized())
             {
                 Card.GetInput().InitRaycastsController(Card.SurfaceTransform.gameObject, canvasesForRaycastsBlocking);
             }
@@ -420,7 +420,7 @@ namespace Project.ThirdParty.ScratchCard.Scripts
 		{
 			if (Card != null && Card.SurfaceMaterial == null)
 			{
-				var scratchSurfaceMaterial = new Material(maskShader);
+				Material scratchSurfaceMaterial = new Material(maskShader);
 				Card.SurfaceMaterial = scratchSurfaceMaterial;
 				surfaceMaterial = scratchSurfaceMaterial;
 			}
@@ -430,8 +430,8 @@ namespace Project.ThirdParty.ScratchCard.Scripts
 		private void UpdateCardSprite(Sprite sprite)
 		{
 			ReleaseTexture();
-			var scratchSurfaceMaterial = Card.SurfaceMaterial;
-			var isPartOfAtlas = sprite != null && (sprite.texture.width != sprite.rect.size.x || sprite.texture.height != sprite.rect.size.y);
+			Material scratchSurfaceMaterial = Card.SurfaceMaterial;
+			bool isPartOfAtlas = sprite != null && (sprite.texture.width != sprite.rect.size.x || sprite.texture.height != sprite.rect.size.y);
 			if (Application.isPlaying)
 			{
 				if (isPartOfAtlas || scratchSurfaceSpriteHasAlpha)
@@ -466,8 +466,8 @@ namespace Project.ThirdParty.ScratchCard.Scripts
 
 					if (RenderType == ScratchCardRenderType.SpriteRenderer || RenderType == ScratchCardRenderType.CanvasRenderer)
 					{
-						var croppedRect = new Rect(0, 0, scratchTexture.width, scratchTexture.height);
-						var pivot = scratchSurfaceSprite.pivot / croppedRect.size;
+						Rect croppedRect = new Rect(0, 0, scratchTexture.width, scratchTexture.height);
+						Vector2 pivot = scratchSurfaceSprite.pivot / croppedRect.size;
 						scratchSprite = Sprite.Create(scratchTexture, croppedRect, pivot, Constants.General.PixelsPerUnit);
 						sprite = scratchSprite;
 					}
@@ -528,7 +528,7 @@ namespace Project.ThirdParty.ScratchCard.Scripts
 			{
 				if (RenderType == ScratchCardRenderType.MeshRenderer && scratchSurfaceSprite != null)
 				{
-					var offset = new Vector4(
+					Vector4 offset = new Vector4(
 						scratchSurfaceSprite.textureRect.min.x / scratchSurfaceSprite.texture.width,
 						scratchSurfaceSprite.textureRect.min.y / scratchSurfaceSprite.texture.height,
 						scratchSurfaceSprite.textureRect.width / scratchSurfaceSprite.texture.width,
@@ -559,7 +559,7 @@ namespace Project.ThirdParty.ScratchCard.Scripts
 			
 			if (Progress.GetProgressMaterial() == null)
 			{
-				var progressMaterial = new Material(maskProgressShader);
+				Material progressMaterial = new Material(maskProgressShader);
 				Progress.SetProgressMaterial(progressMaterial);
 				Progress.SetSampleSourceTexture(scratchSurfaceSpriteHasAlpha);
 			}
@@ -628,15 +628,14 @@ namespace Project.ThirdParty.ScratchCard.Scripts
 		public bool TrySelectCard(ScratchCardRenderType renderType)
 		{
 			RenderType = renderType;
-			var cards = new Dictionary<ScratchCardRenderType, Component>
+            Dictionary<ScratchCardRenderType, Component> cards = new Dictionary<ScratchCardRenderType, Component>();
+            cards.Add( ScratchCardRenderType.MeshRenderer, meshRendererCard );
+            cards.Add( ScratchCardRenderType.SpriteRenderer, spriteRendererCard );
+            cards.Add( ScratchCardRenderType.CanvasRenderer, canvasRendererCard );
+            
+			foreach (KeyValuePair<ScratchCardRenderType, Component> card in cards)
 			{
-				{ ScratchCardRenderType.MeshRenderer, meshRendererCard },
-				{ ScratchCardRenderType.SpriteRenderer, spriteRendererCard },
-				{ ScratchCardRenderType.CanvasRenderer, canvasRendererCard }
-			};
-			foreach (var card in cards)
-			{
-				var isActive = card.Key == RenderType;
+				bool isActive = card.Key == RenderType;
 				if (card.Value != null)
 				{
 					card.Value.gameObject.SetActive(isActive);
@@ -656,7 +655,7 @@ namespace Project.ThirdParty.ScratchCard.Scripts
 
 		public void SetNativeSize()
 		{
-			var cardRenderType = RenderType;
+			ScratchCardRenderType cardRenderType = RenderType;
 			if (cardRenderType == ScratchCardRenderType.MeshRenderer)
 			{
 				if (GetMeshRendererCard() != null && GetMeshRendererCard().sharedMaterial != null && GetMeshRendererCard().sharedMaterial.mainTexture != null)
@@ -669,12 +668,12 @@ namespace Project.ThirdParty.ScratchCard.Scripts
 					}
 					else
 					{
-						var texture = GetMeshRendererCard().sharedMaterial.mainTexture;
+						Texture texture = GetMeshRendererCard().sharedMaterial.mainTexture;
 						width = texture.width;
 						height = texture.height;
 					}
 
-					var meshCardTransform = GetMeshRendererCard().transform;
+					Transform meshCardTransform = GetMeshRendererCard().transform;
 					meshCardTransform.localScale = new Vector3(width / Constants.General.PixelsPerUnit, 
 						height / Constants.General.PixelsPerUnit, meshCardTransform.localScale.z);
 				}

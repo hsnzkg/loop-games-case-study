@@ -1,8 +1,5 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-#if ENABLE_INPUT_SYSTEM
-using UnityEngine.InputSystem.UI;
-#endif
 
 namespace Project.ThirdParty.ScratchCard.Scripts.Tools
 {
@@ -12,17 +9,7 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Tools
         
         private void Awake()
         {
-#if ENABLE_INPUT_SYSTEM
-            if (eventSystem.TryGetComponent<StandaloneInputModule>(out var standaloneInputModule))
-            {
-                Destroy(standaloneInputModule);
-            }
-            if (!eventSystem.TryGetComponent<InputSystemUIInputModule>(out _))
-            {
-                eventSystem.gameObject.AddComponent<InputSystemUIInputModule>();
-            }
-#elif ENABLE_LEGACY_INPUT_MANAGER
-            var inputSystemUIModule = eventSystem.GetComponent("InputSystemUIInputModule");
+            Component inputSystemUIModule = eventSystem.GetComponent("InputSystemUIInputModule");
             if (inputSystemUIModule != null)
             {
                 Destroy(inputSystemUIModule);
@@ -31,7 +18,6 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Tools
             {
                 eventSystem.gameObject.AddComponent<StandaloneInputModule>();
             }
-#endif
         }
 
         private void OnValidate()

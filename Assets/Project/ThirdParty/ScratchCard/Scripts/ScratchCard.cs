@@ -62,7 +62,7 @@
                 mode = value;
                 if (BrushMaterial != null)
                 {
-                    var blendOp = mode == ScratchMode.Erase ? (int)BlendOp.Add : (int)BlendOp.ReverseSubtract;
+                    int blendOp = mode == ScratchMode.Erase ? (int)BlendOp.Add : (int)BlendOp.ReverseSubtract;
                     BrushMaterial.SetInt(Constants.BrushShader.BlendOpShaderParam, blendOp);
                 }
             }
@@ -82,8 +82,15 @@
                 cardRenderer.IsScratched = value;
             }
 
-            public bool IsScratching => GetInput().GetIsScratching();
-		    public bool Initialized => initialized;
+            public bool GetIsScratching()
+            {
+                return GetInput().GetIsScratching();
+            }
+
+            public bool GetInitialized()
+            {
+                return initialized;
+            }
 
             public BaseData GetScratchData()
             {
@@ -116,16 +123,20 @@
 
 		    private void Start()
 		    {
-			    if (initialized)
-				    return;
+                if (initialized)
+                {
+                    return;
+                }
 
 			    Init();
 		    }
 
 		    private void OnDisable()
 		    {
-			    if (!initialized)
-				    return;
+                if (!initialized)
+                {
+                    return;
+                }
 			    
 			    GetInput().ResetData();
 		    }
@@ -159,7 +170,8 @@
 			    }
 			    
 			    UnsubscribeFromEvents();
-			    SetInput(new ScratchCardInput(() => GetIsScratched()));
+                ScratchCardInput input = new ScratchCardInput(GetIsScratched);
+			    SetInput(input);
 			    SubscribeToEvents();
 			    cardRenderer?.Release();
 			    cardRenderer = new ScratchCardRenderer(this);
@@ -196,8 +208,10 @@
 		    
 		    private void UnsubscribeFromEvents()
 		    {
-			    if (GetInput() == null) 
-				    return;
+                if (GetInput() == null)
+                {
+                    return;
+                }
 			    
 			    GetInput().OnScratch -= GetScratchData().GetScratchPosition;
 			    GetInput().OnScratchHole -= TryScratchHole;
@@ -209,10 +223,9 @@
 		    /// </summary>
 		    private void CreateRenderTexture()
 		    {
-			    var qualityRatio = (float)RenderTextureQuality;
-			    var renderTextureSize = new Vector2(GetScratchData().GetTextureSize().x / qualityRatio, GetScratchData().GetTextureSize().y / qualityRatio);
-			    var renderTextureFormat = SystemInfo.SupportsRenderTextureFormat(RenderTextureFormat.R8) ? 
-				    RenderTextureFormat.R8 : RenderTextureFormat.ARGB32;
+			    float qualityRatio = (float)RenderTextureQuality;
+			    Vector2 renderTextureSize = new Vector2(GetScratchData().GetTextureSize().x / qualityRatio, GetScratchData().GetTextureSize().y / qualityRatio);
+			    RenderTextureFormat renderTextureFormat = SystemInfo.SupportsRenderTextureFormat(RenderTextureFormat.R8) ? RenderTextureFormat.R8 : RenderTextureFormat.ARGB32;
 			    SetRenderTexture(new RenderTexture((int)renderTextureSize.x, (int)renderTextureSize.y, 0, renderTextureFormat));
 			    SurfaceMaterial.SetTexture(Constants.MaskShader.MaskTexture, GetRenderTexture());
 			    SetRenderTarget(new RenderTargetIdentifier(GetRenderTexture()));
@@ -241,7 +254,7 @@
 		    private void TryScratchHole(Vector2 position, float pressure)
 		    {
 			    cardRenderer.ScratchHole(position, pressure);
-			    var localPosition = GetScratchData().GetLocalPosition(position);
+			    Vector2 localPosition = GetScratchData().GetLocalPosition(position);
 			    OnScratchHole?.Invoke(localPosition, pressure);
 			    if (GetIsScratched())
 			    {
@@ -252,8 +265,8 @@
 		    private void TryScratchLine(Vector2 startPosition, float startPressure, Vector2 endPosition, float endPressure)
 		    {
 			    cardRenderer.ScratchLine(startPosition, endPosition, startPressure, endPressure);
-			    var startLocalPosition = GetScratchData().GetLocalPosition(startPosition);
-			    var endLocalPosition = GetScratchData().GetLocalPosition(endPosition);
+			    Vector2 startLocalPosition = GetScratchData().GetLocalPosition(startPosition);
+			    Vector2 endLocalPosition = GetScratchData().GetLocalPosition(endPosition);
 			    OnScratchLine?.Invoke(startLocalPosition, startPressure, endLocalPosition, endPressure);
 			    if (GetIsScratched())
 			    {
@@ -265,9 +278,7 @@
 		    
 		    #region Public Methods
 
-		    /// <summary>
-		    /// Fills RenderTexture with white color (100% scratched surface)
-		    /// </summary>
+
 		    public void Fill(bool setIsScratched = true)
 		    {
 			    cardRenderer.FillRenderTextureWithColor(Color.white);
@@ -277,15 +288,11 @@
 			    }
 		    }
 
-		    [Obsolete("This method is obsolete, use Fill() instead.")]
 		    public void FillInstantly()
 		    {
 			    Fill();
 		    }
-
-		    /// <summary>
-		    /// Fills RenderTexture with clear color (0% scratched surface)
-		    /// </summary>
+            
 		    public void Clear(bool setIsScratched = true)
 		    {
 			    cardRenderer.FillRenderTextureWithColor(Color.clear);
@@ -295,15 +302,11 @@
 			    }
 		    }
 
-		    [Obsolete("This method is obsolete, use Clear() instead.")]
 		    public void ClearInstantly()
 		    {
 			    Clear();
 		    }
-
-		    /// <summary>
-		    /// Recreates RenderTexture and clears it
-		    /// </summary>
+            
 		    public void ResetRenderTexture()
 		    {
 			    ReleaseRenderTexture();
@@ -311,16 +314,11 @@
 			    cardRenderer.FillRenderTextureWithColor(Color.clear);
 			    SetIsScratched(true);
 		    }
-
-		    /// <summary>
-		    /// Scratches hole
-		    /// </summary>
-		    /// <param name="position"></param>
-		    /// <param name="pressure"></param>
+            
 		    public void ScratchHole(Vector2 position, float pressure = 1f)
 		    {
 			    cardRenderer.ScratchHole(position, pressure);
-			    var localPosition = GetScratchData().GetLocalPosition(position);
+			    Vector2 localPosition = GetScratchData().GetLocalPosition(position);
 			    OnScratchHole?.Invoke(localPosition, pressure);
 			    if (GetIsScratched())
 			    {
@@ -328,33 +326,23 @@
 			    }
 		    }
 
-		    /// <summary>
-		    /// Scratches line
-		    /// </summary>
-		    /// <param name="startPosition"></param>
-		    /// <param name="endPosition"></param>
-		    /// <param name="startPressure"></param>
-		    /// <param name="endPressure"></param>
+
 		    public void ScratchLine(Vector2 startPosition, Vector2 endPosition, float startPressure = 1f, float endPressure = 1f)
 		    {
 			    cardRenderer.ScratchLine(startPosition, endPosition, startPressure, endPressure);
-			    var startLocalPosition = GetScratchData().GetLocalPosition(startPosition);
-			    var endLocalPosition = GetScratchData().GetLocalPosition(endPosition);
+			    Vector2 startLocalPosition = GetScratchData().GetLocalPosition(startPosition);
+			    Vector2 endLocalPosition = GetScratchData().GetLocalPosition(endPosition);
 			    OnScratchLine?.Invoke(startLocalPosition, startPressure, endLocalPosition, endPressure);
 			    if (GetIsScratched())
 			    {
 				    OnScratchLineSucceed?.Invoke(startLocalPosition, startPressure, endLocalPosition, endPressure);	
 			    }
 		    }
-
-		    /// <summary>
-		    /// Returns scratch texture
-		    /// </summary>
-		    /// <returns></returns>
+            
 		    public Texture2D GetScratchTexture()
 		    {
-			    var previousRenderTexture = RenderTexture.active;
-			    var texture2D = new Texture2D(GetRenderTexture().width, GetRenderTexture().height, TextureFormat.ARGB32, false);
+			    RenderTexture previousRenderTexture = RenderTexture.active;
+			    Texture2D texture2D = new Texture2D(GetRenderTexture().width, GetRenderTexture().height, TextureFormat.ARGB32, false);
 			    RenderTexture.active = GetRenderTexture();
 			    texture2D.ReadPixels(new Rect(0, 0, texture2D.width, texture2D.height), 0, 0, false);
 			    texture2D.Apply();

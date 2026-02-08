@@ -31,11 +31,11 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Core.ScratchData
         {
             if (isCanvasOverlay)
             {
-                var scratchPosition = Vector2.zero;
-                if (RectTransformUtility.ScreenPointToWorldPointInRectangle((RectTransform)GetSurface(), position, null, out var worldPosition))
+                Vector2 scratchPosition = Vector2.zero;
+                if (RectTransformUtility.ScreenPointToWorldPointInRectangle((RectTransform)GetSurface(), position, null, out Vector3 worldPosition))
                 {
-                    var pointLocal = GetSurface().InverseTransformPoint(worldPosition);
-                    var uv = GetTriangle().GetUV(pointLocal);
+                    Vector3 pointLocal = GetSurface().InverseTransformPoint(worldPosition);
+                    Vector2 uv = GetTriangle().GetUV(pointLocal);
                     scratchPosition = Vector2.Scale(GetTextureSize(), uv);
                 }
                 return scratchPosition;

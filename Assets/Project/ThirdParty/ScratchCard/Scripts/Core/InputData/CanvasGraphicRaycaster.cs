@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 namespace Project.ThirdParty.ScratchCard.Scripts.Core.InputData
 {
-    [RequireComponent(typeof(GraphicRaycaster))]
     public class CanvasGraphicRaycaster : MonoBehaviour
     {
         private GraphicRaycaster raycaster;
@@ -27,10 +26,15 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Core.InputData
         public List<RaycastResult> GetRaycasts(Vector2 position)
         {
             if (raycaster == null)
+            {
                 return null;
+            }
             
             raycastResults.Clear();
-            pointerEventData = new PointerEventData(eventSystem) {position = position};
+            
+            pointerEventData = new PointerEventData(eventSystem);
+            pointerEventData.position = position;
+            
             raycaster.Raycast(pointerEventData, raycastResults);
             return raycastResults;
         }

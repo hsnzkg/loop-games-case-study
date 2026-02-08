@@ -1,7 +1,7 @@
 {
     "version": "6.4.0",
     "projectId": "1f1a6f207d324da40a08ca88dc77c027",
-    "applicationID": 36531,
+    "applicationID": 0,
     "creativeName": "Test2",
     "pgServer": "EU",
     "window": {
@@ -11,6 +11,11 @@
         "environmentID": 1144181396,
         "scripts": {
             "excludes": [
+                "Assets/Project/Scripts/Scratch/",
+                "Assets/Project/ThirdParty/ScratchCard/Scripts/Animation/",
+                "Assets/Project/ThirdParty/ScratchCard/Scripts/Tools/EventSystemHelper.cs",
+                "Assets/Project/ThirdParty/ScratchCard/Scripts/Tools/MigrationHelper.cs",
+                "Assets/Project/ThirdParty/ScratchCard/Scripts/ScratchCardManager.cs",
                 "**/Editor/",
                 "**/Luna/RuntimeScripts/",
                 "**/FacebookSDK/",
@@ -125,6 +130,7 @@
                 "Stubs/MoreMountains.NiceVibrations"
             ],
             "includes": [
+                "Assets/Project/ThirdParty/ScratchCard/Shaders/",
                 "Assets/Resources/DOTweenSettings.asset"
             ]
         },
@@ -197,7 +203,7 @@
             }
         ],
         "disableRuntimeAnalysisForCode": true,
-        "disableRuntimeAnalysisForShaders": false,
+        "disableRuntimeAnalysisForShaders": true,
         "useShadersCache": true,
         "preventUpdatingRAListWhenRAIsDisabled": false,
         "bakeReferenceAmbientProbe": false,
@@ -1675,10 +1681,6 @@
                 "excluded": true
             },
             {
-                "name": "UnityEngine.MipmapLimitDescriptor",
-                "excluded": true
-            },
-            {
                 "name": "UnityEngine.MissingReferenceException",
                 "excluded": true
             },
@@ -2220,10 +2222,6 @@
             },
             {
                 "name": "UnityEngine.PhysicMaterial",
-                "excluded": true
-            },
-            {
-                "name": "UnityEngine.Rendering.CommandBuffer",
                 "excluded": true
             },
             {
@@ -4220,7 +4218,7 @@
             },
             {
                 "name": "UnityEngine.LightRenderMode",
-                "excluded": true
+                "excluded": false
             },
             {
                 "name": "UnityEngine.LightShadowCasterMode",
@@ -5352,7 +5350,7 @@
             },
             {
                 "name": "UnityEngine.TextureFormat",
-                "excluded": true
+                "excluded": false
             },
             {
                 "name": "UnityEngine.TextureImporterAlphaSource",
@@ -9180,6 +9178,290 @@
             },
             {
                 "name": "DG.Tweening.UpdateType",
+                "excluded": false
+            },
+            {
+                "name": "DG.Tweening.DOTweenCYInstruction.WaitForCompletion",
+                "excluded": true
+            },
+            {
+                "name": "DG.Tweening.DOTweenCYInstruction.WaitForElapsedLoops",
+                "excluded": true
+            },
+            {
+                "name": "DG.Tweening.DOTweenCYInstruction.WaitForKill",
+                "excluded": true
+            },
+            {
+                "name": "DG.Tweening.DOTweenCYInstruction.WaitForPosition",
+                "excluded": true
+            },
+            {
+                "name": "DG.Tweening.DOTweenCYInstruction.WaitForRewind",
+                "excluded": true
+            },
+            {
+                "name": "DG.Tweening.DOTweenCYInstruction.WaitForStart",
+                "excluded": true
+            },
+            {
+                "name": "DG.Tweening.DOTweenModuleAudio",
+                "excluded": true
+            },
+            {
+                "name": "DG.Tweening.DOTweenModulePhysics",
+                "excluded": true
+            },
+            {
+                "name": "DG.Tweening.DOTweenModulePhysics2D",
+                "excluded": true
+            },
+            {
+                "name": "DG.Tweening.DOTweenModuleSprite",
+                "excluded": true
+            },
+            {
+                "name": "DG.Tweening.DOTweenModuleUI",
+                "excluded": true
+            },
+            {
+                "name": "DG.Tweening.DOTweenModuleUI.Utils",
+                "excluded": true
+            },
+            {
+                "name": "DG.Tweening.DOTweenModuleUnityVersion",
+                "excluded": true
+            },
+            {
+                "name": "Project.Scripts.EventBus.Examples.ExamplePublisher",
+                "excluded": true
+            },
+            {
+                "name": "Project.Scripts.EventBus.Examples.ExampleReceiver",
+                "excluded": true
+            },
+            {
+                "name": "Project.Scripts.EventBus.Runtime.EventBusCenter",
+                "excluded": true
+            },
+            {
+                "name": "Project.Scripts.EventBus.Runtime.EventBusUtility",
+                "excluded": true
+            },
+            {
+                "name": "Project.Scripts.FiniteStateMachine.Runtime.HierarchicalStateExtensions",
+                "excluded": true
+            },
+            {
+                "name": "Project.ThirdParty.Joystick_Pack.Examples.JoystickPlayerExample",
+                "excluded": true
+            },
+            {
+                "name": "Project.ThirdParty.Joystick_Pack.Examples.JoystickSetterExample",
+                "excluded": true
+            },
+            {
+                "name": "Project.ThirdParty.ScratchCard.Scripts.Core.Constants.BrushShader",
+                "excluded": true
+            },
+            {
+                "name": "Project.ThirdParty.ScratchCard.Scripts.Core.Constants.General",
+                "excluded": true
+            },
+            {
+                "name": "Project.ThirdParty.ScratchCard.Scripts.Core.Constants.MaskShader",
+                "excluded": true
+            },
+            {
+                "name": "Project.ThirdParty.ScratchCard.Scripts.Core.Constants.ProgressShader",
+                "excluded": true
+            },
+            {
+                "name": "Project.ThirdParty.ScratchCard.Scripts.Core.InputData.CanvasGraphicRaycaster",
+                "excluded": true
+            },
+            {
+                "name": "Project.ThirdParty.ScratchCard.Scripts.Core.InputData.RaycastController",
+                "excluded": true
+            },
+            {
+                "name": "Project.ThirdParty.ScratchCard.Scripts.Core.InputData.ScratchCardInput",
+                "excluded": true
+            },
+            {
+                "name": "Project.ThirdParty.ScratchCard.Scripts.Core.InputData.ScratchCardInputData",
+                "excluded": true
+            },
+            {
+                "name": "Project.ThirdParty.ScratchCard.Scripts.Core.ScratchCardRenderer",
+                "excluded": true
+            },
+            {
+                "name": "Project.ThirdParty.ScratchCard.Scripts.Core.ScratchData.BaseData",
+                "excluded": true
+            },
+            {
+                "name": "Project.ThirdParty.ScratchCard.Scripts.Core.ScratchData.Triangle",
+                "excluded": true
+            },
+            {
+                "name": "Project.Scripts.Bootstrap.GameBootstrapper",
+                "excluded": true
+            },
+            {
+                "name": "Project.Scripts.EventBus.Examples.Events.EExampleEvent",
+                "excluded": true
+            },
+            {
+                "name": "Project.Scripts.FiniteStateMachine.Runtime.FunctionPredicate",
+                "excluded": true
+            },
+            {
+                "name": "Project.Scripts.FiniteStateMachine.Runtime.RuntimeMode.AutoMode",
+                "excluded": true
+            },
+            {
+                "name": "Project.Scripts.FiniteStateMachine.Runtime.Transition",
+                "excluded": true
+            },
+            {
+                "name": "Project.ThirdParty.Joystick_Pack.Scripts.Joysticks.FloatingJoystick",
+                "excluded": true
+            },
+            {
+                "name": "Project.ThirdParty.Joystick_Pack.Scripts.Joysticks.VariableJoystick",
+                "excluded": true
+            },
+            {
+                "name": "Project.ThirdParty.ScratchCard.Scripts.Core.ScratchData.ImageData",
+                "excluded": true
+            },
+            {
+                "name": "Project.ThirdParty.ScratchCard.Scripts.Core.ScratchData.MeshRendererData",
+                "excluded": true
+            },
+            {
+                "name": "Project.ThirdParty.ScratchCard.Scripts.Core.ScratchData.SpriteRendererData",
+                "excluded": true
+            },
+            {
+                "name": "DG.Tweening.DOTweenCYInstruction",
+                "excluded": true
+            },
+            {
+                "name": "IAmAnEmptyScriptJustToMakeCodelessProjectsCompileProperty",
+                "excluded": true
+            },
+            {
+                "name": "Project.Scripts.FiniteStateMachine.Runtime.IPredicate",
+                "excluded": true
+            },
+            {
+                "name": "Project.ThirdParty.Joystick_Pack.Scripts.Joysticks.JoystickType",
+                "excluded": true
+            },
+            {
+                "name": "Project.ThirdParty.ScratchCard.Scripts.Core.Constants",
+                "excluded": true
+            },
+            {
+                "name": "Project.ThirdParty.ScratchCard.Scripts.Core.ProgressAccuracy",
+                "excluded": true
+            },
+            {
+                "name": "Project.ThirdParty.ScratchCard.Scripts.Core.ScratchAnimationSpace",
+                "excluded": true
+            },
+            {
+                "name": "Project.ThirdParty.ScratchCard.Scripts.Core.ScratchCardRenderType",
+                "excluded": true
+            },
+            {
+                "name": "Project.ThirdParty.Joystick_Pack.Scripts.Joysticks.FixedJoystick",
+                "excluded": true
+            },
+            {
+                "name": "Project.Scripts.Bootstrap.IBootstrapper",
+                "excluded": false
+            },
+            {
+                "name": "Project.Scripts.Entity.Player.Combat.IDamageable",
+                "excluded": false
+            },
+            {
+                "name": "Project.Scripts.Entity.Player.Movement.IInputProvider",
+                "excluded": false
+            },
+            {
+                "name": "Project.Scripts.Entity.Player.Movement.MovementSettings",
+                "excluded": false
+            },
+            {
+                "name": "Project.Scripts.Entity.Weapon.ICollectable",
+                "excluded": false
+            },
+            {
+                "name": "Project.Scripts.EventBus.Runtime.IEvent",
+                "excluded": false
+            },
+            {
+                "name": "Project.Scripts.EventBus.Runtime.EventPriority",
+                "excluded": false
+            },
+            {
+                "name": "Project.Scripts.FindTheBug",
+                "excluded": false
+            },
+            {
+                "name": "Project.Scripts.FiniteStateMachine.Runtime.IDispatcher",
+                "excluded": false
+            },
+            {
+                "name": "Project.Scripts.FiniteStateMachine.Runtime.IRuntimeMode",
+                "excluded": false
+            },
+            {
+                "name": "Project.Scripts.FiniteStateMachine.Runtime.ITransition",
+                "excluded": false
+            },
+            {
+                "name": "Project.Scripts.Input.IInputReceiver",
+                "excluded": false
+            },
+            {
+                "name": "Project.Scripts.Level.Settings.FenceSettings",
+                "excluded": false
+            },
+            {
+                "name": "Project.Scripts.Level.Settings.GroundSettings",
+                "excluded": false
+            },
+            {
+                "name": "Project.Scripts.Pool.IObjectPool$1",
+                "excluded": false
+            },
+            {
+                "name": "Project.Scripts.Pool.IPool",
+                "excluded": false
+            },
+            {
+                "name": "Project.ThirdParty.Joystick_Pack.Scripts.Base.AxisOptions",
+                "excluded": false
+            },
+            {
+                "name": "Project.ThirdParty.ScratchCard.Scripts.Core.Quality",
+                "excluded": false
+            },
+            {
+                "name": "Project.ThirdParty.ScratchCard.Scripts.Core.ScratchMode",
+                "excluded": false
+            },
+            {
+                "name": "Project.Scripts.EventBus.Runtime.EventBus$1.PendingFlags",
+                "excluded": false
+            },
+            {
+                "name": "Project.Scripts.Entity.PlayerAI.PlayerAIEntity",
                 "excluded": false
             }
         ],
@@ -15888,7 +16170,7 @@
                     },
                     {
                         "name": "GetGraphicsFormat$2",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "GetGraphicsFormat$1",
@@ -17584,7 +17866,7 @@
                     },
                     {
                         "name": "SupportsTextureFormat",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "SupportsVertexAttributeFormat",
@@ -18560,7 +18842,7 @@
                     },
                     {
                         "name": "ValidateFormat$2",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "ValidateFormat",
@@ -18908,7 +19190,7 @@
                     },
                     {
                         "name": "vertices#set",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "uv#get",
@@ -18916,7 +19198,7 @@
                     },
                     {
                         "name": "uv#set",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "uv2#get",
@@ -18964,7 +19246,7 @@
                     },
                     {
                         "name": "colors#set",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "colors32#get",
@@ -19004,7 +19286,7 @@
                     },
                     {
                         "name": "triangles#set",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "vertexCount#get",
@@ -19040,7 +19322,7 @@
                     },
                     {
                         "name": "ctor",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "GetSubMesh",
@@ -19076,7 +19358,7 @@
                     },
                     {
                         "name": "ConvertUVChannelToSemantics",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "GetUVs",
@@ -19092,7 +19374,7 @@
                     },
                     {
                         "name": "SetUVs",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "SetUVs$1",
@@ -19116,7 +19398,7 @@
                     },
                     {
                         "name": "SetVertices",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "GetVertices",
@@ -19152,7 +19434,7 @@
                     },
                     {
                         "name": "SetColors",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "GetIndices$2",
@@ -19176,11 +19458,11 @@
                     },
                     {
                         "name": "SetIndices$2",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "SetTriangles$3",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "SetTriangles$2",
@@ -19188,11 +19470,11 @@
                     },
                     {
                         "name": "SetTriangles$1",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "SetTriangles",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "SetTriangles$4",
@@ -19232,7 +19514,7 @@
                     },
                     {
                         "name": "ConvertArrayToListInPlace",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "Clone",
@@ -19588,7 +19870,7 @@
                     },
                     {
                         "name": "$ctor3",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "ctor",
@@ -21158,7 +21440,7 @@
                     },
                     {
                         "name": "$ctor18",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "$ctor14",
@@ -21178,7 +21460,7 @@
                     },
                     {
                         "name": "$ctor12",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "$ctor13",
@@ -21290,7 +21572,7 @@
                     },
                     {
                         "name": "ValidateFormat$4",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "ValidateFormat$3",
@@ -31431,6 +31713,2358 @@
                     {
                         "name": "OnDidApplyAnimationProperties",
                         "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "UnityEngine.MipmapLimitDescriptor",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "getDefaultValue",
+                        "excluded": false
+                    },
+                    {
+                        "name": "$ctor1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "getHashCode",
+                        "excluded": true
+                    },
+                    {
+                        "name": "equals",
+                        "excluded": true
+                    },
+                    {
+                        "name": "$clone",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "UnityEngine.Rendering.CommandBuffer",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "name#get",
+                        "excluded": true
+                    },
+                    {
+                        "name": "name#set",
+                        "excluded": false
+                    },
+                    {
+                        "name": "sizeInBytes#get",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Clear",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetRenderTarget",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ClearRenderTarget",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ClearRenderTarget$1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "DrawMesh",
+                        "excluded": true
+                    },
+                    {
+                        "name": "DrawMesh$3",
+                        "excluded": true
+                    },
+                    {
+                        "name": "DrawMesh$2",
+                        "excluded": true
+                    },
+                    {
+                        "name": "DrawMesh$1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetViewMatrix",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetProjectionMatrix",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetViewProjectionMatrices",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ConvertTexture$1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ConvertTexture",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetInvertCulling",
+                        "excluded": true
+                    },
+                    {
+                        "name": "CopyCounterValue",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ClearRandomWriteTargets",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetViewport",
+                        "excluded": true
+                    },
+                    {
+                        "name": "EnableScissorRect",
+                        "excluded": true
+                    },
+                    {
+                        "name": "DisableScissorRect",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetTemporaryRT$6",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetTemporaryRT$5",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetTemporaryRT$4",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetTemporaryRT$3",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetTemporaryRT$2",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetTemporaryRT$1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetTemporaryRT",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetTemporaryRTArray$7",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetTemporaryRTArray$6",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetTemporaryRTArray$5",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetTemporaryRTArray$4",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetTemporaryRTArray$3",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetTemporaryRTArray$2",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetTemporaryRTArray$1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetTemporaryRTArray",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ReleaseTemporaryRT",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetGlobalFloat",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetGlobalFloat$1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetGlobalInt",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetGlobalInt$1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetGlobalVector",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetGlobalVector$1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetGlobalColor",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetGlobalColor$1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetGlobalMatrix",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetGlobalMatrix$1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "EnableShaderKeyword",
+                        "excluded": true
+                    },
+                    {
+                        "name": "DisableShaderKeyword",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetGlobalDepthBias",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetGlobalFloatArray$1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetGlobalFloatArray$2",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetGlobalFloatArray",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetGlobalFloatArray$3",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetGlobalVectorArray$1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetGlobalVectorArray$2",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetGlobalVectorArray",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetGlobalVectorArray$3",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetGlobalMatrixArray$1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetGlobalMatrixArray$2",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetGlobalMatrixArray",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetGlobalMatrixArray$3",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetGlobalBuffer",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetGlobalBuffer$1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "BeginSample",
+                        "excluded": true
+                    },
+                    {
+                        "name": "EndSample",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Dispose",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Release",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GenerateMips",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ResolveAntiAliasedSurface",
+                        "excluded": true
+                    },
+                    {
+                        "name": "DrawRenderer$2",
+                        "excluded": true
+                    },
+                    {
+                        "name": "DrawRenderer$1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "DrawRenderer",
+                        "excluded": true
+                    },
+                    {
+                        "name": "DrawProcedural$2",
+                        "excluded": true
+                    },
+                    {
+                        "name": "DrawProcedural$1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "DrawProcedural",
+                        "excluded": true
+                    },
+                    {
+                        "name": "DrawProceduralIndirect$2",
+                        "excluded": true
+                    },
+                    {
+                        "name": "DrawProceduralIndirect$1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "DrawProceduralIndirect",
+                        "excluded": true
+                    },
+                    {
+                        "name": "DrawMeshInstanced$2",
+                        "excluded": true
+                    },
+                    {
+                        "name": "DrawMeshInstanced$1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "DrawMeshInstanced",
+                        "excluded": true
+                    },
+                    {
+                        "name": "DrawMeshInstancedIndirect$2",
+                        "excluded": true
+                    },
+                    {
+                        "name": "DrawMeshInstancedIndirect$1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "DrawMeshInstancedIndirect",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetRandomWriteTarget$2",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetRandomWriteTarget$1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetRandomWriteTarget",
+                        "excluded": true
+                    },
+                    {
+                        "name": "CopyTexture$3",
+                        "excluded": true
+                    },
+                    {
+                        "name": "CopyTexture$2",
+                        "excluded": true
+                    },
+                    {
+                        "name": "CopyTexture$1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "CopyTexture",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Blit$4",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Blit$7",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Blit$5",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Blit$6",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Blit",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Blit$3",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Blit$1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Blit$2",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetGlobalTexture$1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetGlobalTexture",
+                        "excluded": true
+                    },
+                    {
+                        "name": "IssuePluginEvent",
+                        "excluded": true
+                    },
+                    {
+                        "name": "IssuePluginEventAndData",
+                        "excluded": true
+                    },
+                    {
+                        "name": "IssuePluginCustomBlit",
+                        "excluded": true
+                    },
+                    {
+                        "name": "IssuePluginCustomTextureUpdate",
+                        "excluded": true
+                    },
+                    {
+                        "name": "IssuePluginCustomTextureUpdateV1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "IssuePluginCustomTextureUpdateV2",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Bootstrap.Bootstrapper",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "SubsystemRegistration",
+                        "excluded": false
+                    },
+                    {
+                        "name": "AfterAssembliesLoaded",
+                        "excluded": false
+                    },
+                    {
+                        "name": "BeforeSplashScreen",
+                        "excluded": false
+                    },
+                    {
+                        "name": "BeforeSceneLoad",
+                        "excluded": false
+                    },
+                    {
+                        "name": "AfterSceneLoad",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Camera.CameraManager",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Initialize",
+                        "excluded": false
+                    },
+                    {
+                        "name": "FetchComponents",
+                        "excluded": false
+                    },
+                    {
+                        "name": "SetTarget",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Camera.CameraSettings",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Collisions.CollisionBroadcaster2D",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnCollisionEnter2D",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnCollisionStay2D",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnCollisionExit2D",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnTriggerEnter2D",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnTriggerStay2D",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnTriggerExit2D",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Constants.StoreConstants",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.Player.Animation.AnimationSettings",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.Player.Animation.AnimationSystem",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Awake",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Initialize",
+                        "excluded": false
+                    },
+                    {
+                        "name": "InitializeBodyLayer",
+                        "excluded": false
+                    },
+                    {
+                        "name": "InitializeBottomLayer",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Update",
+                        "excluded": false
+                    },
+                    {
+                        "name": "CheckState",
+                        "excluded": false
+                    },
+                    {
+                        "name": "UpdateFacing",
+                        "excluded": false
+                    },
+                    {
+                        "name": "UpdateMoving",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.Player.Collector.WeaponCollectorSettings",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.Player.Collector.WeaponCollectorSystem",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Enable",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Disable",
+                        "excluded": true
+                    },
+                    {
+                        "name": "OnTriggerEntered",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnSnap",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.Player.Combat.CombatSettings",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.Player.Combat.CombatSystem",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Enable",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Disable",
+                        "excluded": true
+                    },
+                    {
+                        "name": "RegisterEvents",
+                        "excluded": false
+                    },
+                    {
+                        "name": "UnregisterEvents",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Update",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Initialize",
+                        "excluded": false
+                    },
+                    {
+                        "name": "CreateWeapon",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnGetWeapon",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnReleaseWeapon",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnDestroyWeapon",
+                        "excluded": false
+                    },
+                    {
+                        "name": "AddWeapon",
+                        "excluded": false
+                    },
+                    {
+                        "name": "SetCollisionLayers",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetDesiredTransform",
+                        "excluded": false
+                    },
+                    {
+                        "name": "SnapWeaponParent",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ArrangeInstant",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ArrangeSmooth",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Cycle",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.Player.Movement.MovementSystem",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Initialize",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Enable",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Disable",
+                        "excluded": true
+                    },
+                    {
+                        "name": "RegisterEvents",
+                        "excluded": false
+                    },
+                    {
+                        "name": "UnregisterEvents",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Update",
+                        "excluded": false
+                    },
+                    {
+                        "name": "FixedUpdate",
+                        "excluded": false
+                    },
+                    {
+                        "name": "HandleMovement",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.Weapon.WeaponAnimationSettings",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.FiniteStateMachine.Runtime.StateBase",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "$ctor1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetStateMachine",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetStateMachine",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetIsHierarchical",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ConvertHierarchical",
+                        "excluded": true
+                    },
+                    {
+                        "name": "OnChildStateChangedInternal",
+                        "excluded": true
+                    },
+                    {
+                        "name": "OnChildExitedInternal",
+                        "excluded": true
+                    },
+                    {
+                        "name": "OnChildEnteredInternal",
+                        "excluded": true
+                    },
+                    {
+                        "name": "OnChildEntered",
+                        "excluded": true
+                    },
+                    {
+                        "name": "OnChildExited",
+                        "excluded": true
+                    },
+                    {
+                        "name": "OnChildStateChanged",
+                        "excluded": true
+                    },
+                    {
+                        "name": "OnEnterInternal",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnExitInternal",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnEnter",
+                        "excluded": true
+                    },
+                    {
+                        "name": "OnExit",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Handle",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.FiniteStateMachine.Runtime.StateMachine",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "SetRuntimeMode",
+                        "excluded": false
+                    },
+                    {
+                        "name": "CreateNode",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetNode",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetNode$1",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Update",
+                        "excluded": true
+                    },
+                    {
+                        "name": "AddState",
+                        "excluded": true
+                    },
+                    {
+                        "name": "AddState$1",
+                        "excluded": false
+                    },
+                    {
+                        "name": "SetDefaultState$1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetDefaultState",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ChangeStateInternal",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ChangeState",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ChangeStateToDefaultState",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetState",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetActiveState",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetLeafState",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetRootState",
+                        "excluded": true
+                    },
+                    {
+                        "name": "HasState$1",
+                        "excluded": false
+                    },
+                    {
+                        "name": "HasState$2",
+                        "excluded": false
+                    },
+                    {
+                        "name": "HasState",
+                        "excluded": false
+                    },
+                    {
+                        "name": "AddTransition",
+                        "excluded": true
+                    },
+                    {
+                        "name": "AddAnyTransition",
+                        "excluded": true
+                    },
+                    {
+                        "name": "HasValidTransition",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Dispatch",
+                        "excluded": true
+                    },
+                    {
+                        "name": "DispatchRecursive",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.FiniteStateMachine.Runtime.StateNode",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetStateBase",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetTransitions",
+                        "excluded": true
+                    },
+                    {
+                        "name": "AddTransition",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.GameManager",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Initialize",
+                        "excluded": false
+                    },
+                    {
+                        "name": "FetchComponents",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.GameState.GameStateManager",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Initialize",
+                        "excluded": false
+                    },
+                    {
+                        "name": "RequestStateChange",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Input.InputManager",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Initialize",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetData",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Enable",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Disable",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Dispose",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Input.PlayerInputData",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetMovementInputAxisVec2Raw",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetMovementInputAxisVec2Raw",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetMovementInputAxisVec2",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetMovementInputAxisVec3",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetHasMovementInput",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Reset",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Dispose",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Level.GroundTile",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "getDefaultValue",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "getHashCode",
+                        "excluded": true
+                    },
+                    {
+                        "name": "equals",
+                        "excluded": true
+                    },
+                    {
+                        "name": "$clone",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Level.LevelManager",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "OnEnable",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnDisable",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Generate",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GenerateGround",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GenerateFence",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GeneratePosts",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GenerateConnections",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GenerateHorizontalConnections",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GenerateVerticalConnections",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GridToWorld",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GridToWorld$1",
+                        "excluded": false
+                    },
+                    {
+                        "name": "SpawnTile",
+                        "excluded": false
+                    },
+                    {
+                        "name": "PickWeightedGroundTile",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ClearLevel",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Level.Settings.LevelSettings",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Pool.PooledObject$1",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "getDefaultValue",
+                        "excluded": true
+                    },
+                    {
+                        "name": "init",
+                        "excluded": true
+                    },
+                    {
+                        "name": "$ctor1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Dispose",
+                        "excluded": true
+                    },
+                    {
+                        "name": "getHashCode",
+                        "excluded": true
+                    },
+                    {
+                        "name": "equals",
+                        "excluded": true
+                    },
+                    {
+                        "name": "$clone",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Pool.PoolManager",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Reset",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Register",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Singleton.MonoBehaviourSingleton$1",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetLogTag",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetHasInstance",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetInstance",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Initialize",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Log",
+                        "excluded": true
+                    },
+                    {
+                        "name": "LogWarning",
+                        "excluded": true
+                    },
+                    {
+                        "name": "LogError",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Awake",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnEnable",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnDisable",
+                        "excluded": true
+                    },
+                    {
+                        "name": "OnDestroy",
+                        "excluded": true
+                    },
+                    {
+                        "name": "MakePersistent",
+                        "excluded": true
+                    },
+                    {
+                        "name": "OnAwake",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnDuplicateDestroyed",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Spawning.Spawners.PlayerSpawner",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Initialize",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Spawning.Spawners.WeaponCollectableSpawner",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Initialize",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Update",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Tick",
+                        "excluded": false
+                    },
+                    {
+                        "name": "CanSpawn",
+                        "excluded": false
+                    },
+                    {
+                        "name": "SpawnRandom",
+                        "excluded": false
+                    },
+                    {
+                        "name": "CreateInstance",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnGetFromPool",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnReleaseToPool",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnDestroyInstance",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetRandomPointInArea",
+                        "excluded": false
+                    },
+                    {
+                        "name": "CalculateSpawnArea",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Spawning.Spawners.WeaponCollectableSpawnerSettings",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetObjectDefaultSize",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.ThirdParty.Joystick_Pack.Scripts.Base.Joystick",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetHorizontal",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetVertical",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetDirection",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetHandleRange",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetHandleRange",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetDeadZone",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetDeadZone",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetAxisOptions",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetAxisOptions",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetSnapX",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetSnapX",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetSnapY",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetSnapY",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Start",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnPointerDown",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnDrag",
+                        "excluded": false
+                    },
+                    {
+                        "name": "HandleInput",
+                        "excluded": false
+                    },
+                    {
+                        "name": "FormatInput",
+                        "excluded": false
+                    },
+                    {
+                        "name": "SnapFloat",
+                        "excluded": true
+                    },
+                    {
+                        "name": "OnPointerUp",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ScreenPointToAnchoredPosition",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.ThirdParty.ScratchCard.Scripts.EraseProgress",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetCard",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetCard",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetProgressMaterial",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetProgressMaterial",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetSampleSourceTexture",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetSampleSourceTexture",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetProgressAccuracy",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetProgressAccuracy",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Start",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnDestroy",
+                        "excluded": true
+                    },
+                    {
+                        "name": "LateUpdate",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnCardRenderTextureInitialized",
+                        "excluded": false
+                    },
+                    {
+                        "name": "UpdateAccuracy",
+                        "excluded": false
+                    },
+                    {
+                        "name": "CalcProgress",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetProgress",
+                        "excluded": true
+                    },
+                    {
+                        "name": "UpdateProgress",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ResetProgress",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetSpritePixels",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Project.ThirdParty.ScratchCard.Scripts.ScratchCard",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetRenderTexture",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetRenderTexture",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetRenderTarget",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetRenderTarget",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetMode",
+                        "excluded": false
+                    },
+                    {
+                        "name": "SetMode",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetIsScratched",
+                        "excluded": false
+                    },
+                    {
+                        "name": "SetIsScratched",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetIsScratching",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetInitialized",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetScratchData",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetScratchData",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetInput",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetInput",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Start",
+                        "excluded": true
+                    },
+                    {
+                        "name": "OnDisable",
+                        "excluded": true
+                    },
+                    {
+                        "name": "OnDestroy",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Update",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Init",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetRenderType",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SubscribeToEvents",
+                        "excluded": true
+                    },
+                    {
+                        "name": "UnsubscribeFromEvents",
+                        "excluded": true
+                    },
+                    {
+                        "name": "CreateRenderTexture",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ReleaseRenderTexture",
+                        "excluded": true
+                    },
+                    {
+                        "name": "OnScratchStart",
+                        "excluded": true
+                    },
+                    {
+                        "name": "TryScratchHole",
+                        "excluded": true
+                    },
+                    {
+                        "name": "TryScratchLine",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Fill",
+                        "excluded": true
+                    },
+                    {
+                        "name": "FillInstantly",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Clear",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ClearInstantly",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ResetRenderTexture",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ScratchHole",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ScratchLine",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetScratchTexture",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Project.ThirdParty.ScratchCard.Scripts.Tools.MeshGenerator",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "GenerateQuad",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Bootstrap.PlayableAdBootstrapper",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Bootstrap",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.Player.Movement.PlayerInputProvider",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "GetInput",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetHasInput",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.Player.PlayerEntity",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Awake",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Initialize",
+                        "excluded": false
+                    },
+                    {
+                        "name": "FetchComponents",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnEnable",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnDisable",
+                        "excluded": true
+                    },
+                    {
+                        "name": "OnDamage",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.PlayerAI.Movement.AIInputProvider",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "GetInput",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetHasInput",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.Weapon.WeaponCollectableEntity",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Initialize",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnSpawned",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Collect",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetIsCollecting",
+                        "excluded": false
+                    },
+                    {
+                        "name": "SetIsCollecting",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.Weapon.WeaponEntity",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Update",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Initialize",
+                        "excluded": false
+                    },
+                    {
+                        "name": "FetchComponents",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetCollider",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnSpawned",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnDespawned",
+                        "excluded": true
+                    },
+                    {
+                        "name": "OnDestroyed",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Free",
+                        "excluded": true
+                    },
+                    {
+                        "name": "OnTriggerEvent",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Control",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnDamage",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.EventBus.Runtime.EventBind$1",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "$ctor1",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetChannel",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetPriority",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Invoke",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Add",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Add$1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Remove",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Remove$1",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.EventBus.Runtime.EventBus$1",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Register",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Unregister",
+                        "excluded": true
+                    },
+                    {
+                        "name": "RegisterImmediate",
+                        "excluded": false
+                    },
+                    {
+                        "name": "UnregisterImmediate",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Raise",
+                        "excluded": false
+                    },
+                    {
+                        "name": "FlushPending",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Dispose",
+                        "excluded": true
+                    },
+                    {
+                        "name": "DisposeWithCenter",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Events.Camera.EChangeCameraTarget",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "getDefaultValue",
+                        "excluded": true
+                    },
+                    {
+                        "name": "$ctor1",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "getHashCode",
+                        "excluded": true
+                    },
+                    {
+                        "name": "equals",
+                        "excluded": true
+                    },
+                    {
+                        "name": "$clone",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Events.MonoBehaviour.EFixedUpdate",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "getDefaultValue",
+                        "excluded": true
+                    },
+                    {
+                        "name": "$ctor1",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "getHashCode",
+                        "excluded": true
+                    },
+                    {
+                        "name": "equals",
+                        "excluded": true
+                    },
+                    {
+                        "name": "$clone",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Events.MonoBehaviour.EUpdate",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "getDefaultValue",
+                        "excluded": true
+                    },
+                    {
+                        "name": "$ctor1",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "SetDelta",
+                        "excluded": false
+                    },
+                    {
+                        "name": "getHashCode",
+                        "excluded": true
+                    },
+                    {
+                        "name": "equals",
+                        "excluded": true
+                    },
+                    {
+                        "name": "$clone",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Events.Scratch.EScratch",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "getDefaultValue",
+                        "excluded": true
+                    },
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "$ctor1",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "getHashCode",
+                        "excluded": true
+                    },
+                    {
+                        "name": "equals",
+                        "excluded": true
+                    },
+                    {
+                        "name": "$clone",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.FiniteStateMachine.Runtime.RuntimeMode.ManualMode",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Tick",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.FiniteStateMachine.Runtime.TransitionDispatcher",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Dispatch",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.GameState.States.InGame",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnEnter",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnExit",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.GameState.States.Preload",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "OnEnter",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnExit",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Input.MobileInputReceiver",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnInput",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Pool.ObjectPool$1",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetCountAll",
+                        "excluded": false
+                    },
+                    {
+                        "name": "SetCountAll",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetCountActive",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetCountInactive",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Get$1",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Get",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Release",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Clear",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Dispose",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Utility.MonoBehaviourBridge",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "inherits",
+                        "excluded": false
+                    },
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnAwake",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Update",
+                        "excluded": false
+                    },
+                    {
+                        "name": "FixedUpdate",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.ThirdParty.Joystick_Pack.Scripts.Joysticks.DynamicJoystick",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetMoveThreshold",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetMoveThreshold",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Start",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnPointerDown",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnPointerUp",
+                        "excluded": false
+                    },
+                    {
+                        "name": "HandleInput",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Utility.VectorUtility",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "ClampByUnit",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ClampByUnit$1",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ToVector3XZ",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ToVector2XY",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "DG.Tweening.DOTweenModuleUtils",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Preserver",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "DG.Tweening.DOTweenModuleUtils.Physics",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "SetOrientationOnPath",
+                        "excluded": true
+                    },
+                    {
+                        "name": "HasRigidbody2D",
+                        "excluded": true
+                    },
+                    {
+                        "name": "HasRigidbody",
+                        "excluded": true
+                    },
+                    {
+                        "name": "CreateDOTweenPathTween",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Utility.LayerMaskUtility",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Contains",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.Weapon.AnimationSystem",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnSpawn",
+                        "excluded": false
                     }
                 ]
             }

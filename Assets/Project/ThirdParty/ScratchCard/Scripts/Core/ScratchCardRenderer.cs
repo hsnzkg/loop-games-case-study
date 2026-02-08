@@ -27,7 +27,8 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Core
 		{
 			scratchCard = card;
 			localBounds = new Bounds(Vector2.one / 2f, Vector2.one);
-			commandBuffer = new CommandBuffer {name = "ScratchCardRenderer"};
+            commandBuffer = new CommandBuffer();
+            commandBuffer.name = "ScratchCardRenderer";
 			meshHole = MeshGenerator.GenerateQuad(Vector3.zero, Vector2.zero);
 		}
 
@@ -69,14 +70,14 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Core
 				scratchCard.BrushMaterial.mainTexture.height * scratchCard.BrushSize * pressure / scratchCard.GetScratchData().GetTextureSize().y);
 
 			if (IsInBounds(positionRect))
-			{
-				meshHole.vertices = new[]
-				{
-					new Vector3(positionRect.xMin, positionRect.yMax, 0),
-					new Vector3(positionRect.xMax, positionRect.yMax, 0),
-					new Vector3(positionRect.xMax, positionRect.yMin, 0),
-					new Vector3(positionRect.xMin, positionRect.yMin, 0)
-				};
+            {
+                Vector3[] vertices = new Vector3[4];
+                vertices[0] = new Vector3(positionRect.xMin, positionRect.yMax, 0);
+                vertices[1] = new Vector3(positionRect.xMax, positionRect.yMax, 0);
+                vertices[2] = new Vector3(positionRect.xMax, positionRect.yMin, 0);
+                vertices[3] = new Vector3(positionRect.xMin, positionRect.yMin, 0);
+
+                meshHole.vertices = vertices;
 
 				GL.LoadOrtho();
 				commandBuffer.Clear();

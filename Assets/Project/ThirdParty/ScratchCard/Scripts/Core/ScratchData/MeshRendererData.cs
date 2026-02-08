@@ -23,8 +23,8 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Core.ScratchData
             if (surface.TryGetComponent(out renderer) && surface.TryGetComponent(out filter))
             {
                 InitTriangle();
-                var sharedMaterial = renderer.sharedMaterial;
-                var offset = sharedMaterial.GetVector(Constants.MaskShader.Offset);
+                Material sharedMaterial = renderer.sharedMaterial;
+                Vector4 offset = sharedMaterial.GetVector(Constants.MaskShader.Offset);
                 m_textureSize = new Vector2(sharedMaterial.mainTexture.width * offset.z, sharedMaterial.mainTexture.height * offset.w);
             }
         }
