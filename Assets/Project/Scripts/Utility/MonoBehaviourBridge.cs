@@ -1,5 +1,7 @@
 ﻿using Project.Scripts.EventBus.Runtime;
 using Project.Scripts.Events.MonoBehaviour;
+using Project.Scripts.GameState;
+using Project.Scripts.GameState.States;
 using Project.Scripts.Singleton;
 using UnityEngine;
 
@@ -25,6 +27,11 @@ namespace Project.Scripts.Utility
         private void FixedUpdate()
         {
             EventBus<EFixedUpdate>.Raise(m_fixedUpdate);
+        }
+
+        private void OnApplicationQuit()
+        {
+            GameStateManager.RequestStateChange<Quit>();
         }
     }
 }

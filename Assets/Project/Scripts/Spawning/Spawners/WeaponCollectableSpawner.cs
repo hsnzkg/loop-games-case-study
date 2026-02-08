@@ -13,9 +13,12 @@ namespace Project.Scripts.Spawning.Spawners
         private float m_timer;
         private Vector2 m_minSpawn;
         private Vector2 m_maxSpawn;
+        private WeaponCollectableEntity[] m_activeWeapons;
 
         public void Initialize()
         {
+            m_activeWeapons = new WeaponCollectableEntity[m_weaponCollectorSettings.MaxWeaponsInWorld];
+            
             m_parent = new GameObject("Weapon_Collectable_Parent");
             CalculateSpawnArea();
 
@@ -77,6 +80,7 @@ namespace Project.Scripts.Spawning.Spawners
         {
             instance.SetIsCollecting(false);
             instance.transform.localScale = m_weaponCollectorSettings.GetObjectDefaultSize();
+            m_activeWeapons[m_activeCount] = instance;
             m_activeCount++;
             instance.gameObject.SetActive(true);
         }
@@ -85,6 +89,7 @@ namespace Project.Scripts.Spawning.Spawners
         {
             instance.SetIsCollecting(false);
             instance.transform.localScale = m_weaponCollectorSettings.GetObjectDefaultSize();
+            m_activeWeapons[m_activeCount-1] = instance;
             m_activeCount--;
             instance.gameObject.SetActive(false);
         }

@@ -8,14 +8,14 @@ namespace Project.Scripts.GameState
     {
         private static StateMachine s_fsm;
         private static Preload s_preloadState;
-        private static InGame s_inGameState;
-
-
+        private static Gameplay s_gameplayState;
+        
         public static void Initialize()
         {
             s_fsm = new StateMachine(new ManualMode());
             s_fsm.AddState<Preload>();
-            s_fsm.AddState<InGame>();
+            s_fsm.AddState<Gameplay>();
+            s_fsm.AddState<Quit>();
             s_fsm.ChangeState<Preload>();
         }
 

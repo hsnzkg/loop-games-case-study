@@ -63,8 +63,7 @@ namespace Project.Scripts.EventBus.Editor
         public static IReadOnlyList<Type> GetRegisteredBusTypes()
         {
             Type centerType = typeof(EventBusCenter);
-            FieldInfo field =
-                centerType.GetField("_registeredEventTypes", BindingFlags.NonPublic | BindingFlags.Static);
+            FieldInfo field = centerType.GetField("s_registeredEventTypes", BindingFlags.NonPublic | BindingFlags.Static);
 
             if (field == null)
                 return null;

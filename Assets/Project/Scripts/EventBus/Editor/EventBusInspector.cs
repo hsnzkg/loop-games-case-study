@@ -219,6 +219,7 @@ namespace Project.Scripts.EventBus.Editor
 
         private void DrawInfoRow(string icon, string label, string value, string color)
         {
+            
             GUILayout.BeginHorizontal();
             GUILayout.Label(icon, GUILayout.Width(20));
             GUILayout.Label($"<color=#4AA5F0>{label} :</color> <color={color}>{value}</color>", m_richMiniBoldStyle);

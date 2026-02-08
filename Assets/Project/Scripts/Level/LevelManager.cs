@@ -76,7 +76,6 @@ namespace Project.Scripts.Level
             GenerateConnections();
         }
 
-
         private void ResizeLevelScratchOverlay(ScratchCard scratchCard)
         {
             float tileSize = m_levelSettings.TileSize;

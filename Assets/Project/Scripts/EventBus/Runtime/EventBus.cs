@@ -13,7 +13,7 @@ namespace Project.Scripts.EventBus.Runtime
         private static PendingFlags s_pendingFlags;
         private static int s_raiseDepth;
         private static int s_count;
-
+        
         public static void Register(EventBind<T> bind)
         {
             if (bind == null) return;
@@ -70,6 +70,7 @@ namespace Project.Scripts.EventBus.Runtime
         {
             s_bindings.Remove(bind);
             s_count--;
+            s_count = Math.Clamp(s_count, 0, s_bindings.Count);
         }
 
         public static void Raise(T @event)
@@ -79,8 +80,12 @@ namespace Project.Scripts.EventBus.Runtime
                 Debug.LogError($"[EventBus] Null event : {typeof(T).Name}");
                 return;
             }
-
+            
             s_raiseDepth++;
+            if (s_count == 0)
+            {
+                Debug.Log("Its zero bind");
+            }
             for (int i = 0; i < s_count; i++)
             {
                 try
@@ -92,7 +97,6 @@ namespace Project.Scripts.EventBus.Runtime
                     Debug.LogError($"Error invoking event handler -> Bind : {s_bindings[i].GetType().Name}\n{e}");
                 }
             }
-
             s_raiseDepth--;
 
             if (s_raiseDepth == 0)
@@ -132,6 +136,7 @@ namespace Project.Scripts.EventBus.Runtime
             s_pendingAdds.Clear();
             s_pendingRemovals.Clear();
             s_raiseDepth = 0;
+            s_count = 0;
             s_pendingFlags = PendingFlags.NONE;
 
             Debug.Log($"[EventBus] Cleared bindings for {typeof(T).Name}");

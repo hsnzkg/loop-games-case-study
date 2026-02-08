@@ -39,7 +39,7 @@ namespace Project.Scripts.EventBus.Runtime
             for (int i = 0; i < s_registeredEventTypes.Count; i++)
             {
                 Type busType = s_registeredEventTypes[i];
-                MethodInfo disposeMethod = busType.GetMethod("Dispose", BindingFlags.Static | BindingFlags.NonPublic);
+                MethodInfo disposeMethod = busType.GetMethod("Dispose", BindingFlags.Static | BindingFlags.Public);
                 if (disposeMethod != null)
                 {
                     disposeMethod.Invoke(null, null);
@@ -56,7 +56,7 @@ namespace Project.Scripts.EventBus.Runtime
         public static void DisposeWithCenter(this Type eventType)
         {
             Type busType = typeof(EventBus<>).MakeGenericType(eventType);
-            MethodInfo disposeMethod = busType.GetMethod("Dispose", BindingFlags.Static | BindingFlags.NonPublic);
+            MethodInfo disposeMethod = busType.GetMethod("Dispose", BindingFlags.Static | BindingFlags.Public);
             if (disposeMethod != null)
             {
                 disposeMethod.Invoke(null, null);

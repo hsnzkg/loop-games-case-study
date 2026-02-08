@@ -49,7 +49,7 @@ namespace Project.Scripts.Entity.Player.Movement
             EventBus<EUpdate>.Unregister(m_updateBind);
         }
 
-        private void Update(EUpdate obj)
+        private void Update()
         {
             EventBus<EScratch>.Raise(new EScratch(m_rb.transform.position));
         }

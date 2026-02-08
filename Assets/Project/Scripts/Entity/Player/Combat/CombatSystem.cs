@@ -60,7 +60,6 @@ namespace Project.Scripts.Entity.Player.Combat
         {
             m_weaponParent = new GameObject($"Weapon_Parent_{m_root.GetInstanceID()}").transform;
             m_weaponParent.SetParent(m_root);
-            //m_playerCol = GetComponent<Collider2D>();
             m_weapons = new WeaponEntity[m_combatSettings.MaxWeaponCount];
 
             m_weaponPool = new ObjectPool<WeaponEntity>(

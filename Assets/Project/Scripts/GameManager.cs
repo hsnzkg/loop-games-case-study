@@ -1,7 +1,8 @@
 ﻿using Project.Scripts.Camera;
 using Project.Scripts.Level;
-//using Project.Scripts.Scratch;
 using Project.Scripts.Spawning.Spawners;
+using Project.Scripts.Storage.Runtime;
+using Project.Scripts.Storage.Storages;
 using UnityEngine;
 
 namespace Project.Scripts
@@ -12,7 +13,6 @@ namespace Project.Scripts
         private WeaponCollectableSpawner m_weaponCollectableSpawner;
         private LevelManager m_levelManager;
         private CameraManager m_cameraManager;
-        //private ScratchHandler m_scratchHandler;
 
         public void Initialize()
         {
@@ -27,10 +27,11 @@ namespace Project.Scripts
         private void FetchComponents()
         {
             m_weaponCollectableSpawner = Object.FindObjectOfType<WeaponCollectableSpawner>();
-            //m_scratchHandler = Object.FindObjectOfType<ScratchHandler>();
             m_playerSpawner = Object.FindObjectOfType<PlayerSpawner>();
             m_cameraManager = Object.FindObjectOfType<CameraManager>();
             m_levelManager = Object.FindObjectOfType<LevelManager>();
+
+            Storage<GameplayStorage>.GetInstance().WeaponCollectableSpawner = m_weaponCollectableSpawner;
         }
     }
 }
