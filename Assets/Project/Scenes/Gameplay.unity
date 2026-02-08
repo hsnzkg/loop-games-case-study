@@ -591,6 +591,10 @@ PrefabInstance:
       propertyPath: SurfaceTransform
       value: 
       objectReference: {fileID: 1979788466}
+    - target: {fileID: 11474202, guid: bfd21db4576fb4dac871b93fdc37924b, type: 3}
+      propertyPath: RenderTextureQuality
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 11486244, guid: bfd21db4576fb4dac871b93fdc37924b, type: 3}
       propertyPath: RenderType
       value: 1
@@ -627,7 +631,8 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 1696879725}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114877032501962244, guid: bfd21db4576fb4dac871b93fdc37924b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

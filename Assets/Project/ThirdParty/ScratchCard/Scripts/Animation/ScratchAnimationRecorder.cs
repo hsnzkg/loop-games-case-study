@@ -1,3 +1,4 @@
+/*
 using System.Collections.Generic;
 using Project.ThirdParty.ScratchCard.Scripts.Core;
 using Project.ThirdParty.ScratchCard.Scripts.Core.InputData;
@@ -122,3 +123,4 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Animation
         }
     }
 }
+*/

@@ -1,3 +1,4 @@
+/*
 using Project.ThirdParty.ScratchCard.Scripts.Animation;
 using UnityEditor;
 using UnityEngine;
@@ -69,3 +70,4 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Editor
         }
     }
 }
+*/

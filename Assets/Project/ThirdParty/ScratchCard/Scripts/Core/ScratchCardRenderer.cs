@@ -11,7 +11,6 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Core
 	public class ScratchCardRenderer
 	{
 		public bool IsScratched;
-
 		private readonly ScratchCard scratchCard;
 		private Mesh meshHole;
 		private Mesh meshLine;
@@ -97,16 +96,16 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Core
 			colors.Clear();
 			indices.Clear();
 			uv.Clear();
-			var holesCount = (int)Vector2.Distance(startPosition, endPosition) / (int)scratchCard.RenderTextureQuality;
+			int holesCount = (int)Vector2.Distance(startPosition, endPosition) / (int)scratchCard.RenderTextureQuality;
 			holesCount = Mathf.Max(1, holesCount);
-			var count = 0;
-			for (var i = 0; i < holesCount; i++)
+			int count = 0;
+			for (int i = 0; i < holesCount; i++)
 			{
-				var t = i / (float)Mathf.Clamp(holesCount - 1, 1, holesCount - 1);
-				var pressure = Mathf.Lerp(startPressure, endPressure, t);
-				var holePosition = startPosition + (endPosition - startPosition) / holesCount * i;
+				float t = i / (float)Mathf.Clamp(holesCount - 1, 1, holesCount - 1);
+				float pressure = Mathf.Lerp(startPressure, endPressure, t);
+				Vector2 holePosition = startPosition + (endPosition - startPosition) / holesCount * i;
 				
-				var positionRect = new Rect(
+				Rect positionRect = new Rect(
 					(holePosition.x - 0.5f * scratchCard.BrushMaterial.mainTexture.width * scratchCard.BrushSize * pressure) / scratchCard.GetScratchData().GetTextureSize().x,
 					(holePosition.y - 0.5f * scratchCard.BrushMaterial.mainTexture.height * scratchCard.BrushSize * pressure) / scratchCard.GetScratchData().GetTextureSize().y,
 					scratchCard.BrushMaterial.mainTexture.width * scratchCard.BrushSize * pressure / scratchCard.GetScratchData().GetTextureSize().x,

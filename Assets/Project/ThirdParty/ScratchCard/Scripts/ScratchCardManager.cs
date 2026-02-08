@@ -438,14 +438,7 @@ namespace Project.ThirdParty.ScratchCard.Scripts
 				{
 					if (sprite.texture.isReadable)
 					{
-						if (sprite.packed)
-						{
-							spritePixels = sprite.texture.GetPixels((int)sprite.textureRect.x, (int)sprite.textureRect.y, (int)sprite.rect.width, (int)sprite.rect.height);
-						}
-						else
-						{
-							spritePixels = sprite.texture.GetPixels((int)sprite.rect.x, (int)sprite.rect.y, (int)sprite.rect.width, (int)sprite.rect.height);
-						}
+                        spritePixels = sprite.texture.GetPixels((int)sprite.rect.x, (int)sprite.rect.y, (int)sprite.rect.width, (int)sprite.rect.height);
 					}
 					else
 					{
@@ -554,8 +547,10 @@ namespace Project.ThirdParty.ScratchCard.Scripts
 
 		private void InitProgressMaterial()
 		{
-			if (Progress == null)
-				return;
+            if (Progress == null)
+            {
+                return;
+            }
 			
 			if (Progress.GetProgressMaterial() == null)
 			{
@@ -600,10 +595,7 @@ namespace Project.ThirdParty.ScratchCard.Scripts
 		}
 		
 		#region Public Methods
-
-		/// <summary>
-		/// Fills RenderTexture with white color (100% scratched surface)
-		/// </summary>
+        
 		public void FillScratchCard()
 		{
 			Card.Fill(false);
@@ -613,9 +605,6 @@ namespace Project.ThirdParty.ScratchCard.Scripts
 			}
 		}
 
-		/// <summary>
-		/// Fills ScratchCard RenderTexture with clear color (0% scratched surface)
-		/// </summary>
 		public void ClearScratchCard()
 		{
 			Card.Clear(false);

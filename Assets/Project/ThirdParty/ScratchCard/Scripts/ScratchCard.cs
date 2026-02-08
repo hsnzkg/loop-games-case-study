@@ -123,11 +123,11 @@
 
 		    private void Start()
 		    {
+                Debug.Log("Card Start");
                 if (initialized)
                 {
                     return;
                 }
-
 			    Init();
 		    }
 
@@ -150,6 +150,11 @@
 
 		    private void Update()
 		    {
+                Console.WriteLine("???");
+                Console.WriteLine(
+                    $"RT size: {m_renderTexture.width}x{m_renderTexture.height} | " +
+                    $"texel: {m_renderTexture.texelSize}"
+                );
 			    if (!GetInput().TryUpdate())
 			    {
 				    cardRenderer.IsScratched = false;
@@ -162,8 +167,10 @@
 
 		    public void Init()
 		    {
+                Debug.Log("CARD INIT");
 			    if (GetScratchData() == null)
 			    {
+                    Console.WriteLine("NULL KAPANIYOR AQ");
 				    Debug.LogError("ScratchData is null!");
 				    enabled = false;
 				    return;
@@ -225,8 +232,7 @@
 		    {
 			    float qualityRatio = (float)RenderTextureQuality;
 			    Vector2 renderTextureSize = new Vector2(GetScratchData().GetTextureSize().x / qualityRatio, GetScratchData().GetTextureSize().y / qualityRatio);
-			    RenderTextureFormat renderTextureFormat = SystemInfo.SupportsRenderTextureFormat(RenderTextureFormat.R8) ? RenderTextureFormat.R8 : RenderTextureFormat.ARGB32;
-			    SetRenderTexture(new RenderTexture((int)renderTextureSize.x, (int)renderTextureSize.y, 0, renderTextureFormat));
+			    SetRenderTexture(new RenderTexture((int)renderTextureSize.x, (int)renderTextureSize.y, 0, RenderTextureFormat.ARGB32));
 			    SurfaceMaterial.SetTexture(Constants.MaskShader.MaskTexture, GetRenderTexture());
 			    SetRenderTarget(new RenderTargetIdentifier(GetRenderTexture()));
 			    OnRenderTextureInitialized?.Invoke(GetRenderTexture());
@@ -342,7 +348,7 @@
 		    public Texture2D GetScratchTexture()
 		    {
 			    RenderTexture previousRenderTexture = RenderTexture.active;
-			    Texture2D texture2D = new Texture2D(GetRenderTexture().width, GetRenderTexture().height, TextureFormat.ARGB32, false);
+                Texture2D texture2D = new Texture2D(GetRenderTexture().width, GetRenderTexture().height, TextureFormat.ARGB32, false);
 			    RenderTexture.active = GetRenderTexture();
 			    texture2D.ReadPixels(new Rect(0, 0, texture2D.width, texture2D.height), 0, 0, false);
 			    texture2D.Apply();

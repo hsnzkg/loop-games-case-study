@@ -20,7 +20,7 @@ namespace Project.Scripts.Scratch
         {
             Initialize();
         }
-
+    
         private void Initialize()
         {
             m_scratchEventBind = new EventBind<EScratch>(OnScratch);

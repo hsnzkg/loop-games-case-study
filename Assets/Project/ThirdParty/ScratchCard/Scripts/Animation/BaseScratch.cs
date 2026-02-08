@@ -1,3 +1,4 @@
+/*
 using System;
 using UnityEngine;
 
@@ -11,3 +12,4 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Animation
         public float Time;
     }
 }
+*/

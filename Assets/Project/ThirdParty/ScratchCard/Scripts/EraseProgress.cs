@@ -69,19 +69,13 @@ namespace Project.ThirdParty.ScratchCard.Scripts
             if (progressAccuracy == ProgressAccuracy.Default)
             {
                 updateProgress = false;
-                if (pixelsBuffer.IsCreated)
-                {
-                    pixelsBuffer.Dispose(default);
-                }
             }
         }
 
 		private ScratchMode scratchMode;
-		private NativeArray<byte> pixelsBuffer;
 		private int asyncGPUReadbackFrame;
 		private int updateProgressFrame;
 		private Color[] sourceSpritePixels;
-		private CommandBuffer commandBuffer;
 		private Mesh mesh;
 		private RenderTexture percentRenderTexture;
 		private RenderTargetIdentifier percentTargetIdentifier;
@@ -104,11 +98,6 @@ namespace Project.ThirdParty.ScratchCard.Scripts
 
 		private void OnDestroy()
 		{
-			if (pixelsBuffer.IsCreated)
-			{
-				//pixelsBuffer.Dispose(default);
-			}
-
 			if (percentRenderTexture != null && percentRenderTexture.IsCreated())
 			{
 				percentRenderTexture.Release();
@@ -126,12 +115,6 @@ namespace Project.ThirdParty.ScratchCard.Scripts
 			{
 				Destroy(mesh);
 				mesh = null;
-			}
-
-			if (commandBuffer != null)
-			{
-				commandBuffer.Release();
-				commandBuffer = null;
 			}
 
 			if (card != null)
@@ -175,10 +158,10 @@ namespace Project.ThirdParty.ScratchCard.Scripts
 			card.OnRenderTextureInitialized += OnCardRenderTextureInitialized;
 			UpdateAccuracy();
 			scratchMode = card.GetMode();
-            commandBuffer = new CommandBuffer();
-            commandBuffer.name = "EraseProgress";
+            //commandBuffer = new CommandBuffer();
+            //commandBuffer.name = "EraseProgress";
 			mesh = MeshGenerator.GenerateQuad(Vector3.one, Vector3.zero);
-			percentRenderTexture = new RenderTexture(1, 1, 0, RenderTextureFormat.ARGB32);
+			percentRenderTexture = new RenderTexture(1, 1, 0,RenderTextureFormat.ARGB32);
 			percentTargetIdentifier = new RenderTargetIdentifier(percentRenderTexture);
 			percentTextureRect = new Rect(0, 0, percentRenderTexture.width, percentRenderTexture.height);
 			progressTexture = new Texture2D(percentRenderTexture.width, percentRenderTexture.height, TextureFormat.ARGB32, false, true);
@@ -235,22 +218,6 @@ namespace Project.ThirdParty.ScratchCard.Scripts
 
 		public void UpdateProgress()
 		{
-			if (commandBuffer == null)
-			{
-				Debug.LogError("Can't update progress cause commandBuffer is null!");
-				return;
-			}
-			GL.LoadOrtho();
-			commandBuffer.Clear();
-			commandBuffer.SetRenderTarget(percentTargetIdentifier);
-			commandBuffer.ClearRenderTarget(false, true, Color.clear);
-			int pass = sampleSourceTexture ? 1 : 0;
-			commandBuffer.DrawMesh(mesh, Matrix4x4.identity, progressMaterial, 0, pass);
-			Graphics.ExecuteCommandBuffer(commandBuffer);
-			if (gameObject.activeInHierarchy)
-			{
-				StartCoroutine(CalcProgress());
-			}
 		}
 
 		public void ResetProgress()
