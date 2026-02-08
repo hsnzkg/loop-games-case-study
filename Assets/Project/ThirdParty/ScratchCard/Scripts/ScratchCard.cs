@@ -123,7 +123,6 @@
 
 		    private void Start()
 		    {
-                Debug.Log("Card Start");
                 if (initialized)
                 {
                     return;
@@ -150,11 +149,6 @@
 
 		    private void Update()
 		    {
-                Console.WriteLine("???");
-                Console.WriteLine(
-                    $"RT size: {m_renderTexture.width}x{m_renderTexture.height} | " +
-                    $"texel: {m_renderTexture.texelSize}"
-                );
 			    if (!GetInput().TryUpdate())
 			    {
 				    cardRenderer.IsScratched = false;
@@ -167,10 +161,8 @@
 
 		    public void Init()
 		    {
-                Debug.Log("CARD INIT");
 			    if (GetScratchData() == null)
 			    {
-                    Console.WriteLine("NULL KAPANIYOR AQ");
 				    Debug.LogError("ScratchData is null!");
 				    enabled = false;
 				    return;
@@ -224,10 +216,7 @@
 			    GetInput().OnScratchHole -= TryScratchHole;
 			    GetInput().OnScratchLine -= TryScratchLine;
 		    }
-
-		    /// <summary>
-		    /// Creates RenderTexture
-		    /// </summary>
+            
 		    private void CreateRenderTexture()
 		    {
 			    float qualityRatio = (float)RenderTextureQuality;
