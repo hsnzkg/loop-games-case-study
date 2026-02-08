@@ -28,6 +28,9 @@ namespace Project.Scripts.Entity.Player.Animation
 
         private void Initialize()
         {
+            m_playerSprite.material = new Material(m_playerSprite.material);
+            m_playerBottomSpriteL.material = new Material(m_playerBottomSpriteL.material);
+            m_playerBottomSpriteR.material = new Material(m_playerBottomSpriteR.material);
             InitializeBodyLayer();
             InitializeBottomLayer();
       

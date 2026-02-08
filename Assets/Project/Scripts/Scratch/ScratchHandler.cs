@@ -2,6 +2,7 @@
 using Project.Scripts.EventBus.Runtime;
 using Project.Scripts.Events.Scratch;
 using Project.ThirdParty.ScratchCard.Scripts;
+using Project.ThirdParty.ScratchCard.Scripts.Core.InputData;
 using UnityEngine;
 
 
@@ -55,8 +56,10 @@ namespace Project.Scripts.Scratch
             }
             Vector3 position = m_scratchCamera.WorldToScreenPoint(obj.Position);  
             
-            m_scratchCardManager.Card.GetInput().Scratch(position);
-            m_scratchCardManager.Card.GetInput().Scratch();
+            ScratchCardInput input = m_scratchCardManager.Card.GetInput();
+            input.ResetData();
+            input.Scratch(position);
+            input.Scratch();
         }
     }
 }
