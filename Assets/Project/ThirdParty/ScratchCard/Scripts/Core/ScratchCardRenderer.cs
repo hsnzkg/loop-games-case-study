@@ -141,14 +141,7 @@ namespace Project.ThirdParty.ScratchCard.Scripts.Core
 
 			if (positions.Count > 0)
 			{
-				if (meshLine != null)
-				{
-					meshLine.Clear(false);
-				}
-				else
-				{
-					meshLine = new Mesh();
-				}
+                meshLine = new Mesh();
 				meshLine.vertices = positions.ToArray();
 				meshLine.uv = uv.ToArray();
 				meshLine.triangles = indices.ToArray();

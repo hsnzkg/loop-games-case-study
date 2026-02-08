@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Brush: {fileID: 2800000, guid: eef5a9056291fba45ad50d97817d14ae, type: 3}
   Opacity: 1
-  BrushSize: 0.5
-  Pressure: 1
+  BrushSize: 1
+  ShadowBrush: {fileID: 2800000, guid: eef5a9056291fba45ad50d97817d14ae, type: 3}
+  ShadowOpacity: 1
+  ShadowBrushSize: 0.85

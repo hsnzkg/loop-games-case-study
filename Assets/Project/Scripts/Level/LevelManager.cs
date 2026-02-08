@@ -10,14 +10,14 @@ namespace Project.Scripts.Level
         [SerializeField] private LevelSettings m_levelSettings;
         [SerializeField] private Transform m_levelParent;
         [SerializeField] private SpriteRenderer m_levelOverlay;
+        [SerializeField] private SpriteRenderer m_levelShadowOverlay;
         [SerializeField] private ScratchCardManager m_scratchCardManager;
-        
         private System.Random m_rng;
         private int m_seed;
 
         private void OnEnable()
         {
-           m_scratchCardManager.Card.OnInitialized += ResizeLevelScratchOverlay;
+            m_scratchCardManager.Card.OnInitialized += ResizeLevelScratchOverlay;
         }
 
         private void OnDisable()
@@ -76,7 +76,7 @@ namespace Project.Scripts.Level
             GenerateConnections();
         }
 
-        
+
         private void ResizeLevelScratchOverlay(ScratchCard scratchCard)
         {
             float tileSize = m_levelSettings.TileSize;
@@ -87,9 +87,9 @@ namespace Project.Scripts.Level
 
             float worldW = totalW * tileSize;
             float worldH = totalH * tileSize;
-            
+
             Vector2 spriteSize = m_levelOverlay.sprite.bounds.size;
-            
+
             m_levelOverlay.transform.localScale = new Vector3(
                 worldW / spriteSize.x,
                 worldH / spriteSize.y,

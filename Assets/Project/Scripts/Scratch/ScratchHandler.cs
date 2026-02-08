@@ -40,19 +40,13 @@ namespace Project.Scripts.Scratch
         public void OnEnable()
         {
             EventBus<EScratch>.Register(m_scratchEventBind);
-            m_scratchCardManager.Card.OnInitialized += OnScratchInitialized;
         }
 
         public void OnDisable()
         {
             EventBus<EScratch>.Unregister(m_scratchEventBind);
-            m_scratchCardManager.Card.OnInitialized -= OnScratchInitialized;
         }
-
-        private void OnScratchInitialized(ScratchCard scratchCard)
-        {
-        }
-
+        
         private void OnScratch(EScratch obj)
         {
             if (!m_isInitialized)
@@ -60,6 +54,7 @@ namespace Project.Scripts.Scratch
                 return;
             }
             Vector3 position = m_scratchCamera.WorldToScreenPoint(obj.Position);  
+            
             m_scratchCardManager.Card.GetInput().Scratch(position);
             m_scratchCardManager.Card.GetInput().Scratch();
         }

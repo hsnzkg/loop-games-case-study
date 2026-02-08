@@ -270,6 +270,20 @@ MonoBehaviour:
     upToDate: 0
     keywords: []
   - shaderCompilerPlatform: 5
+    shader: {fileID: 4800000, guid: dbf92d441de03ba418088a9d7bf121a1, type: 3}
+    passType: 0
+    passId: 0
+    subShaderIndex: 0
+    upToDate: 0
+    keywords: []
+  - shaderCompilerPlatform: 9
+    shader: {fileID: 4800000, guid: dbf92d441de03ba418088a9d7bf121a1, type: 3}
+    passType: 0
+    passId: 0
+    subShaderIndex: 0
+    upToDate: 0
+    keywords: []
+  - shaderCompilerPlatform: 5
     shader: {fileID: 4800000, guid: 1e6b787d8269d134792d2b26914ff104, type: 3}
     passType: 0
     passId: 0
@@ -606,9 +620,23 @@ MonoBehaviour:
     subShaderIndex: 0
     upToDate: 0
     keywords: []
+  - shaderCompilerPlatform: 5
+    shader: {fileID: 4800000, guid: dbf92d441de03ba418088a9d7bf121a1, type: 3}
+    passType: 0
+    passId: 0
+    subShaderIndex: 0
+    upToDate: 0
+    keywords: []
+  - shaderCompilerPlatform: 9
+    shader: {fileID: 4800000, guid: dbf92d441de03ba418088a9d7bf121a1, type: 3}
+    passType: 0
+    passId: 0
+    subShaderIndex: 0
+    upToDate: 0
+    keywords: []
   _includedShaderVariants: []
   _excludedShaderVariants: []
-  version: 1973
+  version: 2216
   _shaderParsedShaders:
   - ParsedSubShaders:
     - Index: 0
@@ -2146,6 +2174,199 @@ MonoBehaviour:
       keywords: []
     - shaderCompilerPlatform: 9
       shader: {fileID: 4800000, guid: efcd8dda2a6b7f9429d89ff2b5d7ebbe, type: 3}
+      passType: 0
+      passId: 0
+      subShaderIndex: 0
+      upToDate: 0
+      keywords: []
+  - ParsedSubShaders:
+    - Index: 0
+      Passes:
+      - Shader: {fileID: 4800000, guid: dbf92d441de03ba418088a9d7bf121a1, type: 3}
+        ShaderVariants:
+        - ShaderCompilerPlatform: 5
+          NoShaderVariant: 0
+          VertexProgram: "\n#version 100\n\nuniform \tvec4 hlslcc_mtx4x4unity_ObjectToWorld[4];\nuniform
+            \tvec4 hlslcc_mtx4x4unity_MatrixVP[4];\nuniform \tvec4 _MainTex_ST;\nattribute
+            highp vec4 in_POSITION0;\nattribute highp vec2 in_TEXCOORD0;\nattribute
+            highp vec4 in_COLOR0;\nvarying highp vec2 vs_TEXCOORD0;\nvarying highp
+            vec4 vs_COLOR0;\nvec4 u_xlat0;\nvec4 u_xlat1;\nvoid main()\n{\n    u_xlat0
+            = in_POSITION0.yyyy * hlslcc_mtx4x4unity_ObjectToWorld[1];\n    u_xlat0
+            = hlslcc_mtx4x4unity_ObjectToWorld[0] * in_POSITION0.xxxx + u_xlat0;\n   
+            u_xlat0 = hlslcc_mtx4x4unity_ObjectToWorld[2] * in_POSITION0.zzzz + u_xlat0;\n   
+            u_xlat0 = u_xlat0 + hlslcc_mtx4x4unity_ObjectToWorld[3];\n    u_xlat1
+            = u_xlat0.yyyy * hlslcc_mtx4x4unity_MatrixVP[1];\n    u_xlat1 = hlslcc_mtx4x4unity_MatrixVP[0]
+            * u_xlat0.xxxx + u_xlat1;\n    u_xlat1 = hlslcc_mtx4x4unity_MatrixVP[2]
+            * u_xlat0.zzzz + u_xlat1;\n    gl_Position = hlslcc_mtx4x4unity_MatrixVP[3]
+            * u_xlat0.wwww + u_xlat1;\n    vs_TEXCOORD0.xy = in_TEXCOORD0.xy * _MainTex_ST.xy
+            + _MainTex_ST.zw;\n    vs_COLOR0 = in_COLOR0;\n    return;\n}\n\n"
+          FragmentProgram: "\n#version 100\n#ifdef GL_OES_standard_derivatives\n#extension
+            GL_OES_standard_derivatives : enable\n#endif\n\n#ifdef GL_FRAGMENT_PRECISION_HIGH\n   
+            precision highp float;\n#else\n    precision mediump float;\n#endif\nprecision
+            highp int;\nuniform \tvec4 _Offset;\nuniform \tvec4 _FoamColor;\nuniform
+            \tfloat _FoamFill;\nuniform \tfloat _FoamWidth;\nuniform \tfloat _FoamSoftness;\nuniform
+            \tvec4 _FoamDirection;\nuniform lowp sampler2D _MainTex;\nuniform lowp
+            sampler2D _MaskTex;\nvarying highp vec2 vs_TEXCOORD0;\nvarying highp
+            vec4 vs_COLOR0;\n#define SV_Target0 gl_FragData[0]\nfloat u_xlat0;\nvec4
+            u_xlat1;\nfloat u_xlat2;\nlowp vec4 u_xlat10_2;\nvec3 u_xlat3;\nvec2
+            u_xlat6;\nlowp float u_xlat10_6;\nvoid main()\n{\n    u_xlat0 = texture2D(_MaskTex,
+            vs_TEXCOORD0.xy).x;\n    u_xlat3.x = dFdx(u_xlat0);\n    u_xlat6.x =
+            dFdy(u_xlat0);\n    u_xlat3.x = abs(u_xlat6.x) + abs(u_xlat3.x);\n   
+            u_xlat3.x = u_xlat3.x * _FoamSoftness;\n    u_xlat3.x = max(u_xlat3.x,
+            9.99999975e-05);\n    u_xlat3.x = float(1.0) / u_xlat3.x;\n    u_xlat6.x
+            = dot(_FoamDirection.xy, _FoamDirection.xy);\n    u_xlat6.x = inversesqrt(u_xlat6.x);\n   
+            u_xlat6.xy = u_xlat6.xx * _FoamDirection.xy;\n    u_xlat6.xy = u_xlat6.xy
+            * vec2(vec2(_FoamWidth, _FoamWidth));\n    u_xlat6.xy = (-u_xlat6.xy)
+            * vec2(_FoamFill) + vs_TEXCOORD0.xy;\n    u_xlat10_6 = texture2D(_MaskTex,
+            u_xlat6.xy).x;\n    u_xlat6.x = (-u_xlat10_6) + u_xlat0;\n    u_xlat6.x
+            = clamp(u_xlat6.x, 0.0, 1.0);\n    u_xlat3.x = u_xlat3.x * u_xlat6.x;\n   
+            u_xlat3.x = min(u_xlat3.x, 1.0);\n    u_xlat6.x = u_xlat3.x * -2.0 +
+            3.0;\n    u_xlat3.x = u_xlat3.x * u_xlat3.x;\n    u_xlat3.x = u_xlat3.x
+            * u_xlat6.x;\n    u_xlat3.x = u_xlat0 * u_xlat3.x;\n    u_xlat0 = (-u_xlat0)
+            + 1.0;\n    u_xlat1 = u_xlat3.xxxx * _FoamColor;\n    u_xlat3.xyz = u_xlat1.xyz
+            * _FoamColor.www;\n    u_xlat1.xy = vs_TEXCOORD0.xy * _Offset.zw + _Offset.xy;\n   
+            u_xlat10_2 = texture2D(_MainTex, u_xlat1.xy);\n    u_xlat1.xyz = u_xlat10_2.xyz
+            * vs_COLOR0.xyz;\n    u_xlat0 = u_xlat0 * u_xlat10_2.w;\n    u_xlat2
+            = u_xlat0 * vs_COLOR0.w;\n    SV_Target0.w = u_xlat0 * vs_COLOR0.w +
+            u_xlat1.w;\n    SV_Target0.xyz = u_xlat1.xyz * vec3(u_xlat2) + u_xlat3.xyz;\n   
+            return;\n}\n\n"
+          LOD: 0
+          readDepth: 0
+          PassId: 0
+          SubShaderIndex: 0
+          Keywords: []
+          Tags:
+          - Key: QUEUE
+            Value: Transparent
+          - Key: RenderType
+            Value: Transparent
+        - ShaderCompilerPlatform: 9
+          NoShaderVariant: 0
+          VertexProgram: "\n#version 300 es\n\n#define HLSLCC_ENABLE_UNIFORM_BUFFERS
+            0\n#if HLSLCC_ENABLE_UNIFORM_BUFFERS\n#define UNITY_UNIFORM\n#else\n#define
+            UNITY_UNIFORM uniform\n#endif\n#define UNITY_SUPPORTS_UNIFORM_LOCATION
+            0\n#if UNITY_SUPPORTS_UNIFORM_LOCATION\n#define UNITY_LOCATION(x) layout(location
+            = x)\n#define UNITY_BINDING(x) layout(binding = x, std140)\n#else\n#define
+            UNITY_LOCATION(x)\n#define UNITY_BINDING(x) layout(std140)\n#endif\nuniform
+            \tvec4 hlslcc_mtx4x4unity_ObjectToWorld[4];\nuniform \tvec4 hlslcc_mtx4x4unity_MatrixVP[4];\nuniform
+            \tvec4 _MainTex_ST;\nin highp vec4 in_POSITION0;\nin highp vec2 in_TEXCOORD0;\nin
+            highp vec4 in_COLOR0;\nout highp vec2 vs_TEXCOORD0;\nout highp vec4 vs_COLOR0;\nvec4
+            u_xlat0;\nvec4 u_xlat1;\nvoid main()\n{\n    u_xlat0 = in_POSITION0.yyyy
+            * hlslcc_mtx4x4unity_ObjectToWorld[1];\n    u_xlat0 = hlslcc_mtx4x4unity_ObjectToWorld[0]
+            * in_POSITION0.xxxx + u_xlat0;\n    u_xlat0 = hlslcc_mtx4x4unity_ObjectToWorld[2]
+            * in_POSITION0.zzzz + u_xlat0;\n    u_xlat0 = u_xlat0 + hlslcc_mtx4x4unity_ObjectToWorld[3];\n   
+            u_xlat1 = u_xlat0.yyyy * hlslcc_mtx4x4unity_MatrixVP[1];\n    u_xlat1
+            = hlslcc_mtx4x4unity_MatrixVP[0] * u_xlat0.xxxx + u_xlat1;\n    u_xlat1
+            = hlslcc_mtx4x4unity_MatrixVP[2] * u_xlat0.zzzz + u_xlat1;\n    gl_Position
+            = hlslcc_mtx4x4unity_MatrixVP[3] * u_xlat0.wwww + u_xlat1;\n    vs_TEXCOORD0.xy
+            = in_TEXCOORD0.xy * _MainTex_ST.xy + _MainTex_ST.zw;\n    vs_COLOR0 =
+            in_COLOR0;\n    return;\n}\n\n"
+          FragmentProgram: "\n#version 300 es\n\nprecision highp float;\nprecision
+            highp int;\n#define HLSLCC_ENABLE_UNIFORM_BUFFERS 0\n#if HLSLCC_ENABLE_UNIFORM_BUFFERS\n#define
+            UNITY_UNIFORM\n#else\n#define UNITY_UNIFORM uniform\n#endif\n#define
+            UNITY_SUPPORTS_UNIFORM_LOCATION 0\n#if UNITY_SUPPORTS_UNIFORM_LOCATION\n#define
+            UNITY_LOCATION(x) layout(location = x)\n#define UNITY_BINDING(x) layout(binding
+            = x, std140)\n#else\n#define UNITY_LOCATION(x)\n#define UNITY_BINDING(x)
+            layout(std140)\n#endif\nuniform \tvec4 _Offset;\nuniform \tvec4 _FoamColor;\nuniform
+            \tfloat _FoamFill;\nuniform \tfloat _FoamWidth;\nuniform \tfloat _FoamSoftness;\nuniform
+            \tvec4 _FoamDirection;\nUNITY_LOCATION(0) uniform mediump sampler2D _MainTex;\nUNITY_LOCATION(1)
+            uniform mediump sampler2D _MaskTex;\nin highp vec2 vs_TEXCOORD0;\nin
+            highp vec4 vs_COLOR0;\nlayout(location = 0) out highp vec4 SV_Target0;\nfloat
+            u_xlat0;\nvec4 u_xlat1;\nfloat u_xlat2;\nmediump vec4 u_xlat16_2;\nvec3
+            u_xlat3;\nvec2 u_xlat6;\nmediump float u_xlat16_6;\nvoid main()\n{\n   
+            u_xlat0 = texture(_MaskTex, vs_TEXCOORD0.xy).x;\n    u_xlat3.x = dFdx(u_xlat0);\n   
+            u_xlat6.x = dFdy(u_xlat0);\n    u_xlat3.x = abs(u_xlat6.x) + abs(u_xlat3.x);\n   
+            u_xlat3.x = u_xlat3.x * _FoamSoftness;\n    u_xlat3.x = max(u_xlat3.x,
+            9.99999975e-05);\n    u_xlat3.x = float(1.0) / u_xlat3.x;\n    u_xlat6.x
+            = dot(_FoamDirection.xy, _FoamDirection.xy);\n    u_xlat6.x = inversesqrt(u_xlat6.x);\n   
+            u_xlat6.xy = u_xlat6.xx * _FoamDirection.xy;\n    u_xlat6.xy = u_xlat6.xy
+            * vec2(vec2(_FoamWidth, _FoamWidth));\n    u_xlat6.xy = (-u_xlat6.xy)
+            * vec2(_FoamFill) + vs_TEXCOORD0.xy;\n    u_xlat16_6 = texture(_MaskTex,
+            u_xlat6.xy).x;\n    u_xlat6.x = (-u_xlat16_6) + u_xlat0;\n    u_xlat6.x
+            = clamp(u_xlat6.x, 0.0, 1.0);\n    u_xlat3.x = u_xlat3.x * u_xlat6.x;\n   
+            u_xlat3.x = min(u_xlat3.x, 1.0);\n    u_xlat6.x = u_xlat3.x * -2.0 +
+            3.0;\n    u_xlat3.x = u_xlat3.x * u_xlat3.x;\n    u_xlat3.x = u_xlat3.x
+            * u_xlat6.x;\n    u_xlat3.x = u_xlat0 * u_xlat3.x;\n    u_xlat0 = (-u_xlat0)
+            + 1.0;\n    u_xlat1 = u_xlat3.xxxx * _FoamColor;\n    u_xlat3.xyz = u_xlat1.xyz
+            * _FoamColor.www;\n    u_xlat1.xy = vs_TEXCOORD0.xy * _Offset.zw + _Offset.xy;\n   
+            u_xlat16_2 = texture(_MainTex, u_xlat1.xy);\n    u_xlat1.xyz = u_xlat16_2.xyz
+            * vs_COLOR0.xyz;\n    u_xlat0 = u_xlat0 * u_xlat16_2.w;\n    u_xlat2
+            = u_xlat0 * vs_COLOR0.w;\n    SV_Target0.w = u_xlat0 * vs_COLOR0.w +
+            u_xlat1.w;\n    SV_Target0.xyz = u_xlat1.xyz * vec3(u_xlat2) + u_xlat3.xyz;\n   
+            return;\n}\n\n"
+          LOD: 0
+          readDepth: 0
+          PassId: 0
+          SubShaderIndex: 0
+          Keywords: []
+          Tags:
+          - Key: QUEUE
+            Value: Transparent
+          - Key: RenderType
+            Value: Transparent
+        DefinedKeywords:
+        - STEREO_CUBEMAP_RENDER_ON
+        - STEREO_INSTANCING_ON
+        - STEREO_MULTIVIEW_ON
+        - UNITY_SINGLE_PASS_STEREO
+        KeywordGroups: []
+        KeywordsMinimalCardinality: 0
+        ContainsInvalidVariant: 0
+        VariantStructures:
+        - shaderCompilerPlatform: 5
+          shader: {fileID: 4800000, guid: dbf92d441de03ba418088a9d7bf121a1, type: 3}
+          passType: 0
+          passId: 0
+          subShaderIndex: 0
+          upToDate: 0
+          keywords: []
+        - shaderCompilerPlatform: 9
+          shader: {fileID: 4800000, guid: dbf92d441de03ba418088a9d7bf121a1, type: 3}
+          passType: 0
+          passId: 0
+          subShaderIndex: 0
+          upToDate: 0
+          keywords: []
+        CompilationErrors: []
+        HasDepthReader: 0
+        Id: 0
+        SubShaderIndex: 0
+        SerializedObjectId: 0
+        Tags:
+        - Key: QUEUE
+          Value: Transparent
+        - Key: RenderType
+          Value: Transparent
+        UsePass:
+          shader: 
+          pass: 
+        GrabPassTextureName: 
+        PlatformMask: -1
+      Shader: {fileID: 4800000, guid: dbf92d441de03ba418088a9d7bf121a1, type: 3}
+      Tags:
+      - Key: QUEUE
+        Value: Transparent
+      - Key: RenderType
+        Value: Transparent
+    Shader: {fileID: 4800000, guid: dbf92d441de03ba418088a9d7bf121a1, type: 3}
+    ShaderPath: Assets/Project/Shader/GroundFakeShadow.shader
+    ShaderDefinedKeywords:
+    - STEREO_CUBEMAP_RENDER_ON
+    - STEREO_INSTANCING_ON
+    - STEREO_MULTIVIEW_ON
+    - UNITY_SINGLE_PASS_STEREO
+    fallbackShader: {fileID: 0}
+    CompilationErrors: []
+    Variants:
+    - shaderCompilerPlatform: 5
+      shader: {fileID: 4800000, guid: dbf92d441de03ba418088a9d7bf121a1, type: 3}
+      passType: 0
+      passId: 0
+      subShaderIndex: 0
+      upToDate: 0
+      keywords: []
+    - shaderCompilerPlatform: 9
+      shader: {fileID: 4800000, guid: dbf92d441de03ba418088a9d7bf121a1, type: 3}
       passType: 0
       passId: 0
       subShaderIndex: 0
@@ -7099,9 +7320,9 @@ MonoBehaviour:
   _sceneLightData:
     PointLightCount: 0
     SpotLightCount: 0
-    DirectionalLightCount: 1
-    LightmapOn: 1
-    DirlightmapCombined: 1
+    DirectionalLightCount: 0
+    LightmapOn: 0
+    DirlightmapCombined: 0
     DirectionalCookieExists: 0
     PointCookieExists: 0
     SpotCookieExists: 0

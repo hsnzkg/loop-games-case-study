@@ -32970,10 +32970,6 @@
                         "excluded": true
                     },
                     {
-                        "name": "OnScratchInitialized",
-                        "excluded": false
-                    },
-                    {
                         "name": "OnScratch",
                         "excluded": false
                     }
