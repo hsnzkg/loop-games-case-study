@@ -11,6 +11,7 @@ namespace Project.Scripts.Storage.Storages
         public WeaponCollectableSpawner WeaponCollectableSpawner;
         public AISpawner AISpawner;
         public LevelManager LevelManager;
+        public WeaponCollectableSpawner TrajectorySpawner;
 
         public void Dispose()
         {
@@ -18,6 +19,7 @@ namespace Project.Scripts.Storage.Storages
             WeaponCollectableSpawner = null;
             AISpawner = null;
             LevelManager = null;
+            TrajectorySpawner = null;
         }
     }
 }
