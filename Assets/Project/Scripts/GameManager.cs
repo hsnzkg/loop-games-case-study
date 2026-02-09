@@ -22,8 +22,6 @@ namespace Project.Scripts
             FetchComponents();
             m_cameraManager.Initialize();
             m_playerSpawner.Initialize();
-            m_weaponCollectableSpawner.Initialize();
-            m_weaponTrajectorySpawner.Initialize();
             m_aiSpawner.Initialize();
             m_levelManager.Generate();
             m_endCardController.Initialize();

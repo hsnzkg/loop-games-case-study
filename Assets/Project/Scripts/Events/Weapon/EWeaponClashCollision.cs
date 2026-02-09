@@ -5,8 +5,8 @@ namespace Project.Scripts.Events.Weapon
 {
     public struct EWeaponClashCollision : IEvent
     {
-        public Collider2D From;
-        public Collider2D To;
+        public readonly Collider2D From;
+        public readonly Collider2D To;
 
         public EWeaponClashCollision(Collider2D collider, Collider2D collider2D)
         {

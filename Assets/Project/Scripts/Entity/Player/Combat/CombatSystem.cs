@@ -17,9 +17,10 @@ namespace Project.Scripts.Entity.Player.Combat
         private int m_weaponCount;
         
         private readonly EventBind<EUpdate> m_updateBind;
-
-        public CombatSystem(CombatSettings combatSettings, Transform root,Collider2D playerCol)
+        private PlayerEntity m_playerEntity;
+        public CombatSystem(PlayerEntity entity, CombatSettings combatSettings, Transform root,Collider2D playerCol)
         {
+            m_playerEntity = entity;
             m_combatSettings = combatSettings;
             m_root = root;
             m_playerCol = playerCol;
@@ -95,7 +96,7 @@ namespace Project.Scripts.Entity.Player.Combat
         private WeaponEntity CreateWeapon()
         {
             WeaponEntity weapon = Object.Instantiate(m_combatSettings.WeaponPrefab, m_weaponParent);
-            weapon.Initialize(m_weaponPool);
+            weapon.Initialize(m_playerEntity,m_weaponPool);
             return weapon;
         }
 

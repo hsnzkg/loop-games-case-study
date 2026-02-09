@@ -1,10 +1,13 @@
 ﻿using Project.Scripts.Collisions;
+using Project.Scripts.Entity.Player;
 using Project.Scripts.Entity.Player.Attributes;
 using Project.Scripts.Entity.Player.Combat;
+using Project.Scripts.Entity.PlayerAI;
 using Project.Scripts.EventBus.Runtime;
 using Project.Scripts.Events.Scratch;
 using Project.Scripts.Events.Weapon;
 using Project.Scripts.Pool;
+using Project.Scripts.Sound;
 using UnityEngine;
 
 namespace Project.Scripts.Entity.Weapon
@@ -18,15 +21,16 @@ namespace Project.Scripts.Entity.Weapon
         private IObjectPool<WeaponEntity> m_provider;
         private BoxCollider2D m_collider;
         private AnimationSystem m_animationSystem;
-
+        private PlayerEntity m_playerEntity;
 
         private void Update()
         {
             EventBus<EScratch>.Raise(new EScratch(transform.position));
         }
 
-        public void Initialize(IObjectPool<WeaponEntity> provider)
+        public void Initialize(PlayerEntity entity, IObjectPool<WeaponEntity> provider)
         {
+            m_playerEntity = entity;
             m_animationSystem = new AnimationSystem(m_animationSettings,m_animationTransformTarget);
             m_provider = provider;
             FetchComponents();
@@ -78,12 +82,27 @@ namespace Project.Scripts.Entity.Weapon
                 damageable.OnDamage(m_weaponAttributeSettings.Damage,dir);
             }
 
-            if (damageable is WeaponEntity)
+            if (damageable is WeaponEntity weaponEntity)
             {
                 EventBus<EWeaponClashCollision>.Raise(new EWeaponClashCollision(m_collider,obj));
+                if (m_playerEntity.CompareTag("Player") ||  weaponEntity.GetPlayerEntity().CompareTag("Player"))
+                {
+                    EventBus<EPlaySound>.Raise(new EPlaySound(SoundType.SwordHit));
+                }
                 Free();
             }
+            else
+            {
+                if (m_playerEntity.CompareTag("Player"))
+                {
+                    EventBus<EPlaySound>.Raise(new EPlaySound(SoundType.PlayerHit));
+                }
+            }
+        }
 
+        public PlayerEntity GetPlayerEntity()
+        {
+            return m_playerEntity;
         }
 
         public void OnDamage(float damage,Vector2 direction)

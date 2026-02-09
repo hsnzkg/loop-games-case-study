@@ -1,4 +1,5 @@
-﻿using Project.Scripts.Entity.Weapon;
+﻿using System;
+using Project.Scripts.Entity.Weapon;
 using Project.Scripts.EventBus.Runtime;
 using Project.Scripts.Events.Player;
 using Project.Scripts.Level;
@@ -22,13 +23,27 @@ namespace Project.Scripts.Spawning.Spawners
         private Vector2 m_maxSpawn;
         private WeaponCollectableEntity[] m_activeWeapons;
         private LevelManager  m_levelManager;
-        
         private EventBind<EPlayerDead>  m_playerDeadEventBind;
 
-        public void Initialize()
+        private void Awake()
+        {
+            Initialize();
+        }
+
+        private void OnEnable()
+        {
+            EventBus<EPlayerDead>.Register(m_playerDeadEventBind);
+        }
+
+        private void OnDisable()
+        {
+            EventBus<EPlayerDead>.Unregister(m_playerDeadEventBind);
+        }
+
+        private void Initialize()
         {
             m_playerDeadEventBind = new EventBind<EPlayerDead>(SpawnAroundRandom);
-            m_levelManager = Storage<GameplayStorage>.GetInstance().LevelManager;
+            m_levelManager = transform.parent.GetComponentInChildren<LevelManager>();
             m_activeWeapons = new WeaponCollectableEntity[m_weaponCollectorSettings.MaxWeaponsInWorld];
             m_parent = new GameObject("Weapon_Collectable_Parent");
             
@@ -41,16 +56,6 @@ namespace Project.Scripts.Spawning.Spawners
                 defaultCapacity: m_weaponCollectorSettings.PoolSize,
                 maxSize: m_weaponCollectorSettings.MaxWeaponsInWorld
             );
-        }
-
-        private void OnEnable()
-        {
-            EventBus<EPlayerDead>.Register(m_playerDeadEventBind);
-        }
-
-        private void OnDisable()
-        {
-            EventBus<EPlayerDead>.Unregister(m_playerDeadEventBind);
         }
 
         private void Update()

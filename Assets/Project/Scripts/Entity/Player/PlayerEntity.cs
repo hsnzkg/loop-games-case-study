@@ -60,8 +60,8 @@ namespace Project.Scripts.Entity.Player
             m_playerCanvasController = GetComponentInChildren<PlayerCanvasController>();
             
             m_movementSystem = new MovementSystem(m_movementSettings,m_rb,InputProvider);
-            m_combatSystem = new CombatSystem(m_combatSettings,transform,m_playerCollider);
-            m_collectorSystem = new WeaponCollectorSystem(m_weaponCollectorSettings,m_collisionBroadcaster2D,transform);
+            m_combatSystem = new CombatSystem(this,m_combatSettings,transform,m_playerCollider);
+            m_collectorSystem = new WeaponCollectorSystem(this,m_weaponCollectorSettings,m_collisionBroadcaster2D,transform);
         }
 
         private void OnEnable()

@@ -625,7 +625,7 @@ GameObject:
   - component: {fileID: 4856392796185897675}
   m_Layer: 6
   m_Name: Player_Entity_AI
-  m_TagString: Untagged
+  m_TagString: PlayerAI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

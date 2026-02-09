@@ -20,7 +20,22 @@ namespace Project.Scripts.Spawning.Spawners
         private Vector2 m_maxSpawn;
         private GameObject[] m_activeTrajectories;
         private EventBind<EWeaponClashCollision> m_clashCollision;
-        
+
+        private void Awake()
+        {
+            Initialize();
+        }
+
+        private void OnEnable()
+        {
+            EventBus<EWeaponClashCollision>.Register(m_clashCollision);
+        }
+
+        private void OnDisable()
+        {
+            EventBus<EWeaponClashCollision>.Unregister(m_clashCollision);
+        }
+
         public void Initialize()
         {
             m_clashCollision = new EventBind<EWeaponClashCollision>(OnClash);
@@ -36,16 +51,6 @@ namespace Project.Scripts.Spawning.Spawners
                 defaultCapacity: m_trajectorySpawnerSettings.PoolSize,
                 maxSize: m_trajectorySpawnerSettings.MaxWeaponsInWorld
             );
-        }
-
-        private void OnEnable()
-        {
-            EventBus<EWeaponClashCollision>.Register(m_clashCollision);
-        }
-
-        private void OnDisable()
-        {
-            EventBus<EWeaponClashCollision>.Unregister(m_clashCollision);
         }
 
         private void OnClash(EWeaponClashCollision obj)

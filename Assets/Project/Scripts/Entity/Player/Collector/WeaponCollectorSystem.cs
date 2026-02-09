@@ -1,7 +1,10 @@
 ﻿using System;
 using DG.Tweening;
 using Project.Scripts.Collisions;
+using Project.Scripts.Entity.PlayerAI;
 using Project.Scripts.Entity.Weapon;
+using Project.Scripts.EventBus.Runtime;
+using Project.Scripts.Sound;
 using UnityEngine;
 
 namespace Project.Scripts.Entity.Player.Collector
@@ -14,11 +17,13 @@ namespace Project.Scripts.Entity.Player.Collector
         public event Action OnWeaponCollected;
         private Sequence m_collectSequence;
         private Tween m_scaleTween;
+        private PlayerEntity m_playerEntity;
 
-        public WeaponCollectorSystem(WeaponCollectorSettings weaponCollectorSettings,
+        public WeaponCollectorSystem(PlayerEntity entity, WeaponCollectorSettings weaponCollectorSettings,
             CollisionBroadcaster2D collisionBroadcaster2D,
             Transform weaponSnapTarget)
         {
+            m_playerEntity = entity;
             m_weaponCollectorSettings = weaponCollectorSettings;
             m_collisionBroadcaster2D = collisionBroadcaster2D;
             m_weaponSnapTarget = weaponSnapTarget;
@@ -71,6 +76,10 @@ namespace Project.Scripts.Entity.Player.Collector
             DOTween.Complete(m_collectSequence);
             collectable.Collect();
             OnWeaponCollected?.Invoke();
+            if (m_playerEntity is not PlayerAIEntity)
+            {
+                EventBus<EPlaySound>.Raise(new EPlaySound(SoundType.WeaponPickup,randomPitch:true));
+            }
         }
     }
 }
