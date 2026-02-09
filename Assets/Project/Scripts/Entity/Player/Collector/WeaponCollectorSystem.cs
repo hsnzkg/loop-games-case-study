@@ -31,8 +31,7 @@ namespace Project.Scripts.Entity.Player.Collector
 
         public void Disable()
         {
-            m_scaleTween?.Kill();
-            m_collectSequence?.Kill();
+            m_collectSequence?.Complete(true);
             m_collisionBroadcaster2D.OnTriggerEnter2DEvent -= OnTriggerEntered;
         }
 
@@ -56,7 +55,7 @@ namespace Project.Scripts.Entity.Player.Collector
                 },
                 1f,
                 m_weaponCollectorSettings.Duration);
-            snapTween.SetEase(Ease.InBack);
+            snapTween.SetEase(m_weaponCollectorSettings.PositionEase);
 
 
             m_scaleTween = obj.transform.DOScale(m_weaponCollectorSettings.SizeEndValue, m_weaponCollectorSettings.Duration);

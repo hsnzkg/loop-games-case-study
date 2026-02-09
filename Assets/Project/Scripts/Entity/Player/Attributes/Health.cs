@@ -24,11 +24,9 @@ namespace Project.Scripts.Entity.Player.Attributes
             m_current -= damage;
             m_current = Mathf.Clamp(m_current, 0f, m_max);
             OnHealthChange?.Invoke(m_current);
-            if (m_current <= 0f)
-            {
-                IsDead = true;
-                OnDeath?.Invoke();
-            }
+            if (!(m_current <= 0f) || IsDead) return;
+            IsDead = true;
+            OnDeath?.Invoke();
         }
 
         public void Heal(float heal)

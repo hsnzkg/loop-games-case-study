@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: WeaponCollectorSettings
   m_EditorClassIdentifier: 
   Duration: 0.5
-  PositionEase: 28
-  ScaleEase: 20
+  PositionEase: 26
+  ScaleEase: 26
   SizeEndValue: {x: 0, y: 0, z: 0}

@@ -29,5 +29,10 @@ namespace Project.Scripts.Entity.PlayerAI.Movement
         {
             m_positionTarget = position;
         }
+        
+        public Vector2 GetPositionTarget()
+        {
+            return m_positionTarget;
+        }
     }
 }

@@ -87,9 +87,9 @@ namespace Project.Scripts.Spawning.Spawners
 
         private void SpawnAroundRandom(EPlayerDead obj)
         {
-            if (!CanSpawn()) return;
             for (int i = 0; i < 5; i++)
             {
+                if(!CanSpawn())break;
                 Spawn(obj.Player.transform.position.ToVector2XY() + Random.insideUnitSphere.ToVector2XY());
             }
         }

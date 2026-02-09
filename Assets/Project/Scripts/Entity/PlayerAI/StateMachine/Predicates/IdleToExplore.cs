@@ -12,10 +12,10 @@ namespace Project.Scripts.Entity.PlayerAI.StateMachine.Predicates
     public class IdleToExplore : IPredicate
     {
         private readonly List<WeaponCollectableEntity> m_weaponInRangeBuffer;
+        private WeaponCollectableEntity[] m_weaponLookupBuffer;
         private readonly WeaponCollectableSpawner m_weaponCollectableSpawner;
         private readonly AIStateContext m_stateContext;
-        private WeaponCollectableEntity[] m_weaponLookupBuffer;
-        
+
         public IdleToExplore(AIStateContext context)
         {
             m_weaponInRangeBuffer = new List<WeaponCollectableEntity>();
@@ -24,11 +24,6 @@ namespace Project.Scripts.Entity.PlayerAI.StateMachine.Predicates
         }
         
         public bool Evaluate()
-        {
-            return IsAnyWeaponInRange();
-        }
-
-        private bool IsAnyWeaponInRange()
         {
             GetWeaponsInRange();
             return m_weaponInRangeBuffer.Count <= 0;
@@ -43,7 +38,7 @@ namespace Project.Scripts.Entity.PlayerAI.StateMachine.Predicates
             for (int i = 0; i < m_weaponLookupBuffer.Length; i++)
             {
                 if(m_weaponLookupBuffer[i] == null) continue;
-
+                if( m_weaponLookupBuffer[i].GetIsCollecting())continue;
                 Vector2 weaponPos = m_weaponLookupBuffer[i].transform.position.ToVector2XY();
                 float distance = Vector2.Distance(entityPosition, weaponPos);
                 if (distance <= m_stateContext.AISettings.VisionThreshold)
@@ -51,11 +46,6 @@ namespace Project.Scripts.Entity.PlayerAI.StateMachine.Predicates
                     m_weaponInRangeBuffer.Add(m_weaponLookupBuffer[i]);
                 }
             }
-        }
-
-        public List<WeaponCollectableEntity> GetWeaponBuffer()
-        {
-            return m_weaponInRangeBuffer;
         }
     }
 }

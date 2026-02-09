@@ -1,5 +1,6 @@
 ﻿using System;
 using Project.Scripts.Entity.Player;
+using Project.Scripts.Entity.PlayerAI.Movement;
 using Project.Scripts.Entity.PlayerAI.StateMachine;
 using Project.Scripts.Entity.PlayerAI.StateMachine.Predicates;
 using Project.Scripts.Entity.PlayerAI.StateMachine.States;
@@ -18,28 +19,24 @@ namespace Project.Scripts.Entity.PlayerAI
         private NotPredicate m_exploreToCollect;
         private TickDispatcher m_tickDispatcher;
         
-        private Explore m_explore;
-        
         protected override void Initialize()
         {
             base.Initialize();
             m_tickDispatcher = new TickDispatcher();
             m_aiStateContext = new AIStateContext(m_aiSettings,InputProvider,transform);
             m_stateMachine = new FiniteStateMachine.Runtime.StateMachine(new AutoMode());
-
-            m_explore = new Explore(m_aiStateContext);
-            
             
             m_idleToExplore = new IdleToExplore(m_aiStateContext);
             m_exploreToCollect = new NotPredicate(m_idleToExplore);
             
             
             m_stateMachine.AddState(new Idle(m_aiStateContext));
-            m_stateMachine.AddState(m_explore);
+            m_stateMachine.AddState(new Explore(m_aiStateContext));
             m_stateMachine.AddState(new Collect(m_aiStateContext));
             
             m_stateMachine.AddTransition<Idle,Explore>(m_idleToExplore);
-            //m_stateMachine.AddTransition<Explore,Collect>(m_exploreToCollect);
+            m_stateMachine.AddTransition<Explore,Collect>(m_exploreToCollect);
+            m_stateMachine.AddTransition<Collect,Idle>(m_idleToExplore);
             
             m_stateMachine.SetDefaultState<Idle>();
         }
@@ -48,10 +45,10 @@ namespace Project.Scripts.Entity.PlayerAI
         {
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position,m_aiSettings.VisionThreshold);
-            if (m_explore != null)
-            {
-                Gizmos.DrawLine(transform.position,m_explore.GetCurrentDestinationPoint().ToVector3XY());
-            }
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(transform.position,m_aiSettings.DestinationReachThreshold);
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(transform.position,((AIInputProvider)InputProvider).GetPositionTarget().ToVector3XY());
         }
 
         protected override void Update()
