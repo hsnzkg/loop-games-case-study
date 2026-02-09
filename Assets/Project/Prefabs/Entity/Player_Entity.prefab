@@ -379,8 +379,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5082146366834759306}
   - component: {fileID: 6541441458258005389}
-  - component: {fileID: 840683358301206229}
-  - component: {fileID: 9210859766995970553}
+  - component: {fileID: 4772778656601796052}
+  - component: {fileID: 2889725712629528670}
   - component: {fileID: 4675065555169879133}
   - component: {fileID: 4941834527427030021}
   - component: {fileID: -3316537914835759857}
@@ -435,8 +435,8 @@ Rigidbody2D:
   m_SleepingMode: 2
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &840683358301206229
-BoxCollider2D:
+--- !u!58 &4772778656601796052
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -467,21 +467,11 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.37999594}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0, y: -0.3}
   serializedVersion: 2
-  m_Size: {x: 1.9019682, y: 1.7599919}
-  m_EdgeRadius: 0
---- !u!61 &9210859766995970553
-BoxCollider2D:
+  m_Radius: 1
+--- !u!58 &2889725712629528670
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -512,19 +502,9 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.3799959}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 4, y: 4}
-  m_EdgeRadius: 0
+  m_Radius: 2.5
 --- !u!114 &4675065555169879133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -540,7 +520,7 @@ MonoBehaviour:
   m_movementSettings: {fileID: 11400000, guid: fe014d11c5df10b4bacfc6ee1d01faf2, type: 2}
   m_weaponCollectorSettings: {fileID: 11400000, guid: ae30ed12ddb8c41449f0dd3f8769a1b5, type: 2}
   m_combatSettings: {fileID: 11400000, guid: f755463b5f6800944a7b4d264650194b, type: 2}
-  m_playerCollider: {fileID: 840683358301206229}
+  m_playerCollider: {fileID: 4772778656601796052}
 --- !u!114 &4941834527427030021
 MonoBehaviour:
   m_ObjectHideFlags: 0

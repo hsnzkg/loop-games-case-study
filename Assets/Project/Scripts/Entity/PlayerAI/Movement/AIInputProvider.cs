@@ -1,18 +1,27 @@
 ﻿using Project.Scripts.Entity.Player.Movement;
+using Project.Scripts.Utility;
 using UnityEngine;
 
 namespace Project.Scripts.Entity.PlayerAI.Movement
 {
     public class AIInputProvider : MonoBehaviour, IInputProvider
     {
+        [SerializeField] private Transform m_transform;
+        private Vector2 m_positionTarget;
+        
         public Vector2 GetInput()
         {
-            return new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+            return Vector2.ClampMagnitude(m_positionTarget -  m_transform.position.ToVector2XY(),1f);
         }
 
         public bool GetHasInput()
         {
             return true;
+        }
+
+        public void SetPositionTarget(Vector2 position)
+        {
+            m_positionTarget = position;
         }
     }
 }

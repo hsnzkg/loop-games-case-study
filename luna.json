@@ -208,10 +208,6 @@
                 "excluded": true
             },
             {
-                "name": "System.Reflection.TargetSite",
-                "excluded": true
-            },
-            {
                 "name": "System.OutOfMemoryException",
                 "excluded": true
             },
@@ -2380,10 +2376,6 @@
                 "excluded": true
             },
             {
-                "name": "UnityEngine.CapsuleCollider2D",
-                "excluded": true
-            },
-            {
                 "name": "UnityEngine.CharacterController",
                 "excluded": true
             },
@@ -3777,7 +3769,7 @@
             },
             {
                 "name": "UnityEngine.CapsuleDirection2D",
-                "excluded": true
+                "excluded": false
             },
             {
                 "name": "UnityEngine.ClusterInputType",
@@ -9045,7 +9037,7 @@
             },
             {
                 "name": "DG.Tweening.Core.SafeModeReport.SafeModeReportType",
-                "excluded": true
+                "excluded": false
             },
             {
                 "name": "DG.Tweening.Core.TargetType",
@@ -9280,14 +9272,6 @@
                 "excluded": true
             },
             {
-                "name": "Project.Scripts.FiniteStateMachine.Runtime.RuntimeMode.AutoMode",
-                "excluded": true
-            },
-            {
-                "name": "Project.Scripts.FiniteStateMachine.Runtime.Transition",
-                "excluded": true
-            },
-            {
                 "name": "Project.ThirdParty.Joystick_Pack.Scripts.Joysticks.FloatingJoystick",
                 "excluded": true
             },
@@ -9313,7 +9297,7 @@
             },
             {
                 "name": "Project.Scripts.FiniteStateMachine.Runtime.IPredicate",
-                "excluded": true
+                "excluded": false
             },
             {
                 "name": "Project.ThirdParty.Joystick_Pack.Scripts.Joysticks.JoystickType",
@@ -9334,10 +9318,6 @@
             {
                 "name": "Project.ThirdParty.Joystick_Pack.Scripts.Joysticks.FixedJoystick",
                 "excluded": true
-            },
-            {
-                "name": "Project.Scripts.Entity.PlayerAI.PlayerAIEntity",
-                "excluded": false
             },
             {
                 "name": "Project.Scripts.Bootstrap.IBootstrapper",
@@ -9425,6 +9405,22 @@
             },
             {
                 "name": "Project.Scripts.EventBus.Runtime.EventBus$1.PendingFlags",
+                "excluded": false
+            },
+            {
+                "name": "Project.Scripts.Entity.PlayerAI.StateMachine.States.Chase",
+                "excluded": true
+            },
+            {
+                "name": "Project.Scripts.Entity.PlayerAI.StateMachine.States.RunAway",
+                "excluded": true
+            },
+            {
+                "name": "Project.Scripts.Entity.PlayerAI.AISettings",
+                "excluded": false
+            },
+            {
+                "name": "Project.Scripts.Entity.PlayerAI.StateMachine.ITickable",
                 "excluded": false
             }
         ],
@@ -13073,7 +13069,7 @@
                     },
                     {
                         "name": "add",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "clear",
@@ -13105,7 +13101,7 @@
                     },
                     {
                         "name": "GetEnumerator",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "System$Collections$Generic$IEnumerable$1$GetEnumerator",
@@ -13165,7 +13161,7 @@
                     },
                     {
                         "name": "Initialize",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "IncreaseCapacity",
@@ -13177,7 +13173,7 @@
                     },
                     {
                         "name": "AddIfNotPresent",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "ContainsAllElements",
@@ -13221,7 +13217,7 @@
                     },
                     {
                         "name": "InternalGetHashCode",
-                        "excluded": true
+                        "excluded": false
                     }
                 ]
             },
@@ -13261,7 +13257,7 @@
                     },
                     {
                         "name": "Current#get",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "System$Collections$IEnumerator$Current#get",
@@ -13269,11 +13265,11 @@
                     },
                     {
                         "name": "init",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "$ctor1",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "ctor",
@@ -13281,11 +13277,11 @@
                     },
                     {
                         "name": "Dispose",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "moveNext",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "System$Collections$IEnumerator$reset",
@@ -13315,11 +13311,11 @@
                     },
                     {
                         "name": "init",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "ctor",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "getHashCode",
@@ -26781,11 +26777,11 @@
                 "instanceMethods": [
                     {
                         "name": "GetValueOrDefault",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "GetValueOrDefault$1",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "TryAdd",
@@ -29121,7 +29117,7 @@
                     },
                     {
                         "name": "Add",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "GetTotErrors",
@@ -30171,7 +30167,7 @@
                     },
                     {
                         "name": "LogSafeModeCapturedError",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "LogReport",
@@ -30219,7 +30215,7 @@
                     },
                     {
                         "name": "ShouldLogSafeModeCapturedError",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "GetDebugDataMessage",
@@ -32531,7 +32527,7 @@
                     },
                     {
                         "name": "GetStateMachine",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "SetStateMachine",
@@ -32539,7 +32535,7 @@
                     },
                     {
                         "name": "GetIsHierarchical",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "ConvertHierarchical",
@@ -32579,15 +32575,15 @@
                     },
                     {
                         "name": "OnEnter",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "OnExit",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "Handle",
-                        "excluded": true
+                        "excluded": false
                     }
                 ]
             },
@@ -32613,7 +32609,7 @@
                     },
                     {
                         "name": "GetNode",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "GetNode$1",
@@ -32621,11 +32617,11 @@
                     },
                     {
                         "name": "Update",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "AddState",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "AddState$1",
@@ -32633,7 +32629,7 @@
                     },
                     {
                         "name": "SetDefaultState$1",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "SetDefaultState",
@@ -32681,7 +32677,7 @@
                     },
                     {
                         "name": "AddTransition",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "AddAnyTransition",
@@ -32689,15 +32685,15 @@
                     },
                     {
                         "name": "HasValidTransition",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "Dispatch",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "DispatchRecursive",
-                        "excluded": true
+                        "excluded": false
                     }
                 ]
             },
@@ -32715,11 +32711,11 @@
                     },
                     {
                         "name": "GetTransitions",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "AddTransition",
-                        "excluded": true
+                        "excluded": false
                     }
                 ]
             },
@@ -33137,7 +33133,7 @@
                     },
                     {
                         "name": "GetActiveWeapons",
-                        "excluded": true
+                        "excluded": false
                     }
                 ]
             },
@@ -33892,6 +33888,10 @@
                     {
                         "name": "OnDamage",
                         "excluded": true
+                    },
+                    {
+                        "name": "Update",
+                        "excluded": false
                     }
                 ]
             },
@@ -34229,7 +34229,7 @@
                 "instanceMethods": [
                     {
                         "name": "Dispatch",
-                        "excluded": true
+                        "excluded": false
                     }
                 ]
             },
@@ -34469,6 +34469,10 @@
                     },
                     {
                         "name": "ToVector2XY",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ToVector3XY",
                         "excluded": true
                     }
                 ]
@@ -34511,6 +34515,14 @@
                     },
                     {
                         "name": "GetHasInput",
+                        "excluded": false
+                    },
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "SetPositionTarget",
                         "excluded": false
                     }
                 ]
@@ -34571,6 +34583,244 @@
                     },
                     {
                         "name": "OnSpawn",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "UnityEngine.CapsuleCollider2D",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "direction#get",
+                        "excluded": true
+                    },
+                    {
+                        "name": "direction#set",
+                        "excluded": true
+                    },
+                    {
+                        "name": "size#get",
+                        "excluded": true
+                    },
+                    {
+                        "name": "size#set",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.PlayerAI.StateMachine.AIStateContext",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.PlayerAI.StateMachine.Predicates.IdleToExplore",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Evaluate",
+                        "excluded": false
+                    },
+                    {
+                        "name": "IsAnyWeaponInRange",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetWeaponsInRange",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetWeaponBuffer",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.PlayerAI.StateMachine.Predicates.NotPredicate",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Evaluate",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.PlayerAI.StateMachine.States.AIStateBase",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Tick",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.PlayerAI.StateMachine.TickDispatcher",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "SetDelta",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Dispatch",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.FiniteStateMachine.Runtime.RuntimeMode.AutoMode",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Tick",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.FiniteStateMachine.Runtime.Transition",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "getDefaultValue",
+                        "excluded": true
+                    },
+                    {
+                        "name": "$ctor1",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetTo",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetCondition",
+                        "excluded": false
+                    },
+                    {
+                        "name": "getHashCode",
+                        "excluded": false
+                    },
+                    {
+                        "name": "equals",
+                        "excluded": true
+                    },
+                    {
+                        "name": "$clone",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.PlayerAI.PlayerAIEntity",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Initialize",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnDrawGizmos",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Update",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.PlayerAI.StateMachine.States.Collect",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.PlayerAI.StateMachine.States.Explore",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnEnter",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Tick",
+                        "excluded": false
+                    },
+                    {
+                        "name": "CheckDestination",
+                        "excluded": false
+                    },
+                    {
+                        "name": "PickRandomDestinationPoint",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetCurrentDestinationPoint",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.PlayerAI.StateMachine.States.Idle",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "System.Reflection.TargetSite",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "toString",
                         "excluded": false
                     }
                 ]

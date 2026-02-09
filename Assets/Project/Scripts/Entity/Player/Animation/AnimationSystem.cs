@@ -1,4 +1,5 @@
-﻿using Project.Scripts.Input;
+﻿using Project.Scripts.Entity.Player.Movement;
+using Project.Scripts.Input;
 using UnityEngine;
 
 namespace Project.Scripts.Entity.Player.Animation
@@ -9,7 +10,8 @@ namespace Project.Scripts.Entity.Player.Animation
         [SerializeField] private SpriteRenderer m_playerSprite;
         [SerializeField] private SpriteRenderer m_playerBottomSpriteL;
         [SerializeField] private SpriteRenderer m_playerBottomSpriteR;
-
+        
+        private IInputProvider  m_inputProvider;
         private MaterialPropertyBlock m_blockPlayer;
         private MaterialPropertyBlock m_blockBottomL;
         private MaterialPropertyBlock m_blockBottomR;
@@ -28,12 +30,12 @@ namespace Project.Scripts.Entity.Player.Animation
 
         private void Initialize()
         {
+            m_inputProvider = GetComponent<IInputProvider>();
             m_playerSprite.material = new Material(m_playerSprite.material);
             m_playerBottomSpriteL.material = new Material(m_playerBottomSpriteL.material);
             m_playerBottomSpriteR.material = new Material(m_playerBottomSpriteR.material);
             InitializeBodyLayer();
             InitializeBottomLayer();
-      
         }
 
         private void InitializeBodyLayer()
@@ -87,10 +89,8 @@ namespace Project.Scripts.Entity.Player.Animation
 
         private void CheckState()
         {
-            PlayerInputData data = InputManager.GetData();
-
-            Vector2 input = data.GetMovementInputAxisVec2();
-            bool isMoving = data.GetHasMovementInput();
+            Vector2 input = m_inputProvider.GetInput();
+            bool isMoving = m_inputProvider.GetHasInput();
 
             int facing = m_lastFacing;
             if (input.x > 0f)

@@ -19,9 +19,14 @@ namespace Project.Scripts.Utility
             return new Vector3(value.x, 0f, value.y);
         }
 
+        public static Vector3 ToVector3XY(this Vector2 value)
+        {
+            return new Vector3(value.x, value.y, 0f);
+        }
+
         public static Vector2 ToVector2XY(this Vector3 value)
         {
-            return new Vector2(value.x,value.y);
+            return new Vector2(value.x, value.y);
         }
     }
 }
