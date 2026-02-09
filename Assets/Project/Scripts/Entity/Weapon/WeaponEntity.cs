@@ -50,6 +50,7 @@ namespace Project.Scripts.Entity.Weapon
 
         public void OnDespawned()
         {
+            m_animationSystem.OnDespawned();
             m_broadcaster2D.OnTriggerEnter2DEvent -= OnTriggerEvent;
         }
 

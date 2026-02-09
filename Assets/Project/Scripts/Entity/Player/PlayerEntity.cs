@@ -1,8 +1,13 @@
 ﻿using Project.Scripts.Collisions;
+using Project.Scripts.Entity.Player.Animation;
 using Project.Scripts.Entity.Player.Attributes;
 using Project.Scripts.Entity.Player.Collector;
 using Project.Scripts.Entity.Player.Combat;
 using Project.Scripts.Entity.Player.Movement;
+using Project.Scripts.EventBus.Runtime;
+using Project.Scripts.Events.Player;
+using Project.Scripts.Storage.Runtime;
+using Project.Scripts.Storage.Storages;
 using UnityEngine;
 
 namespace Project.Scripts.Entity.Player
@@ -20,7 +25,9 @@ namespace Project.Scripts.Entity.Player
         private MovementSystem m_movementSystem;
         private CombatSystem m_combatSystem;
         private WeaponCollectorSystem m_collectorSystem;
+        private AnimationSystem m_animationSystem;
         private Rigidbody2D m_rb;
+        private Vector2 m_lastTakenDamageDirection;
 
         protected virtual void Awake()
         {
@@ -44,10 +51,11 @@ namespace Project.Scripts.Entity.Player
 
         protected void FetchComponents()
         {
-            m_rb= GetComponent<Rigidbody2D>();
+            m_rb = GetComponent<Rigidbody2D>();
             InputProvider = GetComponent<IInputProvider>();
+            m_collisionBroadcaster2D = GetComponent<CollisionBroadcaster2D>();
+            m_animationSystem = GetComponent<AnimationSystem>();
             
-            m_collisionBroadcaster2D = GetComponentInChildren<CollisionBroadcaster2D>();
             m_movementSystem = new MovementSystem(m_movementSettings,m_rb,InputProvider);
             m_combatSystem = new CombatSystem(m_combatSettings,transform,m_playerCollider);
             m_collectorSystem = new WeaponCollectorSystem(m_weaponCollectorSettings,m_collisionBroadcaster2D,transform);
@@ -71,15 +79,18 @@ namespace Project.Scripts.Entity.Player
         {
             m_health.TakeDamage(damage);
             m_movementSystem.AddForce(direction * m_movementSettings.DamageForce);
+            m_animationSystem.Hurt();
+            m_lastTakenDamageDirection = direction;
         }
 
         private void OnDeath()
         {
-            Debug.Log(gameObject.name + " has been death");
+            m_playerCollider.enabled = false;
             m_collectorSystem.Disable();
             m_combatSystem.Disable();
             m_movementSystem.Disable();
-            Destroy(gameObject);
+            m_animationSystem.Dead(m_lastTakenDamageDirection);
+            EventBus<EPlayerDead>.Raise(new EPlayerDead(this));
         }
     }
 }

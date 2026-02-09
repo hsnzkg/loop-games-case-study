@@ -24,3 +24,15 @@ MonoBehaviour:
   FootWobbleAmount: 0.5
   FootWobbleIdleSpeed: 0
   FootWobbleWalkSpeed: 2
+  HurtFadeIn: 0.1
+  HurtFadeOut: 0.175
+  HurtEase: 6
+  DeathMoveDuration: 0.5
+  DeathRotateDuration: 0.5
+  DeathScaleDuration: 0.5
+  DeathEndScale: 0
+  DeathMoveDistance: 2
+  DeathRandomRadius: 1
+  DeathMoveEase: 6
+  DeathRotateEase: 6
+  DeathScaleEase: 5

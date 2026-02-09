@@ -561,6 +561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fb0498ac25948b6bec3301032be0f15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_renderParent: {fileID: 7995340906659200355}
   m_animationSettings: {fileID: 11400000, guid: f124920367e01ad4ebe55cf6b80664b1, type: 2}
   m_playerSprite: {fileID: 6362278554886701741}
   m_playerBottomSpriteL: {fileID: 7485506387829088892}

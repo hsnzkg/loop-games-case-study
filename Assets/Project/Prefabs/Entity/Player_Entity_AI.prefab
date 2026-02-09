@@ -555,7 +555,7 @@ MonoBehaviour:
   m_weaponCollectorSettings: {fileID: 11400000, guid: ae30ed12ddb8c41449f0dd3f8769a1b5, type: 2}
   m_combatSettings: {fileID: 11400000, guid: f755463b5f6800944a7b4d264650194b, type: 2}
   m_playerCollider: {fileID: 3295822043826601495}
-  m_playerAttributeSettings: {fileID: 11400000, guid: a8dae98a821bf624ebcc536a6106b593, type: 2}
+  m_playerAttributeSettings: {fileID: 11400000, guid: 502fe0ff86437e240b0090dee206be1a, type: 2}
   m_aiSettings: {fileID: 11400000, guid: 2adafd11128af4f4185564a1bcc5dc0d, type: 2}
 --- !u!114 &4579648968479321385
 MonoBehaviour:
@@ -597,6 +597,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fb0498ac25948b6bec3301032be0f15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_renderParent: {fileID: 8020727567881925839}
   m_animationSettings: {fileID: 11400000, guid: f124920367e01ad4ebe55cf6b80664b1, type: 2}
   m_playerSprite: {fileID: 3026540750285025527}
   m_playerBottomSpriteL: {fileID: 1985500446074439308}

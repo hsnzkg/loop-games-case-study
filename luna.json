@@ -6105,7 +6105,7 @@
             },
             {
                 "name": "Luna.Unity.DTO.UnityEngine.Assets.PhysicsMaterial2D",
-                "excluded": true
+                "excluded": false
             },
             {
                 "name": "Luna.Unity.DTO.UnityEngine.Assets.ProjectSettings",
@@ -9421,6 +9421,14 @@
             },
             {
                 "name": "Project.Scripts.Entity.PlayerAI.StateMachine.ITickable",
+                "excluded": false
+            },
+            {
+                "name": "Project.Scripts.Entity.Player.Attributes.PlayerAttributeSettings",
+                "excluded": false
+            },
+            {
+                "name": "Project.Scripts.Entity.Weapon.WeaponAttributeSettings",
                 "excluded": false
             }
         ],
@@ -32325,7 +32333,7 @@
                     },
                     {
                         "name": "Disable",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "OnTriggerEntered",
@@ -32361,7 +32369,7 @@
                     },
                     {
                         "name": "Disable",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "RegisterEvents",
@@ -32369,7 +32377,7 @@
                     },
                     {
                         "name": "UnregisterEvents",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "Update",
@@ -32447,7 +32455,7 @@
                     },
                     {
                         "name": "Disable",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "RegisterEvents",
@@ -32455,7 +32463,7 @@
                     },
                     {
                         "name": "UnregisterEvents",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "Update",
@@ -32467,6 +32475,10 @@
                     },
                     {
                         "name": "HandleMovement",
+                        "excluded": false
+                    },
+                    {
+                        "name": "AddForce",
                         "excluded": false
                     }
                 ]
@@ -33883,14 +33895,18 @@
                     },
                     {
                         "name": "OnDisable",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "OnDamage",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "Update",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnDeath",
                         "excluded": false
                     }
                 ]
@@ -34057,7 +34073,7 @@
                     },
                     {
                         "name": "Unregister",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "RegisterImmediate",
@@ -34065,7 +34081,7 @@
                     },
                     {
                         "name": "UnregisterImmediate",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "Raise",
@@ -34524,6 +34540,10 @@
                     {
                         "name": "SetPositionTarget",
                         "excluded": false
+                    },
+                    {
+                        "name": "Awake",
+                        "excluded": false
                     }
                 ]
             },
@@ -34822,6 +34842,24 @@
                     {
                         "name": "toString",
                         "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.Player.Attributes.Health",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "TakeDamage",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Heal",
+                        "excluded": true
                     }
                 ]
             }

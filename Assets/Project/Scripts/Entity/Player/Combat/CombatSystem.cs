@@ -33,7 +33,19 @@ namespace Project.Scripts.Entity.Player.Combat
 
         public void Disable()
         {
+            if (m_weaponCount > 0)
+            {
+                DestroyWeapons();
+            }
             UnregisterEvents();
+        }
+
+        private void DestroyWeapons()
+        {
+            for (int i = 0; i < m_weaponCount; i++)
+            {
+                m_weaponPool.Release(m_weapons[i]);
+            }
         }
 
         private void RegisterEvents()

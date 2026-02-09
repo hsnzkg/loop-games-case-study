@@ -23,5 +23,10 @@ namespace Project.Scripts.Entity.Weapon
             m_scaleTween.SetEase(m_animationSettings.Ease);
             m_scaleTween.Play();
         }
+
+        public void OnDespawned()
+        {
+            m_scaleTween?.Kill();
+        }
     }
 }

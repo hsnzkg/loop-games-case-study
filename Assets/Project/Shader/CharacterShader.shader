@@ -1,4 +1,4 @@
-Shader "Custom/Sprite/CharacterShader"
+Shader "Project/Sprite/PlayerShader"
 {
     Properties
     {

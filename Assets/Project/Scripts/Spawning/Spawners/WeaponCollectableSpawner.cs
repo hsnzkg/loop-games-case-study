@@ -1,9 +1,13 @@
 ﻿using Project.Scripts.Entity.Weapon;
+using Project.Scripts.EventBus.Runtime;
+using Project.Scripts.Events.Player;
 using Project.Scripts.Level;
 using Project.Scripts.Pool;
 using Project.Scripts.Storage.Runtime;
 using Project.Scripts.Storage.Storages;
+using Project.Scripts.Utility;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Project.Scripts.Spawning.Spawners
 {
@@ -18,9 +22,12 @@ namespace Project.Scripts.Spawning.Spawners
         private Vector2 m_maxSpawn;
         private WeaponCollectableEntity[] m_activeWeapons;
         private LevelManager  m_levelManager;
+        
+        private EventBind<EPlayerDead>  m_playerDeadEventBind;
 
         public void Initialize()
         {
+            m_playerDeadEventBind = new EventBind<EPlayerDead>(SpawnAroundRandom);
             m_levelManager = Storage<GameplayStorage>.GetInstance().LevelManager;
             m_activeWeapons = new WeaponCollectableEntity[m_weaponCollectorSettings.MaxWeaponsInWorld];
             m_parent = new GameObject("Weapon_Collectable_Parent");
@@ -34,6 +41,16 @@ namespace Project.Scripts.Spawning.Spawners
                 defaultCapacity: m_weaponCollectorSettings.PoolSize,
                 maxSize: m_weaponCollectorSettings.MaxWeaponsInWorld
             );
+        }
+
+        private void OnEnable()
+        {
+            EventBus<EPlayerDead>.Register(m_playerDeadEventBind);
+        }
+
+        private void OnDisable()
+        {
+            EventBus<EPlayerDead>.Unregister(m_playerDeadEventBind);
         }
 
         private void Update()
@@ -64,7 +81,22 @@ namespace Project.Scripts.Spawning.Spawners
         {
             Vector3 position = m_levelManager.GetRandomPointInArea(m_weaponCollectorSettings.InnerOffset);
             WeaponCollectableEntity weapon = m_pool.Get();
+            weapon.transform.SetPositionAndRotation(position, Quaternion.identity);
+            weapon.OnSpawned();
+        }
 
+        private void SpawnAroundRandom(EPlayerDead obj)
+        {
+            if (!CanSpawn()) return;
+            for (int i = 0; i < 5; i++)
+            {
+                Spawn(obj.Player.transform.position.ToVector2XY() + Random.insideUnitSphere.ToVector2XY());
+            }
+        }
+
+        private void Spawn(Vector2 position)
+        {
+            WeaponCollectableEntity weapon = m_pool.Get();
             weapon.transform.SetPositionAndRotation(position, Quaternion.identity);
             weapon.OnSpawned();
         }

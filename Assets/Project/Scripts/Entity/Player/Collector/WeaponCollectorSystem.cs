@@ -12,7 +12,8 @@ namespace Project.Scripts.Entity.Player.Collector
         private readonly Transform m_weaponSnapTarget;
         private readonly CollisionBroadcaster2D m_collisionBroadcaster2D;
         public event Action OnWeaponCollected;
-
+        private Sequence m_collectSequence;
+        private Tween m_scaleTween;
 
         public WeaponCollectorSystem(WeaponCollectorSettings weaponCollectorSettings,
             CollisionBroadcaster2D collisionBroadcaster2D,
@@ -30,6 +31,8 @@ namespace Project.Scripts.Entity.Player.Collector
 
         public void Disable()
         {
+            m_scaleTween?.Kill();
+            m_collectSequence?.Kill();
             m_collisionBroadcaster2D.OnTriggerEnter2DEvent -= OnTriggerEntered;
         }
 
@@ -42,7 +45,7 @@ namespace Project.Scripts.Entity.Player.Collector
             Transform item = obj.transform;
             Vector2 startPos = item.position;
 
-            Sequence seq = DOTween.Sequence();
+            m_collectSequence = DOTween.Sequence();
 
             Tween snapTween = DOTween.To(
                 () => 0f,
@@ -56,18 +59,17 @@ namespace Project.Scripts.Entity.Player.Collector
             snapTween.SetEase(Ease.InBack);
 
 
-            Tween scaleTween = obj.transform.DOScale(m_weaponCollectorSettings.SizeEndValue,
-                m_weaponCollectorSettings.Duration);
-            scaleTween.SetEase(m_weaponCollectorSettings.ScaleEase);
-            seq.Append(snapTween);
-            seq.Join(scaleTween);
-            seq.OnComplete(() => { OnSnap(collectable); });
-            seq.Play();
+            m_scaleTween = obj.transform.DOScale(m_weaponCollectorSettings.SizeEndValue, m_weaponCollectorSettings.Duration);
+            m_scaleTween.SetEase(m_weaponCollectorSettings.ScaleEase);
+            m_collectSequence.Append(snapTween);
+            m_collectSequence.Join(m_scaleTween);
+            m_collectSequence.OnComplete(() => { OnSnap(collectable); });
+            m_collectSequence.Play();
         }
 
         private void OnSnap(ICollectable collectable)
         {
-            DOTween.Complete(collectable);
+            DOTween.Complete(m_collectSequence);
             collectable.Collect();
             OnWeaponCollected?.Invoke();
         }

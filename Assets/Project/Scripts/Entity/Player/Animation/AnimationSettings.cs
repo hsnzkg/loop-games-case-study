@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 
 namespace Project.Scripts.Entity.Player.Animation
 {
@@ -20,5 +21,23 @@ namespace Project.Scripts.Entity.Player.Animation
         public float FootWobbleAmount;
         public float FootWobbleIdleSpeed;
         public float FootWobbleWalkSpeed;
+        
+        [Header("Hurt")]
+        public float HurtFadeIn = 0.1f;
+        public float HurtFadeOut = 0.2f;
+        public Ease HurtEase = Ease.OutQuad;
+        
+        [Header("Death")]
+        public float DeathMoveDuration = 0.6f;
+        public float DeathRotateDuration = 0.6f;
+        public float DeathScaleDuration = 0.6f;
+
+        public float DeathEndScale = 0.2f;
+        public float DeathMoveDistance = 2.5f;
+        public float DeathRandomRadius = 0.6f;
+
+        public Ease DeathMoveEase = Ease.OutQuad;
+        public Ease DeathRotateEase = Ease.OutQuad;
+        public Ease DeathScaleEase = Ease.InQuad;
     }
 }

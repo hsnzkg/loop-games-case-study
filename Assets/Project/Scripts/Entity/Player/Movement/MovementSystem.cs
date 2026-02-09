@@ -35,6 +35,8 @@ namespace Project.Scripts.Entity.Player.Movement
 
         public void Disable()
         {
+            m_rb.velocity = Vector2.zero;
+            m_rb.angularVelocity = 0;
             UnregisterEvents();
         }
 
@@ -65,9 +67,7 @@ namespace Project.Scripts.Entity.Player.Movement
             Vector2 targetDir = m_inputProvider.GetInput();
             Vector2 desiredVel = targetDir * m_movementSettings.TranslationSpeed;
 
-            float accel = m_inputProvider.GetHasInput()
-                ? m_movementSettings.Acceleration
-                : m_movementSettings.Deceleration;
+            float accel = m_inputProvider.GetHasInput() ? m_movementSettings.Acceleration : m_movementSettings.Deceleration;
 
             float kMove = 1f - Mathf.Exp(-accel * Time.fixedDeltaTime);
             float kForce = 1f - Mathf.Exp(-m_movementSettings.ForceDampSpeed * Time.fixedDeltaTime);

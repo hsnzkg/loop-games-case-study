@@ -39,7 +39,6 @@ namespace Project.Scripts.Entity.PlayerAI.StateMachine.States
         {
             m_currentDestinationPoint = m_levelManager.GetRandomPointInArea();
             ((AIInputProvider)Context.AIInputProvider).SetPositionTarget(m_currentDestinationPoint);
-            Debug.Log("Picking New Destination");
         }
         
         public Vector2 GetCurrentDestinationPoint()
