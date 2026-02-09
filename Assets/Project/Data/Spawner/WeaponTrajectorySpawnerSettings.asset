@@ -15,7 +15,7 @@ MonoBehaviour:
   Prefab: {fileID: 1367096892130185368, guid: 4f7a055f17f6c0d479a4a4d90e2ff46e, type: 3}
   MaxWeaponsInWorld: 20
   PoolSize: 20
-  TweenDuration: 5
+  TweenDuration: 3.5
   DistanceMultiplier: 30
   SpinDegrees: 1024
   PositionEase: 12

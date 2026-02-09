@@ -53,11 +53,11 @@ namespace Project.Scripts.Entity.PlayerAI
             m_stateMachine.AddTransition<Explore,Collect>(m_toCollect);
             m_stateMachine.AddTransition<Explore,Escape>(m_escape);
             m_stateMachine.AddTransition<Explore,Chase>(m_chase);
-            
+
+            m_stateMachine.AddTransition<Collect,Explore>(m_toExplore);
             m_stateMachine.AddTransition<Collect,Escape>(m_escape);
             m_stateMachine.AddTransition<Collect,Chase>(m_chase);
-            m_stateMachine.AddTransition<Collect,Explore>(m_toExplore);
-            
+
             m_stateMachine.AddTransition<Chase,Explore>(m_exitFromChase);
             m_stateMachine.AddTransition<Chase,Escape>(m_escape);
             m_stateMachine.AddTransition<Escape,Explore>(m_exitFromEscape);

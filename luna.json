@@ -6521,10 +6521,6 @@
                 "excluded": true
             },
             {
-                "name": "Cinemachine.CinemachineImpulseSource",
-                "excluded": true
-            },
-            {
                 "name": "Cinemachine.CinemachineComposer.FovCache",
                 "excluded": true
             },
@@ -6542,18 +6538,6 @@
             },
             {
                 "name": "Cinemachine.CinemachineFreeLook.Orbit",
-                "excluded": true
-            },
-            {
-                "name": "Cinemachine.CinemachineImpulseDefinition",
-                "excluded": true
-            },
-            {
-                "name": "Cinemachine.CinemachineImpulseManager.EnvelopeDefinition",
-                "excluded": true
-            },
-            {
-                "name": "Cinemachine.CinemachineImpulseManager.ImpulseEvent",
                 "excluded": true
             },
             {
@@ -6705,10 +6689,6 @@
                 "excluded": true
             },
             {
-                "name": "Cinemachine.CinemachineImpulseListener",
-                "excluded": true
-            },
-            {
                 "name": "Cinemachine.CinemachineTransposer",
                 "excluded": true
             },
@@ -6838,7 +6818,7 @@
             },
             {
                 "name": "Cinemachine.CinemachineImpulseDefinition.RepeatMode",
-                "excluded": true
+                "excluded": false
             },
             {
                 "name": "Cinemachine.CinemachineImpulseDefinitionPropertyAttribute",
@@ -6850,11 +6830,11 @@
             },
             {
                 "name": "Cinemachine.CinemachineImpulseManager.ImpulseEvent.DirectionMode",
-                "excluded": true
+                "excluded": false
             },
             {
                 "name": "Cinemachine.CinemachineImpulseManager.ImpulseEvent.DissipationMode",
-                "excluded": true
+                "excluded": false
             },
             {
                 "name": "Cinemachine.CinemachineOrbitalTransposer.Heading.HeadingDefinition",
@@ -9038,6 +9018,10 @@
             },
             {
                 "name": "Project.Scripts.Sound.SoundType",
+                "excluded": false
+            },
+            {
+                "name": "Project.Scripts.Camera.CameraSettings",
                 "excluded": false
             }
         ],
@@ -23834,15 +23818,15 @@
                 "instanceMethods": [
                     {
                         "name": "init",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "VirtualCamera#get",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "Awake",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "OnDestroy",
@@ -23850,11 +23834,11 @@
                     },
                     {
                         "name": "ConnectToVcam",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "InvokePostPipelineStageCallback",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "OnTargetObjectWarped",
@@ -23862,7 +23846,7 @@
                     },
                     {
                         "name": "OnTransitionFromCamera",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "GetExtraState",
@@ -23990,7 +23974,7 @@
                 "instanceMethods": [
                     {
                         "name": "Instance#get",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "init",
@@ -24002,11 +23986,11 @@
                     },
                     {
                         "name": "ctor",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "GetImpulseAt",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "NewImpulseEvent",
@@ -24430,7 +24414,7 @@
                     },
                     {
                         "name": "AddExtension",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "RemoveExtension",
@@ -28984,7 +28968,7 @@
                     },
                     {
                         "name": "Kill",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "Kill$1",
@@ -31809,15 +31793,13 @@
                     {
                         "name": "SetTarget",
                         "excluded": false
-                    }
-                ]
-            },
-            {
-                "className": "Project.Scripts.Camera.CameraSettings",
-                "staticMethods": [],
-                "instanceMethods": [
+                    },
                     {
-                        "name": "init",
+                        "name": "OnCameraShake",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ShakeRoutine",
                         "excluded": false
                     }
                 ]
@@ -34522,6 +34504,14 @@
                     },
                     {
                         "name": "OnEnter",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Tick",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Decide",
                         "excluded": false
                     }
                 ]
@@ -42288,6 +42278,178 @@
                     },
                     {
                         "name": "Update",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Cinemachine.CinemachineImpulseSource",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnValidate",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GenerateImpulseAt",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GenerateImpulse$1",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GenerateImpulse",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Cinemachine.CinemachineImpulseDefinition",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnValidate",
+                        "excluded": true
+                    },
+                    {
+                        "name": "CreateEvent",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Cinemachine.CinemachineImpulseManager.EnvelopeDefinition",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Default",
+                        "excluded": false
+                    },
+                    {
+                        "name": "getDefaultValue",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Duration#get",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetValueAt",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ChangeStopTime",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Clear",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Validate",
+                        "excluded": true
+                    },
+                    {
+                        "name": "getHashCode",
+                        "excluded": true
+                    },
+                    {
+                        "name": "equals",
+                        "excluded": true
+                    },
+                    {
+                        "name": "$clone",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Cinemachine.CinemachineImpulseManager.ImpulseEvent",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Expired#get",
+                        "excluded": true
+                    },
+                    {
+                        "name": "init",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Cancel",
+                        "excluded": true
+                    },
+                    {
+                        "name": "DistanceDecay",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetDecayedSignal",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Clear",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Cinemachine.CinemachineImpulseListener",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "PostPipelineStageCallback",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Events.Camera.ECameraShake",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "getDefaultValue",
+                        "excluded": true
+                    },
+                    {
+                        "name": "$ctor1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "getHashCode",
+                        "excluded": true
+                    },
+                    {
+                        "name": "equals",
+                        "excluded": true
+                    },
+                    {
+                        "name": "$clone",
                         "excluded": false
                     }
                 ]

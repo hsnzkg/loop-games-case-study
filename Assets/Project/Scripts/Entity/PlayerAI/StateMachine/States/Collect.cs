@@ -19,6 +19,16 @@ namespace Project.Scripts.Entity.PlayerAI.StateMachine.States
 
         protected override void OnEnter()
         {
+            Decide();
+        }
+
+        public override void Tick(float deltaTime)
+        {
+            Decide();
+        }
+
+        private void Decide()
+        {
             m_weaponLookupBuffer = m_weaponCollectableSpawner.GetActiveWeapons();
             float minDistance = float.MaxValue;
             WeaponCollectableEntity closestWeapon = null;

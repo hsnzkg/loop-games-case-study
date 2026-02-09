@@ -15,5 +15,5 @@ MonoBehaviour:
   WeaponPrefab: {fileID: 6865993013136294753, guid: b8e1a3060c4a288488fef98a1f7271a3, type: 3}
   PoolSize: 25
   MaxWeaponsInWorld: 25
-  SpawnInterval: 0.65
+  SpawnInterval: 0.75
   InnerOffset: 1.5

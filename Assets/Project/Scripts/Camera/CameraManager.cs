@@ -36,21 +36,15 @@ namespace Project.Scripts.Camera
 
         private void OnCameraShake(ECameraShake e)
         {
-            if (m_isShaking)
-                return;
+            if (m_isShaking) return;
 
-            StartCoroutine(ShakeRoutine(e));
+            ShakeRoutine(e);
         }
 
-        private IEnumerator ShakeRoutine(ECameraShake e)
+        private void ShakeRoutine(ECameraShake e)
         {
             m_isShaking = true;
-
-            float amplitude = e.Amplitude ?? m_cameraSettings.ShakeAmplitude;
-            float duration = e.Duration ?? m_cameraSettings.ShakeDuration;
-            m_impulseSource.GenerateImpulse(amplitude);
-            yield return new WaitForSeconds(duration);
-
+            m_impulseSource.GenerateImpulse();
             m_isShaking = false;
         }
         private void SetTarget(EChangeCameraTarget @event)
