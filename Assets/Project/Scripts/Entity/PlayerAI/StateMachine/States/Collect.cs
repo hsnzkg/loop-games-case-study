@@ -31,7 +31,7 @@ namespace Project.Scripts.Entity.PlayerAI.StateMachine.States
                 Vector2 weaponPos = m_weaponLookupBuffer[i].transform.position.ToVector2XY();
                 float distance = Vector2.Distance(entityPosition, weaponPos);
                 
-                if (!(distance <= Context.AISettings.VisionThreshold)) continue;
+                if (!(distance <= Context.AISettings.CollectableVisionThreshold)) continue;
                 
                 if (distance < minDistance)
                 {

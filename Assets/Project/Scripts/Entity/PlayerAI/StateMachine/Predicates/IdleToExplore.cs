@@ -41,7 +41,7 @@ namespace Project.Scripts.Entity.PlayerAI.StateMachine.Predicates
                 if (m_weaponLookupBuffer[i].GetIsCollecting()) continue;
                 Vector2 weaponPos = m_weaponLookupBuffer[i].transform.position.ToVector2XY();
                 float distance = Vector2.Distance(entityPosition, weaponPos);
-                if (distance <= m_stateContext.AISettings.VisionThreshold)
+                if (distance <= m_stateContext.AISettings.CollectableVisionThreshold)
                 {
                     m_weaponInRangeBuffer.Add(m_weaponLookupBuffer[i]);
                 }

@@ -93,9 +93,29 @@ namespace Project.Scripts.Entity.Player
             EventBus<EPlayerDead>.Raise(new EPlayerDead(this));
         }
 
-        public Health GetHealth()
+        public bool GetIsDead()
         {
-            return m_health;
+            return m_health.IsDead;
+        }
+
+        public float GetHealth()
+        {
+            return m_health.GetCurrentHealth();
+        }
+
+        public float GetMaxHealth()
+        {
+            return m_health.GetMaxHealth();
+        }
+
+        public float GetPercentHealth()
+        {
+            return m_health.GetPercentHealth() * 100f;
+        }
+
+        public int GetWeaponCount()
+        {
+            return m_combatSystem.GetWeaponCount();
         }
     }
 }

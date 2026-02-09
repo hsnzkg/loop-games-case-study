@@ -269,5 +269,25 @@ namespace Project.Scripts.Level
                 Destroy(transform.GetChild(i).gameObject);
             }
         }
+        
+        public bool IsInsideArea(Vector2 pos, float innerOffset = 0f)
+        {
+            CalculateSpawnArea(innerOffset, out Vector2 min, out Vector2 max);
+
+            return pos.x >= min.x &&
+                   pos.x <= max.x &&
+                   pos.y >= min.y &&
+                   pos.y <= max.y;
+        }
+
+        public Vector2 ClampInsideArea(Vector2 pos, float innerOffset = 0f)
+        {
+            CalculateSpawnArea(innerOffset, out Vector2 min, out Vector2 max);
+
+            pos.x = Mathf.Clamp(pos.x, min.x, max.x);
+            pos.y = Mathf.Clamp(pos.y, min.y, max.y);
+
+            return pos;
+        }
     }
 }

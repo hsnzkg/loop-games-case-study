@@ -184,5 +184,10 @@ namespace Project.Scripts.Entity.Player.Combat
         {
             m_weaponParent.Rotate(Vector3.forward * (-m_combatSettings.CycleSpeed * Time.deltaTime));
         }
+
+        public int GetWeaponCount()
+        {
+            return m_weaponCount;
+        }
     }
 }

@@ -34,5 +34,20 @@ namespace Project.Scripts.Entity.Player.Attributes
             m_current += heal;
             m_current = Mathf.Clamp(m_current, 0f, m_max);
         }
+
+        public float GetCurrentHealth()
+        {
+            return m_current;
+        }
+
+        public float GetMaxHealth()
+        {
+            return m_max;
+        }
+        
+        public float GetPercentHealth()
+        {
+            return m_current / m_max;
+        }
     }
 }

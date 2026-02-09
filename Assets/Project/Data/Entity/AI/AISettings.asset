@@ -12,5 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53e1565297434ffc85b2f63d76a27dba, type: 3}
   m_Name: AISettings
   m_EditorClassIdentifier: 
-  VisionThreshold: 4
+  CollectableVisionThreshold: 5
+  RunAwayVisionThreshold: 3
+  ChaseVisionThreshold: 2.5
   DestinationReachThreshold: 0.75
+  IsDangerHealthPercentageThreshold: 50
+  IsDangerWeaponAdvantageImportant: 1
+  EscapeMoveLenght: 2

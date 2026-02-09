@@ -8,9 +8,11 @@ namespace Project.Scripts.Entity.PlayerAI.StateMachine
         public readonly Transform EntityTransform;
         public readonly IInputProvider AIInputProvider;
         public readonly AISettings AISettings;
+        public readonly PlayerAIEntity Entity;
 
-        public AIStateContext(AISettings aiSettings,IInputProvider inputProvider,Transform entityTransform)
+        public AIStateContext(PlayerAIEntity entity, AISettings aiSettings,IInputProvider inputProvider,Transform entityTransform)
         {
+            Entity = entity;
             AISettings = aiSettings;
             AIInputProvider = inputProvider;
             EntityTransform = entityTransform;

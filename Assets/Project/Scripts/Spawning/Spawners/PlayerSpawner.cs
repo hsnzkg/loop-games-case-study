@@ -1,6 +1,8 @@
 ﻿using Project.Scripts.Entity.Player;
 using Project.Scripts.EventBus.Runtime;
 using Project.Scripts.Events.Camera;
+using Project.Scripts.Storage.Runtime;
+using Project.Scripts.Storage.Storages;
 using UnityEngine;
 
 namespace Project.Scripts.Spawning.Spawners
@@ -13,6 +15,7 @@ namespace Project.Scripts.Spawning.Spawners
         public void Initialize()
         {
             PlayerEntity instance = Instantiate(m_playerPrefab,Vector3.zero,Quaternion.identity);
+            Storage<GameplayStorage>.GetInstance().Player = instance;
             EventBus<EChangeCameraTarget>.Raise(new EChangeCameraTarget(instance.transform));
         }
     }
