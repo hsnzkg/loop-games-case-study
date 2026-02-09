@@ -8,6 +8,10 @@ using Project.Scripts.FiniteStateMachine.Runtime.RuntimeMode;
 using Project.Scripts.Utility;
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 namespace Project.Scripts.Entity.PlayerAI
 {
     public class PlayerAIEntity :  PlayerEntity
@@ -15,8 +19,8 @@ namespace Project.Scripts.Entity.PlayerAI
         [SerializeField] private AISettings m_aiSettings;
         private FiniteStateMachine.Runtime.StateMachine m_stateMachine;
         private AIStateContext m_aiStateContext;
-        private IdleToExplore m_idleToExplore;
-        private NotPredicate m_exploreToCollect;
+        private ToExplore m_toExplore;
+        private NotPredicate m_toCollect;
         private NotPredicate m_exitFromEscape;
         private NotPredicate m_exitFromChase;
         private ToEscape m_escape;
@@ -30,9 +34,8 @@ namespace Project.Scripts.Entity.PlayerAI
             m_aiStateContext = new AIStateContext(this,m_aiSettings,InputProvider,transform);
             m_stateMachine = new FiniteStateMachine.Runtime.StateMachine(new AutoMode());
             
-            m_idleToExplore = new IdleToExplore(m_aiStateContext);
-            m_exploreToCollect = new NotPredicate(m_idleToExplore);
-            
+            m_toExplore = new ToExplore(m_aiStateContext);
+            m_toCollect = new NotPredicate(m_toExplore);
             m_escape = new ToEscape(m_aiStateContext);
             m_chase = new ToChase(m_aiStateContext);
             
@@ -45,22 +48,20 @@ namespace Project.Scripts.Entity.PlayerAI
             m_stateMachine.AddState(new Escape(m_aiStateContext));
             m_stateMachine.AddState(new Chase(m_aiStateContext));
             
-            m_stateMachine.AddTransition<Idle,Explore>(m_idleToExplore);
-            m_stateMachine.AddTransition<Idle,Collect>(m_exploreToCollect);
-            m_stateMachine.AddTransition<Idle,Escape>(m_escape);
-            m_stateMachine.AddTransition<Idle,Chase>(m_chase);
-            m_stateMachine.AddTransition<Explore,Idle>(new NotPredicate(m_idleToExplore));
-            m_stateMachine.AddTransition<Explore,Collect>(m_exploreToCollect);
+            m_stateMachine.AddTransition<Idle,Explore>(m_toExplore);
+            
+            m_stateMachine.AddTransition<Explore,Collect>(m_toCollect);
             m_stateMachine.AddTransition<Explore,Escape>(m_escape);
             m_stateMachine.AddTransition<Explore,Chase>(m_chase);
-            m_stateMachine.AddTransition<Explore,Chase>(m_chase);
-            m_stateMachine.AddTransition<Collect,Idle>(m_idleToExplore);
+            
             m_stateMachine.AddTransition<Collect,Escape>(m_escape);
             m_stateMachine.AddTransition<Collect,Chase>(m_chase);
-            m_stateMachine.AddTransition<Collect,Explore>(m_idleToExplore);
-            m_stateMachine.AddTransition<Chase,Idle>(m_exitFromChase);
-            m_stateMachine.AddTransition<Escape,Idle>(m_exitFromEscape);
+            m_stateMachine.AddTransition<Collect,Explore>(m_toExplore);
             
+            m_stateMachine.AddTransition<Chase,Explore>(m_exitFromChase);
+            m_stateMachine.AddTransition<Chase,Escape>(m_escape);
+            m_stateMachine.AddTransition<Escape,Explore>(m_exitFromEscape);
+
             m_stateMachine.SetDefaultState<Idle>();
         }
 
@@ -78,6 +79,10 @@ namespace Project.Scripts.Entity.PlayerAI
             
             Gizmos.color = Color.black;
             Gizmos.DrawWireSphere(transform.position,m_aiSettings.ChaseVisionThreshold);
+#if UNITY_EDITOR
+            Handles.Label(transform.position,m_stateMachine.GetLeafState().GetType().Name);
+#endif
+       
         }
 
         protected override void Update()

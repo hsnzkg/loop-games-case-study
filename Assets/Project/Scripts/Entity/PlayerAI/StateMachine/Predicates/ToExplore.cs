@@ -9,14 +9,14 @@ using UnityEngine;
 
 namespace Project.Scripts.Entity.PlayerAI.StateMachine.Predicates
 {
-    public class IdleToExplore : IPredicate
+    public class ToExplore : IPredicate
     {
         private readonly List<WeaponCollectableEntity> m_weaponInRangeBuffer;
         private WeaponCollectableEntity[] m_weaponLookupBuffer;
         private readonly WeaponCollectableSpawner m_weaponCollectableSpawner;
         private readonly AIStateContext m_stateContext;
 
-        public IdleToExplore(AIStateContext context)
+        public ToExplore(AIStateContext context)
         {
             m_weaponInRangeBuffer = new List<WeaponCollectableEntity>();
             m_stateContext = context;

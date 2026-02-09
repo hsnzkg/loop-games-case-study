@@ -81,6 +81,10 @@ namespace Project.Scripts.Entity.Player.Movement
         public void AddForce(Vector2 force)
         {
             m_externalVelocity += force;
+            if (m_externalVelocity.magnitude > m_movementSettings.MaxForce)
+            {
+                m_externalVelocity = m_externalVelocity.normalized * m_movementSettings.MaxForce;
+            }
         }
     }
 }

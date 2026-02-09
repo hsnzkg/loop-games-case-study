@@ -10,5 +10,6 @@ namespace Project.Scripts.Entity.Player.Movement
         public float Deceleration;
         public float DamageForce;
         public float ForceDampSpeed;
+        public float MaxForce;
     }
 }

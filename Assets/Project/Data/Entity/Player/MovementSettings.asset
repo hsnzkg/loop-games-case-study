@@ -17,3 +17,4 @@ MonoBehaviour:
   Deceleration: 25
   DamageForce: 20
   ForceDampSpeed: 10
+  MaxForce: 10

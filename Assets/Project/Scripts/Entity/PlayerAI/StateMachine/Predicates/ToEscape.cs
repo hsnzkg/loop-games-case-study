@@ -27,6 +27,7 @@ namespace Project.Scripts.Entity.PlayerAI.StateMachine.Predicates
         public bool Evaluate()
         {
             GetPlayersInRange();
+            if (m_playersInRangeBuffer.Count == 0) return false;
             bool isDanger = DetectDanger();
             return isDanger;
         }

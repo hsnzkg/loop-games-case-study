@@ -4,6 +4,7 @@ using Project.Scripts.Entity.Player.Attributes;
 using Project.Scripts.Entity.Player.Collector;
 using Project.Scripts.Entity.Player.Combat;
 using Project.Scripts.Entity.Player.Movement;
+using Project.Scripts.Entity.Player.UI;
 using Project.Scripts.EventBus.Runtime;
 using Project.Scripts.Events.Player;
 using Project.Scripts.Storage.Runtime;
@@ -19,6 +20,7 @@ namespace Project.Scripts.Entity.Player
         [SerializeField] private CombatSettings m_combatSettings;
         [SerializeField] private Collider2D m_playerCollider;
         [SerializeField] private PlayerAttributeSettings m_playerAttributeSettings;
+        private PlayerCanvasController m_playerCanvasController;
         private Health m_health;
         protected IInputProvider InputProvider;
         private CollisionBroadcaster2D  m_collisionBroadcaster2D;
@@ -55,6 +57,7 @@ namespace Project.Scripts.Entity.Player
             InputProvider = GetComponent<IInputProvider>();
             m_collisionBroadcaster2D = GetComponent<CollisionBroadcaster2D>();
             m_animationSystem = GetComponent<AnimationSystem>();
+            m_playerCanvasController = GetComponentInChildren<PlayerCanvasController>();
             
             m_movementSystem = new MovementSystem(m_movementSettings,m_rb,InputProvider);
             m_combatSystem = new CombatSystem(m_combatSettings,transform,m_playerCollider);
@@ -81,6 +84,7 @@ namespace Project.Scripts.Entity.Player
             m_movementSystem.AddForce(direction * m_movementSettings.DamageForce);
             m_animationSystem.Hurt();
             m_lastTakenDamageDirection = direction;
+            m_playerCanvasController.SetHealth(GetPercentHealth()/100f);
         }
 
         private void OnDeath()
@@ -90,6 +94,7 @@ namespace Project.Scripts.Entity.Player
             m_combatSystem.Disable();
             m_movementSystem.Disable();
             m_animationSystem.Dead(m_lastTakenDamageDirection);
+            m_playerCanvasController.gameObject.SetActive(false);
             EventBus<EPlayerDead>.Raise(new EPlayerDead(this));
         }
 
