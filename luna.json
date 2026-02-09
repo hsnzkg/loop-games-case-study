@@ -9392,14 +9392,6 @@
                 "excluded": false
             },
             {
-                "name": "Project.Scripts.Entity.PlayerAI.StateMachine.States.Chase",
-                "excluded": true
-            },
-            {
-                "name": "Project.Scripts.Entity.PlayerAI.StateMachine.States.RunAway",
-                "excluded": true
-            },
-            {
                 "name": "Project.Scripts.Entity.PlayerAI.AISettings",
                 "excluded": false
             },
@@ -13157,11 +13149,11 @@
                     },
                     {
                         "name": "IncreaseCapacity",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "SetCapacity",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "AddIfNotPresent",
@@ -13319,7 +13311,7 @@
                     },
                     {
                         "name": "$clone",
-                        "excluded": true
+                        "excluded": false
                     }
                 ]
             },
@@ -32486,6 +32478,10 @@
                     {
                         "name": "DestroyWeapons",
                         "excluded": false
+                    },
+                    {
+                        "name": "GetWeaponCount",
+                        "excluded": false
                     }
                 ]
             },
@@ -32975,6 +32971,14 @@
                     },
                     {
                         "name": "CalculateSpawnArea",
+                        "excluded": false
+                    },
+                    {
+                        "name": "IsInsideArea",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ClampInsideArea",
                         "excluded": false
                     }
                 ]
@@ -33984,6 +33988,26 @@
                     {
                         "name": "init",
                         "excluded": false
+                    },
+                    {
+                        "name": "GetIsDead",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetHealth",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetMaxHealth",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetPercentHealth",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetWeaponCount",
+                        "excluded": false
                     }
                 ]
             },
@@ -34593,7 +34617,7 @@
                     },
                     {
                         "name": "GetPlayers",
-                        "excluded": true
+                        "excluded": false
                     }
                 ]
             },
@@ -34620,6 +34644,10 @@
                     {
                         "name": "Awake",
                         "excluded": false
+                    },
+                    {
+                        "name": "GetPositionTarget",
+                        "excluded": true
                     }
                 ]
             },
@@ -34736,16 +34764,8 @@
                         "excluded": false
                     },
                     {
-                        "name": "IsAnyWeaponInRange",
-                        "excluded": false
-                    },
-                    {
                         "name": "GetWeaponsInRange",
                         "excluded": false
-                    },
-                    {
-                        "name": "GetWeaponBuffer",
-                        "excluded": true
                     }
                 ]
             },
@@ -34759,7 +34779,7 @@
                     },
                     {
                         "name": "Evaluate",
-                        "excluded": true
+                        "excluded": false
                     }
                 ]
             },
@@ -34773,7 +34793,7 @@
                     },
                     {
                         "name": "Tick",
-                        "excluded": true
+                        "excluded": false
                     }
                 ]
             },
@@ -34831,7 +34851,7 @@
                     },
                     {
                         "name": "equals",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "$clone",
@@ -34864,6 +34884,10 @@
                     {
                         "name": "ctor",
                         "excluded": false
+                    },
+                    {
+                        "name": "OnEnter",
+                        "excluded": true
                     }
                 ]
             },
@@ -34940,6 +34964,18 @@
                     {
                         "name": "Heal",
                         "excluded": true
+                    },
+                    {
+                        "name": "GetCurrentHealth",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetMaxHealth",
+                        "excluded": true
+                    },
+                    {
+                        "name": "GetPercentHealth",
+                        "excluded": false
                     }
                 ]
             },
@@ -35145,6 +35181,94 @@
                     },
                     {
                         "name": "FlipEulerAngles",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.PlayerAI.StateMachine.Predicates.ToChase",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Evaluate",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetPlayersInRange",
+                        "excluded": false
+                    },
+                    {
+                        "name": "DetectWeakness",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.PlayerAI.StateMachine.Predicates.ToEscape",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Evaluate",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetPlayersInRange",
+                        "excluded": false
+                    },
+                    {
+                        "name": "DetectDanger",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.PlayerAI.StateMachine.States.Chase",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnEnter",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Tick",
+                        "excluded": true
+                    },
+                    {
+                        "name": "SetChasePosition",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.PlayerAI.StateMachine.States.Escape",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnEnter",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Tick",
+                        "excluded": false
+                    },
+                    {
+                        "name": "SetEscapePosition",
                         "excluded": false
                     }
                 ]
