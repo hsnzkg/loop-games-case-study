@@ -10,7 +10,6 @@ namespace Project.Scripts.Level
         [SerializeField] private LevelSettings m_levelSettings;
         [SerializeField] private Transform m_levelParent;
         [SerializeField] private SpriteRenderer m_levelOverlay;
-        [SerializeField] private SpriteRenderer m_levelShadowOverlay;
         [SerializeField] private ScratchCardManager m_scratchCardManager;
         private System.Random m_rng;
         private int m_seed;

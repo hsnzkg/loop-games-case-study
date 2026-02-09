@@ -15,21 +15,23 @@ namespace Project.Scripts
         private WeaponTrajectorySpawner m_weaponTrajectorySpawner;
         private LevelManager m_levelManager;
         private CameraManager m_cameraManager;
+        private EndCardController m_endCardController;
 
         public void Initialize()
         {
             FetchComponents();
-            
             m_cameraManager.Initialize();
             m_playerSpawner.Initialize();
             m_weaponCollectableSpawner.Initialize();
             m_weaponTrajectorySpawner.Initialize();
             m_aiSpawner.Initialize();
             m_levelManager.Generate();
+            m_endCardController.Initialize();
         }
 
         private void FetchComponents()
         {
+            m_endCardController = Object.FindObjectOfType<EndCardController>();
             m_weaponCollectableSpawner = Object.FindObjectOfType<WeaponCollectableSpawner>();
             m_weaponTrajectorySpawner = Object.FindObjectOfType<WeaponTrajectorySpawner>();
             m_aiSpawner = Object.FindObjectOfType<AISpawner>();

@@ -31,6 +31,12 @@ namespace Project.Scripts.Bootstrap
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static void BeforeSceneLoad()
         {
+
+        }
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+        private static void AfterSceneLoad()
+        {
 #if UNITY_EDITOR
             IBootstrapper bootstrapper = new GameBootstrapper();
             bool status = EditorPrefs.GetBool("EDITOR_BOOTSTRAP_STATUS");
@@ -39,11 +45,6 @@ namespace Project.Scripts.Bootstrap
             IBootstrapper bootstrapper = new PlayableAdBootstrapper();
 #endif
             bootstrapper.Bootstrap();
-        }
-
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
-        private static void AfterSceneLoad()
-        {
         }
     }
 }

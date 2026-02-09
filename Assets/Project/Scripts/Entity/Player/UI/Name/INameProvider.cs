@@ -1,7 +1,7 @@
-﻿namespace Project.Scripts.Entity.Player.UI
+﻿namespace Project.Scripts.Entity.Player.UI.Name
 {
     public interface INameProvider
     {
-        public string GetName();
+        string GetName();
     }
 }

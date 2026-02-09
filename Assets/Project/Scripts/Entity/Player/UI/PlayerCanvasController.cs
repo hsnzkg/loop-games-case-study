@@ -1,4 +1,5 @@
 ﻿using Project.Scripts.Entity.Player.UI.Flag;
+using Project.Scripts.Entity.Player.UI.Name;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

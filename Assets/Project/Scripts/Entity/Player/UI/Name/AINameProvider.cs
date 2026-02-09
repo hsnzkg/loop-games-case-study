@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Project.Scripts.Entity.Player.UI.Name;
+using UnityEngine;
 
 namespace Project.Scripts.Entity.Player.UI
 {

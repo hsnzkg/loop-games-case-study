@@ -3,6 +3,7 @@ using Project.Scripts.Entity.Player.Attributes;
 using Project.Scripts.Entity.Player.Combat;
 using Project.Scripts.EventBus.Runtime;
 using Project.Scripts.Events.Scratch;
+using Project.Scripts.Events.Weapon;
 using Project.Scripts.Pool;
 using UnityEngine;
 
@@ -76,7 +77,13 @@ namespace Project.Scripts.Entity.Weapon
                 Vector2 dir = Vector2.ClampMagnitude(obj.transform.position - transform.position,1f);
                 damageable.OnDamage(m_weaponAttributeSettings.Damage,dir);
             }
-            if (damageable is WeaponEntity) Free();
+
+            if (damageable is WeaponEntity)
+            {
+                EventBus<EWeaponClashCollision>.Raise(new EWeaponClashCollision(m_collider,obj));
+                Free();
+            }
+
         }
 
         public void OnDamage(float damage,Vector2 direction)
