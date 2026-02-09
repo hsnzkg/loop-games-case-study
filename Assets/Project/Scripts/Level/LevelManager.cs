@@ -33,6 +33,63 @@ namespace Project.Scripts.Level
             ClearLevel();
             GenerateGround();
             GenerateFence();
+            GenerateFenceColliders();
+        }
+        
+        private void CalculateFenceBounds(out Vector2 min, out Vector2 max)
+        {
+            int w = m_levelSettings.Width;
+            int h = m_levelSettings.Height;
+
+            Vector3 bl = GridToWorld(0, 0);
+            Vector3 br = GridToWorld(w - 1, 0);
+            Vector3 tl = GridToWorld(0, h - 1);
+            Vector3 tr = GridToWorld(w - 1, h - 1);
+
+            min = new Vector2(
+                Mathf.Min(bl.x, br.x, tl.x, tr.x),
+                Mathf.Min(bl.y, br.y, tl.y, tr.y));
+
+            max = new Vector2(
+                Mathf.Max(bl.x, br.x, tl.x, tr.x),
+                Mathf.Max(bl.y, br.y, tl.y, tr.y));
+        }
+        
+        private void CreateFenceCollider(Transform parent, Vector2 center, Vector2 size)
+        {
+            GameObject go = new GameObject("FenceCollider");
+            go.transform.SetParent(parent);
+            go.transform.position = center;
+
+            BoxCollider2D col = go.AddComponent<BoxCollider2D>();
+            col.size = size;
+        }
+        private void GenerateFenceColliders()
+        {
+            CalculateFenceBounds(out Vector2 min, out Vector2 max);
+
+            Transform parent = m_levelParent;
+
+            float thickness = m_levelSettings.FenceColliderThickness;
+
+            float width = max.x - min.x;
+            float height = max.y - min.y;
+
+            CreateFenceCollider(parent,
+                new Vector2((min.x + max.x) * 0.5f, min.y - thickness * 0.5f),
+                new Vector2(width, thickness));
+
+            CreateFenceCollider(parent,
+                new Vector2((min.x + max.x) * 0.5f, max.y + thickness * 0.5f),
+                new Vector2(width, thickness));
+
+            CreateFenceCollider(parent,
+                new Vector2(min.x - thickness * 0.5f, (min.y + max.y) * 0.5f),
+                new Vector2(thickness, height));
+
+            CreateFenceCollider(parent,
+                new Vector2(max.x + thickness * 0.5f, (min.y + max.y) * 0.5f),
+                new Vector2(thickness, height));
         }
 
         private void GenerateGround()

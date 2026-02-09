@@ -18,4 +18,4 @@ MonoBehaviour:
   DestinationReachThreshold: 0.75
   IsDangerHealthPercentageThreshold: 50
   IsDangerWeaponAdvantageImportant: 1
-  EscapeMoveLenght: 2
+  EscapeMoveLenght: 1
