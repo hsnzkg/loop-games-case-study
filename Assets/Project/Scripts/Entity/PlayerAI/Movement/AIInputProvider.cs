@@ -1,4 +1,5 @@
-﻿using Project.Scripts.Entity.Player.Movement;
+﻿using System;
+using Project.Scripts.Entity.Player.Movement;
 using Project.Scripts.Utility;
 using UnityEngine;
 
@@ -8,7 +9,12 @@ namespace Project.Scripts.Entity.PlayerAI.Movement
     {
         [SerializeField] private Transform m_transform;
         private Vector2 m_positionTarget;
-        
+
+        private void Awake()
+        {
+            m_positionTarget = m_transform.position;
+        }
+
         public Vector2 GetInput()
         {
             return Vector2.ClampMagnitude(m_positionTarget -  m_transform.position.ToVector2XY(),1f);

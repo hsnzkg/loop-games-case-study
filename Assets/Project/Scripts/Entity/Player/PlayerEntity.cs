@@ -1,5 +1,5 @@
-﻿using System;
-using Project.Scripts.Collisions;
+﻿using Project.Scripts.Collisions;
+using Project.Scripts.Entity.Player.Attributes;
 using Project.Scripts.Entity.Player.Collector;
 using Project.Scripts.Entity.Player.Combat;
 using Project.Scripts.Entity.Player.Movement;
@@ -13,13 +13,14 @@ namespace Project.Scripts.Entity.Player
         [SerializeField] private WeaponCollectorSettings m_weaponCollectorSettings;
         [SerializeField] private CombatSettings m_combatSettings;
         [SerializeField] private Collider2D m_playerCollider;
-
+        [SerializeField] private PlayerAttributeSettings m_playerAttributeSettings;
+        private Health m_health;
         protected IInputProvider InputProvider;
-        
         private CollisionBroadcaster2D  m_collisionBroadcaster2D;
         private MovementSystem m_movementSystem;
         private CombatSystem m_combatSystem;
         private WeaponCollectorSystem m_collectorSystem;
+        private Rigidbody2D m_rb;
 
         protected virtual void Awake()
         {
@@ -34,6 +35,8 @@ namespace Project.Scripts.Entity.Player
 
         protected virtual void Initialize()
         {
+            m_health = new Health(m_playerAttributeSettings.Health);
+            m_health.OnDeath += OnDeath;
             m_movementSystem.Initialize();
             m_combatSystem.Initialize();
             m_collectorSystem.OnWeaponCollected += m_combatSystem.AddWeapon;
@@ -41,11 +44,11 @@ namespace Project.Scripts.Entity.Player
 
         protected void FetchComponents()
         {
-            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            m_rb= GetComponent<Rigidbody2D>();
             InputProvider = GetComponent<IInputProvider>();
             
             m_collisionBroadcaster2D = GetComponentInChildren<CollisionBroadcaster2D>();
-            m_movementSystem = new MovementSystem(m_movementSettings,rb,InputProvider);
+            m_movementSystem = new MovementSystem(m_movementSettings,m_rb,InputProvider);
             m_combatSystem = new CombatSystem(m_combatSettings,transform,m_playerCollider);
             m_collectorSystem = new WeaponCollectorSystem(m_weaponCollectorSettings,m_collisionBroadcaster2D,transform);
         }
@@ -64,9 +67,18 @@ namespace Project.Scripts.Entity.Player
             m_movementSystem.Disable();
         }
 
-        public void OnDamage()
+        public virtual void OnDamage(float damage)
         {
-            
+            m_health.TakeDamage(damage);
+        }
+
+        private void OnDeath()
+        {
+            Debug.Log(gameObject.name + " has been death");
+            m_collectorSystem.Disable();
+            m_combatSystem.Disable();
+            m_movementSystem.Disable();
+            Destroy(gameObject);
         }
     }
 }

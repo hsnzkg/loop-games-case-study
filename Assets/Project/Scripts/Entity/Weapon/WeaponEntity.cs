@@ -1,5 +1,5 @@
-﻿using System;
-using Project.Scripts.Collisions;
+﻿using Project.Scripts.Collisions;
+using Project.Scripts.Entity.Player.Attributes;
 using Project.Scripts.Entity.Player.Combat;
 using Project.Scripts.EventBus.Runtime;
 using Project.Scripts.Events.Scratch;
@@ -12,6 +12,7 @@ namespace Project.Scripts.Entity.Weapon
     {
         [SerializeField] private WeaponAnimationSettings  m_animationSettings;
         [SerializeField] private Transform m_animationTransformTarget;
+        [SerializeField] private WeaponAttributeSettings m_weaponAttributeSettings;
         private CollisionBroadcaster2D m_broadcaster2D;
         private IObjectPool<WeaponEntity> m_provider;
         private BoxCollider2D m_collider;
@@ -69,13 +70,13 @@ namespace Project.Scripts.Entity.Weapon
 
         private void Control(Collider2D obj)
         {
-            if (obj.TryGetComponent(out WeaponEntity weaponEntity))
+            if (obj.TryGetComponent(out IDamageable damageable))
             {
-                OnDamage();
+                damageable.OnDamage(m_weaponAttributeSettings.Damage);
             }
         }
 
-        public void OnDamage()
+        public void OnDamage(float damage)
         {
             Free();
         }

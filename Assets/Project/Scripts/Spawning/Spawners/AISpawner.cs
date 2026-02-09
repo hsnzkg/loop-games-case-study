@@ -24,7 +24,8 @@ namespace Project.Scripts.Spawning.Spawners
             LevelManager levelManager = Storage<GameplayStorage>.GetInstance().LevelManager;
             for (int i = 0; i < m_count; i++)
             {
-                PlayerAIEntity instance = Instantiate(m_playerAIPrefab,levelManager.GetRandomPointInArea(),Quaternion.identity);
+                Vector3 position = levelManager.GetRandomPointInArea();
+                PlayerAIEntity instance = Instantiate(m_playerAIPrefab,position,Quaternion.identity);
                 m_playerAIs[i] = instance;
             }
         }

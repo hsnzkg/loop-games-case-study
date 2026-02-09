@@ -56,6 +56,7 @@ namespace Project.Scripts.Entity.Player.Movement
 
         private void FixedUpdate()
         {
+            Debug.Log("GameObject:"  + m_rb.gameObject.name);
             HandleMovement();
         }
 

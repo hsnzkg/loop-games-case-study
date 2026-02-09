@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5423608483003025349}
   - component: {fileID: 7937167080194900428}
   - component: {fileID: 6856408925353255061}
+  - component: {fileID: 6718980586026110992}
   m_Layer: 0
   m_Name: Spawn_Manager
   m_TagString: Untagged
@@ -58,4 +59,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 618396b9400544b494dd4ef17b05e541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_weaponCollectorSettings: {fileID: 0}
+  m_weaponCollectorSettings: {fileID: 11400000, guid: eabea168985237e4f866744878156706, type: 2}
+--- !u!114 &6718980586026110992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2963647629080572402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81ed80db37264e25b18d62f873d5057d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_count: 4
+  m_playerAIPrefab: {fileID: 4907479488043671787, guid: 7af1f2ce690c93a4f8af88996e4f245a, type: 3}

@@ -432,7 +432,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 1
-  m_SleepingMode: 2
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!58 &4772778656601796052
@@ -444,7 +444,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 7445741094739855867}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 55ad36d90e63dae428b18685a97fbc60, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -485,7 +485,7 @@ CircleCollider2D:
     m_Bits: 256
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -521,6 +521,7 @@ MonoBehaviour:
   m_weaponCollectorSettings: {fileID: 11400000, guid: ae30ed12ddb8c41449f0dd3f8769a1b5, type: 2}
   m_combatSettings: {fileID: 11400000, guid: f755463b5f6800944a7b4d264650194b, type: 2}
   m_playerCollider: {fileID: 4772778656601796052}
+  m_playerAttributeSettings: {fileID: 11400000, guid: a8dae98a821bf624ebcc536a6106b593, type: 2}
 --- !u!114 &4941834527427030021
 MonoBehaviour:
   m_ObjectHideFlags: 0

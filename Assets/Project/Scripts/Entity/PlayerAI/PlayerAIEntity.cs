@@ -48,7 +48,10 @@ namespace Project.Scripts.Entity.PlayerAI
         {
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position,m_aiSettings.VisionThreshold);
-            Gizmos.DrawLine(transform.position,m_explore.GetCurrentDestinationPoint().ToVector3XY());
+            if (m_explore != null)
+            {
+                Gizmos.DrawLine(transform.position,m_explore.GetCurrentDestinationPoint().ToVector3XY());
+            }
         }
 
         protected override void Update()
