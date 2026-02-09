@@ -17,11 +17,11 @@ namespace Project.Scripts.Entity.PlayerAI.StateMachine.Predicates
         private readonly AISpawner m_aiSpawner;
         private readonly AIStateContext m_stateContext;
 
-        public ToChase(AIStateContext context)
+        public ToChase(AIStateContext context,AISpawner aiSpawner)
         {
             m_playersInRangeBuffer = new List<PlayerEntity>();
             m_stateContext = context;
-            m_aiSpawner = Storage<GameplayStorage>.GetInstance().AISpawner;
+            m_aiSpawner = aiSpawner;
         }
 
         public bool Evaluate()

@@ -12,9 +12,9 @@ namespace Project.Scripts.Entity.PlayerAI.StateMachine.States
     {
         private WeaponCollectableEntity[] m_weaponLookupBuffer;
         private readonly WeaponCollectableSpawner m_weaponCollectableSpawner;
-        public Collect(AIStateContext context) : base(context)
+        public Collect(AIStateContext context,WeaponCollectableSpawner weaponCollectableSpawner) : base(context)
         {
-            m_weaponCollectableSpawner = Storage<GameplayStorage>.GetInstance().WeaponCollectableSpawner;
+            m_weaponCollectableSpawner = weaponCollectableSpawner;
         }
 
         protected override void OnEnter()

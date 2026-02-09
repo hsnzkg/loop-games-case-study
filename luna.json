@@ -28932,7 +28932,7 @@
                     },
                     {
                         "name": "CompleteAndReturnKilledTot$1",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "CompleteAndReturnKilledTot$2",
@@ -30446,7 +30446,7 @@
                     },
                     {
                         "name": "DOKill",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "DOKill$1",
@@ -34252,6 +34252,22 @@
                     },
                     {
                         "name": "GetPlayers",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Awake",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnEnable",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnDisable",
+                        "excluded": true
+                    },
+                    {
+                        "name": "OnPlayerDead",
                         "excluded": false
                     }
                 ]

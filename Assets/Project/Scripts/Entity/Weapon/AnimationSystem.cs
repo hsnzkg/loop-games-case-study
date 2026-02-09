@@ -26,7 +26,9 @@ namespace Project.Scripts.Entity.Weapon
 
         public void OnDespawned()
         {
-            m_scaleTween?.Kill();
+            DOTween.Kill(m_visualTransform,true);
+            m_visualTransform.DOKill(true);
+            m_scaleTween?.Kill(true);
         }
     }
 }

@@ -11,9 +11,9 @@ namespace Project.Scripts.Entity.PlayerAI.StateMachine.States
     {
         private readonly LevelManager m_levelManager;
         private Vector2 m_currentDestinationPoint;
-        public Explore(AIStateContext context) : base(context)
+        public Explore(AIStateContext context,LevelManager levelManager) : base(context)
         {
-            m_levelManager = Storage<GameplayStorage>.GetInstance().LevelManager;
+            m_levelManager = levelManager;
         }
 
         protected override void OnEnter()

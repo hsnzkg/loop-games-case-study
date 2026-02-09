@@ -2,8 +2,6 @@
 using Project.Scripts.Entity.Weapon;
 using Project.Scripts.FiniteStateMachine.Runtime;
 using Project.Scripts.Spawning.Spawners;
-using Project.Scripts.Storage.Runtime;
-using Project.Scripts.Storage.Storages;
 using Project.Scripts.Utility;
 using UnityEngine;
 
@@ -16,11 +14,11 @@ namespace Project.Scripts.Entity.PlayerAI.StateMachine.Predicates
         private readonly WeaponCollectableSpawner m_weaponCollectableSpawner;
         private readonly AIStateContext m_stateContext;
 
-        public ToExplore(AIStateContext context)
+        public ToExplore(AIStateContext context,WeaponCollectableSpawner spawner)
         {
             m_weaponInRangeBuffer = new List<WeaponCollectableEntity>();
             m_stateContext = context;
-            m_weaponCollectableSpawner = Storage<GameplayStorage>.GetInstance().WeaponCollectableSpawner;
+            m_weaponCollectableSpawner = spawner;
         }
 
         public bool Evaluate()

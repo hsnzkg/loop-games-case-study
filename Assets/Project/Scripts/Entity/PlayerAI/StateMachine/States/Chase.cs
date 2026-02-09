@@ -17,11 +17,11 @@ namespace Project.Scripts.Entity.PlayerAI.StateMachine.States
         private readonly AISpawner m_aiSpawner;
         private readonly LevelManager m_levelManager;
         
-        public Chase(AIStateContext context) : base(context)
+        public Chase(AIStateContext context,AISpawner aiSpawner,LevelManager levelManager) : base(context)
         {
             m_playersInRangeBuffer = new List<PlayerEntity>();
-            m_aiSpawner = Storage<GameplayStorage>.GetInstance().AISpawner;
-            m_levelManager = Storage<GameplayStorage>.GetInstance().LevelManager;
+            m_aiSpawner = aiSpawner;
+            m_levelManager = levelManager;
         }
 
         protected override void OnEnter()

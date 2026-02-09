@@ -1,8 +1,6 @@
 ﻿using Project.Scripts.Collisions;
 using Project.Scripts.Entity.Player;
-using Project.Scripts.Entity.Player.Attributes;
 using Project.Scripts.Entity.Player.Combat;
-using Project.Scripts.Entity.PlayerAI;
 using Project.Scripts.EventBus.Runtime;
 using Project.Scripts.Events.Camera;
 using Project.Scripts.Events.Scratch;
@@ -88,7 +86,7 @@ namespace Project.Scripts.Entity.Weapon
                 EventBus<EWeaponClashCollision>.Raise(new EWeaponClashCollision(m_collider,obj));
                 if (m_playerEntity.CompareTag("Player") ||  weaponEntity.GetPlayerEntity().CompareTag("Player"))
                 {
-                    EventBus<EPlaySound>.Raise(new EPlaySound(SoundType.SwordHit));
+                    EventBus<EPlaySound>.Raise(new EPlaySound(SoundType.SwordHit,randomPitch:true));
                     EventBus<ECameraShake>.Raise(new ECameraShake());
                 }
                 Free();

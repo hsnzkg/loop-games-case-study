@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponPrefab: {fileID: 2738837315715780190, guid: 5f828bab3dde1954090cfe31f95c74ea, type: 3}
   StartWeaponCount: 0
-  MaxWeaponCount: 55
+  MaxWeaponCount: 25
   CycleSpeed: 270
-  ArrangeTranslationSpeed: 10
-  ArrangeRotationSpeed: 10
+  ArrangeTranslationSpeed: 360
+  ArrangeRotationSpeed: 360
   CenterDistance: 1.125
   CenterOffset: {x: -0.025, y: -0.125, z: 0}

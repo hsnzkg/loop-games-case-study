@@ -15,10 +15,11 @@ namespace Project.Scripts.Entity.Player.Combat
         private WeaponEntity[] m_weapons;
         private ObjectPool<WeaponEntity> m_weaponPool;
         private int m_weaponCount;
-        
+
         private readonly EventBind<EUpdate> m_updateBind;
-        private PlayerEntity m_playerEntity;
-        public CombatSystem(PlayerEntity entity, CombatSettings combatSettings, Transform root,Collider2D playerCol)
+        private readonly PlayerEntity m_playerEntity;
+
+        public CombatSystem(PlayerEntity entity, CombatSettings combatSettings, Transform root, Collider2D playerCol)
         {
             m_playerEntity = entity;
             m_combatSettings = combatSettings;
@@ -38,6 +39,7 @@ namespace Project.Scripts.Entity.Player.Combat
             {
                 DestroyWeapons();
             }
+
             UnregisterEvents();
         }
 
@@ -56,8 +58,9 @@ namespace Project.Scripts.Entity.Player.Combat
 
         private void UnregisterEvents()
         {
-            EventBus<EUpdate>.Unregister(m_updateBind);            
+            EventBus<EUpdate>.Unregister(m_updateBind);
         }
+
         private void Update()
         {
             SnapWeaponParent();
@@ -73,6 +76,8 @@ namespace Project.Scripts.Entity.Player.Combat
         {
             m_weaponParent = new GameObject($"Weapon_Parent_{m_root.GetInstanceID()}").transform;
             m_weaponParent.SetParent(m_root);
+            SnapWeaponParent();
+
             m_weapons = new WeaponEntity[m_combatSettings.MaxWeaponCount];
 
             m_weaponPool = new ObjectPool<WeaponEntity>(
@@ -96,7 +101,7 @@ namespace Project.Scripts.Entity.Player.Combat
         private WeaponEntity CreateWeapon()
         {
             WeaponEntity weapon = Object.Instantiate(m_combatSettings.WeaponPrefab, m_weaponParent);
-            weapon.Initialize(m_playerEntity,m_weaponPool);
+            weapon.Initialize(m_playerEntity, m_weaponPool);
             return weapon;
         }
 
@@ -117,8 +122,10 @@ namespace Project.Scripts.Entity.Player.Combat
                 m_weapons[last] = null;
                 m_weaponCount--;
             }
-            
+
             weapon.OnDespawned();
+            weapon.transform.localPosition = Vector3.zero;
+            weapon.transform.localRotation = Quaternion.identity;
             weapon.gameObject.SetActive(false);
         }
 
@@ -136,6 +143,7 @@ namespace Project.Scripts.Entity.Player.Combat
             {
                 return;
             }
+
             WeaponEntity weapon = m_weaponPool.Get();
             int index = m_weaponCount;
             m_weapons[index] = weapon;

@@ -898,7 +898,7 @@ MonoBehaviour:
     - _ALPHABLEND_ON
   _includedShaderVariants: []
   _excludedShaderVariants: []
-  version: 3445
+  version: 3512
   _shaderParsedShaders:
   - ParsedSubShaders:
     - Index: 0
