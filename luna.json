@@ -9228,18 +9228,6 @@
                 "excluded": true
             },
             {
-                "name": "DG.Tweening.DOTweenModuleUtils",
-                "excluded": true
-            },
-            {
-                "name": "DG.Tweening.DOTweenModuleUtils.Physics",
-                "excluded": true
-            },
-            {
-                "name": "Project.Scripts.Entity.Weapon.AnimationSystem",
-                "excluded": true
-            },
-            {
                 "name": "Project.Scripts.EventBus.Examples.ExamplePublisher",
                 "excluded": true
             },
@@ -9249,10 +9237,6 @@
             },
             {
                 "name": "Project.Scripts.FiniteStateMachine.Runtime.HierarchicalStateExtensions",
-                "excluded": true
-            },
-            {
-                "name": "Project.Scripts.Utility.LayerMaskUtility",
                 "excluded": true
             },
             {
@@ -9289,10 +9273,6 @@
             },
             {
                 "name": "Project.Scripts.Bootstrap.GameBootstrapper",
-                "excluded": true
-            },
-            {
-                "name": "Project.Scripts.Entity.PlayerAI.Movement.AIInputProvider",
                 "excluded": true
             },
             {
@@ -9357,7 +9337,7 @@
             },
             {
                 "name": "Project.Scripts.Entity.PlayerAI.PlayerAIEntity",
-                "excluded": true
+                "excluded": false
             },
             {
                 "name": "Project.Scripts.Bootstrap.IBootstrapper",
@@ -30991,7 +30971,7 @@
                     },
                     {
                         "name": "Kill",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "ManualUpdate",
@@ -32239,27 +32219,27 @@
                     },
                     {
                         "name": "OnCollisionEnter2D",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "OnCollisionStay2D",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "OnCollisionExit2D",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "OnTriggerEnter2D",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "OnTriggerStay2D",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "OnTriggerExit2D",
-                        "excluded": true
+                        "excluded": false
                     }
                 ]
             },
@@ -32357,7 +32337,7 @@
                     },
                     {
                         "name": "OnSnap",
-                        "excluded": true
+                        "excluded": false
                     }
                 ]
             },
@@ -32425,11 +32405,11 @@
                     },
                     {
                         "name": "SetCollisionLayers",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "GetDesiredTransform",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "SnapWeaponParent",
@@ -32437,15 +32417,15 @@
                     },
                     {
                         "name": "ArrangeInstant",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "ArrangeSmooth",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "Cycle",
-                        "excluded": true
+                        "excluded": false
                     }
                 ]
             },
@@ -32924,6 +32904,14 @@
                     {
                         "name": "ClearLevel",
                         "excluded": false
+                    },
+                    {
+                        "name": "GetRandomPointInArea",
+                        "excluded": false
+                    },
+                    {
+                        "name": "CalculateSpawnArea",
+                        "excluded": false
                     }
                 ]
             },
@@ -33148,12 +33136,8 @@
                         "excluded": false
                     },
                     {
-                        "name": "GetRandomPointInArea",
-                        "excluded": false
-                    },
-                    {
-                        "name": "CalculateSpawnArea",
-                        "excluded": false
+                        "name": "GetActiveWeapons",
+                        "excluded": true
                     }
                 ]
             },
@@ -33925,11 +33909,11 @@
                     },
                     {
                         "name": "Collect",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "GetIsCollecting",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "SetIsCollecting",
@@ -33943,27 +33927,27 @@
                 "instanceMethods": [
                     {
                         "name": "Update",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "Initialize",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "FetchComponents",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "GetCollider",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "OnSpawned",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "OnDespawned",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "OnDestroyed",
@@ -33971,19 +33955,19 @@
                     },
                     {
                         "name": "Free",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "OnTriggerEvent",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "Control",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "OnDamage",
-                        "excluded": true
+                        "excluded": false
                     }
                 ]
             },
@@ -34317,7 +34301,7 @@
                     },
                     {
                         "name": "GetCountInactive",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "Get$1",
@@ -34329,7 +34313,7 @@
                     },
                     {
                         "name": "Release",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "Clear",
@@ -34496,6 +34480,98 @@
                     {
                         "name": "OnEnter",
                         "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Spawning.Spawners.AISpawner",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Initialize",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Spawn",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetPlayers",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.PlayerAI.Movement.AIInputProvider",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "GetInput",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetHasInput",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Utility.LayerMaskUtility",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Contains",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "DG.Tweening.DOTweenModuleUtils",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Preserver",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "DG.Tweening.DOTweenModuleUtils.Physics",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "SetOrientationOnPath",
+                        "excluded": true
+                    },
+                    {
+                        "name": "HasRigidbody2D",
+                        "excluded": true
+                    },
+                    {
+                        "name": "HasRigidbody",
+                        "excluded": true
+                    },
+                    {
+                        "name": "CreateDOTweenPathTween",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Entity.Weapon.AnimationSystem",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnSpawn",
+                        "excluded": false
                     }
                 ]
             }

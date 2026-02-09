@@ -1,5 +1,4 @@
 ﻿using Project.Scripts.Entity.Weapon;
-using Project.Scripts.Level.Settings;
 using UnityEngine;
 
 namespace Project.Scripts.Spawning.Spawners
@@ -14,7 +13,6 @@ namespace Project.Scripts.Spawning.Spawners
         public float SpawnInterval = 2f;
 
         [Header("Level Settings")] 
-        public LevelSettings LevelSettings;
         public float InnerOffset = 1.5f;
         
         public Vector3 GetObjectDefaultSize()

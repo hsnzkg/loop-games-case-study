@@ -70,7 +70,7 @@ namespace Project.Scripts.EventBus.Runtime
         {
             s_bindings.Remove(bind);
             s_count--;
-            s_count = Math.Clamp(s_count, 0, s_bindings.Count);
+            s_count = Mathf.Clamp(s_count, 0, s_bindings.Count);
         }
 
         public static void Raise(T @event)

@@ -1,5 +1,8 @@
 ﻿using Project.Scripts.Entity.Weapon;
+using Project.Scripts.Level;
 using Project.Scripts.Pool;
+using Project.Scripts.Storage.Runtime;
+using Project.Scripts.Storage.Storages;
 using UnityEngine;
 
 namespace Project.Scripts.Spawning.Spawners
@@ -14,14 +17,14 @@ namespace Project.Scripts.Spawning.Spawners
         private Vector2 m_minSpawn;
         private Vector2 m_maxSpawn;
         private WeaponCollectableEntity[] m_activeWeapons;
+        private LevelManager  m_levelManager;
 
         public void Initialize()
         {
+            m_levelManager = Storage<GameplayStorage>.GetInstance().LevelManager;
             m_activeWeapons = new WeaponCollectableEntity[m_weaponCollectorSettings.MaxWeaponsInWorld];
-            
             m_parent = new GameObject("Weapon_Collectable_Parent");
-            CalculateSpawnArea();
-
+            
             m_pool = new ObjectPool<WeaponCollectableEntity>(
                 CreateInstance,
                 OnGetFromPool,
@@ -59,7 +62,7 @@ namespace Project.Scripts.Spawning.Spawners
 
         private void SpawnRandom()
         {
-            Vector3 position = GetRandomPointInArea();
+            Vector3 position = m_levelManager.GetRandomPointInArea(m_weaponCollectorSettings.InnerOffset);
             WeaponCollectableEntity weapon = m_pool.Get();
 
             weapon.transform.SetPositionAndRotation(position, Quaternion.identity);
@@ -100,30 +103,10 @@ namespace Project.Scripts.Spawning.Spawners
         }
 
         #endregion
-
-        private Vector3 GetRandomPointInArea()
+        
+        public WeaponCollectableEntity[] GetActiveWeapons()
         {
-            float x = Random.Range(m_minSpawn.x, m_maxSpawn.x);
-            float y = Random.Range(m_minSpawn.y, m_maxSpawn.y);
-            return new Vector3(x, y, 0f);
-        }
-
-        private void CalculateSpawnArea()
-        {
-            float widthWorld = m_weaponCollectorSettings.LevelSettings.Width *
-                               m_weaponCollectorSettings.LevelSettings.TileSize;
-            float heightWorld = m_weaponCollectorSettings.LevelSettings.Height *
-                                m_weaponCollectorSettings.LevelSettings.TileSize;
-
-            Vector2 halfSize = new Vector2(widthWorld, heightWorld) * 0.5f;
-            Vector2 center = m_weaponCollectorSettings.LevelSettings.Offset;
-
-            float border =
-                m_weaponCollectorSettings.LevelSettings.BlankSpace * m_weaponCollectorSettings.LevelSettings.TileSize +
-                m_weaponCollectorSettings.InnerOffset;
-
-            m_minSpawn = center - halfSize + Vector2.one * border;
-            m_maxSpawn = center + halfSize - Vector2.one * border;
+            return m_activeWeapons;
         }
     }
 }

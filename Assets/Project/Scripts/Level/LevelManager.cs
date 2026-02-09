@@ -237,6 +237,30 @@ namespace Project.Scripts.Level
 
             return m_levelSettings.GroundSettings.Tiles[0].TilePrefab;
         }
+        
+        public Vector3 GetRandomPointInArea(float innerOffset = 0f)
+        {
+            CalculateSpawnArea(innerOffset, out Vector2 minSpawn,out Vector2 maxSPawn);
+            float x = Random.Range(minSpawn.x, maxSPawn.x);
+            float y = Random.Range(minSpawn.y, maxSPawn.y);
+            return new Vector3(x, y, 0f);
+        }
+
+        private void CalculateSpawnArea(float innerOffset, out Vector2 minSpawn, out Vector2 maxSpawn)
+        {
+            float widthWorld = m_levelSettings.Width *
+                               m_levelSettings.TileSize;
+            float heightWorld = m_levelSettings.Height *
+                                m_levelSettings.TileSize;
+
+            Vector2 halfSize = new Vector2(widthWorld, heightWorld) * 0.5f;
+            Vector2 center = m_levelSettings.Offset;
+
+            float border = m_levelSettings.BlankSpace * m_levelSettings.TileSize + innerOffset;
+
+            minSpawn = center - halfSize + Vector2.one * border;
+            maxSpawn = center + halfSize - Vector2.one * border;
+        }
 
         public void ClearLevel()
         {
