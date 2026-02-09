@@ -4,6 +4,7 @@ using Project.Scripts.Entity.Player.Attributes;
 using Project.Scripts.Entity.Player.Combat;
 using Project.Scripts.Entity.PlayerAI;
 using Project.Scripts.EventBus.Runtime;
+using Project.Scripts.Events.Camera;
 using Project.Scripts.Events.Scratch;
 using Project.Scripts.Events.Weapon;
 using Project.Scripts.Pool;
@@ -88,6 +89,7 @@ namespace Project.Scripts.Entity.Weapon
                 if (m_playerEntity.CompareTag("Player") ||  weaponEntity.GetPlayerEntity().CompareTag("Player"))
                 {
                     EventBus<EPlaySound>.Raise(new EPlaySound(SoundType.SwordHit));
+                    EventBus<ECameraShake>.Raise(new ECameraShake());
                 }
                 Free();
             }

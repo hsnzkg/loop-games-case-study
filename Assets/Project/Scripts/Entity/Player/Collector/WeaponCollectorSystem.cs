@@ -67,16 +67,17 @@ namespace Project.Scripts.Entity.Player.Collector
             m_scaleTween.SetEase(m_weaponCollectorSettings.ScaleEase);
             m_collectSequence.Append(snapTween);
             m_collectSequence.Join(m_scaleTween);
-            m_collectSequence.OnComplete(() => { OnSnap(collectable); });
+            m_collectSequence.OnComplete(() => { OnSnap(collectable,obj.transform); });
             m_collectSequence.Play();
         }
 
-        private void OnSnap(ICollectable collectable)
+        private void OnSnap(ICollectable collectable, Transform objTransform)
         {
-            DOTween.Complete(m_collectSequence);
+            DOTween.Complete(objTransform);
+            DOTween.Kill(objTransform);
             collectable.Collect();
             OnWeaponCollected?.Invoke();
-            if (m_playerEntity is not PlayerAIEntity)
+            if (m_playerEntity.CompareTag("Player"))
             {
                 EventBus<EPlaySound>.Raise(new EPlaySound(SoundType.WeaponPickup,randomPitch:true));
             }

@@ -2021,10 +2021,6 @@
                 "excluded": true
             },
             {
-                "name": "UnityEngine.WaitWhile",
-                "excluded": true
-            },
-            {
                 "name": "UnityEngine.WWW",
                 "excluded": true
             },
@@ -2090,10 +2086,6 @@
             },
             {
                 "name": "UnityEngine.AssetBundleRequest",
-                "excluded": true
-            },
-            {
-                "name": "UnityEngine.AudioClip",
                 "excluded": true
             },
             {
@@ -9045,10 +9037,6 @@
                 "excluded": false
             },
             {
-                "name": "Project.Scripts.Sound.SoundEntry",
-                "excluded": true
-            },
-            {
                 "name": "Project.Scripts.Sound.SoundType",
                 "excluded": false
             }
@@ -13068,7 +13056,7 @@
                     },
                     {
                         "name": "Enqueue",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "GetEnumerator",
@@ -13084,7 +13072,7 @@
                     },
                     {
                         "name": "Dequeue",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "Peek",
@@ -13104,11 +13092,11 @@
                     },
                     {
                         "name": "SetCapacity",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "MoveNext",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "TrimExcess",
@@ -30302,7 +30290,7 @@
                     },
                     {
                         "name": "DOMove",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "DOMoveX",
@@ -30334,7 +30322,7 @@
                     },
                     {
                         "name": "DORotate",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "DORotateQuaternion",
@@ -30970,7 +30958,7 @@
                     },
                     {
                         "name": "SetOptions$13",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "SetOptions$12",
@@ -32879,6 +32867,10 @@
                     {
                         "name": "Spawn",
                         "excluded": false
+                    },
+                    {
+                        "name": "Awake",
+                        "excluded": false
                     }
                 ]
             },
@@ -33740,6 +33732,10 @@
                     },
                     {
                         "name": "OnDamage",
+                        "excluded": false
+                    },
+                    {
+                        "name": "GetPlayerEntity",
                         "excluded": false
                     }
                 ]
@@ -41580,15 +41576,15 @@
                     },
                     {
                         "name": "LaunchTrajectory",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "OnSequenceCompleted",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "CanSpawn",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "Spawn",
@@ -41609,6 +41605,10 @@
                     {
                         "name": "OnDestroyInstance",
                         "excluded": false
+                    },
+                    {
+                        "name": "Awake",
+                        "excluded": false
                     }
                 ]
             },
@@ -41618,7 +41618,7 @@
                 "instanceMethods": [
                     {
                         "name": "GetObjectDefaultSize",
-                        "excluded": true
+                        "excluded": false
                     }
                 ]
             },
@@ -42142,11 +42142,11 @@
                     },
                     {
                         "name": "$ctor1",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "ctor",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "getHashCode",
@@ -42158,7 +42158,137 @@
                     },
                     {
                         "name": "$clone",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "UnityEngine.AudioClip",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "name#get",
                         "excluded": true
+                    },
+                    {
+                        "name": "name#set",
+                        "excluded": true
+                    },
+                    {
+                        "name": "length#get",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Sound.AudioSourcePool",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "CreateSource",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Get",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Release",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Sound.SoundEntry",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "getDefaultValue",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "getHashCode",
+                        "excluded": true
+                    },
+                    {
+                        "name": "equals",
+                        "excluded": true
+                    },
+                    {
+                        "name": "$clone",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "Project.Scripts.Sound.SoundManager",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Awake",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnEnable",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnDisable",
+                        "excluded": true
+                    },
+                    {
+                        "name": "BuildLookup",
+                        "excluded": false
+                    },
+                    {
+                        "name": "OnPlaySound",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Play",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ReleaseWhenFinished",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "UnityEngine.WaitWhile",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "keepWaiting#get",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Update",
+                        "excluded": false
                     }
                 ]
             }

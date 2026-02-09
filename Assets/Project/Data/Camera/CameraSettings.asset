@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 535f2981c1dc41f289c9c67030d9aae4, type: 3}
   m_Name: CameraSettings
   m_EditorClassIdentifier: 
-  Offset: {x: 1, y: 1, z: -5}
-  LerpSpeed: 5
+  ShakeAmplitude: 0.5
+  ShakeFrequency: 4
+  ShakeDuration: 0.25
+  ShakeEase: 6

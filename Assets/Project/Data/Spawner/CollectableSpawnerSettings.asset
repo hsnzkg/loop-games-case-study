@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CollectableSpawnerSettings
   m_EditorClassIdentifier: 
   WeaponPrefab: {fileID: 6865993013136294753, guid: b8e1a3060c4a288488fef98a1f7271a3, type: 3}
-  PoolSize: 20
-  MaxWeaponsInWorld: 20
-  SpawnInterval: 2
+  PoolSize: 25
+  MaxWeaponsInWorld: 25
+  SpawnInterval: 0.65
   InnerOffset: 1.5

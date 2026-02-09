@@ -12,13 +12,14 @@ namespace Project.Scripts.Sound
 
         [Header("Pool")]
         [SerializeField] private int m_initialPoolSize = 10;
-
+        private Dictionary<SoundType, AudioSource> m_activeSources;
         private Dictionary<SoundType, AudioClip> m_clipMap;
         private AudioSourcePool m_pool;
         private EventBind<EPlaySound> m_playSoundBind;
         private AudioSource m_currentSource;
         private void Awake()
         {
+            m_activeSources = new Dictionary<SoundType, AudioSource>();
             m_playSoundBind = new EventBind<EPlaySound>(OnPlaySound);
             BuildLookup();
             m_pool = new AudioSourcePool(m_initialPoolSize, transform);
@@ -55,11 +56,16 @@ namespace Project.Scripts.Sound
 
         private void Play(AudioClip clip, EPlaySound e)
         {
-            if (m_currentSource != null && m_currentSource.isPlaying)
+            // Eğer aynı sound type şu an çalıyorsa → durdur
+            if (m_activeSources.TryGetValue(e.Type, out AudioSource activeSource))
             {
-                m_currentSource.Stop();
-                m_pool.Release(m_currentSource);
-                m_currentSource = null;
+                if (activeSource != null && activeSource.isPlaying)
+                {
+                    activeSource.Stop();
+                    m_pool.Release(activeSource);
+                }
+
+                m_activeSources.Remove(e.Type);
             }
 
             AudioSource source = m_pool.Get();
@@ -69,27 +75,26 @@ namespace Project.Scripts.Sound
             source.loop = false;
 
             if (e.RandomPitch)
-            {
                 source.pitch = Random.Range(e.PitchMin, e.PitchMax);
-            }
             else
-            {
                 source.pitch = 1f;
-            }
 
             source.Play();
 
-            m_currentSource = source;
+            m_activeSources[e.Type] = source;
 
-            StartCoroutine(ReleaseWhenFinished(source));
+            StartCoroutine(ReleaseWhenFinished(source, e.Type));
         }
         
-        private IEnumerator ReleaseWhenFinished(AudioSource source)
+        private IEnumerator ReleaseWhenFinished(AudioSource source, SoundType type)
         {
             yield return new WaitWhile(() => source.isPlaying);
 
-            if (m_currentSource == source)
-                m_currentSource = null;
+            if (m_activeSources.TryGetValue(type, out AudioSource current))
+            {
+                if (current == source)
+                    m_activeSources.Remove(type);
+            }
 
             m_pool.Release(source);
         }

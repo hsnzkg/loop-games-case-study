@@ -122,6 +122,34 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &9470723 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6280130500245748952, guid: bee1a9050d25e41479b41c0052767fb7, type: 3}
+  m_PrefabInstance: {fileID: 2670753556673746249}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9470726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9470723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ApplyAfter: 2
+  m_ChannelMask: 1
+  m_Gain: 1
+  m_Use2DDistance: 0
+  m_UseCameraSpace: 1
+  m_ReactionSettings:
+    m_SecondaryNoise: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_Duration: 1
+    m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!4 &16969961 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3878966572699854319, guid: 87570964d1755fc49b85cbd5de5bc2a1, type: 3}
@@ -516,6 +544,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 200067196}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &735537280 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2890126939770934759, guid: bee1a9050d25e41479b41c0052767fb7, type: 3}
+  m_PrefabInstance: {fileID: 2670753556673746249}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &811735278 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7456515042331164037, guid: 389f04aa1f10f4d4eb204dc376191e22, type: 3}
@@ -613,6 +646,59 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 7398541636925193524, guid: bee1a9050d25e41479b41c0052767fb7, type: 3}
   m_PrefabInstance: {fileID: 2670753556673746249}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1469628191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 735537280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: 1
+    m_ImpulseShape: 2
+    m_CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ImpulseDuration: 0.2
+    m_ImpulseType: 0
+    m_DissipationRate: 0.25
+    m_RawSignal: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.2
+      m_DecayTime: 0.7
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 100
+    m_PropagationSpeed: 343
+  m_DefaultVelocity: {x: 0, y: -1, z: 0}
 --- !u!4 &1500381478 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8047366307135416524, guid: 89cfe147c925364468639ac42d5d412a, type: 3}
@@ -968,7 +1054,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2890126939770934759, guid: bee1a9050d25e41479b41c0052767fb7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1469628191}
+    - targetCorrespondingSourceObject: {fileID: 6280130500245748952, guid: bee1a9050d25e41479b41c0052767fb7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9470726}
   m_SourcePrefab: {fileID: 100100000, guid: bee1a9050d25e41479b41c0052767fb7, type: 3}
 --- !u!1001 &3971663508330559329
 PrefabInstance:
