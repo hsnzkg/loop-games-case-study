@@ -72,11 +72,13 @@ namespace Project.Scripts.Entity.Weapon
         {
             if (obj.TryGetComponent(out IDamageable damageable))
             {
-                damageable.OnDamage(m_weaponAttributeSettings.Damage);
+                Vector2 dir = Vector2.ClampMagnitude(obj.transform.position - transform.position,1f);
+                damageable.OnDamage(m_weaponAttributeSettings.Damage,dir);
             }
+            if (damageable is WeaponEntity) Free();
         }
 
-        public void OnDamage(float damage)
+        public void OnDamage(float damage,Vector2 direction)
         {
             Free();
         }

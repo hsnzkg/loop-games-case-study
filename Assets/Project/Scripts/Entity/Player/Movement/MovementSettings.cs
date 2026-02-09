@@ -8,5 +8,7 @@ namespace Project.Scripts.Entity.Player.Movement
         public float TranslationSpeed;
         public float Acceleration;
         public float Deceleration;
+        public float DamageForce;
+        public float ForceDampSpeed;
     }
 }

@@ -67,9 +67,10 @@ namespace Project.Scripts.Entity.Player
             m_movementSystem.Disable();
         }
 
-        public virtual void OnDamage(float damage)
+        public virtual void OnDamage(float damage,Vector2 direction)
         {
             m_health.TakeDamage(damage);
+            m_movementSystem.AddForce(direction * m_movementSettings.DamageForce);
         }
 
         private void OnDeath()

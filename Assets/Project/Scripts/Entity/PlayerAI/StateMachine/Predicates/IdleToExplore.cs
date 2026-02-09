@@ -25,7 +25,7 @@ namespace Project.Scripts.Entity.PlayerAI.StateMachine.Predicates
         
         public bool Evaluate()
         {
-            return false;
+            return IsAnyWeaponInRange();
         }
 
         private bool IsAnyWeaponInRange()

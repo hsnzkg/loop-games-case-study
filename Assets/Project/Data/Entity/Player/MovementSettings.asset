@@ -15,3 +15,5 @@ MonoBehaviour:
   TranslationSpeed: 3
   Acceleration: 50
   Deceleration: 25
+  DamageForce: 20
+  ForceDampSpeed: 12.5
