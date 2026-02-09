@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53e1565297434ffc85b2f63d76a27dba, type: 3}
   m_Name: AISettings
   m_EditorClassIdentifier: 
-  VisionThreshold: 3
+  VisionThreshold: 4
   DestinationReachThreshold: 0.75

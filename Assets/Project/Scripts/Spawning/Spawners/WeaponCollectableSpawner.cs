@@ -72,7 +72,7 @@ namespace Project.Scripts.Spawning.Spawners
             SpawnRandom();
         }
 
-        public bool CanSpawn()
+        private bool CanSpawn()
         {
             return m_activeCount < m_weaponCollectorSettings.MaxWeaponsInWorld;
         }
@@ -80,9 +80,7 @@ namespace Project.Scripts.Spawning.Spawners
         private void SpawnRandom()
         {
             Vector3 position = m_levelManager.GetRandomPointInArea(m_weaponCollectorSettings.InnerOffset);
-            WeaponCollectableEntity weapon = m_pool.Get();
-            weapon.transform.SetPositionAndRotation(position, Quaternion.identity);
-            weapon.OnSpawned();
+            Spawn(position);
         }
 
         private void SpawnAroundRandom(EPlayerDead obj)
@@ -122,7 +120,6 @@ namespace Project.Scripts.Spawning.Spawners
 
         private void OnReleaseToPool(WeaponCollectableEntity instance)
         {
-            instance.SetIsCollecting(false);
             instance.transform.localScale = m_weaponCollectorSettings.GetObjectDefaultSize();
             m_activeWeapons[m_activeCount-1] = instance;
             m_activeCount--;

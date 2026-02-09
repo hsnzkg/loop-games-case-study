@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Project.Scripts.Entity.PlayerAI.Movement;
+﻿using Project.Scripts.Entity.PlayerAI.Movement;
 using Project.Scripts.Entity.Weapon;
 using Project.Scripts.Spawning.Spawners;
 using Project.Scripts.Storage.Runtime;
@@ -40,6 +39,7 @@ namespace Project.Scripts.Entity.PlayerAI.StateMachine.States
                     closestWeapon = m_weaponLookupBuffer[i];
                 }
             }
+
             if (closestWeapon)
             {
                 ((AIInputProvider)Context.AIInputProvider).SetPositionTarget(closestWeapon.transform.position);

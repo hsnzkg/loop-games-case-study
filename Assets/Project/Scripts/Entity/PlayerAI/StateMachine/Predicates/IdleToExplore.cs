@@ -22,7 +22,7 @@ namespace Project.Scripts.Entity.PlayerAI.StateMachine.Predicates
             m_stateContext = context;
             m_weaponCollectableSpawner = Storage<GameplayStorage>.GetInstance().WeaponCollectableSpawner;
         }
-        
+
         public bool Evaluate()
         {
             GetWeaponsInRange();
@@ -33,12 +33,12 @@ namespace Project.Scripts.Entity.PlayerAI.StateMachine.Predicates
         {
             m_weaponLookupBuffer = m_weaponCollectableSpawner.GetActiveWeapons();
             m_weaponInRangeBuffer.Clear();
-            
+
             Vector2 entityPosition = m_stateContext.EntityTransform.position.ToVector2XY();
             for (int i = 0; i < m_weaponLookupBuffer.Length; i++)
             {
-                if(m_weaponLookupBuffer[i] == null) continue;
-                if( m_weaponLookupBuffer[i].GetIsCollecting())continue;
+                if (m_weaponLookupBuffer[i] == null) continue;
+                if (m_weaponLookupBuffer[i].GetIsCollecting()) continue;
                 Vector2 weaponPos = m_weaponLookupBuffer[i].transform.position.ToVector2XY();
                 float distance = Vector2.Distance(entityPosition, weaponPos);
                 if (distance <= m_stateContext.AISettings.VisionThreshold)

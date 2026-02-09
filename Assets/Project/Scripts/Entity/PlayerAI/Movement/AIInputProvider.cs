@@ -1,5 +1,4 @@
-﻿using System;
-using Project.Scripts.Entity.Player.Movement;
+﻿using Project.Scripts.Entity.Player.Movement;
 using Project.Scripts.Utility;
 using UnityEngine;
 

@@ -92,5 +92,10 @@ namespace Project.Scripts.Entity.Player
             m_animationSystem.Dead(m_lastTakenDamageDirection);
             EventBus<EPlayerDead>.Raise(new EPlayerDead(this));
         }
+
+        public Health GetHealth()
+        {
+            return m_health;
+        }
     }
 }
